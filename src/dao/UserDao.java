@@ -9,39 +9,38 @@ import bean.User;
 
 public class UserDao extends Dao {
 	/**
-	 * getメソッド 学校コードを指定して学校インスタンスを１件取得する
+	 * getメソッド 教員IDを指定して教員インスタンスを1件取得する
 	 *
-	 * @param cd:String
-	 *            学校コード
-	 * @return 学校クラスのインスタンス 存在しない場合はnull
+	 * @param id:String
+	 *            教員ID
+	 * @return 教員クラスのインスタンス 存在しない場合はnull
 	 * @throws Exception
 	 */
-	public User search(String id, String password) throws Exception {
-		// 学校インスタンスを初期化
+	public User get(String id) throws Exception {
+		// 教員インスタンスを初期化
 		User user = new User();
-		// データベースへのコネクションを確率
+		// コネクションを確立
 		Connection connection = getConnection();
 		// プリペアードステートメント
 		PreparedStatement statement = null;
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from user where id=? and password=?");
-			// プリペアードステートメントに学校コードをバインド
+			statement = connection.prepareStatement("select * from user where id=?");
+			// プリペアードステートメントに教員IDをバインド
 			statement.setString(1, id);
-			statement.setString(2, password);
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 
 			if (rSet.next()) {
 				// リザルトセットが存在する場合
-				// 学校インスタンスに学校コードと学校名をセット
+				// 教員インスタンスに検索結果をセット
 				user.setId(rSet.getString("id"));
 				user.setPassword(rSet.getString("password"));
 			} else {
-				// 存在しない場合
-				// 学校インスタンスにnullをセット
-				school = null;
+				// リザルトセットが存在しない場合
+				// 教員インスタンスにnullをセット
+				user = null;
 			}
 		} catch (Exception e) {
 			throw e;
@@ -63,6 +62,27 @@ public class UserDao extends Dao {
 				}
 			}
 		}
-		return school;
+
+		return user;
+	}
+
+	/**
+	 * loginメソッド 教員IDとパスワードで認証する
+	 *
+	 * @param id:String
+	 *            教員ID
+	 * @param password:String
+	 *            パスワード
+	 * @return 認証成功:教員クラスのインスタンス, 認証失敗:null
+	 * @throws Exception
+	 */
+	public User login(String id, String password) throws Exception {
+		// 教員クラスのインスタンスを取得
+		User user = get(id);
+		// 教員がnullまたはパスワードが一致しない場合
+		if (user == null || !user.getPassword().equals(password)) {
+			return null;
+		}
+		return user;
 	}
 }
