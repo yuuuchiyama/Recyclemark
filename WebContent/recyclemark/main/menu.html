@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>メニュー</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        height: 100%; /* 全体の高さを100%に設定 */
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+    }
+    /* ヘッダーのスタイル */
+    .header {
+        display: flex;
+        background-color: #ddd;
+        padding: 15px 20px;
+        justify-content: space-between; /* Title and icon space */
+        align-items: center; /* Align items vertically */
+        box-shadow: 0px 4px 2px -2px gray;
+    }
+    .title {
+        font-size: 40px;
+        font-weight: bold;
+    }
+    /* Hamburger menu icon */
+    .menu-icon {
+        display: flex;
+        cursor: pointer;
+        flex-direction: column;
+        gap: 6px;
+        justify-content: center;
+        align-items: center;
+        z-index: 1002; /* Menuの上に表示するため */
+    }
+    .menu-icon div {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        border-radius: 2px;
+    }
+    /* Full-screen menu style */
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        justify-content: flex-start;
+        padding-top: 60px;
+        z-index: 1000;
+        height: calc(100vh - 120px);
+    }
+    .menu-item {
+        font-size: 18px;
+        padding: 15px 20px;
+        border-bottom: 1px solid #ddd;
+        cursor: pointer;
+    }
+    .menu-item a {
+    font-size: 16px;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #333;
+    }
+    /* Submenu style */
+    .submenu {
+        padding-left: 20px;
+        display: none;
+        flex-direction: column;
+    }
+    .submenu a {
+        font-size: 16px;
+        padding: 10px 0;
+        text-decoration: none;
+        color: #333;
+    }
+    .menu-item:hover,
+    .submenu a:hover {
+        background-color: #f0f0f0;
+    }
+    /* 戻るリンクのスタイル */
+    .back {
+        text-decoration: underline;
+        margin: 10px 20px; /* 左に寄せるため左マージンを設定 */
+        font-size: 30px;
+        text-align: left; /* 左揃えに設定 */
+        display: inline-block; /* 幅いっぱいを占めず、左寄せ */
+    }
+    /* メインコンテンツ部分のスタイル */
+    .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    }
+
+    .button-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 400px;
+        width: 100%;
+        margin-top: -50px; /* 上に寄せる調整 */
+        }
+    .button-container button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: 2px solid #333;
+        border-radius: 8px;
+        background-color: white;
+        cursor: pointer;
+    }
+    .button-container button:hover {
+        background-color: #f0f0f0;
+    }
+</style>
+</head>
+<body>
+<!-- ヘッダー部分 -->
+<div class="header">
+<div class="title">RecycleMark Navigator</div>
+<!-- Hamburger menu icon -->
+<div class="menu-icon" id="menu-icon">
+<div></div>
+<div></div>
+<div></div>
+</div>
+</div>
+<!-- Full-screen Menu -->
+<div class="menu" id="menu">  
+<div class="menu-item" onclick="toggleSubMenu('submenu1')">・メニュー ▼</div>
+<div class="submenu" id="submenu1">
+<a href="#">・テキスト検索</a>
+<a href="#">・画像検索</a>
+<a href="#">・ランキング</a>
+</div>
+<div class="menu-item"><a href="#">・マイページ</a></div>
+<div class="menu-item"><a href="#">・ログアウト</a></div>
+</div>
+
+<!-- 戻るリンク -->
+<a href="#" class="back">＜戻る</a>
+
+<!-- メインコンテンツ部分 -->
+<div class="main-content">
+<div class="button-container">
+<button>テキスト検索</button>
+<button>画像検索</button>
+<button>ランキング</button>
+<button>言語選択に戻る</button>
+</div>
+</div>
+<script>
+       const menuIcon = document.getElementById('menu-icon');
+       const menu = document.getElementById('menu');
+       const searchContainer = document.getElementById('search-container');
+       // Toggle menu display
+       menuIcon.addEventListener('click', function() {
+           if (menu.style.display === 'flex') {
+               menu.style.display = 'none';
+               searchContainer.style.display = 'flex'; // Show search container
+           } else {
+               menu.style.display = 'flex';
+               searchContainer.style.display = 'none'; // Hide search container
+           }
+       });
+       // Toggle submenu display
+       function toggleSubMenu(submenuId) {
+           const submenu = document.getElementById(submenuId);
+           submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+       }
+</script>
+</body>
+</html>
