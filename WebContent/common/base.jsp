@@ -15,7 +15,7 @@
 		<c:import url="/common/header.jsp" />
 	</header>
 	<main> ${param.content} </main>
-<script src="${pageContext.request.contextPath}/js/main.js"></script>
+<script src="../js/main.js"></script>
 ${param.scripts}
 </body>
 </html>

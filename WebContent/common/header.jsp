@@ -24,4 +24,4 @@
 </div>
 
 <!-- 戻るリンク -->
-<a href="#" class="back">＜戻る</a>
+<a href="#" class="back">＜</a>

@@ -2,7 +2,7 @@ body {
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 0;
-	background-image: url("image/20210729_1.jpg");
+	background-image: url("images/20210729_1.jpg");
 	background-size: cover;
 	background-position: center;
 	color: #333;
@@ -10,7 +10,9 @@ body {
 /* Header style */
 .header {
 	display: flex;
+	background: transparent; /* 背景を透明に設定 */
 	padding: 15px 20px;
+	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	background-color: rgba(255, 255, 255, 0.8);
@@ -29,7 +31,7 @@ body {
 	gap: 6px;
 	justify-content: center;
 	align-items: center;
-	z-index: 1002;
+	z-index: 1002; /* Menuの上に表示するため */
 }
 .menu-icon div {
 	width: 25px;
@@ -46,6 +48,7 @@ body {
 	left: 0;
 	width: 100%;
 	background-color: #fff;
+	justify-content: flex-start;
 	padding-top: 60px;
 	z-index: 1000;
 	height: calc(100vh - 120px);
@@ -58,6 +61,7 @@ body {
 }
 .menu-item a {
 	font-size: 16px;
+	padding: 10px 0;
 	text-decoration: none;
 	color: #333;
 }
@@ -69,6 +73,7 @@ body {
 }
 .submenu a {
 	font-size: 16px;
+	padding: 10px 0;
 	text-decoration: none;
 	color: #333;
 }
@@ -100,6 +105,7 @@ body {
 }
 
 
+
 .main {
 	display: flex;
 	flex-direction: column;
@@ -108,33 +114,40 @@ body {
 	min-height: 100vh;
 	padding: 20px;
 }
-/* 画像検索画面のスタイル */
-.image-search-container {
+
+.search-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
 	background-color: rgba(255, 255, 255, 0.7);
-	padding: 76px 50px;
+	padding: 60px 50px;
 	border-radius: 15px;
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 	max-width: 500px;
 	width: 100%;
+	text-align: center;
 }
-h1 {
-	font-size: 35px;
-	margin-top: 5px;
-	margin-bottom: 25px;
+
+.search-container h1 {
+	font-size: 32px;
+	margin-bottom: 0;
 }
-.image-input[type="file"] {
+.search-container p{
+	font-size: 16px;
+	margin-top: 2px;
+	margin-bottom: 20px;
+}
+.search-input[type="text"] {
 	width: 100%;
-	padding: 5px;
+	padding: 10px;
 	font-size: 16px;
 	border: 1.5px solid #4E7644;
 	border-radius: 5px;
 	margin-bottom: 15px;
 	box-sizing: border-box;
 }
+
 .search-button {
 	padding: 10px 20px;
 	background-color: #4E7644;
@@ -145,6 +158,7 @@ h1 {
 	cursor: pointer;
 	transition: background-color 0.3s;
 }
+
 .search-button:hover {
 	background-color: #3a5c34;
 }
