@@ -12,7 +12,6 @@ body {
 	display: flex;
 	background: transparent; /* 背景を透明に設定 */
 	padding: 15px 20px;
-	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	background-color: rgba(255, 255, 255, 0.8);
