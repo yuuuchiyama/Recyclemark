@@ -26,7 +26,7 @@ public class UserDao extends Dao {
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from user where id=?");
+			statement = connection.prepareStatement("select * from user where UserId=?");
 			// プリペアードステートメントに教員IDをバインド
 			statement.setString(1, id);
 			// プリペアードステートメントを実行
@@ -35,8 +35,8 @@ public class UserDao extends Dao {
 			if (rSet.next()) {
 				// リザルトセットが存在する場合
 				// 教員インスタンスに検索結果をセット
-				user.setId(rSet.getString("id"));
-				user.setPassword(rSet.getString("password"));
+				user.setId(rSet.getString("UserId"));
+				user.setPassword(rSet.getString("Password"));
 			} else {
 				// リザルトセットが存在しない場合
 				// 教員インスタンスにnullをセット

@@ -8,7 +8,7 @@
 		auth="Container"
 		type="javax.sql.DataSource"
 		driverClassName="com.mysql.cj.jdbc.Driver"
-		url="jdbc:mysql://localhost:3306/sampleDB"
+		url="jdbc:mysql://localhost:3306/recyclemarknavigator"
 		username="root"
 		password="n!2yMa3bt+#U+8cEQ|Ch"
 	/>
