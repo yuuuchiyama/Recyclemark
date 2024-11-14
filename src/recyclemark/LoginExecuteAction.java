@@ -39,7 +39,7 @@ public class LoginExecuteAction extends Action {
 			// セッション情報を取得
 			HttpSession session = req.getSession(true);
 			// 認証済みフラグを立てる
-			user.setAuthenticated(true);
+//			user.setAuthenticated(true);
 			// セッションにログイン情報を保存
 			session.setAttribute("user", user);
 
