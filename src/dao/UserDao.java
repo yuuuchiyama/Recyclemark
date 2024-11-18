@@ -8,16 +8,10 @@ import java.sql.SQLException;
 import bean.User;
 
 public class UserDao extends Dao {
-	/**
-	 * getメソッド 教員IDを指定して教員インスタンスを1件取得する
-	 *
-	 * @param id:String
-	 *            教員ID
-	 * @return 教員クラスのインスタンス 存在しない場合はnull
-	 * @throws Exception
-	 */
+
+	//ユーザ情報取得
 	public User get(String id) throws Exception {
-		// 教員インスタンスを初期化
+		// ユーザインスタンスを初期化
 		User user = new User();
 		// コネクションを確立
 		Connection connection = getConnection();
@@ -27,19 +21,19 @@ public class UserDao extends Dao {
 		try {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement("select * from user where UserId=?");
-			// プリペアードステートメントに教員IDをバインド
+			// プリペアードステートメントにユーザIDをバインド
 			statement.setString(1, id);
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 
 			if (rSet.next()) {
 				// リザルトセットが存在する場合
-				// 教員インスタンスに検索結果をセット
+				// ユーザインスタンスに検索結果をセット
 				user.setId(rSet.getString("UserId"));
 				user.setPassword(rSet.getString("Password"));
 			} else {
 				// リザルトセットが存在しない場合
-				// 教員インスタンスにnullをセット
+				// ユーザインスタンスにnullをセット
 				user = null;
 			}
 		} catch (Exception e) {
@@ -66,20 +60,11 @@ public class UserDao extends Dao {
 		return user;
 	}
 
-	/**
-	 * loginメソッド 教員IDとパスワードで認証する
-	 *
-	 * @param id:String
-	 *            教員ID
-	 * @param password:String
-	 *            パスワード
-	 * @return 認証成功:教員クラスのインスタンス, 認証失敗:null
-	 * @throws Exception
-	 */
+	//ユーザID、パスワード参照でログインする
 	public User login(String id, String password) throws Exception {
-		// 教員クラスのインスタンスを取得
+		// ユーザクラスのインスタンスを取得
 		User user = get(id);
-		// 教員がnullまたはパスワードが一致しない場合
+		// ユーザがnullまたはパスワードが一致しない場合
 		if (user == null || !user.getPassword().equals(password)) {
 			return null;
 		}

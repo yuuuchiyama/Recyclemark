@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import bean.RecycleMark;;
 
@@ -38,7 +40,7 @@ public class RecycleMarkDao extends Dao {
 				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
 			} else {
 				// リザルトセットが存在しない場合
-				// 教員インスタンスにnullをセット
+				// リサイクルマークインスタンスにnullをセット
 				recycleMark = null;
 			}
 		} catch (Exception e) {
@@ -63,5 +65,54 @@ public class RecycleMarkDao extends Dao {
 		}
 
 		return recycleMark;
+	}
+
+	public List<RecycleMark> getRanking() throws Exception {
+
+		// リストを初期化
+		List<RecycleMark> list = new ArrayList<>();
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("select * from recyclemarkdata order by SearchCnt desc");
+			// プリペアードステートメントを実行
+			ResultSet rSet = statement.executeQuery();
+			// リザルトセットを全権走査
+			while (rSet.next()) {
+				// リサイクルマークインスタンスを初期化
+				RecycleMark recycleMark = new RecycleMark();
+				// リサイクルマークインスタンスに検索結果をセット
+				recycleMark.setMarkId(rSet.getInt("RecycleId"));
+				recycleMark.setMarkImg(rSet.getString("RecycleImg"));
+				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
+				// リストに追加
+				list.add(recycleMark);
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+			try {
+			statement.close();
+			} catch (SQLException sqle) {
+				throw sqle;
+			}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		return list;
 	}
 }
