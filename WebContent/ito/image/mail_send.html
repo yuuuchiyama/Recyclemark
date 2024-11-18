@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メール送信</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: url("image/20210729_1.jpg");
+        background-size: cover;
+        background-position: center top;
+        background-attachment: fixed;
+        color: #333;
+    }
+    .main-container {
+        width: 400px;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 60px 50px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 500px;
+        width: 100%;
+    }
+
+    /*戻るボタン*/
+    .back {
+        position: absolute; /* 画面の特定の位置に固定 */
+        top: 20px;
+        left: 20px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 18px 15px 10px;
+        width: 25px;
+        height: 20px;
+        background: #f0f0f0;
+        color: #4E7644;
+        text-decoration: none;
+        font-size: 30px;
+        border: 1px solid #ccc;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+    .back:hover {
+        background-color: #e0e0e0;
+        border-color: #999;
+        color: #3a5c34;
+    }
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    input[type="email"] {
+        flex: 1;
+        padding: 5px;
+        width: 100%;
+        font-size: 15px;
+        border: 1.5px solid #4E7644;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* フォーム内要素の中央揃え */
+    }
+    .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .button {
+        margin-top: 20px;
+        padding: 5px 20px;
+        background-color: #4E7644;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .button:hover {
+        background-color: #3a5c34;
+    }
+</style>
+</head>
+<body>
+    <!-- 戻るボタン -->
+    <a href="#" class="back">＜</a>
+
+    <div class="main-container">
+        <h2>メールアドレス</h2>
+        <form action="/mail_send.html" method="POST">
+            <div class="form-group">
+                <input type="email" id="email" name="email" required>
+            </div>                
+            <button type="submit" class="button">送信</button>
+        </form>
+    </div>
+</body>
+</html>
