@@ -8,7 +8,7 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-image: url("../images/20210729_1.jpg");
+        background-image: url("../../images/20210729_1.jpg");
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
