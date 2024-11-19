@@ -114,7 +114,7 @@
     		<button>한국어</button>
     		<button>中文</button>
 		</div>
-		<form action="/login" method="post">
+		<form action="LoginExecute.action" method="post">
     		<div class="form-group">
        			<label for="userid">User ID:</label>
         		<input type="text" id="userid" name="userid" required>

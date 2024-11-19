@@ -155,7 +155,9 @@
 		    <div class="button-container">
 		        <form action="TextSearch.action" method="post"><button>テキスト検索</button></form>
 		        <button>画像検索</button>
-		        <button>ランキング</button>
+		        <form action="Ranking.action" method="post">
+		        	<button>ランキング</button>
+		        </form>
 		        <button>言語選択に戻る</button>
 		    </div>
 		</div>
