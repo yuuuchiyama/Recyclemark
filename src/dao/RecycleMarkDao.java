@@ -12,9 +12,9 @@ import bean.RecycleMark;;
 public class RecycleMarkDao extends Dao {
 
 	/** 特徴に応じたリサイクルマーク取得するメソッド */
-	public RecycleMark getRecyclemark(String detail) throws Exception {
-		// リサイクルマークインスタンスを初期化
-		RecycleMark recycleMark = new RecycleMark();
+	public List<RecycleMark> getRecyclemark(String detail) throws Exception {
+		// リストを初期化
+		List<RecycleMark> list = new ArrayList<>();
 		// コネクションを確立
 		Connection connection = getConnection();
 		// プリペアードステートメント
@@ -32,16 +32,17 @@ public class RecycleMarkDao extends Dao {
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 
-			if (rSet.next()) {
-				// リザルトセットが存在する場合
+			// リザルトセットを全権走査
+			while (rSet.next()) {
+				// リサイクルマークインスタンスを初期化
+				RecycleMark recycleMark = new RecycleMark();
 				// リサイクルマークインスタンスに検索結果をセット
-				recycleMark.setMarkId(rSet.getInt("RecycleId"));
-				recycleMark.setMarkImg(rSet.getString("RecycleImg"));
-				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
-			} else {
-				// リザルトセットが存在しない場合
-				// リサイクルマークインスタンスにnullをセット
-				recycleMark = null;
+				recycleMark.setMarkId(rSet.getInt("mark.RecycleId"));
+				recycleMark.setMarkImg(rSet.getString("mark.RecycleImg"));
+				recycleMark.setSearchCount(rSet.getInt("mark.SearchCnt"));
+				recycleMark.setMarkName(rSet.getString("mark.RecycleName"));
+				// リストに追加
+				list.add(recycleMark);
 			}
 		} catch (Exception e) {
 			throw e;
@@ -64,7 +65,7 @@ public class RecycleMarkDao extends Dao {
 			}
 		}
 
-		return recycleMark;
+		return list;
 	}
 
 	public List<RecycleMark> getRanking() throws Exception {
