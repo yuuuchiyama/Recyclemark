@@ -93,7 +93,7 @@
         text-align: left; /* 左揃えに設定 */
         display: inline-block; /* 幅いっぱいを占めず、左寄せ */
     }
-    
+
     .back:hover {
         text-decoration: underline;
     }
@@ -199,7 +199,7 @@
     </div>
 </div>
 <!-- Full-screen Menu -->
-<div class="menu" id="menu">  
+<div class="menu" id="menu">
     <div class="menu-item" onclick="toggleSubMenu('submenu1')">・メニュー ▼</div>
     <div class="submenu" id="submenu1">
         <a href="#">・テキスト検索</a>
@@ -246,10 +246,10 @@
         <img src="image/取り消し.jpg" alt="取り消し">
     </button>
 </div>
-    
+
 
     <!-- メモ入力 -->
-    <textarea class="memo" placeholder="メモ"></textarea>
+    <textarea class="memo" placeholder="memo"></textarea>
 
     <!-- 登録ボタン -->
     <button class="register-button">登録</button>
@@ -299,12 +299,12 @@
         } else {
             // 他のアイコンからアクティブなクラスを外す
             document.querySelectorAll('.icon').forEach(icon => icon.classList.remove('active'));
-            
+
             // クリックしたアイコンにアクティブなクラスを付与
             element.classList.add('active');
         }
     }
-    
+
 </script>
 </body>
 </html>
