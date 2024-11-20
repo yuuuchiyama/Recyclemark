@@ -33,12 +33,19 @@ public class TextSearchExecuteAction extends Action {
 			// DBにデータを保存 5
 
 			// レスポンス値をセット 6
+			req.setAttribute("detail", detail);
 			req.setAttribute("recycleMarks",recycleMarks);
 
 			// JSPへフォワード 7
 			req.getRequestDispatcher("text_result.jsp").forward(req, res);
 		} else {
-//			errors.put(, )
+			// レスポンス値をセット 6
+			errors.put("mark_error", "そのリサイクルマークは存在しません");
+			req.setAttribute("errors", errors);
+			req.setAttribute("detail", detail);
+
+			// JSPへフォワード 7
+			req.getRequestDispatcher("text.jsp").forward(req, res);
 		}
 	}
 }
