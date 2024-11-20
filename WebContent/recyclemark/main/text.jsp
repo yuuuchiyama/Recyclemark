@@ -185,7 +185,8 @@
 				<div class="search-container" id="search-container">
 					<h1>テキスト検索</h1>
 					<p>リサイクルマークについて入力してください。</p>
-					<input type="text" id="search-input" class="search-input" name="detail" placeholder="検索キーワードを入力">
+					<div>${errors.get("mark_error")}</div>
+					<input type="text" id="search-input" class="search-input" name="detail" value="${errors.get('mark_error')}" placeholder="検索キーワードを入力">
 					<button class="search-button">検索</button>
 				</div>
 			</div>

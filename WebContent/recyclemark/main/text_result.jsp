@@ -5,125 +5,155 @@
 <c:import url="/common/base.jsp">
 	<c:param name="style">
 		body {
-		    font-family: Arial, sans-serif;
+	        font-family: Arial, sans-serif;
 	        margin: 0;
 	        padding: 0;
 	        background-image: url("../../images/20210729_1.jpg");
 	        background-size: cover;
-	        background-position: center;
+	        background-position: center top;
 	        background-attachment: fixed;
 	        color: #333;
-		}
-		/* ヘッダーのスタイル */
-		.header {
-		    display: flex;
-		    background-color: #ddd;
-		    padding: 15px 20px;
-		    justify-content: space-between;
-		    align-items: center;
-		    box-shadow: 0px 4px 2px -2px gray;
-		}
-		.title {
-		    font-size: 40px;
-		    font-weight: bold;
-		}
-		/* Hamburger menu icon */
-		.menu-icon {
-		    display: flex;
-		    cursor: pointer;
-		    flex-direction: column;
-		    gap: 6px;
-		    justify-content: center;
-		    align-items: center;
-		    z-index: 1002;
-		}
-		.menu-icon div {
-		    width: 25px;
-		    height: 3px;
-		    background-color: #333;
-		    border-radius: 2px;
-		}
-		/* メニュー */
-		.menu {
-		    display: none;
-		    flex-direction: column;
-		    position: fixed;
-		    top: 0;
-		    left: 0;
-		    width: 100%;
-		    background-color: #fff;
-		    justify-content: flex-start;
-		    padding-top: 60px;
-		    z-index: 1000;
-		    height: calc(100vh - 120px);
-		}
-		.menu-item {
-		    font-size: 18px;
-		    padding: 15px 20px;
-		    border-bottom: 1px solid #ddd;
-		    cursor: pointer;
-		}
-		.menu-item a {
-		    font-size: 16px;
-		    padding: 10px 0;
-		    text-decoration: none;
-		    color: #333;
-		}
-		.submenu {
-		    padding-left: 20px;
-		    display: none;
-		    flex-direction: column;
-		}
-		.submenu a {
-		    font-size: 16px;
-		    padding: 10px 0;
-		    text-decoration: none;
-		    color: #333;
-		}
-		.menu-item:hover,
-		.submenu a:hover {
-		    background-color: #f0f0f0;
-		}
-		/* 戻るリンク */
-		.back {
-		    text-decoration: underline;
-		    font-size: 30px;
-		    margin: 10px 0; /* 上下のマージン調整 */
-		}
-		/* コンテンツエリア */
-		.content {
-		    display: flex;
-		    flex-direction: column;
-		}
-		/* テキストボックス */
-		.text-border {
-		    border: 2px solid #333;
-		    width: 500px;
-		    height: 60px;
-		    display: flex;
-		    justify-content: center;  /* 水平方向の中央揃え */
-		    align-items: center;  /* 垂直方向の中央揃え */
-		    font-size: 16px;
-		    margin-left: auto;
-		    margin-right: 0;
-		    margin-bottom: 20px;
-		    margin-right: 20px;
-		}
-		/* アイコンエリア */
-	    .icons-container {
+	    }
+	    /* Header style */
+	    .header {
 	        display: flex;
-	        justify-content: left;
-	        margin-top: 20px; /* 画像間のスペース調整 */
+	        padding: 15px 20px;
+	        justify-content: space-between;
+	        align-items: center;
+	        background-color: rgba(255, 255, 255, 0.8);
+	        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	        color: #000;
 	    }
-	    table {
-	        border-collapse: collapse; /* セルの境界線を結合 */
+	    .title {
+	        font-size:40px;
+	        font-weight: bold;
 	    }
-	    td {
-	        padding: 100px; /* セル内の間隔 */
+	    /* Hamburger menu icon */
+	    .menu-icon {
+	        display: flex;
+	        cursor: pointer;
+	        flex-direction: column;
+	        gap: 6px;
+	        justify-content: center;
+	        align-items: center;
+	        z-index: 1002; /* Menuの上に表示するため */
 	    }
-	    img {
-	        border: 2px solid #333;
-	        width: 200px; /* 適宜サイズを調整 */
+	    .menu-icon div {
+	        width: 25px;
+	        height: 3px;
+	        background-color: #000;
+	        border-radius: 2px;
+	    }
+	    /* Full-screen menu style */
+	    .menu {
+	        display: none;
+	        flex-direction: column;
+	        position: fixed;
+	        top: 0;
+	        left: 0;
+	        width: 100%;
+	        background-color: #fff;
+	        justify-content: flex-start;
+	        padding-top: 60px;
+	        z-index: 1000;
+	        height: calc(100vh - 120px);
+	    }
+	    .menu-item {
+	        font-size: 18px;
+	        padding: 15px 20px;
+	        border-bottom: 1px solid #ddd;
+	        cursor: pointer;
+	    }
+	    .menu-item a {
+	        font-size: 16px;
+	        padding: 10px 0;
+	        text-decoration: none;
+	        color: #333;
+	    }
+	    /* Submenu style */
+	    .submenu {
+	        padding-left: 20px;
+	        display: none;
+	        flex-direction: column;
+	    }
+	    .submenu a {
+	        font-size: 16px;
+	        padding: 10px 0;
+	        text-decoration: none;
+	        color: #333;
+	    }
+	    .menu-item:hover, .submenu a:hover {
+	        background-color: #f0f0f0;
+	    }
+	    .back {
+	        border-radius: 50%; /* ボタンを丸く */
+	        display: flex;
+	        justify-content: center; /* 水平方向に中央揃え */
+	        align-items: center; /* 垂直方向に中央揃え */
+	        padding: 18px 18px 15px 10px;
+	        width: 25px;
+	        height: 20px;
+	        background: #f0f0f0;
+	        color: #4E7644;
+	        text-decoration: none;
+	        font-size: 30px;
+	        margin: 10px 20px;
+	        border: 1px solid #ccc; /* 境界線の色 */
+	        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	        transition: background-color 0.3s, border-color 0.3s;
+	    }
+	    .back:hover {
+	        background-color: #e0e0e0;
+	        border-color: #999;
+	        color: #3a5c34;
+	    }
+	    /* コンテンツエリア */
+	    .main {
+	        display: flex;
+	        flex-direction: column;
+	        align-items: center;
+	        margin: 20px 0 0 0;
+	        min-height: 100vh;
+	        padding: 20px 0 20px 0;
+	    }
+	    .main-container {
+	        background-color: rgba(255, 255, 255, 0.7); /* 半透明の背景色 */
+	        padding: 30px 50px;
+	        border-radius: 15px;
+	        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+	        max-width: 900px; /* 任意の幅 */
+	        width: 100%;
+	        text-align: center;
+	    }
+	    /* テキストボックス */
+	    .text-border {
+	        position: absolute; /* 絶対位置に変更 */
+	        top: 100px; /* ヘッダーの下に配置 (ヘッダー高さ + 余白) */
+	        right: 20px; /* 右から20px */
+	        border: 1px solid #333;
+	        width: 500px;
+	        height: 60px;
+	        display: flex;
+	        justify-content: center;  /* 水平方向の中央揃え */
+	        align-items: center;  /* 垂直方向の中央揃え */
+	        font-size: 16px;
+	        background-color: rgba(255, 255, 255, 0.8); /* 背景を半透明に */
+	        border-radius: 8px; /* 角を丸く */
+	        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* 立体感を追加 */
+	    }
+	    .recycle-grid {
+	        display: grid;
+	        grid-template-columns: repeat(3, 1fr);
+	        gap: 40px;
+	    }
+	    .recycle-item {
+	        text-align: center;
+	        margin: 20px 30px 10px;
+	    }
+	    .recycle-item img {
+	        width: 200px;
+	        height: 200px;
+	        border: 1.5px solid #333;
 	    }
 	</c:param>
 	<c:param name="title">
@@ -132,20 +162,22 @@
 
 	<c:param name="scripts"></c:param>
 
-	<div class="main">
-		<div class="content">
-        	<div class="text-border">入力内容を表示</div>
+	<c:param name="content">
+		<div class="main">
+			<div class="content">
+	        	<div class="text-border">${detail}</div>
 
-	        <!-- アイコンエリア -->
-	        <c:forEach var="recycleMark" items="${recycleMarks}">
-	        <div class="icons-container">
-	            <table>
-	                <tr>
-	                    <td><img src="${recycleMark.markImg}" alt="${recycleMark.markName}"></td>
-	                </tr>
-	            </table>
-	        </div>
-	        </c:forEach>
-    	</div>
-	</div>
+		        <!-- アイコンエリア -->
+		        <c:forEach var="recycleMark" items="${recycleMarks}">
+			        <div class="icons-container">
+			            <table>
+			                <tr>
+			                    <td><img src="${recycleMark.markImg}" alt="${recycleMark.markName}"></td>
+			                </tr>
+			            </table>
+			        </div>
+		        </c:forEach>
+	    	</div>
+		</div>
+	</c:param>
 </c:import>

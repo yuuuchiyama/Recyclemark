@@ -21,14 +21,14 @@ public class RecycleMarkDao extends Dao {
 		PreparedStatement statement = null;
 
 		// SQL文の条件
-		String join = "inner join recyclemarkdata_japanese detail on markdata.RecycleId = detail.RecycleId"; // detail（意味：詳細）
-		String condition = "where CONCAT(ifnull(MaterialWord1,''),ifnull(MaterialWord2,''),ifnull(MaterialWord3,'')) like '%?%'";
+		String join = " inner join recyclemarkdata_japanese detail on mark.RecycleId = detail.RecycleId"; // detail（意味：詳細）
+		String condition = " where CONCAT(ifnull(MaterialWord1,''),ifnull(MaterialWord2,''),ifnull(MaterialWord3,'')) like ?";
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("SELECT mark.RecycleId, mark.RecycleImg, mark.SearchCnt FROM recyclemarkdata mark" + join + condition);
+			statement = connection.prepareStatement("SELECT mark.RecycleId, mark.RecycleImg, mark.SearchCnt, detail.RecycleName FROM recyclemarkdata mark" + join + condition);
 			// プリペアードステートメントに教員IDをバインド
-			statement.setString(1, detail);
+			statement.setString(1, "%%" + detail + "%%");
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 
@@ -40,7 +40,7 @@ public class RecycleMarkDao extends Dao {
 				recycleMark.setMarkId(rSet.getInt("mark.RecycleId"));
 				recycleMark.setMarkImg(rSet.getString("mark.RecycleImg"));
 				recycleMark.setSearchCount(rSet.getInt("mark.SearchCnt"));
-				recycleMark.setMarkName(rSet.getString("mark.RecycleName"));
+				recycleMark.setMarkName(rSet.getString("detail.RecycleName"));
 				// リストに追加
 				list.add(recycleMark);
 			}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>カレンダー</title>
+<title>カレンダー１</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -12,16 +12,14 @@
         background-image: url("image/20210729_1.jpg");
         background-size: cover;
         background-position: center top;
-		background-position: 50% 50%;
-		color: #333;
+        background-attachment: fixed;
+        color: #333;
     }
 
        /* Header style */
        .header {
         display: flex;
-        background: transparent; /* 背景を透明に設定 */
         padding: 15px 20px;
-        display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: rgba(255, 255, 255, 0.8);
@@ -117,15 +115,20 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 20px;
+        margin: 20px 0 0 0;
         min-height: 100vh;
-        padding: 20px;
+        padding: 20px 0 20px 0;
     }
-    /* カレンダーのコンテナ */
-    .container {
+    .main-container {
+        padding: 30px 50px;
+        max-width: 900px; /* 任意の幅 */
         width: 100%;
-        max-width: 700px;
-		margin: 5px auto 120px auto;
+        text-align: center;
+    }
+
+    /* カレンダーのコンテナ */
+    .calendar-container {
+        width: 100%;
         background-color: rgba(255, 255, 255, 0.7);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         text-align: center; /* カレンダー全体の中央揃え */
@@ -136,7 +139,7 @@
         width: 100%;
         border-collapse: collapse;
         margin: 0 auto;
-        border: 2px solid #000;
+        border: 2.5px solid #000;
     }
 
     .calendar th, .calendar td {
@@ -150,7 +153,7 @@
         border: 2px solid #000;
     }
     .month_day button{
-        background-color: rgba(255, 255, 255, 0.7);;
+        background-color: rgba(255, 255, 255, 0.8);
         border: none;
     }
     .week th {
@@ -159,24 +162,26 @@
     }
 
     .calendar td {
-        height: 80px;
+        padding: 0; /* セルの余白をなくす */
+        height: 110px; /* 任意の高さに設定 */
+        width: 100px; /* 同じ幅に設定 */
     }
 
     .calendar td button {
-        width: 100%;
-        height: 100%;
-        background: none;
+        width: 100%; /* 親要素に対して全幅 */
+        height: 100%; /* 親要素に対して全高 */
         border: none;
         font-size: 1em;
         cursor: pointer;
         background-color: rgba(255, 255, 255, 0.7);
+    }
 
+    .calendar td:empty {
+        background-color: rgba(255, 255, 255); /* 空のセルに背景色を設定 */
     }
     .calendar td button:hover {
-        background-color: rgba(58, 92, 52, 0.3);
+        background-color: rgba(58, 92, 52, 0.6);
     }
-
-
 </style>
 </head>
 <body>
@@ -205,31 +210,35 @@
 <!-- 戻るリンク -->
 <a href="#" class="back">＜</a>
 
+<div class="main">
 <!-- カレンダー部分 -->
-<div class="container">
-    <table class="calendar">
-        <thead>
-            <tr class="month_day">
-                <th colspan="7">
-                    <button onclick="prevMonth()" style="font-size: 24px;">&#x3C;</button>
-                    <span id="month-year" style="font-size: 24px; font-weight: bold;"></span>
-                    <button onclick="nextMonth()" style="font-size: 24px;">&#x3E;</button>
-                </th>
-            </tr>
-            <tr class="week">
-                <th>日</th>
-                <th>月</th>
-                <th>火</th>
-                <th>水</th>
-                <th>木</th>
-                <th>金</th>
-                <th>土</th>
-            </tr>
-        </thead>
-        <tbody id="calendar-body" class="calendar-body">
-            <!-- JavaScriptで日付を挿入 -->
-        </tbody>
-    </table>
+    <div class="main-container">
+        <div class="calender-container">
+            <table class="calendar">
+                <thead>
+                    <tr class="month_day">
+                        <th colspan="7">
+                            <button onclick="prevMonth()" style="font-size: 30px;">&#x3C;</button>
+                            <span id="month-year" style="font-size: 30px; font-weight: bold;"></span>
+                            <button onclick="nextMonth()" style="font-size: 30px;">&#x3E;</button>
+                        </th>
+                    </tr>
+                    <tr class="week">
+                        <th>日</th>
+                        <th>月</th>
+                        <th>火</th>
+                        <th>水</th>
+                        <th>木</th>
+                        <th>金</th>
+                        <th>土</th>
+                    </tr>
+                </thead>
+                <tbody id="calendar-body" class="calendar-body">
+                    <!-- JavaScriptで日付を挿入 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -256,7 +265,7 @@
         const calendarBody = document.getElementById('calendar-body');
         const monthYear = document.getElementById('month-year');
         calendarBody.innerHTML = ''; // 既存のカレンダーをクリア
-        monthYear.textContent = `${year}年 ${month + 1}月`;
+        monthYear.textContent = `${year}/${month + 1}`;
 
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -269,11 +278,13 @@
                 const cell = document.createElement('td');
                 const button = document.createElement('button');
 
-
                 if (i === 0 && j < firstDay) {
-                    cell.appendChild(button); // 空のセル
+                    // 空のセルにもボタンを追加
+                    button.style.visibility = 'hidden'; // 表示されないようにする
+                    cell.appendChild(button);
                 } else if (date > daysInMonth) {
-                    break;
+                    button.style.visibility = 'hidden'; // 表示されないようにする
+                    cell.appendChild(button);
                 } else {
                     button.textContent = date;
                     cell.appendChild(button);
