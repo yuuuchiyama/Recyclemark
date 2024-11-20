@@ -70,4 +70,56 @@ public class UserDao extends Dao {
 		}
 		return user;
 	}
+
+	public boolean create(String mail,String password) throws Exception {
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+		// SQL文の条件
+		String sql = "insert into user (UserId,MailAddress,Password,LanguageSelect) values (?,?,?,?)";
+		// 実行件数
+		int count = 0;
+		try {
+
+			// プリペアードステートメントにUPDATE文をセット
+			statement = connection.prepareStatement(sql);
+			// プリペアードステートメントに値をバインド
+			statement.setString(1, null);
+			statement.setString(2, mail);
+			statement.setString(3, password);
+			statement.setString(4, "1");
+			// プリペアードステートメントを実行
+			count = statement.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		if (count > 0) {
+			// 実行件数が1件以上ある場合
+			return true;
+		} else {
+			// 実行件数が０件の場合
+			return false;
+		}
+	}
+
 }
+
