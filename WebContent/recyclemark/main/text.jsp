@@ -178,15 +178,17 @@
 	<c:param name="scripts"></c:param>
 
 	<c:param name="content">
-		<!-- メインコンテンツ部分 -->
-		<!-- Search container -->
- 		<div class="main">
-			<div class="search-container" id="search-container">
-				<h1>テキスト検索</h1>
-				<p>リサイクルマークについて入力してください。</p>
-				<input type="text" id="search-input" class="search-input" placeholder="検索キーワードを入力">
-				<button class="search-button">検索</button>
+		<form action="TextSearchExecute.action" method="post">
+			<!-- メインコンテンツ部分 -->
+			<!-- Search container -->
+	 		<div class="main">
+				<div class="search-container" id="search-container">
+					<h1>テキスト検索</h1>
+					<p>リサイクルマークについて入力してください。</p>
+					<input type="text" id="search-input" class="search-input" name="detail" placeholder="検索キーワードを入力">
+					<button class="search-button">検索</button>
+				</div>
 			</div>
-		</div>
+		</form>
 	</c:param>
 </c:import>
