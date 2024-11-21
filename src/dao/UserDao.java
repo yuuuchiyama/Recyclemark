@@ -80,12 +80,14 @@ public class UserDao extends Dao {
 		String sql = "insert into user (UserId,MailAddress,Password,LanguageSelect) values (?,?,?,?)";
 		// 実行件数
 		int count = 0;
+		int index = mail.indexOf("@");
+		String id = mail.substring(0,index);
 		try {
 
 			// プリペアードステートメントにUPDATE文をセット
 			statement = connection.prepareStatement(sql);
 			// プリペアードステートメントに値をバインド
-			statement.setString(1, "");
+			statement.setString(1, id);
 			statement.setString(2, mail);
 			statement.setString(3, password);
 			statement.setString(4, "1");
