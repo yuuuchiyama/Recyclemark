@@ -21,7 +21,7 @@ public class UserCreateExecuteAction extends Action {
 		userDao.create(mail, password);
 
 		//JSPへリダイレクト 7
-		res.sendRedirect("login.jsp");
+		res.sendRedirect("../login.jsp");
 	}
 
 }
