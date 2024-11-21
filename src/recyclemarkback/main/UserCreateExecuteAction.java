@@ -1,4 +1,4 @@
-package recyclemark.main;
+package recyclemarkback.main;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +20,8 @@ public class UserCreateExecuteAction extends Action {
 
 		userDao.create(mail, password);
 
-		//JSPへフォワード 7
-		req.getRequestDispatcher("login.jsp").forward(req, res);
+		//JSPへリダイレクト 7
+		res.sendRedirect("login.jsp");
 	}
 
 }
