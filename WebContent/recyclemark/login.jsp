@@ -125,7 +125,7 @@
     		</div>
     		<button type="submit" class="button">ログイン</button>
 		</form>
-		<a href="http://localhost:8080/recyclemark/recyclemark/main/create.jsp" class="link">新規登録はこちら</a>
+		<a href="http://localhost:8080/recyclemark/recyclemarkfront/main/create.jsp" class="link">新規登録はこちら</a>
 	</div>
 </body>
 </html>

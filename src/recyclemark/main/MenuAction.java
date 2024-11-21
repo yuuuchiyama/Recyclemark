@@ -1,11 +1,11 @@
-package recyclemarkback.main;
+package recyclemark.main;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import tool.Action;
 
-public class TextSearchAction extends Action {
+public class MenuAction extends Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -22,7 +22,6 @@ public class TextSearchAction extends Action {
 		//レスポンス値をセット 6
 		//なし
 		//JSPへフォワード 7
-		req.getRequestDispatcher("text.jsp").forward(req, res);
+		req.getRequestDispatcher("menu.html").forward(req, res);
 	}
-
 }

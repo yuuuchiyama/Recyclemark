@@ -1,4 +1,4 @@
-package recyclemarkback;
+package recyclemark;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
