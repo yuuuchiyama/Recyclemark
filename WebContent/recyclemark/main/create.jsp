@@ -86,7 +86,7 @@
 <body>
  <div class="container">
         <h1>新規アカウント作成</h1>
-        <form action="/create_account" method="post">
+        <form action="UserCreateExecute.action" method="post">
             <div class="form-group">
                 <label for="mail">Mail:</label>
                 <input type="email" id="mail" name="mail" required>
