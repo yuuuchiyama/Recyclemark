@@ -1,6 +1,5 @@
 package recyclemark.main;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,19 +10,18 @@ import tool.Action;
 public class UserCreateExecuteAction extends Action {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		// student_create.jspからデータを受け取る
-		String email=request.getParameter("mail");
-		String password=request.getParameter("password");
+		String mail=req.getParameter("mail");
+		String password=req.getParameter("password");
 
-		UserDao uesrDao = new UserDao();
+		UserDao userDao = new UserDao();
 
+		userDao.create(mail, password);
 
-
-        // 入力画面にフォワード
-        RequestDispatcher dispatcher = request.getRequestDispatcher("student_create.jsp");
-        dispatcher.forward(request, response);
+		//JSPへリダイレクト 7
+		res.sendRedirect("../login.jsp");
 	}
 
 }

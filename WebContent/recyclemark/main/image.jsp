@@ -167,12 +167,14 @@
 	<c:param name="content">
 
 	 <div class="main">
-<!-- 画像検索画面 -->
-<div class="image-search-container">
-    <h1>画像検索</h1>
-    <input type="file" id="image-search-input" class="image-input" accept="image/*">
-    <button class="search-button">検索</button>
-</div>
+	 <form action="ImageSearchExecute.action" method="post">
+		<!-- 画像検索画面 -->
+		<div class="image-search-container">
+		    <h1>画像検索</h1>
+		    <input type="file" id="image-search-input" class="image-input" accept="image/*">
+		    <button class="search-button">検索</button>
+		</div>
+	</form>
 </div>
 </c:param>
 </c:import>
