@@ -47,7 +47,7 @@
     .language-buttons input:hover {
         background-color: rgba(58, 92, 52, 0.8);
     }
-    input[type="text"] {
+    input[type="email"] {
         width: 300px;
         padding: 10px;
         font-size: 16px;
@@ -95,11 +95,6 @@
         background-color: #3a5c34;
     }
 
-    .link {
-        margin-top: 15px;
-        display: block;
-        color: #333;
-    }
 </style>
 </head>
 <body>
@@ -113,8 +108,8 @@
     </div>
     <form action="/login" method="post">
         <div class="form-group">
-            <label for="userid" id="userid_label">ユーザーID:</label>
-            <input type="text" id="userid" name="userid" required>
+            <label for="mail" id="mail_label">メールアドレス:</label>
+            <input type="email" id="mail" name="mail" required>
         </div>
         <div class="form-group">
             <label for="password" id="password_label">パスワード:</label>
@@ -122,33 +117,31 @@
         </div>
         <button type="submit" class="button" id="button_login">ログイン</button>
     </form>
-    <a href="#" class="link" id="link_create">新規登録はこちら</a>
-</div>
 <script>
     function sample(){
             document.getElementById("area1").innerText = "ログイン";
-            document.getElementById("userid_label").innerText = "ユーザーID:";
+            document.getElementById("mail_label").innerText = "メールアドレス:";
             document.getElementById("password_label").innerText = "パスワード:";
             document.getElementById("button_login").innerText = "ログイン";
             document.getElementById("link_create").innerText = "新規登録はこちら";
     }
     function sample1(){
         document.getElementById("area1").innerText = "LOGIN";
-        document.getElementById("userid_label").innerText = "User ID:";
-        document.getElementById("password_label").innerText = "passwprd:";
+        document.getElementById("mail_label").innerText = "email address:";
+        document.getElementById("password_label").innerText = "password:";
         document.getElementById("button_login").innerText = "LOGIN";
         document.getElementById("link_create").innerText = "Sign up here";
     }
     function sample2(){
         document.getElementById("area1").innerText = "로그인";
-        document.getElementById("userid_label").innerText = "사용자 아이디:";
+        document.getElementById("mail_label").innerText = "메일 주소:";
         document.getElementById("password_label").innerText = "비밀번호:";
         document.getElementById("button_login").innerText = "로그인";
         document.getElementById("link_create").innerText = "여기에서 회원 가입하세요";
     }
     function sample3(){
         document.getElementById("area1").innerText = "登录";
-        document.getElementById("userid_label").innerText = "用户标识:";
+        document.getElementById("mail_label").innerText = "电子邮件地址:";
         document.getElementById("password_label").innerText = "密码:";
         document.getElementById("button_login").innerText = "登录";
         document.getElementById("link_create").innerText = "新用户注册在这里";
