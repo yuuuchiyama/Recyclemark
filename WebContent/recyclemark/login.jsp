@@ -123,6 +123,7 @@
         		<label for="password">Password:</label>
         		<input type="password" id="password" name="password" required>
     		</div>
+    		<p>${errors[0] }</p>
     		<button type="submit" class="button">ログイン</button>
 		</form>
 		<a href="http://localhost:8080/recyclemark/recyclemark/main/create.jsp" class="link">新規登録はこちら</a>

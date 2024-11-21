@@ -18,17 +18,17 @@ public class LoginExecuteAction extends Action {
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
 		String url = "";
-		String id = "";
+		String mail = "";
 		String password = "";
 		UserDao userDao = new UserDao();
 		User user = null;
 
 		//リクエストパラメータ―の取得 2
-		id = req.getParameter("id");// ユーザID
+		mail = req.getParameter("mail");//メールアドレス
 		password = req.getParameter("password");//パスワード
 
 		//DBからデータ取得 3
-		user = userDao.login(id, password);//ユーザデータ取得
+		user = userDao.login(mail, password);//ユーザデータ取得
 
 		//ビジネスロジック 4
 		//DBへデータ保存 5
@@ -52,8 +52,8 @@ public class LoginExecuteAction extends Action {
 			List<String> errors = new ArrayList<>();
 			errors.add("IDまたはパスワードが確認できませんでした");
 			req.setAttribute("errors", errors);
-			// 入力されたユーザIDをセット
-			req.setAttribute("id", id);
+			// 入力されたメールアドレスをセット
+			req.setAttribute("mail", mail);
 
 			//フォワード
 			url = "login.jsp";
