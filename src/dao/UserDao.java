@@ -85,7 +85,7 @@ public class UserDao extends Dao {
 			// プリペアードステートメントにUPDATE文をセット
 			statement = connection.prepareStatement(sql);
 			// プリペアードステートメントに値をバインド
-			statement.setString(1, null);
+			statement.setString(1, "");
 			statement.setString(2, mail);
 			statement.setString(3, password);
 			statement.setString(4, "1");
