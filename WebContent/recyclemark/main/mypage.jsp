@@ -151,6 +151,10 @@
 		    cursor: pointer;
 		}
 
+		.userId {
+			border: none;
+		}
+
 		/* ボタン */
 		.button-container {
 		    display: grid;
@@ -184,7 +188,8 @@
 		<div class="main">
 			<form action="EditYouser.action" method="post">
 				<div class="user-info">
-					<p>User ID: xxxxx</p>   <!-- (仮) -->
+					<label>User ID:</label>
+					<input type="text" class="userId" name="userId" value="tky2302053" readonly="readonly">   <!-- (仮) -->
 					<button class="edit-button">編集</button>
 				</div>
 			</form>
