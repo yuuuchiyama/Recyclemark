@@ -159,6 +159,7 @@
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
 		<!-- Search container -->
+		<form action="menu.action" method="post">
  		<div class="main">
         <div class="button-container">
             <button>日本語</button>
@@ -167,5 +168,6 @@
             <button>中文</button>
         </div>
     </div>
+    </form>
 	</c:param>
 </c:import>
