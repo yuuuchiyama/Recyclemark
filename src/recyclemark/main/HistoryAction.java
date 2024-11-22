@@ -25,7 +25,7 @@ public class HistoryAction extends Action {
 		RecycleMarkDao recycleMarkDao = new RecycleMarkDao();
 		HttpSession session = req.getSession();//セッション
 		User user = (User)session.getAttribute("user");
-		List<RecycleMark> recycles = new ArrayList<RecycleMark>();
+		List<RecycleMark> recycleMarks = new ArrayList<RecycleMark>();
 
 
 		//リクエストパラメータ―の取得 2
@@ -33,13 +33,13 @@ public class HistoryAction extends Action {
 		//DBからデータ取得 3
 		List<History> historys = historyDao.getHistory(user.getId());//履歴リスト
 		for(History history : historys){
-			recycles.add(recycleMarkDao.getHistory(history.getRecycleId()));
+			recycleMarks.add(recycleMarkDao.getHistory(history.getRecycleId()));
 		}
 
 		//ビジネスロジック 4
 		//DBへデータ保存 5
 		//レスポンス値をセット 6
-		req.setAttribute("recycle", recycles);
+		req.setAttribute("recycleMark", recycleMarks);
 		//フォワード 7
 		url = "history_list.jsp";
 		req.getRequestDispatcher(url).forward(req, res);
