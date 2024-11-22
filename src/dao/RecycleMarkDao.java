@@ -116,4 +116,53 @@ public class RecycleMarkDao extends Dao {
 
 		return list;
 	}
+
+	public RecycleMark getHistory(int recycleId) throws Exception {
+
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+		// リサイクルマークインスタンスを初期化
+		RecycleMark recycleMark = new RecycleMark();
+
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("select * from recyclemarkdata where RecycleId=?");
+			// プリペアードステートメントにユーザIDをバインド
+			statement.setInt(1, recycleId);
+			// プリペアードステートメントを実行
+			ResultSet rSet = statement.executeQuery();
+			// リザルトセットを全権走査
+			if (rSet.next()) {
+				// リサイクルマークインスタンスに検索結果をセット
+				recycleMark.setMarkId(rSet.getInt("RecycleId"));
+				recycleMark.setMarkImg(rSet.getString("RecycleImg"));
+				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
+			}else{
+				return null;
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+			try {
+			statement.close();
+			} catch (SQLException sqle) {
+				throw sqle;
+			}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		return recycleMark;
+	}
 }

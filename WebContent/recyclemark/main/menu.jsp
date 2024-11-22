@@ -158,6 +158,9 @@
 		        <form action="Ranking.action" method="post">
 		        	<button>ランキング</button>
 		        </form>
+		        <form action="Mypage.action" method="post">
+		        	<button>マイページ</button>
+		        </form>
 		        <button>言語選択に戻る</button>
 		    </div>
 		</div>
