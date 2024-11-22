@@ -9,11 +9,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.RecycleMark;
+import bean.History;
 
 public class HistoryDao extends Dao {
 
-	public boolean save(String userid,String recycleid) throws Exception{
+	public boolean save(String userid,int recycleid) throws Exception{
 		// コネクションを確立
 		Connection connection = getConnection();
 		// プリペアードステートメント
@@ -33,7 +33,7 @@ public class HistoryDao extends Dao {
 			// プリペアードステートメントに値をバインド
 			statement.setString(1, null);
 			statement.setString(2, userid);
-			statement.setString(3, recycleid);
+			statement.setInt(3, recycleid);
 			statement.setString(4, formatNowDate);
 			// プリペアードステートメントを実行
 			count = statement.executeUpdate();
@@ -67,7 +67,7 @@ public class HistoryDao extends Dao {
 		}
 	}
 
-	public List<History> getHistory() throws Exception {
+	public List<History> getHistory(String userId) throws Exception {
 
 		// リストを初期化
 		List<History> list = new ArrayList<>();
@@ -78,19 +78,22 @@ public class HistoryDao extends Dao {
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from recyclemarkdata order by SearchCnt desc");
+			statement = connection.prepareStatement("select * from searchhistory where UserId=?");
+			// プリペアードステートメントにユーザIDをバインド
+			statement.setString(1, userId);
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 			// リザルトセットを全権走査
 			while (rSet.next()) {
 				// リサイクルマークインスタンスを初期化
-				RecycleMark recycleMark = new RecycleMark();
+				History history = new History();
 				// リサイクルマークインスタンスに検索結果をセット
-				recycleMark.setMarkId(rSet.getInt("RecycleId"));
-				recycleMark.setMarkImg(rSet.getString("RecycleImg"));
-				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
+				history.setSearchId(rSet.getInt("SearchId"));
+				history.setUserId(rSet.getString("UserId"));
+				history.setRecycleId(rSet.getInt("RecycleID"));
+				history.setTime(rSet.getString("SearchTime"));
 				// リストに追加
-				list.add(recycleMark);
+				list.add(history);
 			}
 		} catch (Exception e) {
 			throw e;

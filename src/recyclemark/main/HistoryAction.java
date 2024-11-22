@@ -5,8 +5,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import bean.History;
 import bean.RecycleMark;
+import bean.User;
+import dao.HistoryDao;
 import dao.RecycleMarkDao;
 import tool.Action;
 
@@ -17,52 +21,29 @@ public class HistoryAction extends Action {
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
 		String url = "";
+		HistoryDao historyDao = new HistoryDao();
 		RecycleMarkDao recycleMarkDao = new RecycleMarkDao();
+		HttpSession session = req.getSession();//セッション
+		User user = (User)session.getAttribute("user");
+		List<RecycleMark> recycles = new ArrayList<RecycleMark>();
+
 
 		//リクエストパラメータ―の取得 2
 
 		//DBからデータ取得 3
-		List<RecycleMark> recycleMarks = recycleMarkDao.getRanking();//リサイクルマークリスト
+		List<History> historys = historyDao.getHistory(user.getId());//履歴リスト
+		for(History history : historys){
+			recycles.add(recycleMarkDao.getHistory(history.getRecycleId()));
+		}
 
 		//ビジネスロジック 4
 		//DBへデータ保存 5
 		//レスポンス値をセット 6
+		req.setAttribute("recycle", recycles);
 		//フォワード 7
-		//条件で手順4~7の内容が分岐
-		if (recycleMarks != null) {// 認証成功の場合
+		url = "history_list.jsp";
+		req.getRequestDispatcher(url).forward(req, res);
 
-			ArrayList<Integer> rankList = new ArrayList<>();
-			int rank1 = recycleMarks.get(0).getSearchCount();
-			int count = 1;
-			for(RecycleMark recycleMark : recycleMarks){
-				int rank2 = recycleMark.getSearchCount();
-				if(rank1 == rank2){
-					rankList.add(count);
-				}else{
-					count++;
-					rankList.add(count);
-				}
-				rank1 = rank2;
-			}
-			req.setAttribute("recycleMark", recycleMarks);
-			req.setAttribute("rankList", rankList);
-
-			//フォワード
-			url = "ranking.jsp";
-			req.getRequestDispatcher(url).forward(req, res);
-		} else {
-			// 認証失敗の場合
-			// エラーメッセージをセット
-			List<String> errors = new ArrayList<>();
-			errors.add("ランキングを取得できませんでした");
-			req.setAttribute("errors", errors);
-
-			//フォワード
-			url = "menu.jsp";
-			req.getRequestDispatcher(url).forward(req, res);
-		}
-
-//		req.getRequestDispatcher(url).forward(req, res);
 	}
 
 }
