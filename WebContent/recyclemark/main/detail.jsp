@@ -182,10 +182,11 @@
 
 	  <c:param name="scripts"></c:param>
 
-	<c:param name="content">
-	<!-- メインコンテンツ -->
-    <div class="main">
-        <!-- 画像と説明文ボックスを横に並べる部分 -->
+		<c:param name="content">
+		<!-- メインコンテンツ -->
+		<div class="main">
+		<form action="SearchOutcomesExecute.action" method="post">
+       <!-- 画像と説明文ボックスを横に並べる部分 -->
         <div class="icon-and-text">
             <!-- アイコン -->
             <div class="icon-section">
@@ -198,8 +199,9 @@
             <!-- 詳細リンク -->
             <a href="#" class="details-link">詳細はこちら</a>
         </div>
-        </div>
 
+        </div>
+        </form>
         <div class="hart">
             <button type="button" class="likeButton">
                 <svg class="likeButton__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -212,5 +214,6 @@
     </div>
     </c:param>
     </c:import>
+
 
 

@@ -168,6 +168,7 @@
 	<c:param name="content">
 	 <!-- Main content -->
     <div class="main">
+     <form action="ImageSearchExecute.action" method="post">
         <div class="icon-and-text">
             <!-- Icon Section -->
             <div class="icon-section">
@@ -182,6 +183,7 @@
                 <a href="#" class="details-link">詳細はこちら</a>
             </div>
         </div>
+        </form>
     </div>
     </c:param>
     </c:import>
