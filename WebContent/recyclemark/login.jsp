@@ -116,8 +116,8 @@
 		</div>
 		<form action="LoginExecute.action" method="post">
     		<div class="form-group">
-       			<label for="userid">User ID:</label>
-        		<input type="text" id="userid" name="userid" required>
+       			<label for="userid">mailaddress</label>
+        		<input type="text" id="mail" name="mail" required>
     		</div>
     		<div class="form-group">
         		<label for="password">Password:</label>
@@ -126,7 +126,7 @@
     		<p>${errors[0] }</p>
     		<button type="submit" class="button">ログイン</button>
 		</form>
-		<a href="http://localhost:8080/recyclemark/recyclemark/main/create.jsp" class="link">新規登録はこちら</a>
+		<a href="/recyclemark/recyclemark/main/create.jsp" class="link">新規登録はこちら</a>
 	</div>
 </body>
 </html>
