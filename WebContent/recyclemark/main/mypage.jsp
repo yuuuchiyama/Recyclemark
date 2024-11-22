@@ -184,7 +184,7 @@
 		<div class="main">
 			<form action="EditYouser.action" method="post">
 				<div class="user-info">
-					<p>User ID: xxxxx</p>   <!-- (仮) -->
+					<p>${user.getMailAddress() }</p>   <!-- (仮) -->
 					<button class="edit-button">編集</button>
 				</div>
 			</form>

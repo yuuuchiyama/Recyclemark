@@ -101,7 +101,6 @@
 <title>ログイン</title>
 </head>
 <body>
-
 	<div class="main-container">
     <h1 id="area1">ログイン</h1>
     <div class="language-buttons">
@@ -152,5 +151,27 @@
     }
 
 </script>
+	<div class="container">
+		<h1>ログイン</h1>
+		<div class="language-buttons">
+    		<button>日本語</button>
+   			<button>English</button>
+    		<button>한국어</button>
+    		<button>中文</button>
+		</div>
+		<form action="LoginExecute.action" method="post">
+    		<div class="form-group">
+       			<label for="userid">mailaddress</label>
+        		<input type="text" id="mail" name="mail" required>
+    		</div>
+    		<div class="form-group">
+        		<label for="password">Password:</label>
+        		<input type="password" id="password" name="password" required>
+    		</div>
+    		<p>${errors[0] }</p>
+    		<button type="submit" class="button">ログイン</button>
+		</form>
+		<a href="/recyclemark/recyclemark/main/create.jsp" class="link">新規登録はこちら</a>
+	</div>
 </body>
 </html>

@@ -10,7 +10,7 @@ import bean.User;
 public class UserDao extends Dao {
 
 	//ユーザ情報取得
-	public User get(String id) throws Exception {
+	public User get(String mail) throws Exception {
 		// ユーザインスタンスを初期化
 		User user = new User();
 		// コネクションを確立
@@ -20,16 +20,16 @@ public class UserDao extends Dao {
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from user where UserId=?");
+			statement = connection.prepareStatement("select * from user where MailAddress=?");
 			// プリペアードステートメントにユーザIDをバインド
-			statement.setString(1, id);
+			statement.setString(1, mail);
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 
 			if (rSet.next()) {
 				// リザルトセットが存在する場合
 				// ユーザインスタンスに検索結果をセット
-				user.setId(rSet.getString("UserId"));
+				user.setMailAddress(rSet.getString("MailAddress"));
 				user.setPassword(rSet.getString("Password"));
 			} else {
 				// リザルトセットが存在しない場合
@@ -61,11 +61,14 @@ public class UserDao extends Dao {
 	}
 
 	//ユーザID、パスワード参照でログインする
-	public User login(String id, String password) throws Exception {
+	public User login(String mail, String password) throws Exception {
+		System.out.println(mail + ":" + password);
 		// ユーザクラスのインスタンスを取得
-		User user = get(id);
+		User user = get(mail);
+		System.out.println(user);
 		// ユーザがnullまたはパスワードが一致しない場合
 		if (user == null || !user.getPassword().equals(password)) {
+			System.out.println("error");
 			return null;
 		}
 		return user;
@@ -80,14 +83,12 @@ public class UserDao extends Dao {
 		String sql = "insert into user (UserId,MailAddress,Password,LanguageSelect) values (?,?,?,?)";
 		// 実行件数
 		int count = 0;
-		int index = mail.indexOf("@");
-		String id = mail.substring(0,index);
 		try {
 
 			// プリペアードステートメントにUPDATE文をセット
 			statement = connection.prepareStatement(sql);
 			// プリペアードステートメントに値をバインド
-			statement.setString(1, id);
+			statement.setString(1, null);
 			statement.setString(2, mail);
 			statement.setString(3, password);
 			statement.setString(4, "1");
