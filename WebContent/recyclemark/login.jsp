@@ -52,11 +52,11 @@
 	    background-color: rgba(58, 92, 52, 0.8);
 	}
 	input[type="email"] {
-	    width: 300px;
-	    padding: 10px;
-	    font-size: 16px;
-	    margin-bottom: 20px;
-	}
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
 	input[type="password"] {
 	    width: 300px;
 	    padding: 10px;
@@ -66,7 +66,7 @@
 	.form-group {
 	    display: flex;
 	    align-items: center;
-	    margin-bottom: 15px;
+	    margin-bottom: 5px;
 	    width: 100%;
 
 	}
@@ -85,15 +85,15 @@
 	    box-sizing: border-box;
 	}
 	.button {
-	    margin-top: 20px;
-	    padding: 5px 20px;
-	    background-color: #4E7644;
-	    color: #fff;
-	    border: none;
-	    border-radius: 5px;
-	    font-size: 16px;
-	    cursor: pointer;
-	}
+        margin-top: 0;
+        padding: 6px 23px;
+        background-color: #4E7644;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 20px;
+        cursor: pointer;
+    }
 	.search-button:hover {
 	    background-color: #3a5c34;
 	}
@@ -116,8 +116,8 @@
 		</div>
 		<form action="LoginExecute.action" method="post">
     		<div class="form-group">
-       			<label for="userid">User ID:</label>
-        		<input type="text" id="userid" name="userid" required>
+       			<label for="mail">Mail:</label>
+                <input type="email" id="mail" name="mail" required>
     		</div>
     		<div class="form-group">
         		<label for="password">Password:</label>
