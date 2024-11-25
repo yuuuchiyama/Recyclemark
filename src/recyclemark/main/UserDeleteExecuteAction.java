@@ -22,7 +22,7 @@ public class UserDeleteExecuteAction extends Action {
 		//リクエストパラメータ―の取得 2
 
 		//DBからデータ取得 3
-		List<RecycleMark> recycleMarks = recycleMarkDao.getRanking();//リサイクルマークリスト
+		
 
 		//ビジネスロジック 4
 		//DBへデータ保存 5
