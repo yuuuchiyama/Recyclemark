@@ -177,15 +177,15 @@
     </c:param>
 
     <c:param name="title">
-		    RecycleMark
+		    検索結果詳細
 	  </c:param>
 
-	  <c:param name="scripts"></c:param>
 
-	<c:param name="content">
-	<!-- メインコンテンツ -->
-    <div class="main">
-        <!-- 画像と説明文ボックスを横に並べる部分 -->
+		<c:param name="content">
+		<!-- メインコンテンツ -->
+		<div class="main">
+		<form action="SearchOutcomesExecute.action" method="post">
+       <!-- 画像と説明文ボックスを横に並べる部分 -->
         <div class="icon-and-text">
             <!-- アイコン -->
             <div class="icon-section">
@@ -198,8 +198,9 @@
             <!-- 詳細リンク -->
             <a href="#" class="details-link">詳細はこちら</a>
         </div>
-        </div>
 
+        </div>
+        </form>
         <div class="hart">
             <button type="button" class="likeButton">
                 <svg class="likeButton__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -210,7 +211,36 @@
             <!-- 一番下に配置されるメニュー画面へのリンク -->
             <a href="#" class="menu-link">メニュー画面に戻る</a>
     </div>
+    	<c:param name="script">
+    	const menuIcon = document.getElementById('menu-icon');
+        const menu = document.getElementById('menu');
+        const searchContainer = document.getElementById('search-container');
+        // Toggle menu display
+        menuIcon.addEventListener('click', function() {
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+                searchContainer.style.display = 'flex'; // Show search container
+            } else {
+                menu.style.display = 'flex';
+                searchContainer.style.display = 'none'; // Hide search container
+            }
+        });
+        // Toggle submenu display
+        function toggleSubMenu(submenuId) {
+            const submenu = document.getElementById(submenuId);
+            submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var likeButtons = document.getElementsByClassName('likeButton');
+            Array.from(likeButtons).forEach(function(likeButton) {
+            	likeButton.addEventListener('click', function() {
+            		likeButton.classList.toggle('liked');
+            	});
+            });
+        }, false);</c:param>
     </c:param>
     </c:import>
+
 
 

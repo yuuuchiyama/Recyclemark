@@ -165,18 +165,20 @@
 	<c:param name="content">
 		<div class="main">
 			<div class="content">
-	        	<div class="text-border">${detail}</div>
+	        	<div class="text-border">${trait}</div>
 
-		        <!-- アイコンエリア -->
-		        <c:forEach var="recycleMark" items="${recycleMarks}">
-			        <div class="icons-container">
-			            <table>
-			                <tr>
-			                    <td><img src="${recycleMark.markImg}" alt="${recycleMark.markName}"></td>
-			                </tr>
-			            </table>
-			        </div>
-		        </c:forEach>
+	        	<form action="SearchResultExecute.action" method="post">
+			        <!-- アイコンエリア -->
+			        <c:forEach var="recycleMark" items="${recycleMarks}">
+				        <div class="icons-container">
+				            <table>
+				                <tr>
+				                    <td><input type="image" name="recycleId" value="${recycleMark.markId}" src="${recycleMark.markImg}" alt="${recycleMark.markName}"></td>
+				                </tr>
+				            </table>
+				        </div>
+			        </c:forEach>
+		        </form>
 	    	</div>
 		</div>
 	</c:param>

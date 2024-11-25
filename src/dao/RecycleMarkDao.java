@@ -12,7 +12,7 @@ import bean.RecycleMark;;
 public class RecycleMarkDao extends Dao {
 
 	/** 特徴に応じたリサイクルマーク取得するメソッド */
-	public List<RecycleMark> getRecyclemark(String detail) throws Exception {
+	public List<RecycleMark> getRecyclemark(String trait) throws Exception {
 		// リストを初期化
 		List<RecycleMark> list = new ArrayList<>();
 		// コネクションを確立
@@ -27,8 +27,8 @@ public class RecycleMarkDao extends Dao {
 		try {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement("SELECT mark.RecycleId, mark.RecycleImg, mark.SearchCnt, detail.RecycleName FROM recyclemarkdata mark" + join + condition);
-			// プリペアードステートメントに教員IDをバインド
-			statement.setString(1, "%%" + detail + "%%");
+			// プリペアードステートメントに特徴をバインド
+			statement.setString(1, "%%" + trait + "%%");
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 
@@ -115,5 +115,54 @@ public class RecycleMarkDao extends Dao {
 		}
 
 		return list;
+	}
+
+	public RecycleMark getHistory(int recycleId) throws Exception {
+
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+		// リサイクルマークインスタンスを初期化
+		RecycleMark recycleMark = new RecycleMark();
+
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("select * from recyclemarkdata where RecycleId=?");
+			// プリペアードステートメントにユーザIDをバインド
+			statement.setInt(1, recycleId);
+			// プリペアードステートメントを実行
+			ResultSet rSet = statement.executeQuery();
+			// リザルトセットを全権走査
+			if (rSet.next()) {
+				// リサイクルマークインスタンスに検索結果をセット
+				recycleMark.setMarkId(rSet.getInt("RecycleId"));
+				recycleMark.setMarkImg(rSet.getString("RecycleImg"));
+				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
+			}else{
+				return null;
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+			try {
+			statement.close();
+			} catch (SQLException sqle) {
+				throw sqle;
+			}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		return recycleMark;
 	}
 }

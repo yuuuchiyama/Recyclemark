@@ -16,6 +16,6 @@
 	</header>
 	<main> ${param.content} </main>
 <script src="../js/main.js"></script>
-${param.scripts}
+<script type="text/javascript">${param.script}</script>
 </body>
 </html>
