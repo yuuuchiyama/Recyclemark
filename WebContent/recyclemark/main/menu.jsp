@@ -171,6 +171,9 @@
     <form action="Ranking.action" method="post">
         <button type="submit" class="action-button">ランキング</button>
     </form>
+    <form action="Mypage.action" method="post">
+        <button type="submit" class="action-button">マイページ</button>
+    </form>
     <form action="LanguageSelection.action" method="post">
         <button type="submit" class="action-button">言語選択に戻る</button>
     </form>

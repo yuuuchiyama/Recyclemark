@@ -1,12 +1,10 @@
 package recyclemark.main;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import bean.RecycleMark;
+import bean.User;
 import dao.UserDao;
 import tool.Action;
 
@@ -17,52 +15,57 @@ public class UserDeleteExecuteAction extends Action {
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
 		String url = "";
+		String password = "";
+		boolean delete = false;
 		UserDao userDao = new UserDao();
 
 		//リクエストパラメータ―の取得 2
+		HttpSession session = req.getSession();//セッション
+		User user = (User)session.getAttribute("user");
+		password = req.getParameter("password");//パスワード
 
 		//DBからデータ取得 3
-		
+
 
 		//ビジネスロジック 4
 		//DBへデータ保存 5
 		//レスポンス値をセット 6
 		//フォワード 7
 		//条件で手順4~7の内容が分岐
-		if (recycleMarks != null) {// 認証成功の場合
+		if(password.equals(user.getPassword())){//パスワードが合っている場合
 
-			ArrayList<Integer> rankList = new ArrayList<>();
-			int rank1 = recycleMarks.get(0).getSearchCount();
-			int count = 1;
-			for(RecycleMark recycleMark : recycleMarks){
-				int rank2 = recycleMark.getSearchCount();
-				if(rank1 == rank2){
-					rankList.add(count);
-				}else{
-					count++;
-					rankList.add(count);
+			delete = userDao.delete(user.getId());//アカウント削除
+			//アカウント削除に成功した場合
+			if(delete){
+				// セッションオブジェクトを作成
+				// 引数(false) → セッションがなければnullを返す
+				HttpSession admin_session = req.getSession(false);
+
+				if(admin_session != null) {
+					System.out.println("セッションが存在しています。そのため、セッションを破棄します。");
+					// セッションを破棄する
+					admin_session.invalidate();
+				} else {
+					System.out.println("セッションが存在していません。");
 				}
-				rank1 = rank2;
+
+				admin_session = req.getSession(false);
+
+				if(admin_session == null) {
+					System.out.println("セッションが破棄されました。");
+				};
+
+				url = "../login.jsp";
+				req.getRequestDispatcher(url).forward(req, res);
+			}else{
+				System.out.println("削除失敗");
+				url = "../login.jsp";
+				req.getRequestDispatcher(url).forward(req, res);
 			}
-			req.setAttribute("recycleMark", recycleMarks);
-			req.setAttribute("rankList", rankList);
-
-			//フォワード
-			url = "ranking.jsp";
-			req.getRequestDispatcher(url).forward(req, res);
-		} else {
-			// 認証失敗の場合
-			// エラーメッセージをセット
-			List<String> errors = new ArrayList<>();
-			errors.add("ランキングを取得できませんでした");
-			req.setAttribute("errors", errors);
-
-			//フォワード
-			url = "menu.jsp";
+		}else{
+			System.out.println("パスワードが間違っています");
+			url = "delete.jsp";
 			req.getRequestDispatcher(url).forward(req, res);
 		}
-
-//		req.getRequestDispatcher(url).forward(req, res);
 	}
-
 }

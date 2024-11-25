@@ -184,8 +184,8 @@
 		<div class="main">
 			<form action="UserDeleteExecute.action" method="post">
 				<div class="user-info">
-					<p>${user.getId() }</p>   <!-- (仮) -->
-					<p>${user.getMailAddress() }</p>
+					<p>User Id : ${user.getId() }</p>   <!-- (仮) -->
+					<p>MailAddress : ${user.getMailAddress() }</p>
 					<label for="password">password:</label>
         			<input type="text" id="password" name="password" required>
 					<button class="delete-button">削除</button>

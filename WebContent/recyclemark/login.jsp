@@ -203,7 +203,7 @@
         <input type="button" id="button_lan" value="한국어" onclick="sample2();">
         <input type="button" id="button_lan" value="中文" onclick="sample3();">
     </div>
-    <form action="/login" method="post">
+    <form action="LoginExecute.action" method="post">
         <div class="form-group">
             <label for="mail" id="mail_label">メールアドレス:</label>
             <input type="email" id="mail" name="mail" required>
