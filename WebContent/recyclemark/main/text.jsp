@@ -10,7 +10,7 @@
         padding: 0;
         background-image: url("../../images/20210729_1.jpg");
         background-size: cover;
-        background-position: center;
+        background-position: center top;
         background-attachment: fixed;
         color: #333;
     }
@@ -172,7 +172,7 @@
         </c:param>
 
 	<c:param name="title">
-		RecycleMark
+		テキスト検索
 	</c:param>
 
 	<c:param name="scripts"></c:param>
@@ -186,7 +186,7 @@
 					<h1>テキスト検索</h1>
 					<p>リサイクルマークについて入力してください。</p>
 					<div>${errors.get("mark_error")}</div>
-					<input type="text" id="search-input" class="search-input" name="detail" value="${errors.get('mark_error')}" placeholder="検索キーワードを入力">
+					<input type="text" id="search-input" class="search-input" name="trait" value="${errors.get('mark_error')}" placeholder="検索キーワードを入力">
 					<button class="search-button">検索</button>
 				</div>
 			</div>

@@ -12,7 +12,7 @@ import bean.RecycleMark;;
 public class RecycleMarkDao extends Dao {
 
 	/** 特徴に応じたリサイクルマーク取得するメソッド */
-	public List<RecycleMark> getRecyclemark(String detail) throws Exception {
+	public List<RecycleMark> getRecyclemark(String trait) throws Exception {
 		// リストを初期化
 		List<RecycleMark> list = new ArrayList<>();
 		// コネクションを確立
@@ -27,8 +27,8 @@ public class RecycleMarkDao extends Dao {
 		try {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement("SELECT mark.RecycleId, mark.RecycleImg, mark.SearchCnt, detail.RecycleName FROM recyclemarkdata mark" + join + condition);
-			// プリペアードステートメントに教員IDをバインド
-			statement.setString(1, "%%" + detail + "%%");
+			// プリペアードステートメントに特徴をバインド
+			statement.setString(1, "%%" + trait + "%%");
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 

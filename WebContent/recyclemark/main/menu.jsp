@@ -10,7 +10,8 @@
 	        padding: 0;
 	        background-image: url("../../images/20210729_1.jpg");
 	        background-size: cover;
-	        background-position: center;
+	        background-position: center top;
+        	background-attachment: fixed;
 	        color: #333;
 	    }
 	    /* ヘッダーのスタイル */
@@ -121,26 +122,34 @@
 	    }
 
 	    .button-container {
-	        display: grid;
-	        grid-template-columns: repeat(2, 1fr);
-	        gap: 40px;
-	        max-width: 600px;
-	        width: 100%;
-	        margin-top: 50px;
-	        margin-bottom: 300px; /* 上に寄せる調整 */
-	        }
-	    .button-container button {
-	        padding: 20px 30px;
-	        font-size: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px; /* ボタン間のスペース */
+        margin-top: 20px;
+	    }
+
+	    form {
+	        margin: 0; /* 不要な余白を削除 */
+	    }
+
+	    .action-button {
+	        display: inline-block;
+	        padding: 15px 30px;
+	        font-size: 16px;
 	        font-weight: bold;
 	        color: #f0f0f0;
+	        background-color: rgba(78, 118, 68, 0.6);
 	        border: 4px solid rgba(78, 118, 68, 0.6);
 	        border-radius: 8px;
-	        background-color: rgba(78, 118, 68, 0.6);
 	        cursor: pointer;
+	        text-align: center;
+	        transition: background-color 0.3s, color 0.3s;
 	    }
-	    .button-container button:hover {
+
+	    .action-button:hover {
 	        background-color: rgba(58, 92, 52, 0.8);
+	        color: #fff;
 	    }
 	</c:param>
 	<c:param name="title">
@@ -152,17 +161,21 @@
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
 		<div class="main">
-		    <div class="button-container">
-		        <form action="TextSearch.action" method="post"><button>テキスト検索</button></form>
-		        <button>画像検索</button>
-		        <form action="Ranking.action" method="post">
-		        	<button>ランキング</button>
-		        </form>
-		        <form action="Mypage.action" method="post">
-		        	<button>マイページ</button>
-		        </form>
-		        <button>言語選択に戻る</button>
-		    </div>
+		   <div class="button-container">
+    <form action="TextSearch.action" method="post">
+        <button type="submit" class="action-button">テキスト検索</button>
+    </form>
+    <form action="ImageSearch.action" method="post">
+        <button type="submit" class="action-button">画像検索</button>
+    </form>
+    <form action="Ranking.action" method="post">
+        <button type="submit" class="action-button">ランキング</button>
+    </form>
+    <form action="LanguageSelection.action" method="post">
+        <button type="submit" class="action-button">言語選択に戻る</button>
+    </form>
+</div>
+
 		</div>
 	</c:param>
 </c:import>

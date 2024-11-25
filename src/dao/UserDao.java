@@ -29,6 +29,8 @@ public class UserDao extends Dao {
 			if (rSet.next()) {
 				// リザルトセットが存在する場合
 				// ユーザインスタンスに検索結果をセット
+				// 内山が追加した1行
+				user.setId(rSet.getString("UserId"));
 				user.setMailAddress(rSet.getString("MailAddress"));
 				user.setPassword(rSet.getString("Password"));
 			} else {
