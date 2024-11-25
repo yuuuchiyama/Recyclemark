@@ -1,4 +1,5 @@
 <%-- マイページJSP --%>
+<%@page import="bean.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -185,6 +186,7 @@
 			<form action="EditYouser.action" method="post">
 				<div class="user-info">
 					<p>${user.getMailAddress() }</p>   <!-- (仮) -->
+					<p>${user.getId()}</p>
 					<button class="edit-button">編集</button>
 				</div>
 			</form>
