@@ -131,18 +131,18 @@
 		       display: inline-flex;
 			   align-items: center; /* ボタン内のテキストを垂直方向でセンタリング */
 			   justify-content: center; /* 水平方向でセンタリング */
-			   min-width: 325px; /* 最小幅を設定、必要に応じて調整 */
-			   padding: 30px 100px;/* 左右の余白と上下の余白 */
-			   font-size: 18px;
+			   min-width: 350px; /* 最小幅を設定、必要に応じて調整 */
+			   padding: 35px 95px;/* 左右の余白と上下の余白 */
+			   font-size: 22px;
 			   font-weight: bold;
 			   color: #f0f0f0;
 			   border: 4px solid rgba(78, 118, 68);
-			   border-radius: 8px;
+			   border-radius: 12px;
 			   background-color: rgba(78, 118, 68, 0.8);
 			   cursor: pointer;
 			   text-align: center;
 			   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* 影を追加 */
-        		transition: all 0.3s ease; /* スムーズなアニメーション */
+        	   transition: all 0.3s ease; /* スムーズなアニメーション */
 		}
 
 	    .action-button {
