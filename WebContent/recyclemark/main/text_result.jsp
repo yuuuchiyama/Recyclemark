@@ -150,36 +150,35 @@
 	        text-align: center;
 	        margin: 20px 30px 10px;
 	    }
-	    .recycle-item img {
+	    .recycle-item input {
 	        width: 200px;
 	        height: 200px;
 	        border: 1.5px solid #333;
 	    }
 	</c:param>
+
 	<c:param name="title">
-		テキスト検索結果
+			テキスト検索結果
+	</c:param>
+
+	<c:param name="content">
+		<div class="text-border">${trait}</div>
+		<div class="main">
+			<div class="main-container">
+				<form action="SearchResultExecute.action" method="post">
+					<!-- アイコンエリア -->
+					<c:forEach var="recycleMark" items="${recycleMarks}">
+						<div class="recycle-grid">
+							<div class="recycle-item">
+								<input type="image" name="recycleId" value="${recycleMark.markId}" src="${recycleMark.markImg}" alt="${recycleMark.markName}">
+							</div>
+						</div>
+					</c:forEach>
+				</form>
+			</div>
+		</div>
 	</c:param>
 
 	<c:param name="scripts"></c:param>
 
-	<c:param name="content">
-		<div class="main">
-			<div class="content">
-	        	<div class="text-border">${trait}</div>
-
-	        	<form action="SearchResultExecute.action" method="post">
-			        <!-- アイコンエリア -->
-			        <c:forEach var="recycleMark" items="${recycleMarks}">
-				        <div class="icons-container">
-				            <table>
-				                <tr>
-				                    <td><input type="image" name="recycleId" value="${recycleMark.markId}" src="${recycleMark.markImg}" alt="${recycleMark.markName}"></td>
-				                </tr>
-				            </table>
-				        </div>
-			        </c:forEach>
-		        </form>
-	    	</div>
-		</div>
-	</c:param>
 </c:import>
