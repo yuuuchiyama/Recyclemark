@@ -87,15 +87,29 @@
 		}
 		/* 戻るリンクのスタイル */
 		.back {
-		    text-decoration: underline;
-		    margin: 10px 20px;
-		    font-size: 30px;
-		    text-align: left;
-		    display: inline-block;
+			border-radius: 50%; /* ボタンを丸く */
+			display: flex;
+			justify-content: center; /* 水平方向に中央揃え */
+			align-items: center; /* 垂直方向に中央揃え */
+			padding: 18px 18px 15px 10px;
+			width: 25px;
+			height: 20px;
+			background: #f0f0f0;
+			color: #4E7644;
+			text-decoration: none;
+			font-size: 30px;
+			margin: 10px 20px;
+			border: 1px solid #ccc; /* 境界線の色 */
+			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+			transition: background-color 0.3s, border-color 0.3s;
 		}
+
 		.back:hover {
-		    text-decoration: underline;
+		    background-color: #e0e0e0;
+		    border-color: #999;
+		    color: #3a5c34;
 		}
+
 
 		.container {
 		    text-align: center;
@@ -131,15 +145,18 @@
 		<div class="main">
 			<!-- リサイクルマーク一覧テーブル -->
 			<div class="container">
-				<div class="recycle-grid">
-					<div>${errors.get("favorite_error")}</div>
-					<c:forEach var="favorite" items="${favorites}">
-						<div class="recycle-item">
-							<img src="${favorite.markImg}" alt="${favorite.markName}">
-							<p>"${favorite.markName}"</p>
-						</div>
-					</c:forEach>
-				</div>
+				<form action="SearchResultExecute.action">
+					<div class="recycle-grid">
+						<div>${errors.get("favorite_error")}</div>
+						<c:forEach var="favorite" items="${favorites}">
+							<div class="recycle-item">
+								<input type="hidden" name="markId" value="${favorite.recycleId}">
+								<input type="image" src="${favorite.recycleImg}" alt="${favorite.recycleName}">
+								<p>"${favorite.recycleName}"</p>
+							</div>
+						</c:forEach>
+					</div>
+				</form>
 			</div>
 		</div>
 	</c:param>

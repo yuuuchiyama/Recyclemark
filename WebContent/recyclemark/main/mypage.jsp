@@ -230,10 +230,10 @@
 			    <form action="HistoryExecute.action" method="post">
 			        <button type="submit">検索履歴</button>
 			    </form>
-			    <form action="calendarExecute.action" method="post">
+			    <form action="CalendarExecute.action" method="post">
 			        <button type="submit">カレンダー</button>
 			    </form>
-			    <form action="logout.action" method="post">
+			    <form action="Logout.action" method="post">
 			        <button type="submit">ログアウト</button>
 			    </form>
 			</div>

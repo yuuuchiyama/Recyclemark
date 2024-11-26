@@ -171,8 +171,15 @@
         width: 1em; /* サイズ調整 */
         height: 1em;
     }
-    .likeButton.liked {
+    .liked {
         color: #e5348c; /* いいね時の色（ピンク） */
+        font-size: 5em; /* アイコンを大きくする */
+    	padding-top: 20px;
+    	background-color: transparent;
+    	border: none; /* ボーダーをなくす */
+    	cursor: pointer;
+    	transition: color 150ms ease-in-out, transform 150ms ease-in-out;
+    	outline: 0;
     }
     </c:param>
 
@@ -184,31 +191,43 @@
 	<c:param name="content">
 		<!-- メインコンテンツ -->
 		<div class="main">
-			<form action="SearchOutcomesExecute.action" method="post">
-				<!-- 画像と説明文ボックスを横に並べる部分 -->
-				<div class="icon-and-text">
-					<!-- アイコン -->
-					<div class="icon-section">
-						<img src="${detail.markImg}" alt="Recycle Mark Icon">
-						<p>${detail.markName}</p>
-					</div>
-					<!-- 説明文ボックス -->
-					<div class="explanation-section">
-						<div class="explanation-box">${detail.markDescribe}</div>
-						<!-- 詳細リンク -->
-						<a href="#" class="details-link">詳細はこちら</a>
-					</div>
+			<!-- 画像と説明文ボックスを横に並べる部分 -->
+			<div class="icon-and-text">
+				<!-- アイコン -->
+				<div class="icon-section">
+					<img src="${detail.markImg}" alt="Recycle Mark Icon">
+					<p>${detail.markName}</p>
 				</div>
-			</form>
+				<!-- 説明文ボックス -->
+				<div class="explanation-section">
+					<div class="explanation-box">${detail.markDescribe}</div>
+					<!-- 詳細リンク -->
+					<a href="Districts.action" class="details-link">詳細はこちら</a>
+				</div>
+			</div>
 			<form action="FavoriteAddExecute.action" method="post">
 				<div class="hart">
-					<input type="hidden" id="heart_stamp" name="heartStamp" value="0">
-					<input type="hidden" id="heart_stamp" name="markId" value="${detail.markId}">
-					<button type="submit" class="likeButton">
-						<svg class="likeButton__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-							<path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z"/>
-						</svg>
-					</button>
+					<input type="hidden" id="heartStamp" name="heartStamp" value="${heartStamp}">
+					<input type="hidden" name="markId" value="${detail.markId}">
+					<input type="hidden" name="markName" value="${detail.markName}">
+					<input type="hidden" name="markImg" value="${detail.markImg}">
+					<input type="hidden" name="markDescribe" value="${detail.markDescribe}">
+					<c:choose>
+						<c:when test="${heartStamp == 0}">
+							<button type="submit" class="likeButton">
+								<svg class="likeButton__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+									<path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z"/>
+								</svg>
+							</button>
+						</c:when>
+						<c:when test="${heartStamp > 0}">
+							<button type="submit" class="liked">
+								<svg class="likeButton__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+									<path d="M91.6 13A28.7 28.7 0 0 0 51 13l-1 1-1-1A28.7 28.7 0 0 0 8.4 53.8l1 1L50 95.3l40.5-40.6 1-1a28.6 28.6 0 0 0 0-40.6z"/>
+								</svg>
+							</button>
+						</c:when>
+					</c:choose>
 				</div>
 			</form>
 	    	<!-- 一番下に配置されるメニュー画面へのリンク -->
@@ -236,21 +255,5 @@
             submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var likeButtons = document.getElementsByClassName('likeButton');
-            Array.from(likeButtons).forEach(function(likeButton) {
-            	likeButton.addEventListener('click', function() {
-            		likeButton.classList.toggle('liked');
-            		if (inputValue.value === "1") {
-            			inputValue.value = "0";
-            		} else {
-            			inputValue.value = "1";
-            		}
-            	});
-            });
-        }, false);
     </c:param>
 </c:import>
-
-
-
