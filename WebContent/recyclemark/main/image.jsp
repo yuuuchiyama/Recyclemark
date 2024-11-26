@@ -159,7 +159,7 @@
 
 
     <c:param name="title">
-		    RecycleMark
+		    画像検索
 	  </c:param>
 
 	  <c:param name="scripts"></c:param>

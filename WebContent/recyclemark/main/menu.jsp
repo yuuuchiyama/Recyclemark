@@ -10,7 +10,8 @@
 	        padding: 0;
 	        background-image: url("../../images/20210729_1.jpg");
 	        background-size: cover;
-	        background-position: center;
+	        background-position: center top;
+        	background-attachment: fixed;
 	        color: #333;
 	    }
 	    /* ヘッダーのスタイル */
@@ -109,38 +110,60 @@
 	        color: #3a5c34;
 	    }
 	    /* メインコンテンツ部分のスタイル */
-	    .main {
-	    display: flex;
-	    justify-content: center;
-	    text-align: center;
-	    flex-direction: column;
-	    align-items: center;
-	    margin-top: 20px;
-	    min-height: 100vh;
-	    padding: 20px;
-	    }
+		.main {
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    min-height: 100vh;
+		    padding: 20px;
+				}
+		.button-container {
+		    display: grid;
+		    grid-template-columns: repeat(2, 1fr); /* 2列のグリッド */
+		    gap: 30px 50px;
+		    max-width: 780px; /* 最大幅を指定 */
+		    margin: 70px auto;
+		    justify-items: center; /* ボタンを中央揃え */
+		}
 
-	    .button-container {
-	        display: grid;
-	        grid-template-columns: repeat(2, 1fr);
-	        gap: 40px;
-	        max-width: 600px;
-	        width: 100%;
-	        margin-top: 50px;
-	        margin-bottom: 300px; /* 上に寄せる調整 */
-	        }
-	    .button-container button {
-	        padding: 20px 30px;
-	        font-size: 18px;
+		/* ボタンのスタイル */
+		.button-container button {
+		       display: inline-flex;
+			   align-items: center; /* ボタン内のテキストを垂直方向でセンタリング */
+			   justify-content: center; /* 水平方向でセンタリング */
+			   min-width: 350px; /* 最小幅を設定、必要に応じて調整 */
+			   padding: 35px 95px;/* 左右の余白と上下の余白 */
+			   font-size: 22px;
+			   font-weight: bold;
+			   color: #f0f0f0;
+			   border: 4px solid rgba(78, 118, 68);
+			   border-radius: 12px;
+			   background-color: rgba(78, 118, 68, 0.8);
+			   cursor: pointer;
+			   text-align: center;
+			   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* 影を追加 */
+        	   transition: all 0.3s ease; /* スムーズなアニメーション */
+		}
+
+	    .action-button {
+	        display: inline-block;
+	        padding: 15px 30px;
+	        font-size: 16px;
 	        font-weight: bold;
 	        color: #f0f0f0;
+	        background-color: rgba(78, 118, 68, 0.6);
 	        border: 4px solid rgba(78, 118, 68, 0.6);
 	        border-radius: 8px;
-	        background-color: rgba(78, 118, 68, 0.6);
 	        cursor: pointer;
+	        text-align: center;
+	        transition: background-color 0.3s, color 0.3s;
 	    }
+
 	    .button-container button:hover {
 	        background-color: rgba(58, 92, 52, 0.8);
+	        color: #fff;
+	        transform: scale(1.1); /* ボタンが少し大きくなる */
+	        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* 影を強調 */
 	    }
 	</c:param>
 	<c:param name="title">
@@ -152,17 +175,21 @@
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
 		<div class="main">
-		    <div class="button-container">
-		        <form action="TextSearch.action" method="post"><button>テキスト検索</button></form>
-		        <button>画像検索</button>
-		        <form action="Ranking.action" method="post">
-		        	<button>ランキング</button>
-		        </form>
-		        <form action="Mypage.action" method="post">
-		        	<button>マイページ</button>
-		        </form>
-		        <button>言語選択に戻る</button>
-		    </div>
+		   <div class="button-container">
+			    <form action="TextSearch.action" method="post">
+			        <button type="submit" class="action-button">テキスト検索</button>
+			    </form>
+			    <form action="ImageSearch.action" method="post">
+			        <button type="submit" class="action-button">画像検索</button>
+			    </form>
+			    <form action="Ranking.action" method="post">
+			        <button type="submit" class="action-button">ランキング</button>
+			    </form>
+			    <form action="LanguageSelection.action" method="post">
+			        <button type="submit" class="action-button">言語選択に戻る</button>
+			    </form>
+			</div>
+
 		</div>
 	</c:param>
 </c:import>
