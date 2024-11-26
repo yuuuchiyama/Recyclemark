@@ -162,7 +162,7 @@
 		    画像検索
 	  </c:param>
 
-	  <c:param name="scripts"></c:param>
+
 
 	<c:param name="content">
 
@@ -176,6 +176,27 @@
 		</div>
 	</form>
 </div>
+</c:param>
+<c:param name="script">
+const menuIcon = document.getElementById('menu-icon');
+    const menu = document.getElementById('menu');
+    const searchContainer = document.getElementsByClassName('image-search-container')[0];
+    // Toggle menu display
+    menuIcon.addEventListener('click', function() {
+        if (menu.style.display === 'flex') {
+            menu.style.display = 'none';
+            searchContainer.style.display = 'flex';
+        } else {
+            menu.style.display = 'flex';
+            searchContainer.style.display = 'none';
+        }
+    });
+    // Toggle submenu display
+    function toggleSubMenu(submenuId) {
+        const submenu = document.getElementById(submenuId);
+        submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
 </c:param>
 </c:import>
 
