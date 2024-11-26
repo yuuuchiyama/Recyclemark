@@ -55,12 +55,14 @@ public class UserDeleteExecuteAction extends Action {
 					System.out.println("セッションが破棄されました。");
 				};
 
-				url = "../login.jsp";
-				req.getRequestDispatcher(url).forward(req, res);
+				//リダイレクト
+				url = "../Login.action";
+				res.sendRedirect(url);
 			}else{
 				System.out.println("削除失敗");
-				url = "../login.jsp";
-				req.getRequestDispatcher(url).forward(req, res);
+				//リダイレクト
+				url = "../Login.action";
+				res.sendRedirect(url);
 			}
 		}else{
 			System.out.println("パスワードが間違っています");
