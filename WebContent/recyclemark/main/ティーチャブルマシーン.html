@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>AI体験 オリジナルAIを使おう</title>
+  <style>
+    /* 全体をセンターに配置 */
+    body {
+      height: 130vh;
+      margin: 0;
+      background-image: url("../../images/20210729_1.jpg");
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+      color: #333;
+      display: block; /* flexを解除 */
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 35px;
+      margin: 10px auto;
+      width: fit-content; /* コンテンツの幅に合わせる */
+    }
+
+    /* カメラとラベルを縦に並べる */
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+    }
+
+    #webcam-container {
+      margin-bottom: 20px;
+    }
+
+    /* ラベルコンテナ全体のスタイル */
+    #label-container {
+      display: flex;
+      justify-content: center; /* 中央揃え */
+      flex-wrap: wrap; /* 複数行で折り返し */
+      gap: 10px;
+    }
+
+    /* 個別のラベルスタイル */
+    .label-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      width: 150px;
+      text-align: center;
+    }
+
+    /* ボタンのスタイル */
+    button {
+      justify-content: center;
+      font-size: 16px;
+      padding: 10px 20px;
+      margin-top: 5px;
+      background-color: rgba(58, 92, 52, 0.8);
+      color: white;
+      border: 4px solid #3a5c34;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #3a5c34;
+    }
+
+    /* label-canvasの枠線を消す */
+    #label-canvas {
+      border: none;
+    }
+  </style>
+</head>
+<body onload="init()">
+  <div id="container">
+    <h1>画像検索</h1>
+
+    <div id="webcam-container"></div>
+    <div id="label-container"></div>
+    <canvas id="label-canvas" width="400" height="100"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+
+  <script type="text/javascript">
+    // ★以下に、作成したAIのURLを記載してください
+    const URL = 'https://teachablemachine.withgoogle.com/models/Ohc0_mt_h/';
+
+    let model, webcam, labelContainer, maxPredictions;
+
+    // ラベル表示用の関数
+    function showLabel(str) {
+      var label_canvas = document.getElementById('label-canvas');  // HTMLCanvasElement
+          var ctx = label_canvas.getContext('2d');  // CanvasRenderingContext2D
+          ctx.clearRect(0, 0, label_canvas.width, label_canvas.height);
+          ctx.font = '50pt Arial';
+          ctx.fillStyle = 'rgba(0, 0, 255)';
+          ctx.fillText(str, 20, 70, label_canvas.width-40);
+    }
+
+    // 予測結果ごとのメッセージを定義（このオブジェクトを使ってメッセージを変更）
+    const alertMessages = {
+      "プラスチック": "プラスチック製容器梱包やペットボトルのラベル、キャップなどの製品、グミの袋、飲料用・しょうゆ用ペットボトルを除く容器に使わます。",
+      "ペットボトル": "飲料用・しょうゆ用のペットボトル容器に使われます。",
+      "アルミ": "ジュースや酒類、炭酸飲料や果汁飲料の缶に使われる、磁石を近づけてもくっつかなければアルミ缶です。'",
+      "紙":"一般的な紙製品全般、紙製包装容器(アルミが使用されている製品含む)に使用されます。",
+      "スチール":"ジュースやコーヒー、おでん缶など素材に鋼が使われ、高温・高圧殺菌が必要な飲料に使われる、ほかにも果物や魚の缶詰、お菓子などが入っている缶も分類される、磁石を近づけてくっつくとスチール缶です。",
+      "紙パック":"飲料用の紙製包装容器に表示される、パックのものなどアルミが使用されていないものが対象",
+      "段ボール":"段ボール製の包装容器全般に使用される、段ボールについているテープはプラスチックなので注意"
+    };
+
+
+    // Load the image model and setup the webcam
+    async function init() {
+        if(URL == "") {
+          showLabel('AIを読み込ませてください')
+          return;
+        }
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        // load the model and metadata
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // Convenience function to setup a webcam
+        const flip = false; //ウェブカメラを反転させる設定
+        webcam = new tmImage.Webcam(400, 400, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        // append elements to the DOM
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < 3; i++) { // 3つのラベルボタンを作成
+            const labelDiv = document.createElement("div");
+            labelDiv.classList.add("label-button");
+            const button = document.createElement("button");
+            button.textContent = "Action";  // ボタンに表示する内容
+            button.onclick = function() {
+                const className = labelDiv.textContent.trim().split(":")[0];  // クラス名を取得
+                const message = alertMessages[className] || "未定義のクラスです";  // クラスごとのメッセージを取得
+                alert(message);
+            };
+            labelDiv.appendChild(button);
+            labelContainer.appendChild(labelDiv);
+        }
+    }
+
+    async function loop() {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+
+    // run the webcam image through the image model
+    async function predict() {
+        const prediction = await model.predict(webcam.canvas);
+
+        // 予測結果を確率が高い順にソート
+        const sortedPredictions = prediction.sort((a, b) => b.probability - a.probability);
+
+        // 上位3項目だけを表示
+        const topPredictions = sortedPredictions.slice(0, 3);
+
+        // ソート後の予測結果を表示
+        for (let i = 0; i < topPredictions.length; i++) {
+            // 確率をパーセント形式に変換
+            const probabilityPercent = (topPredictions[i].probability * 100).toFixed(2) + "%";
+            const classPrediction = topPredictions[i].className + ": " + probabilityPercent;
+
+            // 上位3項目のみを表示
+            labelContainer.childNodes[i].childNodes[0].textContent = classPrediction;  // 更新された予測結果をボタンに表示
+        }
+
+        // 上位3項目が少ない場合、残りのボタンを非表示にする
+        for (let i = topPredictions.length; i < labelContainer.childNodes.length; i++) {
+            labelContainer.childNodes[i].style.display = 'none';
+        }
+    }
+  </script>
+</body>
+</html>
