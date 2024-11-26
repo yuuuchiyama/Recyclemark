@@ -20,12 +20,12 @@ public class TextSearchExecuteAction extends Action {
 		List<RecycleMark> recycleMarks = null;
 		Map<String, String> errors = new HashMap<>();	// エラーメッセージ
 
-		String detail = "";
+		String trait = "";
 		// リクエストパラメーターの取得 2
-		detail = req.getParameter("detail");
+		trait = req.getParameter("trait");
 
 		// DBからデータの取得 3
-		recycleMarks = recycleMarkDao.getRecyclemark(detail);
+		recycleMarks = recycleMarkDao.getRecyclemark(trait);
 
 		//条件で手順4~7の内容が分岐
 		// ビジネスロジック 4
@@ -33,7 +33,7 @@ public class TextSearchExecuteAction extends Action {
 			// DBにデータを保存 5
 
 			// レスポンス値をセット 6
-			req.setAttribute("detail", detail);
+			req.setAttribute("trait", trait);
 			req.setAttribute("recycleMarks",recycleMarks);
 
 			// JSPへフォワード 7
@@ -42,7 +42,7 @@ public class TextSearchExecuteAction extends Action {
 			// レスポンス値をセット 6
 			errors.put("mark_error", "そのリサイクルマークは存在しません");
 			req.setAttribute("errors", errors);
-			req.setAttribute("detail", detail);
+			req.setAttribute("trait", trait);
 
 			// JSPへフォワード 7
 			req.getRequestDispatcher("text.jsp").forward(req, res);

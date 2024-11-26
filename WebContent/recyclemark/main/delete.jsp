@@ -1,5 +1,4 @@
 <%-- マイページJSP --%>
-<%@page import="bean.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -12,10 +11,8 @@
 		    padding: 0;
 		    background-image: url("../../images/20210729_1.jpg");
 		    background-size: cover;
-		    background-position: center top;
-    		background-attachment: fixed;
+		    background-position: center;
 		    color: #333;
-
 		}
 	   /* Header style */
 	   .header {
@@ -126,38 +123,25 @@
 		/* ユーザー情報ボックス */
 		.user-info {
 		    border: 4px solid #3a5c34;
-		    padding: 60px 50px;
+		    padding: 50px 30px;
 		    width: 700px;
 		    height: 100px;
 		    margin: 0;
 		    display: flex;
 		    justify-content: space-between;
 		    align-items: center;
-		    background-color: rgba(255, 255, 255, 0.8);
+		    background-color: rgba(255, 255, 255, 0.8);;
 		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 		    border-radius: 20px;
 		}
-		.user-info-text {
-		    display: flex; /* 横並びにする */
-		    align-items: baseline; /* ベースラインで揃える */
-		    gap: 10px; /* ラベルとIDの間隔 */
-		}
-		.user-info-text p {
-		    margin: 0; /* マージンをリセット */
+		.user-info p {
+		    margin: 0;
 		    font-size: 40px;
-		    font-weight: bold;
-		    line-height: 1.2; /* テキストの高さ調整 */
+		    text-align: center;
 		}
-		.user-info-text h2 {
-		    margin: 0; /* マージンをリセット */
-		    font-size: 50px; /* 大きめのサイズ */
-		    font-weight: bold;
-		    line-height: 1.2; /* テキストの高さ調整 */
-		}
-
 		.edit-button {
 		    padding: 5px 20px;
-		    font-size: 20px;
+		    font-size: 16px;
 		    margin-top: 0;
 		    font-weight: bold;
 		    color: #f0f0f0;
@@ -170,41 +154,25 @@
 		/* ボタン */
 		.button-container {
 		    display: grid;
-		    grid-template-columns: repeat(2, 1fr); /* 2列のグリッド */
-		    gap: 30px 50px;
-		    max-width: 780px; /* 最大幅を指定 */
+		    grid-template-columns: repeat(2, 1fr);
+		    gap: 20px 40px;
+		    max-width: 600px;
+		    width: 100%;
 		    margin-top: 20px;
-		    justify-items: center; /* ボタンを中央揃え */
 		}
-
-		/* ボタンのスタイル */
 		.button-container button {
-		       display: inline-flex;
-			   align-items: center; /* ボタン内のテキストを垂直方向でセンタリング */
-			   justify-content: center; /* 水平方向でセンタリング */
-			   min-width: 325px; /* 最小幅を設定、必要に応じて調整 */
-			   padding: 30px 100px;/* 左右の余白と上下の余白 */
-			   font-size: 18px;
-			   font-weight: bold;
-			   color: #f0f0f0;
-			   border: 4px solid #4E7644;
-			   border-radius: 8px;
-			   background-color: rgba(78, 118, 68, 0.8);
-			   cursor: pointer;
-			   text-align: center;
+		    padding: 20px 30px;
+		    font-size: 18px;
+		    font-weight: bold;
+		    color: #f0f0f0;
+		    border: 4px solid rgba(78, 118, 68, 0.6);
+		    border-radius: 8px;
+		    background-color: rgba(78, 118, 68, 0.6);
+		    cursor: pointer;
 		}
-
 		.button-container button:hover {
-		    transform: translateY(-3px); /* ボタンを少し上に */
-		    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* シャドウを強調 */
-		    opacity: 0.9; /* 透明度を軽くする */
+		    background-color: rgba(58, 92, 52, 0.8);
 		}
-
-		.button-container button:active {
-		    transform: translateY(0); /* 元の位置に戻す */
-		    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* シャドウを調整 */
-		}
-
 	</c:param>
 	<c:param name="title">
 		マイページ
@@ -214,32 +182,15 @@
 
 	<c:param name="content">
 		<div class="main">
-			<form action="EditYouser.action" method="post">
+			<form action="UserDeleteExecute.action" method="post">
 				<div class="user-info">
-					<div class="user-info-text">
-			            <p>Mail:</p>
-			            <h2>${user.getMailAddress() }</h2>
-			        </div>
-			        <button class="edit-button">編集</button>
+					<p>User Id : ${user.getId() }</p>   <!-- (仮) -->
+					<p>MailAddress : ${user.getMailAddress() }</p>
+					<label for="password">password:</label>
+        			<input type="text" id="password" name="password" required>
+					<button class="delete-button">削除</button>
 				</div>
 			</form>
-			<div class="button-container">
-			    <form action="FavoriteExecute.action" method="post">
-			        <button type="submit">お気に入り</button>
-			    </form>
-			    <form action="HistoryExecute.action" method="post">
-			        <button type="submit">検索履歴</button>
-			    </form>
-			    <form action="calendarExecute.action" method="post">
-			        <button type="submit">カレンダー</button>
-			    </form>
-			    <form action="UserDelete.action" method="post">
-			        <button type="submit">アカウント削除</button>
-			    </form>
-			    <form action="logout.action" method="post">
-			        <button type="submit">ログアウト</button>
-			    </form>
-			</div>
 		</div>
 	</c:param>
 </c:import>

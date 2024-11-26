@@ -29,6 +29,8 @@ public class UserDao extends Dao {
 			if (rSet.next()) {
 				// リザルトセットが存在する場合
 				// ユーザインスタンスに検索結果をセット
+				// 内山が追加した1行
+				user.setId(rSet.getString("UserId"));
 				user.setMailAddress(rSet.getString("MailAddress"));
 				user.setPassword(rSet.getString("Password"));
 			} else {
@@ -92,6 +94,53 @@ public class UserDao extends Dao {
 			statement.setString(2, mail);
 			statement.setString(3, password);
 			statement.setString(4, "1");
+			// プリペアードステートメントを実行
+			count = statement.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		if (count > 0) {
+			// 実行件数が1件以上ある場合
+			return true;
+		} else {
+			// 実行件数が０件の場合
+			return false;
+		}
+	}
+
+	public boolean delete(String id) throws Exception {
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+		// SQL文の条件
+		String sql = "delete from user where UserId = ?";
+		// 実行件数
+		int count = 0;
+		try {
+
+			// プリペアードステートメントにUPDATE文をセット
+			statement = connection.prepareStatement(sql);
+			// プリペアードステートメントに値をバインド
+			statement.setString(1, id);
 			// プリペアードステートメントを実行
 			count = statement.executeUpdate();
 		} catch (Exception e) {
