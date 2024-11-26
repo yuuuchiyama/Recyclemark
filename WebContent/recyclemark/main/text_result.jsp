@@ -156,16 +156,11 @@
 		    height: 200px;
 		}
 	</c:param>
-	<c:param name="title">
-		テキスト検索結果
-	</c:param>
-
-	<c:param name="scripts"></c:param>
 
 	<c:param name="content">
-	        	<div class="text-border">${trait}</div>
-	<div class="main">
-        <div class="main-container">
+	    <div class="text-border">${trait}</div>
+		<div class="main">
+	        <div class="main-container">
 	        	<form action="SearchResultExecute.action" method="post">
 			        <!-- アイコンエリア -->
 			        <c:forEach var="recycleMark" items="${recycleMarks}">
@@ -179,4 +174,7 @@
 	    	</div>
 		</div>
 	</c:param>
+
+	<c:param name="scripts"></c:param>
+
 </c:import>

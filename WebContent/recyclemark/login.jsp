@@ -214,6 +214,7 @@
         </div>
         <button type="submit" class="button" id="button_login">ログイン</button>
     </form>
+    <a href="main/create.jsp">アカウント作成</a>
     </div>
     <script>
 	    function sample(){
