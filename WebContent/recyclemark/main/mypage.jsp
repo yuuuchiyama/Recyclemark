@@ -233,9 +233,6 @@
 			    <form action="calendarExecute.action" method="post">
 			        <button type="submit">カレンダー</button>
 			    </form>
-			    <form action="UserDelete.action" method="post">
-			        <button type="submit">アカウント削除</button>
-			    </form>
 			    <form action="logout.action" method="post">
 			        <button type="submit">ログアウト</button>
 			    </form>
