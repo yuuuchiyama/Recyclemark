@@ -150,11 +150,11 @@
 	        text-align: center;
 	        margin: 20px 30px 10px;
 	    }
-	    .recycle-item input {
-	        width: 200px;
-	        height: 200px;
-	        border: 1.5px solid #333;
-	    }
+	    .recycle-item input[type="image"] {
+		    border: 1.5px solid #333;
+		    width: 200px;
+		    height: 200px;
+		}
 	</c:param>
 
 	<c:param name="content">
