@@ -41,7 +41,7 @@ public class HistoryAction extends Action {
 		//レスポンス値をセット 6
 		req.setAttribute("recycleMark", recycleMarks);
 		//フォワード 7
-		url = "history_list.jsp";
+		url = "search_history.jsp";
 		req.getRequestDispatcher(url).forward(req, res);
 
 	}
