@@ -190,7 +190,7 @@
 			</form>
 			<div class="button-container">
 				<form action="FavoriteExecute.action" method="post"><button>お気に入り</button></form>
-				<form action="HistoryExecute.action" method="post"><button>検索履歴</button></form>
+				<form action="History.action" method="post"><button>検索履歴</button></form>
 				<form action="calendarExecute.action" method="post"><button>カレンダー</button></form>
 				<form action="logout.action" method="post"><button>ログアウト</button></form>
 			</div>
