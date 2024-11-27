@@ -10,12 +10,14 @@
 <style>${param.style}</style>
 <title>${param.title}</title>
 </head>
-<body>
+<body onload="init()">
 	<header>
 		<c:import url="/common/header.jsp" />
 	</header>
 	<main> ${param.content} </main>
 <script src="../js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">${param.script}</script>
 </body>
 </html>

@@ -30,6 +30,7 @@ public class TextSearchExecuteAction extends Action {
 		//条件で手順4~7の内容が分岐
 		// ビジネスロジック 4
 		if(recycleMarks != null) {
+			System.out.println(recycleMarks);
 			// DBにデータを保存 5
 
 			// レスポンス値をセット 6

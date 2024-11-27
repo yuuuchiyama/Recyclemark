@@ -13,15 +13,15 @@
 </div>
 <!-- Full-screen Menu -->
 <div class="menu" id="menu">
-<div class="menu-item" onclick="toggleSubMenu('submenu1')">・メニュー ▼</div>
-<div class="submenu" id="submenu1">
-<a href="#">・テキスト検索</a>
-<a href="#">・画像検索</a>
-<a href="#">・ランキング</a>
-</div>
-<div class="menu-item"><a href="#">・マイページ</a></div>
-<div class="menu-item"><a href="#">・ログアウト</a></div>
+	<div class="menu-item" onclick="toggleSubMenu('submenu1')">・メニュー ▼</div>
+	<div class="submenu" id="submenu1">
+		<a href="TextSearch.action">・テキスト検索</a>
+		<a href="ImageSearch.action">・画像検索</a>
+		<a href="Ranking.action">・ランキング</a>
+	</div>
+	<div class="menu-item"><a href="Mypage.action">・マイページ</a></div>
+	<div class="menu-item"><a href="Logout.action">・ログアウト</a></div>
 </div>
 
 <!-- 戻るリンク -->
-<a href="#" class="back">＜</a>
+<div class="back" onClick="history.back();">＜</div>
