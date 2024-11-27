@@ -18,21 +18,25 @@ public class RankingAction extends Action {
 		//ローカル変数の宣言 1
 		String url = "";
 		RecycleMarkDao recycleMarkDao = new RecycleMarkDao();
+//		RecycleMark recycleMark = null;
 
 		//リクエストパラメータ―の取得 2
 
 		//DBからデータ取得 3
 		List<RecycleMark> recycleMarks = recycleMarkDao.getRanking();//リサイクルマークリスト
-
+//		System.out.println(recycleMarks);
 		//ビジネスロジック 4
 		//DBへデータ保存 5
 		//レスポンス値をセット 6
 		//フォワード 7
 		//条件で手順4~7の内容が分岐
 		if (recycleMarks != null) {// 認証成功の場合
-
+//			System.out.println("1");
 			ArrayList<Integer> rankList = new ArrayList<>();
+
+//			recycleMark = recycleMarks.get(0);
 			int rank1 = recycleMarks.get(0).getSearchCount();
+//			System.out.println(recycleMark);
 			int count = 1;
 			for(RecycleMark recycleMark : recycleMarks){
 				int rank2 = recycleMark.getSearchCount();
@@ -51,6 +55,7 @@ public class RankingAction extends Action {
 			url = "ranking.jsp";
 			req.getRequestDispatcher(url).forward(req, res);
 		} else {
+//			System.out.println("0");
 			// 認証失敗の場合
 			// エラーメッセージをセット
 			List<String> errors = new ArrayList<>();

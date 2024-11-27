@@ -6,7 +6,7 @@ public class RecycleMark implements Serializable {
 	private int markId;
 	private String markImg;
 	private int searchCount;
-	private String markName;
+//	private String markName;
 
 	// ゲッタ
 	public int getMarkId() {
@@ -21,9 +21,9 @@ public class RecycleMark implements Serializable {
 		return searchCount;
 	}
 
-	public String getMarkName(){
-		return markName;
-	}
+//	public String getMarkName(){
+//		return markName;
+//	}
 
 	// セッタ
 	public void setMarkId(int markId) {
@@ -38,7 +38,7 @@ public class RecycleMark implements Serializable {
 		this.searchCount = searchCount;
 	}
 
-	public void setMarkName(String markName) {
-		this.markName = markName;
-	}
+//	public void setMarkName(String markName) {
+//		this.markName = markName;
+//	}
 }

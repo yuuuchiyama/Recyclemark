@@ -69,7 +69,6 @@ public class RecycleMarkDao extends Dao {
 	}
 
 	public List<RecycleMark> getRanking() throws Exception {
-
 		// リストを初期化
 		List<RecycleMark> list = new ArrayList<>();
 		// コネクションを確立
@@ -92,8 +91,14 @@ public class RecycleMarkDao extends Dao {
 				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
 				// リストに追加
 				list.add(recycleMark);
+//				System.out.println(recycleMark);
+//				System.out.println(recycleMark.getMarkId());
+//				System.out.println(recycleMark.getMarkImg());
+//				System.out.println(recycleMark.getSearchCount());
 			}
 		} catch (Exception e) {
+//			System.out.println("error");
+//			System.out.println(e);
 			throw e;
 		} finally {
 			// プリペアードステートメントを閉じる
