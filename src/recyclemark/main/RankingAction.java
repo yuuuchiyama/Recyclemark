@@ -21,13 +21,12 @@ public class RankingAction extends Action {
 		RecycleMarkDao recycleMarkDao = new RecycleMarkDao();
 //		RecycleMark recycleMark = null;
 
-
 		//リクエストパラメータ―の取得 2
 
 		//DBからデータ取得 3
 		List<RecycleMark> recycleMarks = recycleMarkDao.getRanking();//リサイクルマークリスト
 //		System.out.println(recycleMarks);
-		String img = recycleMarks.get(0).getMarkImg();
+//		String img = recycleMarks.get(0).getMarkImg();
 		//ビジネスロジック 4
 		//DBへデータ保存 5
 		//レスポンス値をセット 6
@@ -36,15 +35,21 @@ public class RankingAction extends Action {
 		if (recycleMarks != null) {// 認証成功の場合
 //			System.out.println("1");
 			ArrayList<String> rankList = new ArrayList<>();
+			ArrayList<String> rankingList = new ArrayList<>();
+			ArrayList<String> ranking = new ArrayList<>();
+
 
 //			recycleMark = recycleMarks.get(0);
 			int rank1 = recycleMarks.get(0).getSearchCount();
 //			System.out.println(recycleMarks.get(0).getMarkImg());
 			int count = 1;
 			for(RecycleMark recycleMark : recycleMarks){
+				if(count == 4){
+					break;
+				}
 				int rank2 = recycleMark.getSearchCount();
 				if(rank1 == rank2){
-					rankUrl = "../../images/" + count + ".gif";
+					rankUrl = "../../images/" + count + ".png";
 					rankList.add(rankUrl);
 				}else{
 					count++;
@@ -53,9 +58,18 @@ public class RankingAction extends Action {
 				rank1 = rank2;
 			}
 			System.out.println(rankList);
-			req.setAttribute("recycleMarks", recycleMarks);
-			req.setAttribute("img", img);
-			req.setAttribute("rankList", rankList);
+			count = 0;
+			for(String rank : rankList){
+				ranking.add(rank);
+				ranking.add(recycleMarks.get(count).getMarkImg());
+				rankingList.addAll(ranking);
+				count++;
+			}
+			System.out.println(rankingList);
+//			req.setAttribute("recycleMarks", recycleMarks);
+//			req.setAttribute("img", img);
+//			req.setAttribute("rankList", rankList);
+			req.setAttribute("rankinglist", rankingList);
 
 			//フォワード
 			url = "ranking.jsp";

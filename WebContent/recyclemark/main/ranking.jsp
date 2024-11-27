@@ -1,9 +1,4 @@
 <%-- メニューJSP --%>
-
-<%
- int count = 0;
-%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -128,14 +123,13 @@
 
 <table>
 		    		<!-- 繰り返し文で表示  ~start~ -->
-		    		<c:forEach var="rank" items="rankList">
-			        <%-- <tr>
-			        	<td>${rankList[count]}</td>
+		    		<c:forEach var="ranking" items="${rankinglist }">
+			        <tr>
+			        	<c:forEach var="pass" items="${ranking }">
+			        		<td><input type="image" src="${pass }"></td>
+			        	</c:forEach>
+			        </tr>
 
-			        </tr>--%>
-			        <p>${rank }</p>
-			        <input type="image" src="${rank}">
-			        <% count++; %>
 			        </c:forEach>
 		    		<!-- 繰り返し文で表示  ~end~ -->
 				</table>
