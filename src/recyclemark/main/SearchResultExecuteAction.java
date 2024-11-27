@@ -8,6 +8,7 @@ import bean.Detail;
 import bean.User;
 import dao.DetailDao;
 import dao.FavoriteDao;
+import dao.HistoryDao;
 import tool.Action;
 
 public class SearchResultExecuteAction extends Action {
@@ -18,6 +19,7 @@ public class SearchResultExecuteAction extends Action {
 		User user = null;
 		DetailDao detailDao = new DetailDao();				// Daoのインスタンス化
 		FavoriteDao favoriteDao = new FavoriteDao();
+		HistoryDao historyDao = new HistoryDao();
 		// Map<String, String> errors = new HashMap<>();	// エラーメッセージ
 
 		String markId = "";
@@ -46,7 +48,7 @@ public class SearchResultExecuteAction extends Action {
 				heartStamp ++;
 
 				// DBにデータを保存 5
-
+				historyDao.save(Integer.parseInt(userId),Integer.parseInt(markId));
 				// レスポンス値をセット 6
 				req.setAttribute("heartStamp", heartStamp);
 				req.setAttribute("detail", detail);
