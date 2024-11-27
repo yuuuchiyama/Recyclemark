@@ -1,4 +1,9 @@
 <%-- メニューJSP --%>
+
+<%
+ int count = 0;
+%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -121,30 +126,16 @@
 		<!-- メインコンテンツ部分 -->
 		<div class="ranking">
 
-		    	<table>
+<table>
 		    		<!-- 繰り返し文で表示  ~start~ -->
 		    		<c:forEach var="rank" items="rankList">
-			        <tr>
-			        	<td>${rank}</td>
-			        	<%--<td>${recyclemark.RecycleImg }</td>
-			             <td><img class="crown_1" src="image/1.png" alt="1"></td>
-			            <td><img src="image/プラスチック.gif" alt="プラスチックマーク"></td>
-			            <td>プラスチックマーク</td> --%>
-			        </tr>
-			        </c:forEach>
-		    		<!-- 繰り返し文で表示  ~end~ -->
-				</table>
-				<table>
-		    		<!-- 繰り返し文で表示  ~start~ -->
-		    		<c:forEach var="recyclemark" items="recycleMark">
-			        <tr>
-			        	<%--<td>${recyclemark.RecycleImg }</td>
-			        	 <td>${rankList[count]}</td>--%>
+			        <%-- <tr>
+			        	<td>${rankList[count]}</td>
 
-			            <td><img class="crown_1" src="image/1.png" alt="1"></td>
-			            <td><img src="images/${recyclemark.RecycleImg }" alt="プラスチックマーク"></td>
-			            <td>プラスチックマーク</td>
-			        </tr>
+			        </tr>--%>
+			        <p>${rank }</p>
+			        <input type="image" src="${rank}">
+			        <% count++; %>
 			        </c:forEach>
 		    		<!-- 繰り返し文で表示  ~end~ -->
 				</table>

@@ -39,7 +39,7 @@ public class HistoryAction extends Action {
 		//ビジネスロジック 4
 		//DBへデータ保存 5
 		//レスポンス値をセット 6
-		req.setAttribute("recycleMark", recycleMarks);
+		req.setAttribute("recyclemarks", recycleMarks);
 		//フォワード 7
 		url = "search_history.jsp";
 		req.getRequestDispatcher(url).forward(req, res);

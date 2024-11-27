@@ -17,14 +17,17 @@ public class RankingAction extends Action {
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
 		String url = "";
+		String rankUrl = "";
 		RecycleMarkDao recycleMarkDao = new RecycleMarkDao();
 //		RecycleMark recycleMark = null;
+
 
 		//リクエストパラメータ―の取得 2
 
 		//DBからデータ取得 3
 		List<RecycleMark> recycleMarks = recycleMarkDao.getRanking();//リサイクルマークリスト
 //		System.out.println(recycleMarks);
+		String img = recycleMarks.get(0).getMarkImg();
 		//ビジネスロジック 4
 		//DBへデータ保存 5
 		//レスポンス値をセット 6
@@ -32,23 +35,26 @@ public class RankingAction extends Action {
 		//条件で手順4~7の内容が分岐
 		if (recycleMarks != null) {// 認証成功の場合
 //			System.out.println("1");
-			ArrayList<Integer> rankList = new ArrayList<>();
+			ArrayList<String> rankList = new ArrayList<>();
 
 //			recycleMark = recycleMarks.get(0);
 			int rank1 = recycleMarks.get(0).getSearchCount();
-//			System.out.println(recycleMark);
+//			System.out.println(recycleMarks.get(0).getMarkImg());
 			int count = 1;
 			for(RecycleMark recycleMark : recycleMarks){
 				int rank2 = recycleMark.getSearchCount();
 				if(rank1 == rank2){
-					rankList.add(count);
+					rankUrl = "../../images/" + count + ".gif";
+					rankList.add(rankUrl);
 				}else{
 					count++;
-					rankList.add(count);
+					rankList.add(rankUrl);
 				}
 				rank1 = rank2;
 			}
-			req.setAttribute("recycleMark", recycleMarks);
+			System.out.println(rankList);
+			req.setAttribute("recycleMarks", recycleMarks);
+			req.setAttribute("img", img);
 			req.setAttribute("rankList", rankList);
 
 			//フォワード
