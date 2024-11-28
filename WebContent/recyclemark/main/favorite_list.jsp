@@ -11,7 +11,7 @@
 	        padding: 0;
 	        background-image: url("../../images/20210729_1.jpg");
 	        background-size: cover;
-	        background-position: center;
+	        background-position: center top;
 	        background-attachment: fixed;
 	        color: #333;
     	}
