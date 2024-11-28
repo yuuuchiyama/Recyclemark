@@ -23,7 +23,7 @@ public class DetailDao extends Dao {
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("SELECT mark.RecycleId, mark.RecycleImg, mark.RecycleName, detail.RecycleDescribe FROM recyclemarkdata mark" + join + condition);
+			statement = connection.prepareStatement("SELECT mark.RecycleId, mark.RecycleImg, detail.RecycleName, detail.RecycleDescribe FROM recyclemarkdata mark" + join + condition);
 			// プリペアードステートメントに特徴をバインド
 			statement.setString(1, markId);
 			// プリペアードステートメントを実行
@@ -35,7 +35,7 @@ public class DetailDao extends Dao {
 				// リサイクルマークインスタンスに検索結果をセット
 				detail.setMarkId(rSet.getInt("mark.RecycleId"));
 				detail.setMarkImg(rSet.getString("mark.RecycleImg"));
-				detail.setMarkName(rSet.getString("mark.RecycleName"));
+				detail.setMarkName(rSet.getString("detail.RecycleName"));
 				detail.setMarkDescribe(rSet.getString("detail.RecycleDescribe"));
 			} else {
 				// リザルトセットが存在しない場合
