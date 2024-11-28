@@ -31,7 +31,7 @@ public class HistoryDao extends Dao {
 			// プリペアードステートメントにUPDATE文をセット
 			statement = connection.prepareStatement(sql);
 			// プリペアードステートメントに値をバインド
-			statement.setInt(1, (Integer) null);
+			statement.setString(1,null);
 			statement.setInt(2, userid);
 			statement.setInt(3, recycleid);
 			statement.setString(4, formatNowDate);
