@@ -116,7 +116,7 @@
 
 
 
-	<%
+<%
  int count = 0;
 %>
 	<c:param name="content">
