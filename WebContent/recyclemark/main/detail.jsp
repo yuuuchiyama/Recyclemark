@@ -5,214 +5,182 @@
 <c:import url="/common/base.jsp">
      <c:param name="style">
 
-		body {
-		        font-family: Arial, sans-serif;
-		        margin: 0;
-		        padding: 0;
-		        background-image: url("../../images/20210729_1.jpg");
-		        background-size: cover;
-		        background-position: center top;
-		        background-attachment: fixed;
-		        color: #333;
-		    }
-		       /* Header style */
-		    .header {
-		    display: flex;
-		    padding: 15px 20px;
-		    justify-content: space-between;
-		    align-items: center;
-		    background-color: rgba(255, 255, 255, 0.8);
-		    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-		    color: #000;
-		    }
-		    .title {
-		        font-size: 40px;
-		        font-weight: bold;
-		    }
-		    /* Hamburger menu icon */
-		    .menu-icon {
-		        display: flex;
-		        cursor: pointer;
-		        flex-direction: column;
-		        gap: 6px;
-		        justify-content: center;
-		        align-items: center;
-		        z-index: 1002; /* Menuの上に表示するため */
-		    }
-		    .menu-icon div {
-		        width: 25px;
-		        height: 3px;
-		        background-color: #000;
-		        border-radius: 2px;
-		    }
-		    /* Full-screen menu style */
-		    .menu {
-		        display: none;
-		        flex-direction: column;
-		        position: fixed;
-		        top: 0;
-		        left: 0;
-		        width: 100%;
-		        background-color: #fff;
-		        justify-content: flex-start;
-		        padding-top: 60px;
-		        z-index: 1000;
-		        height: calc(100vh - 120px);
-		    }
-		    .menu-item {
-		        font-size: 18px;
-		        padding: 15px 20px;
-		        border-bottom: 1px solid #ddd;
-		        cursor: pointer;
-		    }
-		    .menu-item a {
-		    font-size: 16px;
-		    padding: 10px 0;
-		    text-decoration: none;
-		    color: #333;
-		    }
-		    /* Submenu style */
-		    .submenu {
-		        padding-left: 20px;
-		        display: none;
-		        flex-direction: column;
-		    }
-		    .submenu a {
-		        font-size: 16px;
-		        padding: 10px 0;
-		        text-decoration: none;
-		        color: #333;
-		    }
-		    .menu-item:hover, .submenu a:hover {
-		        background-color: #f0f0f0;
-		    }
 
-		    .back {
-		    border-radius: 50%; /* ボタンを丸く */
-		    display: flex;
-		    justify-content: center; /* 水平方向に中央揃え */
-		    align-items: center; /* 垂直方向に中央揃え */
-		    padding: 18px 18px 15px 10px;
-		    width: 25px;
-		    height: 20px;
-		    background: #f0f0f0;
-		    color: #4E7644;
-		    text-decoration: none;
-		    font-size: 30px;
-		    margin: 10px 20px;
-		    border: 1px solid #ccc; /* 境界線の色 */
-		    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-		    transition: background-color 0.3s, border-color 0.3s;
-		    }
+      body {
+        font-family: Arial, sans-serif;
+        height: 100%; /* 全体の高さを100%に設定 */
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+    }
+/* ヘッダーのスタイル */
+       .header {
+           display: flex;
+           background-color: #ddd;
+           padding: 15px 20px;
+           justify-content: space-between; /* Title and icon space */
+           align-items: center; /* Align items vertically */
+           box-shadow: 0px 4px 2px -2px gray;
+       }
+       .title {
+           font-size: 40px;
+           font-weight: bold;
+       }
+       /* Hamburger menu icon */
+       .menu-icon {
+           display: flex;
+           cursor: pointer;
+           flex-direction: column;
+           gap: 6px;
+           justify-content: center; /* Center the icon vertically */
+           align-items: center; /* Center the icon horizontally */
+           z-index: 1002; /* Menuの上に表示するため */
+       }
+       .menu-icon div {
+           width: 25px;
+           height: 3px;
+           background-color: #333;
+           border-radius: 2px;
+       }
+       /* Full-screen menu style */
+       .menu {
+           display: none;
+           flex-direction: column;
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           background-color: #fff;
+           justify-content: flex-start;
+           padding-top: 60px;
+           z-index: 1000;
+           height: calc(100vh - 120px);
+       }
+       .menu-item {
+           font-size: 18px;
+           padding: 15px 20px;
+           border-bottom: 1px solid #ddd;
+           cursor: pointer;
+       }
+       .menu-item a {
+        font-size: 16px;
+        padding: 10px 0;
+        text-decoration: none;
+        color: #333;
+       }
+       /* Submenu style */
+       .submenu {
+           padding-left: 20px;
+           display: none;
+           flex-direction: column;
+       }
+       .submenu a {
+           font-size: 16px;
+           padding: 10px 0;
+           text-decoration: none;
+           color: #333;
+       }
+       .menu-item:hover,
+       .submenu a:hover {
+           background-color: #f0f0f0;
+       }
+        /* 戻るリンクのスタイル */
+        .back {
+        text-decoration: underline;
+        margin: 10px 20px; /* 左に寄せるため左マージンを設定 */
+        font-size: 30px;
+        text-align: left; /* 左揃えに設定 */
+        display: inline-block; /* 幅いっぱいを占めず、左寄せ */
+        }
+        .back:hover {
+            text-decoration: underline;
+        }
 
-		    .back:hover {
-		        background-color: #e0e0e0;
-		        border-color: #999;
-		        color: #3a5c34;
-		    }
+    /* メインコンテンツのスタイル */
+    .main {
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 150px);
+    }
+    .icon-and-text {
+        display: flex;
+        align-items: center;
+        gap: 200px;
+        margin-bottom: 20px;
+    }
+    .icon-section p{
+        font-size: 30px;
+    }
+    .icon-section img {
+        width: 250px;
+        height: 250px;
+    }
+    .explanation-box {
+        padding: 90px 120px;
+        font-size: 24px;
+        border: 2px solid #333;
+        border-radius: 15px;
+        min-width: 200px;
+        text-align: center;
+    }
+    .explanation-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-		    /* メインコンテンツのスタイル */
-		    .main {
-		        padding: 20px;
-		        text-align: center;
-		        display: flex;
-		        flex-direction: column;
-		        align-items: center;
-		        margin: 20px auto 0 auto;
-		        min-height: 111vh;
-		        padding: 20px;
-		    }
-		    .main-container {
-		        background-color: rgba(255, 255, 255, 0.7); /* 半透明の背景色 */
-		        padding: 60px 50px 60px 50px;
-		        border-radius: 15px;
-		        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-		        max-width: 900px; /* 任意の幅 */
-		        width: 100%;
-		        text-align: center;
-		    }
+    .details-link {
+        font-size: 30px;
+        text-decoration: underline;
+        color: #333;
+        margin-top: 30px;
+    }
 
-		    .icon-and-text {
-		        display: flex;
-		        align-items: center;
-		        gap: 150px;
-		        margin-top: 150px;
-		        margin-left: 90px;
-		        position: relative;
-		    }
-
-
-		    .icon-section p{
-		        font-size: 25px;
-		        text-align: center;
-		        font-weight: bold;
-		    }
-		    .icon-section img {
-		        width: 250px;
-		        height: 250px;
-		        margin-top: -110px;
-		        object-fit: contain;
-		        border: 1.5px solid #333;
-		    }
-		    .explanation-box {
-		        padding: 100px 20px;
-		        font-size: 20px;
-		        border: 2px solid #333;
-		        border-radius: 15px;
-		        min-width: 200px;
-		        text-align: center;
-		        margin: -130px 0 0 0;
-		    }
-		    .explanation-section {
-		        display: flex;
-		        flex-direction: column;
-		        align-items: center;
-		        justify-content: center;
-		        margin-right: 100px;
-		    }
-
-		    .details-link {
-		        font-size: 25px;
-		        text-decoration: underline;
-		        color: #333;
-		        margin-top: 25px;
-		    }
-
-		    .menu-link {
-		        font-size: 25px;
-		        text-decoration: underline;
-		        color: #000;
-		        margin: 10px 30px 5px 30px; /* 下のマージンを小さくして間隔を狭める */
-		        display: block;
-		        text-align: center;
-		    }
-
-		    .hart {
-		        position: absolute;
-		        top: -250px; /* 他要素に応じて調整 */
-		        bottom: 50px;
-		        right: -80px;
-		    }
-		    .likeButton {
-		    color: #888; /* 初期状態のグレー */
-		    font-size: 6em; /* アイコンを大きくする */
-		    padding-top: 50px;
-		    padding-right: 50px;
-		    background-color: transparent;
-		    border: none; /* ボーダーをなくす */
-		    cursor: pointer;
-		    transition: color 150ms ease-in-out, transform 150ms ease-in-out;
-		    outline: 0;
-		    }
-		    .likeButton__icon {
-		        display: inline-block;
-		        fill: currentColor;
-		        width: 1em; /* サイズ調整 */
-		        height: 1em;
-		    }
-		    .likeButton.liked {
-		        color: #e5348c; /* いいね時の色（ピンク） */
-		    }
+    .menu-link {
+        font-size: 30px;
+        text-decoration: underline;
+        color: #000;
+        margin-bottom: 20px;
+        text-align: center;
+        position: relative;
+        display: inline-block;
+    }
+    .hart {
+        position: absolute;
+        top: 140px; /* 調整して説明文ボックスの上に配置 */
+        right: 0; /* 右端に配置 */
+        transform: translate(-50%, -50%); /* 微調整 */
+    }
+    .likeButton {
+    color: #888; /* 初期状態のグレー */
+    font-size: 5em; /* アイコンを大きくする */
+    padding-top: 20px;
+    background-color: transparent;
+    border: none; /* ボーダーをなくす */
+    cursor: pointer;
+    transition: color 150ms ease-in-out, transform 150ms ease-in-out;
+    outline: 0;
+    }
+    .likeButton__icon {
+        display: inline-block;
+        fill: currentColor;
+        width: 1em; /* サイズ調整 */
+        height: 1em;
+    }
+    .liked {
+        color: #e5348c; /* いいね時の色（ピンク） */
+        font-size: 5em; /* アイコンを大きくする */
+    	padding-top: 20px;
+    	background-color: transparent;
+    	border: none; /* ボーダーをなくす */
+    	cursor: pointer;
+    	transition: color 150ms ease-in-out, transform 150ms ease-in-out;
+    	outline: 0;
+    }
     </c:param>
 
     <c:param name="title">
