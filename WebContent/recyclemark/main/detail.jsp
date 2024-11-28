@@ -241,7 +241,7 @@
 				<div class="explanation-section">
 					<div class="explanation-box">${detail.markDescribe}</div>
 					<!-- 詳細リンク -->
-					<a href="Districts.action" class="details-link">詳細はこちら</a>
+					<a href="Districts.action" class="details-link">地区別詳細はこちら</a>
 				</div>
 			</div>
 			<form action="FavoriteAddExecute.action" method="post">
