@@ -47,6 +47,7 @@ public class RankingAction extends Action {
 				int rank2 = recycleMark.getSearchCount();
 //				System.out.println(rank1+":"+rank2);
 //				System.out.println(rank1 == rank2);
+
 				if(rank1 == rank2){
 					rankUrl = "../../images/" + count + ".png";
 					rankList.add(rankUrl);
@@ -68,8 +69,12 @@ public class RankingAction extends Action {
 //				System.out.println(recycleMarks.get(count).getMarkImg());
 //				System.out.println(ranking);
 //				System.out.println(count);
+				int markId = recycleMarks.get(count).getMarkId();
+				String name = recycleMarkDao.getName(markId);
+				System.out.println(name);
 				ranking.add(rank);
 				ranking.add(recycleMarks.get(count).getMarkImg());
+				ranking.add(name);
 				rankingList.addAll(ranking);
 				ranking.clear();
 				count++;
@@ -80,7 +85,7 @@ public class RankingAction extends Action {
 //			req.setAttribute("rankList", rankList);
 			req.setAttribute("rankinglist", rankingList);
 
-			//フォワード
+//			//フォワード
 			url = "ranking.jsp";
 			req.getRequestDispatcher(url).forward(req, res);
 		} else {
