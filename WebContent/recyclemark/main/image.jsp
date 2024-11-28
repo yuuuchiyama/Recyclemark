@@ -273,7 +273,7 @@
 	        // ソート後の予測結果を表示
 	        for (let i = 0; i < topPredictions.length; i++) {
 	            // 確率をパーセント形式に変換
-	            const probabilityPercent = (topPredictions[i].probability * 100).toFixed(2) + "%";
+	            const probabilityPercent = Math.floor(topPredictions[i].probability * 100) + "%";
 	            const classPrediction = topPredictions[i].className + ": " + probabilityPercent;
 
 	            // 上位3項目のみを表示
