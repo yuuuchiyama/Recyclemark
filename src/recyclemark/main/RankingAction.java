@@ -44,25 +44,34 @@ public class RankingAction extends Action {
 //			System.out.println(recycleMarks.get(0).getMarkImg());
 			int count = 1;
 			for(RecycleMark recycleMark : recycleMarks){
-				if(count == 4){
-					break;
-				}
 				int rank2 = recycleMark.getSearchCount();
+//				System.out.println(rank1+":"+rank2);
+//				System.out.println(rank1 == rank2);
 				if(rank1 == rank2){
 					rankUrl = "../../images/" + count + ".png";
 					rankList.add(rankUrl);
 				}else{
 					count++;
+					if(count == 4){
+						break;
+					}
+					rankUrl = "../../images/" + count + ".png";
 					rankList.add(rankUrl);
 				}
+//				System.out.println(count);
 				rank1 = rank2;
 			}
-			System.out.println(rankList);
+//			System.out.println(rankList);
 			count = 0;
 			for(String rank : rankList){
+//				System.out.println(rank);
+//				System.out.println(recycleMarks.get(count).getMarkImg());
+//				System.out.println(ranking);
+//				System.out.println(count);
 				ranking.add(rank);
 				ranking.add(recycleMarks.get(count).getMarkImg());
 				rankingList.addAll(ranking);
+				ranking.clear();
 				count++;
 			}
 			System.out.println(rankingList);

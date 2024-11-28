@@ -40,7 +40,6 @@ public class RecycleMarkDao extends Dao {
 				recycleMark.setMarkId(rSet.getInt("mark.RecycleId"));
 				recycleMark.setMarkImg(rSet.getString("mark.RecycleImg"));
 				recycleMark.setSearchCount(rSet.getInt("mark.SearchCnt"));
-				recycleMark.setMarkName(rSet.getString("detail.RecycleName"));
 				// リストに追加
 				list.add(recycleMark);
 			}
