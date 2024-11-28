@@ -227,7 +227,7 @@
 			    <form action="FavoriteExecute.action" method="post">
 			        <button type="submit">お気に入り</button>
 			    </form>
-			    <form action="HistoryExecute.action" method="post">
+			    <form action="History.action" method="post">
 			        <button type="submit">検索履歴</button>
 			    </form>
 			    <form action="CalendarExecute.action" method="post">

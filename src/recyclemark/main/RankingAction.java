@@ -17,6 +17,7 @@ public class RankingAction extends Action {
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
 		String url = "";
+		String rankUrl = "";
 		RecycleMarkDao recycleMarkDao = new RecycleMarkDao();
 //		RecycleMark recycleMark = null;
 
@@ -25,6 +26,7 @@ public class RankingAction extends Action {
 		//DBからデータ取得 3
 		List<RecycleMark> recycleMarks = recycleMarkDao.getRanking();//リサイクルマークリスト
 //		System.out.println(recycleMarks);
+//		String img = recycleMarks.get(0).getMarkImg();
 		//ビジネスロジック 4
 		//DBへデータ保存 5
 		//レスポンス値をセット 6
@@ -32,24 +34,42 @@ public class RankingAction extends Action {
 		//条件で手順4~7の内容が分岐
 		if (recycleMarks != null) {// 認証成功の場合
 //			System.out.println("1");
-			ArrayList<Integer> rankList = new ArrayList<>();
+			ArrayList<String> rankList = new ArrayList<>();
+			ArrayList<String> rankingList = new ArrayList<>();
+			ArrayList<String> ranking = new ArrayList<>();
+
 
 //			recycleMark = recycleMarks.get(0);
 			int rank1 = recycleMarks.get(0).getSearchCount();
-//			System.out.println(recycleMark);
+//			System.out.println(recycleMarks.get(0).getMarkImg());
 			int count = 1;
 			for(RecycleMark recycleMark : recycleMarks){
+				if(count == 4){
+					break;
+				}
 				int rank2 = recycleMark.getSearchCount();
 				if(rank1 == rank2){
-					rankList.add(count);
+					rankUrl = "../../images/" + count + ".png";
+					rankList.add(rankUrl);
 				}else{
 					count++;
-					rankList.add(count);
+					rankList.add(rankUrl);
 				}
 				rank1 = rank2;
 			}
-			req.setAttribute("recycleMark", recycleMarks);
-			req.setAttribute("rankList", rankList);
+			System.out.println(rankList);
+			count = 0;
+			for(String rank : rankList){
+				ranking.add(rank);
+				ranking.add(recycleMarks.get(count).getMarkImg());
+				rankingList.addAll(ranking);
+				count++;
+			}
+			System.out.println(rankingList);
+//			req.setAttribute("recycleMarks", recycleMarks);
+//			req.setAttribute("img", img);
+//			req.setAttribute("rankList", rankList);
+			req.setAttribute("rankinglist", rankingList);
 
 			//フォワード
 			url = "ranking.jsp";

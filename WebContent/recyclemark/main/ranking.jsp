@@ -121,30 +121,15 @@
 		<!-- メインコンテンツ部分 -->
 		<div class="ranking">
 
-		    	<table>
+<table>
 		    		<!-- 繰り返し文で表示  ~start~ -->
-		    		<c:forEach var="rank" items="rankList">
+		    		<c:forEach var="ranking" items="${rankinglist }">
 			        <tr>
-			        	<td>${rank}</td>
-			        	<%--<td>${recyclemark.RecycleImg }</td>
-			             <td><img class="crown_1" src="image/1.png" alt="1"></td>
-			            <td><img src="image/プラスチック.gif" alt="プラスチックマーク"></td>
-			            <td>プラスチックマーク</td> --%>
+			        	<c:forEach var="pass" items="${ranking }">
+			        		<td><input type="image" src="${pass }"></td>
+			        	</c:forEach>
 			        </tr>
-			        </c:forEach>
-		    		<!-- 繰り返し文で表示  ~end~ -->
-				</table>
-				<table>
-		    		<!-- 繰り返し文で表示  ~start~ -->
-		    		<c:forEach var="recyclemark" items="recycleMark">
-			        <tr>
-			        	<%--<td>${recyclemark.RecycleImg }</td>
-			        	 <td>${rankList[count]}</td>--%>
 
-			            <td><img class="crown_1" src="image/1.png" alt="1"></td>
-			            <td><img src="images/${recyclemark.RecycleImg }" alt="プラスチックマーク"></td>
-			            <td>プラスチックマーク</td>
-			        </tr>
 			        </c:forEach>
 		    		<!-- 繰り返し文で表示  ~end~ -->
 				</table>
