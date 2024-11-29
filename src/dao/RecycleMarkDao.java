@@ -129,10 +129,12 @@ public class RecycleMarkDao extends Dao {
 		PreparedStatement statement = null;
 		// リサイクルマークインスタンスを初期化
 		RecycleMark recycleMark = new RecycleMark();
-
+		// SQL文の条件
+		String join = " inner join recyclemarkdata_japanese japanese on mark.RecycleId = japanese.RecycleId";
+		String condition = " where japanese.RecycleId = ?;";
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from recyclemarkdata where RecycleId=?");
+			statement = connection.prepareStatement("select mark.RecycleId, mark.RecycleImg, japanese.RecycleName from recyclemarkdata mark" + join + condition);
 			// プリペアードステートメントにユーザIDをバインド
 			statement.setInt(1, recycleId);
 			// プリペアードステートメントを実行
@@ -140,9 +142,9 @@ public class RecycleMarkDao extends Dao {
 			// リザルトセットを全権走査
 			if (rSet.next()) {
 				// リサイクルマークインスタンスに検索結果をセット
-				recycleMark.setMarkId(rSet.getInt("RecycleId"));
-				recycleMark.setMarkImg(rSet.getString("RecycleImg"));
-				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
+				recycleMark.setMarkId(rSet.getInt("mark.RecycleId"));
+				recycleMark.setMarkImg(rSet.getString("mark.RecycleImg"));
+				recycleMark.setMarkName(rSet.getString("japanese.RecycleName"));
 			}else{
 				return null;
 			}

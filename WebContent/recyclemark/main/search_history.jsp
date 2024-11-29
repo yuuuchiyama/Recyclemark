@@ -116,26 +116,24 @@
 
 
 
-<%
- int count = 0;
-%>
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
 		<div class="main">
 			<div class="history">
 		    	<table>
 		    		<!-- 繰り返し文で表示  ~start~ -->
-		    		<c:forEach var="recyclemark" items="${recycleMark }">
+		    		<c:forEach var="recyclemark" items="${recyclemarks }">
 			        <tr>
 			        	<td><span class="history_1" >・</span> <!-- カスタムの「・」 --></td>
-			        	<td>${recyclemark.RecycleImg }</td>
-			            <%-- <td><img class="crown_1" src="image/1.png" alt="1"></td>
-			            <td><img src="image/プラスチック.gif" alt="プラスチックマーク"></td> --%>
-			            <td>プラスチックマーク</td>
-			        </tr>
-			        <% count++; %>
-			        </c:forEach>
-		    		<!-- 繰り返し文で表示  ~end~ -->
+			        	<td> <input type="image" src="${recyclemark.getMarkImg() }" class="rank-img"></td>
+						<td>
+							<a href="SearchResultExecute.action?markId=${recyclemark.getMarkId() }" class="ranking-link">
+								${recyclemark.getMarkName() }
+							</a>
+						</td>
+					</tr>
+					</c:forEach>
+		    	<!-- 繰り返し文で表示  ~end~ -->
 				</table>
 			</div>
 		</div>
