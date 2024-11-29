@@ -144,37 +144,28 @@
 
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
-<<<<<<< HEAD
-		<div class="ranking">
-			<table>
-		    	<!-- 繰り返し文で表示  ~start~ -->
-		    	<c:forEach var="ranking" items="${rankinglist }">
-=======
 		<div class="main">
             <div class="main-container">
 				<div class="ranking">
->>>>>>> branch 'master' of https://github.com/yuuuchiyama/Recyclemark.git
+					<table>
+				    	<!-- 繰り返し文で表示  ~start~ -->
+				    	<c:forEach var="ranking" items="${rankinglist }">
+						<tr>
+					        <td><input type="image" src="${ranking.getRankUrl() }"></td>
+					        <td><input type="image" src="${ranking.getImgUrl() }"></td>
+					        <td><a href="SearchResultExecute.action?markId=${ranking.getMarkId() }">${ranking.getName() }</a></td>
+						</tr>
+						</c:forEach>
+						<!-- 繰り返し文で表示  ~end~ -->
+					</table>
 
-<<<<<<< HEAD
-				<tr>
-			        <td><input type="image" src="${ranking.getRankUrl() }"></td>
-			        <td><input type="image" src="${ranking.getImgUrl() }"></td>
-			        <td><a href="SearchResultExecute.action?markId=${ranking.getMarkId() }">${ranking.getName() }</a></td>
-				</tr>
-=======
-				<table>
+					<%--
+					<table>
 					    <c:forEach var="ranking" items="${rankinglist}" varStatus="status">
 					        <!-- 2つごとに新しい行を開始 -->
 					        <c:if test="${status.index % 2 == 0}">
 					            <tr>
 					        </c:if>
->>>>>>> branch 'master' of https://github.com/yuuuchiyama/Recyclemark.git
-
-<<<<<<< HEAD
-				</c:forEach>
-		    	<!-- 繰り返し文で表示  ~end~ -->
-			</table>
-=======
 					        <!-- 画像を表示 -->
 					        <td><input class="ranking-image" type="image" src="${ranking}"></td>
 
@@ -184,9 +175,10 @@
 					        </c:if>
 					    </c:forEach>
 					</table>
+					--%>
+
 				</div>
-        	</div>
->>>>>>> branch 'master' of https://github.com/yuuuchiyama/Recyclemark.git
+			</div>
 		</div>
 	</c:param>
 
