@@ -16,100 +16,97 @@
 		}
 		/* ヘッダーのスタイル */
 		.header {
-			display: flex;
-			background-color: #ddd;
-			padding: 15px 20px;
-			justify-content: space-between; /* Title and icon space */
-			align-items: center; /* Align items vertically */
-			box-shadow: 0px 4px 2px -2px gray;
-		}
-		.title {
-			font-size: 40px;
-			font-weight: bold;
-		}
-		/* Hamburger menu icon */
-		.menu-icon {
-			display: flex;
-			cursor: pointer;
-			flex-direction: column;
-			gap: 6px;
-			justify-content: center; /* Center the icon vertically */
-			align-items: center; /* Center the icon horizontally */
-			z-index: 1002; /* Menuの上に表示するため */
-		}
-		.menu-icon div {
-			width: 25px;
-			height: 3px;
-			background-color: #333;
-			border-radius: 2px;
-		}
-		/* Full-screen menu style */
-		.menu {
-			display: none;
-			flex-direction: column;
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			background-color: #fff;
-			justify-content: flex-start;
-			padding-top: 60px;
-			z-index: 1000;
-			height: calc(100vh - 120px);
-		}
-		.menu-item {
-			font-size: 18px;
-			padding: 15px 20px;
-			border-bottom: 1px solid #ddd;
-			cursor: pointer;
-		}
-		.menu-item a {
-			font-size: 16px;
-			padding: 10px 0;
-			text-decoration: none;
-			color: #333;
-		}
-		/* Submenu style */
-			.submenu {
-			padding-left: 20px;
-			display: none;
-			flex-direction: column;
-		}
-		.submenu a {
-			font-size: 16px;
-			padding: 10px 0;
-			text-decoration: none;
-			color: #333;
-		}
-		.menu-item:hover,
-		.submenu a:hover {
-			background-color: #f0f0f0;
-		}
-		/* 戻るリンクのスタイル */
-		.back {
-			border-radius: 50%; /* ボタンを丸く */
-			display: flex;
-			justify-content: center; /* 水平方向に中央揃え */
-			align-items: center; /* 垂直方向に中央揃え */
-			padding: 18px 18px 15px 10px;
-			width: 25px;
-			height: 20px;
-			background: #f0f0f0;
-			color: #4E7644;
-			text-decoration: none;
-			font-size: 30px;
-			margin: 10px 20px;
-			border: 1px solid #ccc; /* 境界線の色 */
-			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-			transition: background-color 0.3s, border-color 0.3s;
-		}
-
-		.back:hover {
-			background-color: #e0e0e0;
-			border-color: #999;
-			color: #3a5c34;
-		}
-
+		    display: flex;
+		    padding: 15px 20px;
+		    justify-content: space-between;
+		    align-items: center;
+		    background-color: rgba(255, 255, 255, 0.8);
+		    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+		    color: #000;
+	    }
+	    .title {
+		    font-size:40px;
+		    font-weight: bold;
+	    }
+	    /* Hamburger menu icon */
+		    .menu-icon {
+		    display: flex;
+		    cursor: pointer;
+		    flex-direction: column;
+		    gap: 6px;
+		    justify-content: center;
+		    align-items: center;
+		    z-index: 1002; /* Menuの上に表示するため */
+	    }
+	    .menu-icon div {
+		    width: 25px;
+		    height: 3px;
+		    background-color: #000;
+		    border-radius: 2px;
+	    }
+	    /* Full-screen menu style */
+	    .menu {
+		    display: none;
+		    flex-direction: column;
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    background-color: #fff;
+		    justify-content: flex-start;
+		    padding-top: 60px;
+		    z-index: 1000;
+		    height: calc(100vh - 120px);
+	    }
+	    .menu-item {
+		    font-size: 18px;
+		    padding: 15px 20px;
+		    border-bottom: 1px solid #ddd;
+		    cursor: pointer;
+	    }
+	    .menu-item a {
+		    font-size: 16px;
+		    padding: 10px 0;
+		    text-decoration: none;
+		    color: #333;
+	    }
+	    /* Submenu style */
+	    .submenu {
+	    padding-left: 20px;
+		    display: none;
+		    flex-direction: column;
+	    }
+	    .submenu a {
+		    font-size: 16px;
+		    padding: 10px 0;
+		    text-decoration: none;
+		    color: #333;
+	    }
+	    .menu-item:hover, .submenu a:hover {
+	    	background-color: #f0f0f0;
+	    }
+	    .back {
+		    border-radius: 50%; /* ボタンを丸く */
+		    display: flex;
+		    justify-content: center; /* 水平方向に中央揃え */
+		    align-items: center; /* 垂直方向に中央揃え */
+		    padding: 18px 18px 15px 10px;
+		    width: 25px;
+		    height: 20px;
+		    background: #f0f0f0;
+		    color: #4E7644;
+		    text-decoration: none;
+		    font-size: 30px;
+		    margin: 10px 20px;
+		    border: 1px solid #ccc; /* 境界線の色 */
+		    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+		    transition: background-color 0.3s, border-color 0.3s;
+	    }
+	    .back:hover {
+		    background-color: #e0e0e0;
+		    border-color: #999;
+		    color: #3a5c34;
+	    }
 	    .main {
 	        display: flex;
 	        flex-direction: column;
@@ -128,11 +125,24 @@
 	        width: 100%;
 	        text-align: center;
 	    }
-	   .ranking-image {
-		    width: 100px;  /* 幅を指定 */
-		    height: 100px; /* 高さを指定 */
-		    object-fit: cover; /* 縦横比を保ちながらリサイズ */
-		    margin-right: 20px; /* 右側に間隔を追加 */
+		.rank-img {
+		    width: 100px;
+		    height: 100px;
+		    margin-right: 20px;
+		}
+
+		.mark-img {
+		    width: 150px;
+		    height: 150px;
+		    margin-right: 40px;
+		}
+
+		td {
+		    padding: 10px; /* 画像と文字の上下左右の間隔 */
+		}
+		.ranking-link {
+		    margin-left: 10px; /* 文字と画像の間隔 */
+		    font-size: 30px; /* 文字サイズを調整 */
 		}
 	</c:param>
 	<c:param name="title">
@@ -151,31 +161,23 @@
 				    	<!-- 繰り返し文で表示  ~start~ -->
 				    	<c:forEach var="ranking" items="${rankinglist }">
 						<tr>
-					        <td><input type="image" src="${ranking.getRankUrl() }"></td>
-					        <td><input type="image" src="${ranking.getImgUrl() }"></td>
-					        <td><a href="SearchResultExecute.action?markId=${ranking.getMarkId() }">${ranking.getName() }</a></td>
+						    <td>
+						        <input type="image" src="${ranking.getRankUrl() }" class="rank-img">
+						    </td>
+						    <td>
+						        <input type="image" src="${ranking.getImgUrl() }" class="mark-img">
+						    </td>
+						    <td>
+						        <a href="SearchResultExecute.action?markId=${ranking.getMarkId() }" class="ranking-link">
+						            ${ranking.getName() }
+						        </a>
+						    </td>
 						</tr>
+
 						</c:forEach>
 						<!-- 繰り返し文で表示  ~end~ -->
 					</table>
 
-					<%--
-					<table>
-					    <c:forEach var="ranking" items="${rankinglist}" varStatus="status">
-					        <!-- 2つごとに新しい行を開始 -->
-					        <c:if test="${status.index % 2 == 0}">
-					            <tr>
-					        </c:if>
-					        <!-- 画像を表示 -->
-					        <td><input class="ranking-image" type="image" src="${ranking}"></td>
-
-					        <!-- 2つごとに行を閉じる、または最後の要素で行を閉じる -->
-					        <c:if test="${status.index % 2 == 1 || status.last}">
-					            </tr>
-					        </c:if>
-					    </c:forEach>
-					</table>
-					--%>
 
 				</div>
 			</div>
