@@ -172,7 +172,7 @@ public class RecycleMarkDao extends Dao {
 
 	public String getName(int markId) throws Exception {
 		String name = "";
-;		// コネクションを確立
+		// コネクションを確立
 		Connection connection = getConnection();
 		// プリペアードステートメント
 		PreparedStatement statement = null;
