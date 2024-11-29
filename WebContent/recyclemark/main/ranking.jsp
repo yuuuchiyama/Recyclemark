@@ -149,7 +149,9 @@
 		メニュー
 	</c:param>
 
-
+    <c:param name="header">
+		<a class="back" href="menu.jsp">＜</a>
+	</c:param>
 
 
 	<c:param name="content">

@@ -170,6 +170,10 @@
 		メニュー
 	</c:param>
 
+	<c:param name="header">
+		<a class="back" href="login.jsp">＜</a>
+	</c:param>
+
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
 		<div class="main">

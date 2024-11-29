@@ -245,6 +245,7 @@
 		    検索結果詳細
 	</c:param>
 
+<div class="back" onClick="history.back();">＜</div>
 
 	<c:param name="content">
 		<!-- メインコンテンツ -->
