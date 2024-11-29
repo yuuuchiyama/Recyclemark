@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Ranking;
 import bean.RecycleMark;
 import dao.RecycleMarkDao;
 import tool.Action;
@@ -19,70 +20,70 @@ public class RankingAction extends Action {
 		String url = "";
 		String rankUrl = "";
 		RecycleMarkDao recycleMarkDao = new RecycleMarkDao();
-//		RecycleMark recycleMark = null;
-
-		//リクエストパラメータ―の取得 2
 
 		//DBからデータ取得 3
 		List<RecycleMark> recycleMarks = recycleMarkDao.getRanking();//リサイクルマークリスト
-//		System.out.println(recycleMarks);
-//		String img = recycleMarks.get(0).getMarkImg();
-		//ビジネスロジック 4
-		//DBへデータ保存 5
-		//レスポンス値をセット 6
-		//フォワード 7
+
 		//条件で手順4~7の内容が分岐
 		if (recycleMarks != null) {// 認証成功の場合
-//			System.out.println("1");
-			ArrayList<String> rankList = new ArrayList<>();
-			ArrayList<String> rankingList = new ArrayList<>();
-			ArrayList<String> ranking = new ArrayList<>();
 
+			ArrayList<String> rankUrlList = new ArrayList<>();
+			ArrayList<Ranking> rankingList = new ArrayList<>();
 
-//			recycleMark = recycleMarks.get(0);
 			int rank1 = recycleMarks.get(0).getSearchCount();
-//			System.out.println(recycleMarks.get(0).getMarkImg());
 			int count = 1;
+
 			for(RecycleMark recycleMark : recycleMarks){
 				int rank2 = recycleMark.getSearchCount();
-//				System.out.println(rank1+":"+rank2);
-//				System.out.println(rank1 == rank2);
 
 				if(rank1 == rank2){
 					rankUrl = "../../images/" + count + ".png";
-					rankList.add(rankUrl);
+					rankUrlList.add(rankUrl);
 				}else{
 					count++;
 					if(count == 4){
 						break;
 					}
 					rankUrl = "../../images/" + count + ".png";
-					rankList.add(rankUrl);
+					rankUrlList.add(rankUrl);
 				}
-//				System.out.println(count);
+
 				rank1 = rank2;
 			}
-//			System.out.println(rankList);
+			System.out.println(rankUrlList);
 			count = 0;
-			for(String rank : rankList){
-//				System.out.println(rank);
-//				System.out.println(recycleMarks.get(count).getMarkImg());
-//				System.out.println(ranking);
-//				System.out.println(count);
+			for(String rankUrl2 : rankUrlList){
+
+				Ranking ranking = new Ranking();
+
 				int markId = recycleMarks.get(count).getMarkId();
+				String imgUrl = recycleMarks.get(count).getMarkImg();
 				String name = recycleMarkDao.getName(markId);
-				System.out.println(name);
-				ranking.add(rank);
-				ranking.add(recycleMarks.get(count).getMarkImg());
-				ranking.add(name);
-				rankingList.addAll(ranking);
-				ranking.clear();
+
+				ranking.setRankUrl(rankUrl2);
+				ranking.setImgUrl(imgUrl);
+				ranking.setName(name);
+				ranking.setMarkId(markId);
+				rankingList.add(ranking);
+
+//				System.out.println(ranking.getRankUrl());
+//				System.out.println(ranking.getImgUrl());
+//				System.out.println(ranking.getName());
+//				System.out.println(rankingList);
+//				System.out.println("---------------");
 				count++;
 			}
 			System.out.println(rankingList);
-//			req.setAttribute("recycleMarks", recycleMarks);
-//			req.setAttribute("img", img);
-//			req.setAttribute("rankList", rankList);
+
+//			for(Ranking ranking2 : rankingList){
+//
+//				System.out.println(ranking2.getRankUrl());
+//				System.out.println(ranking2.getImgUrl());
+//				System.out.println(ranking2.getName());
+//				System.out.println("---------------");
+//
+//			}
+
 			req.setAttribute("rankinglist", rankingList);
 
 //			//フォワード

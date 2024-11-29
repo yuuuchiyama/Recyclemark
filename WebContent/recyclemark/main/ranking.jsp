@@ -120,20 +120,19 @@
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
 		<div class="ranking">
+			<table>
+		    	<!-- 繰り返し文で表示  ~start~ -->
+		    	<c:forEach var="ranking" items="${rankinglist }">
 
-<table>
-		    		<!-- 繰り返し文で表示  ~start~ -->
-		    		<c:forEach var="ranking" items="${rankinglist }">
-			        <tr>
-			        	<c:forEach var="pass" items="${ranking }">
-			        		<td><input type="image" src="${pass }"></td>
-			        	</c:forEach>
-			        </tr>
+				<tr>
+			        <td><input type="image" src="${ranking.getRankUrl() }"></td>
+			        <td><input type="image" src="${ranking.getImgUrl() }"></td>
+			        <td><a href="SearchResultExecute.action?markId=${ranking.getMarkId() }">${ranking.getName() }</a></td>
+				</tr>
 
-			        </c:forEach>
-		    		<!-- 繰り返し文で表示  ~end~ -->
-				</table>
-
+				</c:forEach>
+		    	<!-- 繰り返し文で表示  ~end~ -->
+			</table>
 		</div>
 	</c:param>
 
