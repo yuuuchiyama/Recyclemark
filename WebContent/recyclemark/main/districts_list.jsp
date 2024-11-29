@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:import url="/common/base.jsp">  <%-- ヘッダーのベースだから多分消す？後よろしく --%>
+<c:import url="/common/base.jsp">
 	<c:param name="style">
       /* 基本スタイル */
 		 body {
@@ -96,11 +96,15 @@
 
 	</c:param>
 
+	<c:param name="header">
+		<a class="back" href="image_result.jsp">＜</a>
+	</c:param>
+
+
 
 	<c:param name="content">
 
 	<!-- 戻るリンク -->
-	<a href="#" class="back">＜</a>
 	    <h1>東京都　23区</h1>
 	    <li><a href="https://www.union.tokyo23-seisou.lg.jp/joho/index.html">23区のホームページ一覧</a></li>
 
