@@ -64,10 +64,10 @@ public class UserDao extends Dao {
 
 	//ユーザID、パスワード参照でログインする
 	public User login(String mail, String password) throws Exception {
-		System.out.println(mail + ":" + password);
+//		System.out.println(mail + ":" + password);
 		// ユーザクラスのインスタンスを取得
 		User user = get(mail);
-		System.out.println(user);
+//		System.out.println(user);
 		// ユーザがnullまたはパスワードが一致しない場合
 		if (user == null || !user.getPassword().equals(password)) {
 			System.out.println("error");

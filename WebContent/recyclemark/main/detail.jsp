@@ -244,8 +244,8 @@
     <c:param name="title">
 		    検索結果詳細
 	</c:param>
-
-<div class="back" onClick="history.back();">＜</div>
+<%-- ↓ これをコメントアウトしないとバグが発生する ↓ --%>
+<%--<div class="back" onClick="history.back();">＜</div> --%>
 
 	<c:param name="content">
 		<!-- メインコンテンツ -->
@@ -255,8 +255,8 @@
 			<div class="icon-and-text">
 				<!-- アイコン -->
 				<div class="icon-section">
-					<img src="${detail.markImg}" alt="Recycle Mark Icon">
-					<p>${detail.markName}</p>
+					<img src="${detail.getMarkImg()}" alt="Recycle Mark Icon">
+					<p>${detail.getMarkName()}</p>
 				</div>
 				<!-- 説明文ボックス -->
 				<div class="explanation-section">
@@ -268,10 +268,10 @@
 			<form action="FavoriteAddExecute.action" method="post">
 				<div class="hart">
 					<input type="hidden" id="heartStamp" name="heartStamp" value="${heartStamp}">
-					<input type="hidden" name="markId" value="${detail.markId}">
-					<input type="hidden" name="markName" value="${detail.markName}">
-					<input type="hidden" name="markImg" value="${detail.markImg}">
-					<input type="hidden" name="markDescribe" value="${detail.markDescribe}">
+					<input type="hidden" name="markId" value="${detail.getMarkId()}">
+					<input type="hidden" name="markName" value="${detail.getMarkName()}">
+					<input type="hidden" name="markImg" value="${detail.getMarkImg()}">
+					<input type="hidden" name="markDescribe" value="${detail.getMarkDescribe()}">
 					<c:choose>
 						<c:when test="${heartStamp == 0}">
 							<button type="submit" class="likeButton">
