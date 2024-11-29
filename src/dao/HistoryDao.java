@@ -13,7 +13,7 @@ import bean.History;
 
 public class HistoryDao extends Dao {
 
-	public boolean save(String userid,int recycleid) throws Exception{
+	public boolean save(int userid,int recycleid) throws Exception{
 		// コネクションを確立
 		Connection connection = getConnection();
 		// プリペアードステートメント
@@ -24,15 +24,15 @@ public class HistoryDao extends Dao {
 		int count = 0;
 		//現在時刻
 		LocalDateTime nowDate = LocalDateTime.now();
-		DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String formatNowDate = dtf1.format(nowDate);
 		try {
 
 			// プリペアードステートメントにUPDATE文をセット
 			statement = connection.prepareStatement(sql);
 			// プリペアードステートメントに値をバインド
-			statement.setString(1, null);
-			statement.setString(2, userid);
+			statement.setString(1,null);
+			statement.setInt(2, userid);
 			statement.setInt(3, recycleid);
 			statement.setString(4, formatNowDate);
 			// プリペアードステートメントを実行

@@ -116,7 +116,7 @@
 
 
 
-	<%
+<%
  int count = 0;
 %>
 	<c:param name="content">
@@ -125,7 +125,7 @@
 			<div class="history">
 		    	<table>
 		    		<!-- 繰り返し文で表示  ~start~ -->
-		    		<c:forEach var="recyclemark" items="recycleMark">
+		    		<c:forEach var="recyclemark" items="${recycleMark }">
 			        <tr>
 			        	<td><span class="history_1" >・</span> <!-- カスタムの「・」 --></td>
 			        	<td>${recyclemark.RecycleImg }</td>

@@ -40,7 +40,6 @@ public class RecycleMarkDao extends Dao {
 				recycleMark.setMarkId(rSet.getInt("mark.RecycleId"));
 				recycleMark.setMarkImg(rSet.getString("mark.RecycleImg"));
 				recycleMark.setSearchCount(rSet.getInt("mark.SearchCnt"));
-				recycleMark.setMarkName(rSet.getString("detail.RecycleName"));
 				// リストに追加
 				list.add(recycleMark);
 			}
@@ -69,7 +68,6 @@ public class RecycleMarkDao extends Dao {
 	}
 
 	public List<RecycleMark> getRanking() throws Exception {
-
 		// リストを初期化
 		List<RecycleMark> list = new ArrayList<>();
 		// コネクションを確立
@@ -92,8 +90,14 @@ public class RecycleMarkDao extends Dao {
 				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
 				// リストに追加
 				list.add(recycleMark);
+//				System.out.println(recycleMark);
+//				System.out.println(recycleMark.getMarkId());
+//				System.out.println(recycleMark.getMarkImg());
+//				System.out.println(recycleMark.getSearchCount());
 			}
 		} catch (Exception e) {
+//			System.out.println("error");
+//			System.out.println(e);
 			throw e;
 		} finally {
 			// プリペアードステートメントを閉じる
@@ -165,4 +169,52 @@ public class RecycleMarkDao extends Dao {
 
 		return recycleMark;
 	}
+
+	public String getName(int markId) throws Exception {
+		String name = "";
+;		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("select RecycleName from recyclemarkdata_japanese where RecycleId = ?");
+			// プリペアードステートメントにユーザIDをバインド
+			statement.setInt(1, markId);
+			// プリペアードステートメントを実行
+			ResultSet rSet = statement.executeQuery();
+			// リザルトセットを全権走査
+			if (rSet.next()) {
+				// リサイクルマークインスタンスに検索結果をセット
+				name = rSet.getString("RecycleName");
+			}else{
+				return null;
+			}
+		} catch (Exception e) {
+//			System.out.println("error");
+//			System.out.println(e);
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+			try {
+			statement.close();
+			} catch (SQLException sqle) {
+				throw sqle;
+			}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		return name;
+	}
+
 }
