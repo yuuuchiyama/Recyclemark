@@ -127,7 +127,7 @@
 		.user-info {
 		    border: 4px solid #3a5c34;
 		    padding: 60px 50px;
-		    width: 700px;
+		    min-width: 700px; /* 最小幅を設定 */
 		    height: 100px;
 		    margin: 0;
 		    display: flex;
@@ -137,11 +137,14 @@
 		    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 		    border-radius: 20px;
 		}
+
 		.user-info-text {
-		    display: flex; /* 横並びにする */
-		    align-items: baseline; /* ベースラインで揃える */
-		    gap: 10px; /* ラベルとIDの間隔 */
+		    display: flex;
+		    align-items: baseline;
+		    gap: 10px;
+		    white-space: nowrap; /* 改行を防止 */
 		}
+
 		.user-info-text p {
 		    margin: 0; /* マージンをリセット */
 		    font-size: 40px;
@@ -159,6 +162,7 @@
 		    padding: 5px 20px;
 		    font-size: 20px;
 		    margin-top: 0;
+		    margin-left:20px;
 		    font-weight: bold;
 		    color: #f0f0f0;
 		    border: 4px solid #3a5c34;
