@@ -74,6 +74,8 @@ public class RankingAction extends Action {
 				count++;
 			}
 			System.out.println(rankingList);
+//			String inWord = rankingList[0];
+			System.out.println(rankingList.get(1));
 
 //			for(Ranking ranking2 : rankingList){
 //

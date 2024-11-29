@@ -22,7 +22,7 @@ public class RecycleMarkDao extends Dao {
 
 		// SQL文の条件
 		String join = " inner join recyclemarkdata_japanese detail on mark.RecycleId = detail.RecycleId"; // detail（意味：詳細）
-		String condition = " where CONCAT(ifnull(MaterialWord1,''),ifnull(MaterialWord2,''),ifnull(MaterialWord3,'')) like ?";
+		String condition = " where CONCAT(ifnull(MaterialWord1,''),ifnull(MaterialWord2,''),ifnull(MaterialWord3,''),ifnull(GoodsWord1,''),ifnull(GoodsWord2,''),ifnull(GoodsWord3,''),ifnull(GoodsWord4,''),ifnull(GoodsWord5,'')) like ?";
 
 		try {
 			// プリペアードステートメントにSQL文をセット

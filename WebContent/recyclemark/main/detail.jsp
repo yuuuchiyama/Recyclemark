@@ -89,21 +89,21 @@
 	    }
 
 	    .back {
-	    border-radius: 50%; /* ボタンを丸く */
-	    display: flex;
-	    justify-content: center; /* 水平方向に中央揃え */
-	    align-items: center; /* 垂直方向に中央揃え */
-	    padding: 18px 18px 15px 10px;
-	    width: 25px;
-	    height: 20px;
-	    background: #f0f0f0;
-	    color: #4E7644;
-	    text-decoration: none;
-	    font-size: 30px;
-	    margin: 10px 20px;
-	    border: 1px solid #ccc; /* 境界線の色 */
-	    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-	    transition: background-color 0.3s, border-color 0.3s;
+	   		border-radius: 50%; /* ボタンを丸く */
+		    display: flex;
+		    justify-content: center; /* 水平方向に中央揃え */
+		    align-items: center; /* 垂直方向に中央揃え */
+		    padding: 18px 18px 15px 10px;
+		    width: 25px;
+		    height: 20px;
+		    background: #f0f0f0;
+		    color: #4E7644;
+		    text-decoration: none;
+		    font-size: 30px;
+		    margin: 10px 20px;
+		    border: 1px solid #ccc; /* 境界線の色 */
+		    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+		    transition: background-color 0.3s, border-color 0.3s;
 	    }
 
 	    .back:hover {
@@ -138,10 +138,9 @@
 	        align-items: center;
 	        gap: 150px;
 	        margin-top: 150px;
-	        margin-left: 90px;
+	        margin-left: 75px;
 	        position: relative;
 	    }
-
 
 	    .icon-section p{
 	        font-size: 25px;
@@ -156,14 +155,39 @@
 	        border: 1.5px solid #333;
 	    }
 	    .explanation-box {
+	    	display: flex; /* フレックスボックスを有効化 */
+		    align-items: center; /* 縦方向の中央揃え */
+		    justify-content: center; /* 横方向の中央揃え */
+		    text-align: center; /* テキストの中央揃え */
 	        padding: 50px 20px;
 	        font-size: 20px;
 	        border: 2px solid #333;
-	        border-radius: 15px;
+	        border-radius: 12px;
 	        min-width: 200px;
 	        text-align: center;
 	        margin: -130px 0 0 0;
+	        width: 300px; /* 固定幅 */
+		    height: 150px; /* 固定高さ */
+		    text-align: center;
+		    overflow-y: auto; /* 内容が溢れたらスクロールバーを表示 */
+		    margin: -140px 0 0 0;
+		    background-color: #fff; /* 背景色（必要に応じて変更） */
 	    }
+
+		.explanation-box::-webkit-scrollbar {
+		    width: 8px; /* スクロールバーの幅 */
+		    border-radius: 8px; /* スクロールバー自体の角を丸く */
+		}
+
+		.explanation-box::-webkit-scrollbar-track {
+		    background: transparent; /* スクロールバーの背景（透明にすることで目立たなくする） */
+		    border-radius: 15px; /* 背景の角を丸く */
+		}
+
+		.explanation-box::-webkit-scrollbar-thumb {
+		    background: rgba(0, 0, 0, 0.2); /* スクロールバーのつまみ部分の色 */
+		    border-radius: 15px; /* つまみ部分の角を丸く */
+		}
 	    .explanation-section {
 	        display: flex;
 	        flex-direction: column;
@@ -174,15 +198,11 @@
 
 	    .details-link {
 	        font-size: 25px;
-	        text-decoration: underline;
-	        color: #333;
 	        margin-top: 25px;
 	    }
 
 	    .menu-link {
 	        font-size: 25px;
-	        text-decoration: underline;
-	        color: #000;
 	        margin: 10px 30px 5px 30px; /* 下のマージンを小さくして間隔を狭める */
 	        display: block;
 	        text-align: center;
@@ -225,6 +245,7 @@
 		    検索結果詳細
 	</c:param>
 
+<div class="back" onClick="history.back();">＜</div>
 
 	<c:param name="content">
 		<!-- メインコンテンツ -->
