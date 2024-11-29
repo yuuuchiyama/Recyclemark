@@ -192,37 +192,39 @@
 
 
 	<c:param name="content">
-		<!-- メインコンテンツ -->
-		<div class="main">
-		<!-- カレンダー部分 -->
-		    <div class="main-container">
-		        <div class="calender-container">
-		            <table class="calendar">
-		                <thead>
-		                    <tr class="month_day">
-		                        <th colspan="7">
-		                            <button onclick="prevMonth()" style="font-size: 30px;">&#x3C;</button>
-		                            <span id="month-year" style="font-size: 30px; font-weight: bold;"></span>
-		                            <button onclick="nextMonth()" style="font-size: 30px;">&#x3E;</button>
-		                        </th>
-		                    </tr>
-		                    <tr class="week">
-		                        <th>日</th>
-		                        <th>月</th>
-		                        <th>火</th>
-		                        <th>水</th>
-		                        <th>木</th>
-		                        <th>金</th>
-		                        <th>土</th>
-		                    </tr>
-		                </thead>
-		                <tbody id="calendar-body" class="calendar-body">
-		                    <!-- JavaScriptで日付を挿入 -->
-		                </tbody>
-		            </table>
-		        </div>
-		    </div>
-		</div>
+		<form action="Schedule.action" method="get">
+			<!-- メインコンテンツ -->
+			<div class="main">
+			<!-- カレンダー部分 -->
+			    <div class="main-container">
+			        <div class="calender-container">
+			            <table class="calendar">
+			                <thead>
+			                    <tr class="month_day">
+			                        <th colspan="7">
+			                            <button onclick="prevMonth()" style="font-size: 30px;">&#x3C;</button>
+			                            <span id="month-year" style="font-size: 30px; font-weight: bold;"></span>
+			                            <button onclick="nextMonth()" style="font-size: 30px;">&#x3E;</button>
+			                        </th>
+			                    </tr>
+			                    <tr class="week">
+			                        <th>日</th>
+			                        <th>月</th>
+			                        <th>火</th>
+			                        <th>水</th>
+			                        <th>木</th>
+			                        <th>金</th>
+			                        <th>土</th>
+			                    </tr>
+			                </thead>
+			                <tbody id="calendar-body" class="calendar-body">
+			                    <!-- JavaScriptで日付を挿入 -->
+			                </tbody>
+			            </table>
+			        </div>
+			    </div>
+			</div>
+		</form>
 	</c:param>
    	<c:param name="script">
 	    const menuIcon = document.getElementById('menu-icon');

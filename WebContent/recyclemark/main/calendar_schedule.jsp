@@ -196,97 +196,98 @@
 
 <c:param name="content">
 	<!-- メインコンテンツ -->
-	<div class="container">
-    	<!-- 日付ナビゲーション -->
-	    <div class="date-navigation">
-	        <button class="date-button" onclick="prevDate()">&#x3C;</button>
-	        <div class="date-display" id="date-display"></div>
-	        <button class="date-button" onclick="nextDate()">&#x3E;</button>
-	    </div>
+	<form action="ScheduleExecute.action" method="get">
+		<div class="container">
+	    	<!-- 日付ナビゲーション -->
+		    <div class="date-navigation">
+		        <button class="date-button" onclick="prevDate()">&#x3C;</button>
+		        <div class="date-display" id="date-display"></div>
+		        <button class="date-button" onclick="nextDate()">&#x3E;</button>
+		    </div>
 
-    	<!-- アイコンリスト -->
-		<div class="icon-list">
-    		<button class="icon" onclick="toggleIcon(this)">
-        		<img src="../../images/燃えるゴミ.gif" alt="可燃ごみ">
-    		</button>
-    <button class="icon" onclick="toggleIcon(this)">
-        <img src="../../images/燃えないゴミ.gif" alt="不燃ごみ">
-    </button>
-    <button class="icon" onclick="toggleIcon(this)">
-        <img src="../../images/プラスチック.gif" alt="プラスチック">
-    </button>
-    <button class="icon" onclick="toggleIcon(this)">
-        <img src="../../images/粗大ごみ.jpg" alt="粗大ごみ">
-    </button>
-    <button class="icon" onclick="toggleIcon(this)">
-        <img src="../../images/ビン.jpg" alt="瓶">
-    </button>
-    <button class="icon" onclick="toggleIcon(this)">
-        <img src="../../images/can.png" alt="缶">
-    </button>
-    <button class="icon" onclick="toggleIcon(this)">
-        <img src="../../images/取り消し.jpg" alt="取り消し">
-    </button>
+	    	<!-- アイコンリスト -->
+			<div class="icon-list">
+	    		<button class="icon" onclick="toggleIcon(this)">
+	        		<img src="../../images/燃えるゴミ.gif" alt="可燃ごみ">
+	    		</button>
+			    <button class="icon" onclick="toggleIcon(this)">
+			        <img src="../../images/燃えないゴミ.gif" alt="不燃ごみ">
+			    </button>
+			    <button class="icon" onclick="toggleIcon(this)">
+			        <img src="../../images/プラスチック.gif" alt="プラスチック">
+			    </button>
+			    <button class="icon" onclick="toggleIcon(this)">
+			        <img src="../../images/粗大ごみ.jpg" alt="粗大ごみ">
+			    </button>
+			    <button class="icon" onclick="toggleIcon(this)">
+			        <img src="../../images/ビン.jpg" alt="瓶">
+			    </button>
+			    <button class="icon" onclick="toggleIcon(this)">
+			        <img src="../../images/can.png" alt="缶">
+			    </button>
+			    <button class="icon" onclick="toggleIcon(this)">
+			        <img src="../../images/取り消し.jpg" alt="取り消し">
+			    </button>
+			</div>
 
-</div>
 
+		    <!-- メモ入力 -->
+		    <textarea class="memo" placeholder="memo"></textarea>
 
-    <!-- メモ入力 -->
-    <textarea class="memo" placeholder="memo"></textarea>
-
-    <!-- 登録ボタン -->
-    <button class="register-button">登録</button>
-</div>
+		    <!-- 登録ボタン -->
+		    <button class="register-button">登録</button>
+		</div>
+	</form>
 </c:param>
-<c:param name="script">
-const menuIcon = document.getElementById('menu-icon');
-    const menu = document.getElementById('menu');
-    // Toggle menu display
-    menuIcon.addEventListener('click', function() {
-        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    });
-    // Toggle submenu display
-    function toggleSubMenu(submenuId) {
-        const submenu = document.getElementById(submenuId);
-        submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-    }
+	<c:param name="script">
+		const menuIcon = document.getElementById('menu-icon');
+	    const menu = document.getElementById('menu');
+	    // Toggle menu display
+	    menuIcon.addEventListener('click', function() {
+	        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+	    });
+	    // Toggle submenu display
+	    function toggleSubMenu(submenuId) {
+	        const submenu = document.getElementById(submenuId);
+	        submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+	    }
 
 
-    // 日付のナビゲーション用の変数
-    let currentDate = new Date(); // 現在の日付を取得
+	    // 日付のナビゲーション用の変数
+	    let currentDate = new Date(); // 現在の日付を取得
 
-    function updateDateDisplay() {
-        const dateDisplay = document.getElementById('date-display');
-        dateDisplay.textContent = `${currentDate.getFullYear()}/${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
-    }
+	    function updateDateDisplay() {
+	        const dateDisplay = document.getElementById('date-display');
+	        dateDisplay.textContent = `${currentDate.getFullYear()}/${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
+	    }
 
-    function prevDate() {
-        currentDate.setDate(currentDate.getDate() - 1);
-        updateDateDisplay();
-    }
+	    function prevDate() {
+	        currentDate.setDate(currentDate.getDate() - 1);
+	        updateDateDisplay();
+	    }
 
-    function nextDate() {
-        currentDate.setDate(currentDate.getDate() + 1);
-        updateDateDisplay();
-    }
+	    function nextDate() {
+	        currentDate.setDate(currentDate.getDate() + 1);
+	        updateDateDisplay();
+	    }
 
-    // 初期表示の更新
-    updateDateDisplay();
+	    // 初期表示の更新
+	    updateDateDisplay();
 
 
-    function toggleIcon(element) {
-        // クリックされたアイコンが既にアクティブかどうかをチェック
-        if (element.classList.contains('active')) {
-            // アクティブなら、クラスを外して枠を消す
-            element.classList.remove('active');
-        } else {
-            // 他のアイコンからアクティブなクラスを外す
-            document.querySelectorAll('.icon').forEach(icon => icon.classList.remove('active'));
+	    function toggleIcon(element) {
+	        // クリックされたアイコンが既にアクティブかどうかをチェック
+	        if (element.classList.contains('active')) {
+	            // アクティブなら、クラスを外して枠を消す
+	            element.classList.remove('active');
+	        } else {
+	            // 他のアイコンからアクティブなクラスを外す
+	            document.querySelectorAll('.icon').forEach(icon => icon.classList.remove('active'));
 
-            // クリックしたアイコンにアクティブなクラスを付与
-            element.classList.add('active');
-        }
-    }
+	            // クリックしたアイコンにアクティブなクラスを付与
+	            element.classList.add('active');
+	        }
+	    }
     </c:param>
 
 </c:import>
