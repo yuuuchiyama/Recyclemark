@@ -170,7 +170,7 @@ public class RecycleMarkDao extends Dao {
 		return recycleMark;
 	}
 
-	public String getName(int markId) throws Exception {
+	public String getName(int recycleId) throws Exception {
 		String name = "";
 		// コネクションを確立
 		Connection connection = getConnection();
@@ -181,7 +181,7 @@ public class RecycleMarkDao extends Dao {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement("select RecycleName from recyclemarkdata_japanese where RecycleId = ?");
 			// プリペアードステートメントにユーザIDをバインド
-			statement.setInt(1, markId);
+			statement.setInt(1, recycleId);
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 			// リザルトセットを全権走査
