@@ -144,18 +144,41 @@
 
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
-		<div class="ranking">
-			<table>
-		    	<!-- 繰り返し文で表示  ~start~ -->
-		    	<c:forEach var="ranking" items="${rankinglist }">
-				<tr>
-			        <td><input type="image" src="${ranking.getRankUrl() }"></td>
-			        <td><input type="image" src="${ranking.getImgUrl() }"></td>
-			        <td><a href="SearchResultExecute.action?markId=${ranking.getMarkId() }">${ranking.getName() }</a></td>
-				</tr>
-				</c:forEach>
-				<!-- 繰り返し文で表示  ~end~ -->
-			</table>
+		<div class="main">
+            <div class="main-container">
+				<div class="ranking">
+					<table>
+				    	<!-- 繰り返し文で表示  ~start~ -->
+				    	<c:forEach var="ranking" items="${rankinglist }">
+						<tr>
+					        <td><input type="image" src="${ranking.getRankUrl() }"></td>
+					        <td><input type="image" src="${ranking.getImgUrl() }"></td>
+					        <td><a href="SearchResultExecute.action?markId=${ranking.getMarkId() }">${ranking.getName() }</a></td>
+						</tr>
+						</c:forEach>
+						<!-- 繰り返し文で表示  ~end~ -->
+					</table>
+
+					<%--
+					<table>
+					    <c:forEach var="ranking" items="${rankinglist}" varStatus="status">
+					        <!-- 2つごとに新しい行を開始 -->
+					        <c:if test="${status.index % 2 == 0}">
+					            <tr>
+					        </c:if>
+					        <!-- 画像を表示 -->
+					        <td><input class="ranking-image" type="image" src="${ranking}"></td>
+
+					        <!-- 2つごとに行を閉じる、または最後の要素で行を閉じる -->
+					        <c:if test="${status.index % 2 == 1 || status.last}">
+					            </tr>
+					        </c:if>
+					    </c:forEach>
+					</table>
+					--%>
+
+				</div>
+			</div>
 		</div>
 	</c:param>
 
