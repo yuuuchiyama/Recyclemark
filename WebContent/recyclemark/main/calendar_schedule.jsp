@@ -1,4 +1,4 @@
-<%-- 検索結果詳細画面JSP --%>
+<%-- 予定登録画面JSP --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,7 +8,11 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f9f9f9;
+        background-image: url("../../images/20210729_1.jpg");
+	    background-size: cover;
+	    background-position: center top;
+   		background-attachment: fixed;
+	    color: #333;
         display: flex;
         flex-direction: column;
         height: 100vh;
@@ -192,19 +196,19 @@
 
 <c:param name="content">
 	<!-- メインコンテンツ -->
-<div class="container">
-    <!-- 日付ナビゲーション -->
-    <div class="date-navigation">
-        <button class="date-button" onclick="prevDate()">&#x3C;</button>
-        <div class="date-display" id="date-display"></div>
-        <button class="date-button" onclick="nextDate()">&#x3E;</button>
-    </div>
+	<div class="container">
+    	<!-- 日付ナビゲーション -->
+	    <div class="date-navigation">
+	        <button class="date-button" onclick="prevDate()">&#x3C;</button>
+	        <div class="date-display" id="date-display"></div>
+	        <button class="date-button" onclick="nextDate()">&#x3E;</button>
+	    </div>
 
-    <!-- アイコンリスト -->
-<div class="icon-list">
-    <button class="icon" onclick="toggleIcon(this)">
-        <img src="../../images/燃えるゴミ.gif" alt="可燃ごみ">
-    </button>
+    	<!-- アイコンリスト -->
+		<div class="icon-list">
+    		<button class="icon" onclick="toggleIcon(this)">
+        		<img src="../../images/燃えるゴミ.gif" alt="可燃ごみ">
+    		</button>
     <button class="icon" onclick="toggleIcon(this)">
         <img src="../../images/燃えないゴミ.gif" alt="不燃ごみ">
     </button>
