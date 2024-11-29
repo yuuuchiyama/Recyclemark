@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:import url="/common/base.jsp">
+<c:import url="/common/base.jsp">  <%-- ヘッダーのベースだから多分消す？後よろしく --%>
 	<c:param name="style">
       /* 基本スタイル */
 		 body {
@@ -16,44 +16,22 @@
 	        background-attachment: fixed;
 	        color: #333;
     	}
-	   /* Header style */
-	   .header {
-	        display: flex;
-	        background: transparent; /* 背景を透明に設定 */
-	        padding: 15px 20px;
-	        display: flex;
-	        justify-content: space-between;
-	        align-items: center;
-	        background-color: rgba(255, 255, 255, 0.8);
-	        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-	        color: #000;
-			}
-		   .title {
-	        font-size: 40px;
-	        font-weight: bold;
-	    }
-	    h1 {
-	        font-size: 50px;
-	        margin-top: 0;
-	        margin-bottom: 50px;
-	        text-align: center; /* 中央揃え */
-	    }
 	    .back {
-	     border-radius: 50%; /* ボタンを丸く */
-	     display: flex;
-	     justify-content: center; /* 水平方向に中央揃え */
-	     align-items: center; /* 垂直方向に中央揃え */
-	     padding: 18px 18px 15px 10px;
-	     width: 25px;
-	     height: 20px;
-	     background: #f0f0f0;
-	     color: #4E7644;
-	     text-decoration: none;
-	     font-size: 30px;
-	     margin: 10px 20px;
-	     border: 1px solid #ccc; /* 境界線の色 */
-	     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-	     transition: background-color 0.3s, border-color 0.3s;
+		     border-radius: 50%; /* ボタンを丸く */
+		     display: flex;
+		     justify-content: center; /* 水平方向に中央揃え */
+		     align-items: center; /* 垂直方向に中央揃え */
+		     padding: 18px 18px 15px 10px;
+		     width: 25px;
+		     height: 20px;
+		     background: #f0f0f0;
+		     color: #4E7644;
+		     text-decoration: none;
+		     font-size: 30px;
+		     margin: 10px 20px;
+		     border: 1px solid #ccc; /* 境界線の色 */
+		     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+		     transition: background-color 0.3s, border-color 0.3s;
 	    }
 	    .back:hover {
 	        background-color: #e0e0e0;
@@ -61,15 +39,15 @@
 	        color: #3a5c34;
 	    }
 	    .main-container {
-	    padding: 20px 30px 50px 50px;
-	    border-radius: 15px;
-	    max-width: 1000px; /* 任意の幅 */
-	    width: 100%;
-	    text-align: center;
-	    display: flex;
-	    justify-content: center; /* 水平方向に中央揃え */
-	    align-items: center; /* 垂直方向に中央揃え */
-	    margin: 0 auto; /* 自動的に中央に配置 */
+		    padding: 20px 30px 50px 50px;
+		    border-radius: 15px;
+		    max-width: 1000px; /* 任意の幅 */
+		    width: 100%;
+		    text-align: center;
+		    display: flex;
+		    justify-content: center; /* 水平方向に中央揃え */
+		    align-items: center; /* 垂直方向に中央揃え */
+		    margin: 0 auto; /* 自動的に中央に配置 */
 	    }
 	    li {
 	        font-size: 30px;
@@ -118,7 +96,11 @@
 
 	</c:param>
 
+
 	<c:param name="content">
+
+	<!-- 戻るリンク -->
+	<a href="#" class="back">＜</a>
 	    <h1>東京都　23区</h1>
 	    <li><a href="https://www.union.tokyo23-seisou.lg.jp/joho/index.html">23区のホームページ一覧</a></li>
 
