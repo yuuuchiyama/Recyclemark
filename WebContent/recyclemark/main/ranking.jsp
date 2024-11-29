@@ -109,6 +109,31 @@
 			border-color: #999;
 			color: #3a5c34;
 		}
+
+	    .main {
+	        display: flex;
+	        flex-direction: column;
+	        align-items: center;
+	        margin: 20px 0 0 0;
+	        min-height: 100vh;
+	        padding: 20px 0 20px 0;
+	    }
+
+	    .main-container {
+	        background-color: rgba(255, 255, 255, 0.7); /* 半透明の背景色 */
+	        padding: 30px 50px;
+	        border-radius: 15px;
+	        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+	        max-width: 800px; /* 任意の幅 */
+	        width: 100%;
+	        text-align: center;
+	    }
+	   .ranking-image {
+		    width: 100px;  /* 幅を指定 */
+		    height: 100px; /* 高さを指定 */
+		    object-fit: cover; /* 縦横比を保ちながらリサイズ */
+		    margin-right: 20px; /* 右側に間隔を追加 */
+		}
 	</c:param>
 	<c:param name="title">
 		メニュー
@@ -119,20 +144,49 @@
 
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
+<<<<<<< HEAD
 		<div class="ranking">
 			<table>
 		    	<!-- 繰り返し文で表示  ~start~ -->
 		    	<c:forEach var="ranking" items="${rankinglist }">
+=======
+		<div class="main">
+            <div class="main-container">
+				<div class="ranking">
+>>>>>>> branch 'master' of https://github.com/yuuuchiyama/Recyclemark.git
 
+<<<<<<< HEAD
 				<tr>
 			        <td><input type="image" src="${ranking.getRankUrl() }"></td>
 			        <td><input type="image" src="${ranking.getImgUrl() }"></td>
 			        <td><a href="SearchResultExecute.action?markId=${ranking.getMarkId() }">${ranking.getName() }</a></td>
 				</tr>
+=======
+				<table>
+					    <c:forEach var="ranking" items="${rankinglist}" varStatus="status">
+					        <!-- 2つごとに新しい行を開始 -->
+					        <c:if test="${status.index % 2 == 0}">
+					            <tr>
+					        </c:if>
+>>>>>>> branch 'master' of https://github.com/yuuuchiyama/Recyclemark.git
 
+<<<<<<< HEAD
 				</c:forEach>
 		    	<!-- 繰り返し文で表示  ~end~ -->
 			</table>
+=======
+					        <!-- 画像を表示 -->
+					        <td><input class="ranking-image" type="image" src="${ranking}"></td>
+
+					        <!-- 2つごとに行を閉じる、または最後の要素で行を閉じる -->
+					        <c:if test="${status.index % 2 == 1 || status.last}">
+					            </tr>
+					        </c:if>
+					    </c:forEach>
+					</table>
+				</div>
+        	</div>
+>>>>>>> branch 'master' of https://github.com/yuuuchiyama/Recyclemark.git
 		</div>
 	</c:param>
 
