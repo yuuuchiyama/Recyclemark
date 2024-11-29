@@ -161,17 +161,18 @@
 	    <div class="text-border">${trait}</div>
 		<div class="main">
 	        <div class="main-container">
-	        	<form action="SearchResultExecute.action" method="get">
-			        <!-- アイコンエリア -->
-			        <c:forEach var="recycleMark" items="${recycleMarks}">
+		        <!-- アイコンエリア -->
+		        <!-- int count = 0; -->
+		        <c:forEach var="recycleMark" items="${recycleMarks}">
+		        	<form action="SearchResultExecute.action" method="get">
 				        <div class="recycle-grid">
                 			<div class="recycle-item">
                 				<input type="hidden" name="markId" value="${recycleMark.markId}">
 				                <input type="image" src="${recycleMark.markImg}" alt="${recycleMark.markName}">
 				        	</div>
 				        </div>
-			        </c:forEach>
-		        </form>
+			        </form>
+		        </c:forEach>
 	    	</div>
 		</div>
 	</c:param>
