@@ -58,7 +58,7 @@ public class SearchResultExecuteAction extends Action {
 			} else {
 				System.out.println("heartStamp:" + heartStamp);
 				// DBにデータを保存 5
-
+				historyDao.save(Integer.parseInt(userId),Integer.parseInt(markId));
 				// レスポンス値をセット 6
 				req.setAttribute("heartStamp", heartStamp);
 				req.setAttribute("detail", detail);

@@ -19,13 +19,18 @@ public class HistoryDao extends Dao {
 		// プリペアードステートメント
 		PreparedStatement statement = null;
 		// SQL文の条件
-		String sql = "insert into user (SearchId,UserId,RecycleID,SearchTime) values (?,?,?,?)";
+		String sql = "insert into searchhistory (SearchId,UserId,RecycleID,SearchTime) values (?,?,?,?)";
 		// 実行件数
 		int count = 0;
 		//現在時刻
 		LocalDateTime nowDate = LocalDateTime.now();
 		DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String formatNowDate = dtf1.format(nowDate);
+//		System.out.println("----dao---");
+//		System.out.println(userid);
+//		System.out.println(recycleid);
+//		System.out.println(formatNowDate);
+//		System.out.println("----dao---");
 		try {
 
 			// プリペアードステートメントにUPDATE文をセット
