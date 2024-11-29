@@ -157,6 +157,10 @@
 		}
 	</c:param>
 
+	<c:param name="header">
+		<a class="back" href="text.jsp">＜</a>
+	</c:param>
+
 	<c:param name="content">
 	    <div class="text-border">${trait}</div>
 		<div class="main">

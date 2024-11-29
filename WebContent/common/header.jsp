@@ -24,4 +24,4 @@
 </div>
 
 <!-- 戻るリンク -->
-<div class="back" onClick="history.back();">＜</div>
+<!-- <div class="back" onClick="history.back();">＜</div> -->

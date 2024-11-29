@@ -35,6 +35,7 @@ public class HistoryAction extends Action {
 		for(History history : historys){
 			recycleMarks.add(recycleMarkDao.getHistory(history.getRecycleId()));
 		}
+		System.out.println(recycleMarks);
 
 		//ビジネスロジック 4
 		//DBへデータ保存 5

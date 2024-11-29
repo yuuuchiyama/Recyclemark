@@ -50,7 +50,7 @@ public class RankingAction extends Action {
 
 				rank1 = rank2;
 			}
-			System.out.println(rankUrlList);
+//			System.out.println(rankUrlList);
 			count = 0;
 			for(String rankUrl2 : rankUrlList){
 
@@ -73,7 +73,9 @@ public class RankingAction extends Action {
 //				System.out.println("---------------");
 				count++;
 			}
-			System.out.println(rankingList);
+//			System.out.println(rankingList);
+//			String inWord = rankingList[0];
+//			System.out.println(rankingList.get(1));
 
 //			for(Ranking ranking2 : rankingList){
 //

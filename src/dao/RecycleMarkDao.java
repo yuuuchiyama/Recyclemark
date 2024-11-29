@@ -73,7 +73,7 @@ public class RecycleMarkDao extends Dao {
 
 		// SQL文の条件
 		String join = " inner join recyclemarkdata_japanese detail on mark.RecycleId = detail.RecycleId"; // detail（意味：詳細）
-		String condition = " where CONCAT(ifnull(MaterialWord1,''),ifnull(MaterialWord2,''),ifnull(MaterialWord3,'')) like ?";
+		String condition = " where CONCAT(ifnull(MaterialWord1,''),ifnull(MaterialWord2,''),ifnull(MaterialWord3,''),ifnull(GoodsWord1,''),ifnull(GoodsWord2,''),ifnull(GoodsWord3,''),ifnull(GoodsWord4,''),ifnull(GoodsWord5,'')) like ?";
 
 		try {
 			// プリペアードステートメントにSQL文をセット
@@ -180,10 +180,12 @@ public class RecycleMarkDao extends Dao {
 		PreparedStatement statement = null;
 		// リサイクルマークインスタンスを初期化
 		RecycleMark recycleMark = new RecycleMark();
-
+		// SQL文の条件
+		String join = " inner join recyclemarkdata_japanese japanese on mark.RecycleId = japanese.RecycleId";
+		String condition = " where japanese.RecycleId = ?;";
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select * from recyclemarkdata where RecycleId=?");
+			statement = connection.prepareStatement("select mark.RecycleId, mark.RecycleImg, japanese.RecycleName from recyclemarkdata mark" + join + condition);
 			// プリペアードステートメントにユーザIDをバインド
 			statement.setInt(1, recycleId);
 			// プリペアードステートメントを実行
@@ -191,9 +193,9 @@ public class RecycleMarkDao extends Dao {
 			// リザルトセットを全権走査
 			if (rSet.next()) {
 				// リサイクルマークインスタンスに検索結果をセット
-				recycleMark.setMarkId(rSet.getInt("RecycleId"));
-				recycleMark.setMarkImg(rSet.getString("RecycleImg"));
-				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
+				recycleMark.setMarkId(rSet.getInt("mark.RecycleId"));
+				recycleMark.setMarkImg(rSet.getString("mark.RecycleImg"));
+				recycleMark.setMarkName(rSet.getString("japanese.RecycleName"));
 			}else{
 				return null;
 			}
@@ -221,7 +223,7 @@ public class RecycleMarkDao extends Dao {
 		return recycleMark;
 	}
 
-	public String getName(int markId) throws Exception {
+	public String getName(int recycleId) throws Exception {
 		String name = "";
 		// コネクションを確立
 		Connection connection = getConnection();
@@ -232,7 +234,7 @@ public class RecycleMarkDao extends Dao {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement("select RecycleName from recyclemarkdata_japanese where RecycleId = ?");
 			// プリペアードステートメントにユーザIDをバインド
-			statement.setInt(1, markId);
+			statement.setInt(1, recycleId);
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 			// リザルトセットを全権走査

@@ -34,16 +34,21 @@ public class SearchResultExecuteAction extends Action {
 		user = (User) session.getAttribute("user");
 		// セッション情報のユーザーIDを取得
 		userId = user.getId();
-		System.out.println("userId:" + userId);
+//		System.out.println("userId:" + userId);
 
 		// DBからデータの取得 3
-		System.out.println("markId:" + markId);
+//		System.out.println("markId:" + markId);
 		detail = detailDao.getData(markId);
-
+//		System.out.println("detail:" + detail);
+//		System.out.println(detail.getMarkId());
+//		System.out.println(detail.getMarkImg());
+//		System.out.println(detail.getMarkName());
+//		System.out.println(detail.getMarkDescribe());
 		//条件で手順4~7の内容が分岐
 		// ビジネスロジック 4
 		if(detail != null) {
 			if (favoriteDao.getRegisteredFav(userId, markId)) {
+				System.out.println("1");
 				System.out.println("heartStampSR:" + heartStamp);
 				heartStamp ++;
 
@@ -56,9 +61,10 @@ public class SearchResultExecuteAction extends Action {
 				// JSPへフォワード 7
 				req.getRequestDispatcher("detail.jsp").forward(req, res);
 			} else {
+				System.out.println("00");
 				System.out.println("heartStamp:" + heartStamp);
 				// DBにデータを保存 5
-
+				historyDao.save(Integer.parseInt(userId),Integer.parseInt(markId));
 				// レスポンス値をセット 6
 				req.setAttribute("heartStamp", heartStamp);
 				req.setAttribute("detail", detail);

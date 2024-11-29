@@ -14,6 +14,7 @@
 	<header>
 		<c:import url="/common/header.jsp" />
 	</header>
+	<header>${param.header}</header>
 	<main> ${param.content} </main>
 <script src="../js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>

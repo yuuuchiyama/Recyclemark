@@ -22,7 +22,7 @@ public class DistrictsAction extends Action {
 		//レスポンス値をセット 6
 		//なし
 		//JSPへフォワード 7
-		req.getRequestDispatcher("districts_list.jsp").forward(req, res);
+		req.getRequestDispatcher("districts_list.html").forward(req, res);
 	}
 
 }

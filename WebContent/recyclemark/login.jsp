@@ -193,8 +193,10 @@
     }
 </style>
 <title>ログイン</title>
+
 </head>
 <body>
+
 	<div class="main-container">
     <h1 id="area1">ログイン</h1>
     <div class="language-buttons">
