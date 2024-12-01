@@ -67,10 +67,10 @@
 	        cursor: pointer;
 	    }
 	    .menu-item a {
-	    font-size: 16px;
-	    padding: 10px 0;
-	    text-decoration: none;
-	    color: #333;
+		    font-size: 16px;
+		    padding: 10px 0;
+		    text-decoration: none;
+		    color: #333;
 	    }
 	    /* Submenu style */
 	    .submenu {
@@ -245,7 +245,10 @@
 		    検索結果詳細
 	</c:param>
 <%-- ↓ これをコメントアウトしないとバグが発生する ↓ --%>
-<%--<div class="back" onClick="history.back();">＜</div> --%>
+
+    <c:param name="header">
+	<div class="back" onClick="history.back();">＜</div>
+	</c:param>
 
 	<c:param name="content">
 		<!-- メインコンテンツ -->
