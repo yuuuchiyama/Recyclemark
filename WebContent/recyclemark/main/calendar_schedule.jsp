@@ -18,15 +18,15 @@
         height: 100vh;
     }
     /* ヘッダーのスタイル */
-    .header {
-        display: flex;
-        background-color: #ddd;
-        padding: 15px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0px 4px 2px -2px gray;
-    }
+.header {
+    display: flex;
+    padding: 15px 20px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    color: #000;
+}
     .title {
         font-size: 40px;
         font-weight: bold;
@@ -44,7 +44,7 @@
     .menu-icon div {
         width: 25px;
         height: 3px;
-        background-color: #333;
+        background-color: #000;
         border-radius: 2px;
     }
     /* Full-screen menu style */
@@ -59,7 +59,7 @@
         justify-content: flex-start;
         padding-top: 60px;
         z-index: 1000;
-        height: calc(100vh - 110px);
+        height: calc(100vh - 120px);
     }
     .menu-item {
         font-size: 18px;
@@ -68,10 +68,10 @@
         cursor: pointer;
     }
     .menu-item a {
-     font-size: 16px;
-     padding: 10px 0;
-     text-decoration: none;
-     color: #333;
+    font-size: 16px;
+    padding: 10px 0;
+    text-decoration: none;
+    color: #333;
     }
     /* Submenu style */
     .submenu {
@@ -88,29 +88,53 @@
     .menu-item:hover, .submenu a:hover {
         background-color: #f0f0f0;
     }
-    /* 戻るリンクのスタイル */
     .back {
-        text-decoration: underline;
-        margin: 10px 20px; /* 左に寄せるため左マージンを設定 */
-        font-size: 30px;
-        text-align: left; /* 左揃えに設定 */
-        display: inline-block; /* 幅いっぱいを占めず、左寄せ */
+	    border-radius: 50%; /* ボタンを丸く */
+	    display: flex;
+	    justify-content: center; /* 水平方向に中央揃え */
+	    align-items: center; /* 垂直方向に中央揃え */
+	    padding: 18px 18px 15px 10px;
+	    width: 25px;
+	    height: 20px;
+	    background: #f0f0f0;
+	    color: #4E7644;
+	    text-decoration: none;
+	    font-size: 30px;
+	    margin: 10px 20px;
+	    border: 1px solid #ccc; /* 境界線の色 */
+	    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	    transition: background-color 0.3s, border-color 0.3s;
     }
 
     .back:hover {
-        text-decoration: underline;
+        background-color: #e0e0e0;
+        border-color: #999;
+        color: #3a5c34;
     }
     /* 中央のコンテナ */
-    .container {
-        width: 100%;
-        height: 100%;
-        max-width: 600px;
-        background-color: #fff;
+     .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        min-height: 100vh;
         padding: 20px;
-        border: 1px solid #ddd;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    /* 中央のコンテナ */
+    .main-container {
+        width: 100%;
+        height: 450px;
+        max-width: 800px;
+        background-color: rgba(255, 255, 255, 0.8); /* 半透明の背景 */
+        backdrop-filter: blur(10px); /* 背景のぼかし効果 */
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.6); /* 半透明の境界線 */
+        border-radius: 15px; /* 角を丸く */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* 浮いているような影 */
         text-align: center;
-        margin: 20px auto; /* 上下20pxの余白と左右の自動均等配置 */
+        margin: 20px auto; /* 中央揃え */
+        transform: translateY(-10px); /* 少し浮いているような位置調整 */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバー時のアニメーション */
     }
     /* 日付表示とナビゲーション */
     .date-navigation {
@@ -124,12 +148,13 @@
         background: none;
         border: none;
         cursor: pointer;
+        color: #3a5c34;
     }
     .date-display {
         font-size: 30px;
         font-weight: bold;
         margin: 0 10px;
-        border: 1px solid #333;
+        border: 1.5px solid #3a5c34;
         padding: 5px 50px;
         border-radius: 5px;
     }
@@ -157,7 +182,7 @@
         border-radius: 70%; /* 画像を丸くする */
     }
     .icon.active img {
-        border: 3px solid #007BFF; /* 青色の丸い枠 */
+        border: 4px solid #3a5c34; /* 青色の丸い枠 */
         border-radius: 70%; /* 丸い形にする */
         padding: 5px; /* 内側に余白を追加 */
         transition: border 0.3s ease; /* スムーズなエフェクト */
@@ -165,7 +190,7 @@
     /* メモ入力 */
     .memo {
         width: 90%;
-        height: 100px;
+        height: 150px;
         font-size: 20px;
         padding: 5px;
         border: 1px solid #ddd;
@@ -178,14 +203,15 @@
     .register-button {
         font-size: 18px;
         padding: 10px 20px;
-        background-color: #000;
+        background-color: #4E7644;
         color: #fff;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        margin-top: 10px;
     }
     .register-button:hover {
-        background-color: #555;
+        background-color: #3a5c34;
     }
     </c:param>
 
@@ -194,10 +220,15 @@
 		カレンダー
 	</c:param>
 
+ 	<c:param name="header">
+		<a class="back" href="calender.jsp">＜</a>
+	</c:param>
 <c:param name="content">
 	<!-- メインコンテンツ -->
 	<form action="ScheduleExecute.action" method="get">
-		<div class="container">
+		<div class="main">
+		<!-- メインコンテンツ -->
+			<div class="main-container">
 	    	<!-- 日付ナビゲーション -->
 		    <div class="date-navigation">
 		        <button class="date-button" onclick="prevDate()">&#x3C;</button>
@@ -236,6 +267,7 @@
 
 		    <!-- 登録ボタン -->
 		    <button class="register-button">登録</button>
+			</div>
 		</div>
 	</form>
 </c:param>
