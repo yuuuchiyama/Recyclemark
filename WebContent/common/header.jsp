@@ -20,7 +20,7 @@
 		<a href="Ranking.action">・ランキング</a>
 	</div>
 	<div class="menu-item"><a href="Mypage.action">・マイページ</a></div>
-	<div class="menu-item"><a href="Logout.action">・ログアウト</a></div>
+	<div class="menu-item"><a href="../Logout.action">・ログアウト</a></div>
 </div>
 
 <!-- 戻るリンク -->

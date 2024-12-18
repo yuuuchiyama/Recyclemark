@@ -76,6 +76,7 @@ public class UserDao extends Dao {
 		return user;
 	}
 
+	/** 新規ユーザ登録 */
 	public boolean create(String mail,String password) throws Exception {
 		// コネクションを確立
 		Connection connection = getConnection();
@@ -126,6 +127,7 @@ public class UserDao extends Dao {
 		}
 	}
 
+	/** ユーザー削除 */
 	public boolean delete(String id) throws Exception {
 		// コネクションを確立
 		Connection connection = getConnection();

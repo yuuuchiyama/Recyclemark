@@ -162,24 +162,24 @@
 
 
 	<c:param name="content">
-    <div class="main">
-        <!-- リサイクルマーク一覧テーブル -->
-        <div class="container main-container">
-            <form action="SearchResultExecute.action">
-            	 <div class="error-message">${errors.get("favorite_error")}</div>
-                <div class="recycle-grid">
-                    <c:forEach var="favorite" items="${favorites}">
-                        <div class="recycle-item">
-                            <input type="hidden" name="markId" value="${favorite.recycleId}">
-                            <input type="image" src="${favorite.recycleImg}" alt="${favorite.recycleName}">
-                            <p>"${favorite.recycleName}"</p>
-                        </div>
-                    </c:forEach>
-                </div>
-            </form>
-        </div>
-    </div>
-</c:param>
+		<div class="main">
+	        <!-- リサイクルマーク一覧テーブル -->
+	        <div class="container main-container">
+				<div class="error-message">${errors.get("favorite_error")}</div>
+				<div class="recycle-grid">
+					<c:forEach var="favorite" items="${favorites}">
+						<form action="SearchResultExecute.action">
+							<div class="recycle-item">
+								<input type="hidden" name="markId" value="${favorite.recycleId}">
+								<input type="image" src="${favorite.recycleImg}" alt="${favorite.recycleName}">
+								<p>"${favorite.recycleName}"</p>
+							</div>
+						</form>
+					</c:forEach>
+				</div>
+	        </div>
+		</div>
+	</c:param>
 
 	<c:param name="script">
 	const menuIcon = document.getElementById('menu-icon');

@@ -1,32 +1,36 @@
 package recyclemark.main;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import bean.RecycleMark;
+import dao.RecycleMarkDao;
 import tool.Action;
-public class MypageAction extends Action {
+
+public class ScheduleAction extends Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
-		HttpSession session = req.getSession();//セッション
-		session.removeAttribute("forRanking");
-//		User user = (User)session.getAttribute("user");
-//		String mail = user.getMailAddress();
-//		String password = user.getPassword();
+		RecycleMark recycleMark = new RecycleMark();
+		RecycleMarkDao recycleMarkDao = new RecycleMarkDao();
+		List<RecycleMark> recycleMarks = null;
+
 		//リクエストパラメータ―の取得 2
 		//なし
 		//DBからデータ取得 3
-		//なし
+		recycleMarks =  recycleMarkDao.getMarkAll();
+
 		//ビジネスロジック 4
 		//なし
 		//DBへデータ保存 5
 		//なし
 		//レスポンス値をセット 6
-//		req.setAttribute("mail", id);
-//		req.setAttribute("id", id);
+		req.setAttribute("recycleMarks", recycleMarks);
+
 		//JSPへフォワード 7
-		req.getRequestDispatcher("mypage.jsp").forward(req, res);
+		req.getRequestDispatcher("calendar_schedule.jsp").forward(req, res);
 	}
 }

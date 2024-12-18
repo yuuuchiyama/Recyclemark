@@ -247,7 +247,14 @@
 <%-- ↓ これをコメントアウトしないとバグが発生する ↓ --%>
 
     <c:param name="header">
-	<div class="back" onClick="history.back();">＜</div>
+    	<c:choose>
+			<c:when test="${forRanking == 1}">
+				<a class="back" href="Ranking.action">＜</a>
+			</c:when>
+			<c:otherwise>
+				<a class="back" href="FavoriteExecute.action">＜</a>
+			</c:otherwise>
+    	</c:choose>
 	</c:param>
 
 	<c:param name="content">
@@ -271,6 +278,7 @@
 			<form action="FavoriteAddExecute.action" method="post">
 				<div class="hart">
 					<input type="hidden" id="heartStamp" name="heartStamp" value="${heartStamp}">
+					<input type="hidden" id="heartStamp" name="forRanking" value="${forRanking}">
 					<input type="hidden" name="markId" value="${detail.getMarkId()}">
 					<input type="hidden" name="markName" value="${detail.getMarkName()}">
 					<input type="hidden" name="markImg" value="${detail.getMarkImg()}">

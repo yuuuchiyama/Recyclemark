@@ -237,7 +237,7 @@
 			    <form action="CalendarExecute.action" method="post">
 			        <button type="submit">カレンダー</button>
 			    </form>
-			    <form action="Logout.action" method="post">
+			    <form action="../Logout.action" method="post">
 			        <button type="submit">ログアウト</button>
 			    </form>
 			</div>

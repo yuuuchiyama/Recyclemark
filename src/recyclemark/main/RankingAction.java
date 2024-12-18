@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Ranking;
 import bean.RecycleMark;
@@ -85,6 +86,13 @@ public class RankingAction extends Action {
 //				System.out.println("---------------");
 //
 //			}
+
+			// 内山追加
+			// セッション情報の取得
+			String forRanking = "1";
+			HttpSession session = req.getSession();
+			// セッション情報の追加
+			session.setAttribute("forRanking", forRanking);
 
 			req.setAttribute("rankinglist", rankingList);
 

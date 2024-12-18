@@ -10,13 +10,13 @@ public class DistrictsAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
-		//なし
-		//リクエストパラメータ―の取得 2-
-		//なし
+
+		//リクエストパラメータ―の取得 2
+
 		//DBからデータ取得 3
 		//なし
 		//ビジネスロジック 4
-		//なし
+
 		//DBへデータ保存 5
 		//なし
 		//レスポンス値をセット 6

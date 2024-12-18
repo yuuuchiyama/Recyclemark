@@ -31,10 +31,13 @@ public class FavoriteAddExecuteAction extends Action {
 		String stringUserId = "";
 		int intUserId = 0;
 
+		String forRanking = "";
+
 		// リクエストパラメーターの取得 2
 		markName = req.getParameter("markName");
 		markImg = req.getParameter("markImg");
 		markDescribe = req.getParameter("markDescribe");
+		forRanking = req.getParameter("forRanking");
 
 		stringHeartStamp = req.getParameter("heartStamp");
 		intHeartStamp = Integer.parseInt(stringHeartStamp);
@@ -61,9 +64,11 @@ public class FavoriteAddExecuteAction extends Action {
 		// DBにデータを保存 5
 		intHeartStamp = favoriteDao.saveFavorite(intHeartStamp, intUserId, intMarkId);
 
+
 		// レスポンス値をセット 6
 		req.setAttribute("detail", detail);
 		req.setAttribute("heartStamp",intHeartStamp);
+		req.setAttribute("forRanking", forRanking);
 
 		// JSPへフォワード 7
 //		res.sendRedirect("detail.jsp");

@@ -25,9 +25,8 @@ public class SearchResultExecuteAction extends Action {
 		String markId = "";
 		String userId = "";
 		int heartStamp = 0;
+		String forRanking = "";
 
-		// リクエストパラメーターの取得 2
-		markId = req.getParameter("markId");
 
 		// セッション情報の取得
 		HttpSession session = req.getSession();
@@ -35,9 +34,26 @@ public class SearchResultExecuteAction extends Action {
 		// セッション情報のユーザーIDを取得
 		userId = user.getId();
 //		System.out.println("userId:" + userId);
+		// セッション情報の有無によってmarkIdの取得方法が変化
+		if (session.getAttribute("markId") != null) {
+			markId = (String)session.getAttribute("markId");
+			System.out.println("セッション情報のmarkId:" + markId);
+		} else {
+			// リクエストパラメーターの取得 2
+			markId = req.getParameter("markId");
+			session.setAttribute("markId",markId);
+			System.out.println("リクエストパラメータのmarkId:" + markId);
+		}
+		if (session.getAttribute("forRanking") != null) {
+			forRanking = (String) session.getAttribute("forRanking");
+		} else {
+			System.out.println("nullです");
+			System.out.println("forRanking:" + forRanking);
+		}
+		session.removeAttribute("forRanking");
 
 		// DBからデータの取得 3
-//		System.out.println("markId:" + markId);
+		System.out.println("markId:" + markId);
 		detail = detailDao.getData(markId);
 //		System.out.println("detail:" + detail);
 //		System.out.println(detail.getMarkId());
@@ -57,6 +73,7 @@ public class SearchResultExecuteAction extends Action {
 				// レスポンス値をセット 6
 				req.setAttribute("heartStamp", heartStamp);
 				req.setAttribute("detail", detail);
+				req.setAttribute("forRanking", forRanking);
 
 				// JSPへフォワード 7
 				req.getRequestDispatcher("detail.jsp").forward(req, res);
@@ -68,6 +85,7 @@ public class SearchResultExecuteAction extends Action {
 				// レスポンス値をセット 6
 				req.setAttribute("heartStamp", heartStamp);
 				req.setAttribute("detail", detail);
+				req.setAttribute("forRanking", forRanking);
 
 				// JSPへフォワード 7
 				req.getRequestDispatcher("detail.jsp").forward(req, res);

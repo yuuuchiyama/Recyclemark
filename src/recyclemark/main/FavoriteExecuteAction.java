@@ -39,6 +39,8 @@ public class FavoriteExecuteAction extends Action {
 
 		//条件で手順4~7の内容が分岐
 		// ビジネスロジック 4
+		// セッション情報に登録されているmarkIdを破棄
+		session.removeAttribute("markId");
 		if(favorites.size() > 0) {
 			// DBにデータを保存 5
 

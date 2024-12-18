@@ -248,6 +248,11 @@
 	        document.getElementById("link_create").innerText = "新用户注册在这里";
 	    }
 
+	    window.onload = function() {
+	    	if (<%=request.getAttribute("logout") %> != null) {
+	    		alert("ログアウト完了");
+	    	}
+	   	};
 	</script>
 </body>
 </html>

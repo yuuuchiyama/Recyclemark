@@ -11,8 +11,12 @@ public class LogoutAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
+		int logout = 1;
 		HttpSession session = req.getSession();
 		session.invalidate();
-		req.getRequestDispatcher("logout.jsp").forward(req, res);
+
+		req.setAttribute("logout", logout);
+
+		req.getRequestDispatcher("login.jsp").forward(req, res);
 	}
 }
