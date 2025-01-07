@@ -18,8 +18,17 @@ public class ScheduleAction extends Action {
 		RecycleMarkDao recycleMarkDao = new RecycleMarkDao();
 		List<RecycleMark> recycleMarks = null;
 
+		String date = "";
+		String year = "";
+		String month = "";
+		String day = "";
 		//リクエストパラメータ―の取得 2
-		//なし
+		date = req.getParameter("date");
+		year = req.getParameter("year");
+		month = req.getParameter("month");
+		day = req.getParameter("day");
+		System.out.println(date);
+
 		//DBからデータ取得 3
 		recycleMarks =  recycleMarkDao.getMarkAll();
 
@@ -28,6 +37,10 @@ public class ScheduleAction extends Action {
 		//DBへデータ保存 5
 		//なし
 		//レスポンス値をセット 6
+		req.setAttribute("date", date);
+		req.setAttribute("year", year);
+		req.setAttribute("month", month);
+		req.setAttribute("day", day);
 		req.setAttribute("recycleMarks", recycleMarks);
 
 		//JSPへフォワード 7

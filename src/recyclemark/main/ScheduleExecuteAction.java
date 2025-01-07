@@ -25,7 +25,7 @@ public class ScheduleExecuteAction extends Action {
 
 
 		//JSPへフォワード 7
-		req.getRequestDispatcher("calendar.jsp").forward(req, res);
+		req.getRequestDispatcher("calender.jsp").forward(req, res);
 	}
 
 }

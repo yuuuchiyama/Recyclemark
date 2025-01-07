@@ -192,39 +192,37 @@
 
 
 	<c:param name="content">
-		<form action="Schedule.action" method="get">
-			<!-- メインコンテンツ -->
-			<div class="main">
-			<!-- カレンダー部分 -->
-			    <div class="main-container">
-			        <div class="calender-container">
-			            <table class="calendar">
-			                <thead>
-			                    <tr class="month_day">
-			                        <th colspan="7">
-			                            <button onclick="prevMonth()" style="font-size: 30px;">&#x3C;</button>
-			                            <span id="month-year" style="font-size: 30px; font-weight: bold;"></span>
-			                            <button onclick="nextMonth()" style="font-size: 30px;">&#x3E;</button>
-			                        </th>
-			                    </tr>
-			                    <tr class="week">
-			                        <th>日</th>
-			                        <th>月</th>
-			                        <th>火</th>
-			                        <th>水</th>
-			                        <th>木</th>
-			                        <th>金</th>
-			                        <th>土</th>
-			                    </tr>
-			                </thead>
-			                <tbody id="calendar-body" class="calendar-body">
-			                    <!-- JavaScriptで日付を挿入 -->
-			                </tbody>
-			            </table>
-			        </div>
-			    </div>
-			</div>
-		</form>
+		<!-- メインコンテンツ -->
+		<div class="main">
+		<!-- カレンダー部分 -->
+		    <div class="main-container">
+		        <div class="calender-container">
+		            <table class="calendar">
+		                <thead>
+		                    <tr class="month_day">
+		                        <th colspan="7">
+		                            <button onclick="prevMonth()" style="font-size: 30px;">&#x3C;</button>
+		                            <span id="month-year" style="font-size: 30px; font-weight: bold;"></span>
+		                            <button onclick="nextMonth()" style="font-size: 30px;">&#x3E;</button>
+		                        </th>
+		                    </tr>
+		                    <tr class="week">
+		                        <th>日</th>
+		                        <th>月</th>
+		                        <th>火</th>
+		                        <th>水</th>
+		                        <th>木</th>
+		                        <th>金</th>
+		                        <th>土</th>
+		                    </tr>
+		                </thead>
+		                <tbody id="calendar-body" class="calendar-body">
+		                    <!-- JavaScriptで日付を挿入 -->
+		                </tbody>
+		            </table>
+		        </div>
+		    </div>
+		</div>
 	</c:param>
    	<c:param name="script">
 	    const menuIcon = document.getElementById('menu-icon');
@@ -250,7 +248,7 @@
 	        const calendarBody = document.getElementById('calendar-body');
 	        const monthYear = document.getElementById('month-year');
 	        calendarBody.innerHTML = ''; // 既存のカレンダーをクリア
-	        monthYear.textContent = `${year}/${month + 1}`;
+	        monthYear.textContent = year + "/" + (month + 1);
 
 	        const firstDay = new Date(year, month, 1).getDay();
 	        const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -261,7 +259,12 @@
 
 	            for (let j = 0; j < 7; j++) {
 	                const cell = document.createElement('td');
+	                const form = document.createElement('form');
 	                const button = document.createElement('button');
+	                const input = document.createElement('input');
+	                const inputYear = document.createElement('input');
+	                const inputMonth = document.createElement('input');
+	                const inputDay = document.createElement('input');
 
 	                if (i === 0 && j < firstDay) {
 	                    // 空のセルにもボタンを追加
@@ -271,9 +274,42 @@
 	                    button.style.visibility = 'hidden'; // 表示されないようにする
 	                    cell.appendChild(button);
 	                } else {
+	                	const nowday = year + "-" + (month + 1) + "-" + date;
 	                    button.textContent = date;
-	                    cell.appendChild(button);
+	                    form.action = 'Schedule.action';
+	                    form.method = 'get';
+
+	                    input.setAttribute("type", "hidden");
+	                    input.setAttribute("name", "date");
+	                    input.setAttribute("value", nowday);
+
+	                    inputYear.setAttribute("type", "hidden");
+	                    inputYear.setAttribute("name", "year");
+	                    inputYear.setAttribute("value", year);
+
+	                    inputMonth.setAttribute("type", "hidden");
+	                    inputMonth.setAttribute("name", "month");
+	                    inputMonth.setAttribute("value", month + 1);
+
+	                    inputDay.setAttribute("type", "hidden");
+	                    inputDay.setAttribute("name", "day");
+	                    inputDay.setAttribute("value", date);
+
+	                    cell.appendChild(form);
+	                    form.appendChild(input);
+	                    form.appendChild(inputYear);
+	                    form.appendChild(inputMonth);
+	                    form.appendChild(inputDay);
+	                    form.appendChild(button);
 	                    date++;
+	                    for (var schedule of ${schedules}) {
+	                    	if(schedule.calendarDate == nowday) {
+	                    		const imgSchedule = document.createElement('img');
+	                    		imgSchedule.setAttribute("src", schedule.stampImg);
+	                    		form.appendChild(imgSchedule);
+	                    	}
+	                    }
+	                    //<%=request.getAttribute("schedules") %>
 	                }
 
 	                row.appendChild(cell);

@@ -195,37 +195,40 @@
 	</c:param>
 
 <c:param name="content">
-	<!-- メインコンテンツ -->
 	<form action="ScheduleExecute.action" method="get">
+	<!-- メインコンテンツ -->
 		<div class="container">
 	    	<!-- 日付ナビゲーション -->
 		    <div class="date-navigation">
-		        <button class="date-button" onclick="prevDate()">&#x3C;</button>
-		        <div class="date-display" id="date-display"></div>
-		        <button class="date-button" onclick="nextDate()">&#x3E;</button>
+		    	<button class="date-button" id="prev">&#x3C;</button>
+		    	<input type="hidden" id="year" value="${year}">
+		    	<input type="hidden" id="month" value="${month}">
+		    	<input type="hidden" id="day" value="${day}">
+		        <div class="date-display" id="date-display">${date}</div>
+		        <button class="date-button" id="next">&#x3E;</button>
 		    </div>
 
 	    	<!-- アイコンリスト -->
 			<div class="icon-list">
-	    		<button class="icon" onclick="toggleIcon(this)">
+	    		<button type="button" class="icon" onclick="toggleIcon(this)">
 	        		<img src="../../images/燃えるゴミ.gif" alt="可燃ごみ">
 	    		</button>
-			    <button class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)">
 			        <img src="../../images/燃えないゴミ.gif" alt="不燃ごみ">
 			    </button>
-			    <button class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)">
 			        <img src="../../images/プラスチック.gif" alt="プラスチック">
 			    </button>
-			    <button class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)">
 			        <img src="../../images/粗大ごみ.jpg" alt="粗大ごみ">
 			    </button>
-			    <button class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)">
 			        <img src="../../images/ビン.jpg" alt="瓶">
 			    </button>
-			    <button class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)">
 			        <img src="../../images/can.png" alt="缶">
 			    </button>
-			    <button class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)">
 			        <img src="../../images/取り消し.jpg" alt="取り消し">
 			    </button>
 			</div>
@@ -258,18 +261,27 @@
 
 	    function updateDateDisplay() {
 	        const dateDisplay = document.getElementById('date-display');
-	        dateDisplay.textContent = `${currentDate.getFullYear()}/${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
+	        dateDisplay.textContent = ${date};
 	    }
 
 	    function prevDate() {
-	        currentDate.setDate(currentDate.getDate() - 1);
-	        updateDateDisplay();
+	    	var nowDate = document.getElementById("date-display");
+	    	var year = document.getElementById("year");
+	    	var month = document.getElementById("month");
+	    	var day = document.getElementById("day");
+	    	var nextDay = day--;
+	    	var date = year + "-" + month + "-" + day;
+	    	console.log(date);
+	        nowDate.innerText = date;
 	    }
 
 	    function nextDate() {
 	        currentDate.setDate(currentDate.getDate() + 1);
 	        updateDateDisplay();
 	    }
+
+		document.getElementById("prev").onclick = prevDate();
+		document.getElementById("next").onclick = nextDate();
 
 	    // 初期表示の更新
 	    updateDateDisplay();
