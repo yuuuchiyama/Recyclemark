@@ -309,7 +309,6 @@
 	                    		form.appendChild(imgSchedule);
 	                    	}
 	                    }
-	                    //<%=request.getAttribute("schedules") %>
 	                }
 
 	                row.appendChild(cell);

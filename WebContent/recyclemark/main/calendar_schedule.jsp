@@ -204,11 +204,13 @@
 		    	<input type="hidden" id="year" value="${year}">
 		    	<input type="hidden" id="month" value="${month}">
 		    	<input type="hidden" id="day" value="${day}">
+		    	<input type="hidden" id="day" name="date" value="${date}">
 		        <div class="date-display" id="date-display">${date}</div>
 		        <button class="date-button" id="next">&#x3E;</button>
 		    </div>
 
-	    	<!-- アイコンリスト -->
+	    	<!-- アイコンリスト
+	    	マークのパスをどう渡すか -->
 			<div class="icon-list">
 	    		<button type="button" class="icon" onclick="toggleIcon(this)">
 	        		<img src="../../images/燃えるゴミ.gif" alt="可燃ごみ">
@@ -237,8 +239,18 @@
 		    <!-- メモ入力 -->
 		    <textarea class="memo" placeholder="memo"></textarea>
 
-		    <!-- 登録ボタン -->
-		    <button class="register-button">登録</button>
+			<c:choose>
+    			<c:when test="${have == '0'}">
+    				<input type="hidden" name="schedule" value="0">
+			        <!-- 登録ボタン -->
+				    <button class="register-button">登録</button>
+			    </c:when>
+			    <c:when test="${have == '1'}">
+			    	<input type="hidden" name="schedule" value="1">
+			        <!-- 登録ボタン -->
+				    <button class="register-button">変更</button>
+			    </c:when>
+			</c:choose>
 		</div>
 	</form>
 </c:param>
