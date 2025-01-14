@@ -158,6 +158,10 @@
 	        background-color: rgba(255, 255, 255, 0.8);
 	        border: none;
 	    }
+		img {
+			width: 50px;  /* 幅を50ピクセルに設定 */
+			height: 50px; /* 高さを50ピクセルに設定 */
+		}
 	    .week th {
 	        background-color: rgba(78, 118, 68,0.6);
 	        border: 1px solid #000;
@@ -167,15 +171,32 @@
 	        padding: 0; /* セルの余白をなくす */
 	        height: 110px; /* 任意の高さに設定 */
 	        width: 100px; /* 同じ幅に設定 */
+	        vertical-align: top; /* 上に揃える */
+    		text-align: center; /* 横方向は中央揃えのまま */
+    		 background-color: rgba(255, 255, 255, 0.5);
+	    }
+
+		.calendar img{
+			hight:50px;
+			width:60px;
+			margin-top: 10px;
+		}
+	    .calendar td form{
+	        width: 100%; /* 親要素に対して全幅 */
+	        height: 40%; /* 親要素に対して全高 */
+	        border: none;
+	        font-size: 1em;
+	        cursor: pointer;
+	        background-color: rgba(255, 255, 255, 0.5);
 	    }
 
 	    .calendar td button {
-	        width: 100%; /* 親要素に対して全幅 */
+		    width: 100%; /* 親要素に対して全幅 */
 	        height: 100%; /* 親要素に対して全高 */
 	        border: none;
 	        font-size: 1em;
 	        cursor: pointer;
-	        background-color: rgba(255, 255, 255, 0.7);
+	        background-color: rgba(255, 255, 255, 0.5);
 	    }
 
 	    .calendar td:empty {
@@ -190,41 +211,42 @@
 		カレンダー
 	</c:param>
 
+	<c:param name="header">
+		<a class="back" href="mypage.jsp">＜</a>
+	</c:param>
 
 	<c:param name="content">
-		<form action="Schedule.action" method="get">
-			<!-- メインコンテンツ -->
-			<div class="main">
-			<!-- カレンダー部分 -->
-			    <div class="main-container">
-			        <div class="calender-container">
-			            <table class="calendar">
-			                <thead>
-			                    <tr class="month_day">
-			                        <th colspan="7">
-			                            <button onclick="prevMonth()" style="font-size: 30px;">&#x3C;</button>
-			                            <span id="month-year" style="font-size: 30px; font-weight: bold;"></span>
-			                            <button onclick="nextMonth()" style="font-size: 30px;">&#x3E;</button>
-			                        </th>
-			                    </tr>
-			                    <tr class="week">
-			                        <th>日</th>
-			                        <th>月</th>
-			                        <th>火</th>
-			                        <th>水</th>
-			                        <th>木</th>
-			                        <th>金</th>
-			                        <th>土</th>
-			                    </tr>
-			                </thead>
-			                <tbody id="calendar-body" class="calendar-body">
-			                    <!-- JavaScriptで日付を挿入 -->
-			                </tbody>
-			            </table>
-			        </div>
-			    </div>
-			</div>
-		</form>
+		<!-- メインコンテンツ -->
+		<div class="main">
+		<!-- カレンダー部分 -->
+		    <div class="main-container">
+		        <div class="calender-container">
+		            <table class="calendar">
+		                <thead>
+		                    <tr class="month_day">
+		                        <th colspan="7">
+		                            <button onclick="prevMonth()" style="font-size: 30px;">&#x3C;</button>
+		                            <span id="month-year" style="font-size: 30px; font-weight: bold;"></span>
+		                            <button onclick="nextMonth()" style="font-size: 30px;">&#x3E;</button>
+		                        </th>
+		                    </tr>
+		                    <tr class="week">
+		                        <th>日</th>
+		                        <th>月</th>
+		                        <th>火</th>
+		                        <th>水</th>
+		                        <th>木</th>
+		                        <th>金</th>
+		                        <th>土</th>
+		                    </tr>
+		                </thead>
+		                <tbody id="calendar-body" class="calendar-body">
+		                    <!-- JavaScriptで日付を挿入 -->
+		                </tbody>
+		            </table>
+		        </div>
+		    </div>
+		</div>
 	</c:param>
    	<c:param name="script">
 	    const menuIcon = document.getElementById('menu-icon');
@@ -250,10 +272,10 @@
 	        const calendarBody = document.getElementById('calendar-body');
 	        const monthYear = document.getElementById('month-year');
 	        calendarBody.innerHTML = ''; // 既存のカレンダーをクリア
-	        monthYear.textContent = `${year}/${month + 1}`;
+	        monthYear.textContent = year + "/" + month;
 
 	        const firstDay = new Date(year, month, 1).getDay();
-	        const daysInMonth = new Date(year, month + 1, 0).getDate();
+	        const daysInMonth = new Date(year, month, 0).getDate();
 
 	        let date = 1;
 	        for (let i = 0; i < 6; i++) { // 最大6行
@@ -261,7 +283,13 @@
 
 	            for (let j = 0; j < 7; j++) {
 	                const cell = document.createElement('td');
+	                const form = document.createElement('form');
 	                const button = document.createElement('button');
+	                const input = document.createElement('input');
+	                const inputYear = document.createElement('input');
+	                const inputMonth = document.createElement('input');
+	                const inputDay = document.createElement('input');
+	                const inputSche = document.createElement('input');
 
 	                if (i === 0 && j < firstDay) {
 	                    // 空のセルにもボタンを追加
@@ -271,9 +299,99 @@
 	                    button.style.visibility = 'hidden'; // 表示されないようにする
 	                    cell.appendChild(button);
 	                } else {
+	                	console.log(month.toString().padStart(2, '0'));
+	                	month = month.toString().padStart(2, '0');
+	                	const nowday = year + "-" + month + "-" + date;
 	                    button.textContent = date;
-	                    cell.appendChild(button);
+	                    form.action = 'Schedule.action';
+	                    form.method = 'get';
+
+	                    input.setAttribute("type", "hidden");
+	                    input.setAttribute("name", "date");
+	                    input.setAttribute("value", nowday);
+
+	                    inputYear.setAttribute("type", "hidden");
+	                    inputYear.setAttribute("name", "year");
+	                    inputYear.setAttribute("value", year);
+
+	                    inputMonth.setAttribute("type", "hidden");
+	                    inputMonth.setAttribute("name", "month");
+	                    inputMonth.setAttribute("value", month);
+	                    console.log(month);
+
+	                    inputDay.setAttribute("type", "hidden");
+	                    inputDay.setAttribute("name", "day");
+	                    inputDay.setAttribute("value", date);
+
+	                    inputSche.setAttribute("type", "hidden");
+	                    inputSche.setAttribute("name", "stamp_id");
+	                    inputSche.setAttribute("value", "0");
+
+	                    cell.appendChild(form);
+	                    form.appendChild(input);
+	                    form.appendChild(inputYear);
+	                    form.appendChild(inputMonth);
+	                    form.appendChild(inputDay);
+	                    form.appendChild(button);
+	                    form.appendChild(inputSche);
 	                    date++;
+
+						var have = "0";
+						// カレンダーページを最初に開いた時の処理
+						console.log(<%=request.getAttribute("dates") %>)
+						if (<%=request.getAttribute("dates") %>) {
+							// 予定がある場合
+							var dates = <%=request.getAttribute("dates") %>;
+							var stampIds = <%=request.getAttribute("stampIds") %>;
+							console.log(stampIds);
+							let count = 0;
+		                    for (var schedule of dates) {
+		                    	console.log(schedule);
+		                    	console.log(nowday);
+		                    	if(schedule == nowday) {
+		                    		have = "1";
+		                    		inputSche.setAttribute("type", "hidden");
+				                    inputSche.setAttribute("name", "stamp_id");
+				                    inputSche.setAttribute("value", stampIds[count]);
+
+		                    		const imgSchedule = document.createElement('img');
+		                    		imgSchedule.setAttribute("src", "../../images/リンゴ.png");
+
+		                    		form.appendChild(imgSchedule);
+		                    		form.appendChild(inputSche);
+		                    	}
+		                    	count++;
+		                    }
+						} else {
+							// 予定登録、編集をした後に通る処理
+							if (<%=request.getAttribute("date") %>) {
+								// 予定がある場合
+								var returnDate = <%=request.getAttribute("date") %>;	// date	にすると変数名が被ってエラーになる
+								var stampId = <%=request.getAttribute("icon") %>;
+								console.log(stampIds);
+								let count = 0;
+			                    if(date == nowday) {
+		                    		have = "1";
+		                    		inputSche.setAttribute("type", "hidden");
+				                    inputSche.setAttribute("name", "stamp_id");
+				                    inputSche.setAttribute("value", stampId);
+
+		                    		const imgSchedule = document.createElement('img');
+		                    		imgSchedule.setAttribute("src", "../../images/リンゴ.png");
+
+		                    		form.appendChild(imgSchedule);
+		                    		form.appendChild(inputSche);
+	                    		}
+	                    		count++;
+		                    }
+						}
+
+	                    // 予定の有無を判別する隠しなんたら
+	                    const inputHave = document.createElement('input');
+	                    inputHave.setAttribute("type", "hidden");
+	                    inputHave.setAttribute("name", "have");
+	                    inputHave.setAttribute("value", have);
+	                    form.appendChild(inputHave);
 	                }
 
 	                row.appendChild(cell);
@@ -291,7 +409,7 @@
 	     function updateCalendar() {
 	         const today = new Date();
 	         currentYear = today.getFullYear();
-	         currentMonth = today.getMonth();
+	         currentMonth = today.getMonth() + 1;
 	         generateCalendar(currentYear, currentMonth);
 	     }
 

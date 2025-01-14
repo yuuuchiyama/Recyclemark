@@ -2,7 +2,7 @@ package bean;
 
 import java.io.Serializable;
 
-public class Calender implements Serializable {
+public class Calendar implements Serializable {
 	private String calendarDate;
 	private int userId;
 	private int stampId;

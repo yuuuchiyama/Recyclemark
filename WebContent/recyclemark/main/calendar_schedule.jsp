@@ -221,52 +221,66 @@
 	</c:param>
 
  	<c:param name="header">
-		<a class="back" href="calender.jsp">＜</a>
+		<a class="back" href="CalendarExecute.action">＜</a>
 	</c:param>
+
 <c:param name="content">
-	<!-- メインコンテンツ -->
 	<form action="ScheduleExecute.action" method="get">
 		<div class="main">
-		<!-- メインコンテンツ -->
+			<!-- メインコンテンツ -->
 			<div class="main-container">
-	    	<!-- 日付ナビゲーション -->
-		    <div class="date-navigation">
-		        <button class="date-button" onclick="prevDate()">&#x3C;</button>
-		        <div class="date-display" id="date-display"></div>
-		        <button class="date-button" onclick="nextDate()">&#x3E;</button>
-		    </div>
+		    	<!-- 日付ナビゲーション -->
+			    <div class="date-navigation">
+			    	<button class="date-button" id="prev">&#x3C;</button>
+			    	<input type="hidden" id="day" name="date" value='${date}'>
+			        <div class="date-display" id="date-display"><%=request.getAttribute("date") %></div>
+			        <button class="date-button" id="next">&#x3E;</button>
+			    </div>
 
-	    	<!-- アイコンリスト -->
-			<div class="icon-list">
-	    		<button class="icon" onclick="toggleIcon(this)">
-	        		<img src="../../images/燃えるゴミ.gif" alt="可燃ごみ">
-	    		</button>
-			    <button class="icon" onclick="toggleIcon(this)">
-			        <img src="../../images/燃えないゴミ.gif" alt="不燃ごみ">
-			    </button>
-			    <button class="icon" onclick="toggleIcon(this)">
-			        <img src="../../images/プラスチック.gif" alt="プラスチック">
-			    </button>
-			    <button class="icon" onclick="toggleIcon(this)">
-			        <img src="../../images/粗大ごみ.jpg" alt="粗大ごみ">
-			    </button>
-			    <button class="icon" onclick="toggleIcon(this)">
-			        <img src="../../images/ビン.jpg" alt="瓶">
-			    </button>
-			    <button class="icon" onclick="toggleIcon(this)">
-			        <img src="../../images/can.png" alt="缶">
-			    </button>
-			    <button class="icon" onclick="toggleIcon(this)">
-			        <img src="../../images/取り消し.jpg" alt="取り消し">
-			    </button>
-			</div>
+		    	<!-- アイコンリスト
+		    	マークのパスをどう渡すか -->
+		    	<div>${errors.get("icon_error")}</div>
+				<div class="icon-list">
+		    		<button type="button" class="icon" onclick="toggleIcon(this)" value="1">
+		        		<img src="../../images/燃えるゴミ.gif" alt="可燃ごみ">
+		    		</button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="2">
+				        <img src="../../images/燃えないゴミ.gif" alt="不燃ごみ">
+				    </button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="3">
+				        <img src="../../images/プラスチック.gif" alt="プラスチック">
+				    </button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="4">
+				        <img src="../../images/粗大ごみ.jpg" alt="粗大ごみ">
+				    </button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="5">
+				        <img src="../../images/ビン.jpg" alt="瓶">
+				    </button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="6">
+				        <img src="../../images/can.png" alt="缶">
+				    </button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="7">
+				        <img src="../../images/取り消し.jpg" alt="取り消し">
+				    </button>
+				</div>
 
+				<input type="hidden" id="select" name="icon" value="${stampId}">
 
-		    <!-- メモ入力 -->
-		    <textarea class="memo" placeholder="memo"></textarea>
+			    <!-- メモ入力 -->
+			    <textarea class="memo" name="memo" placeholder="memo">${memo}</textarea>
 
-		    <!-- 登録ボタン -->
-		    <button class="register-button">登録</button>
+				<c:choose>
+	    			<c:when test="${have == '0'}">
+	    				<input type="hidden" name="schedule" value="0">
+				        <!-- 登録ボタン -->
+					    <button class="register-button">登録</button>
+				    </c:when>
+				    <c:when test="${have == '1'}">
+				    	<input type="hidden" name="schedule" value="1">
+				        <!-- 登録ボタン -->
+					    <button class="register-button">変更</button>
+				    </c:when>
+				</c:choose>
 			</div>
 		</div>
 	</form>
@@ -290,18 +304,42 @@
 
 	    function updateDateDisplay() {
 	        const dateDisplay = document.getElementById('date-display');
-	        dateDisplay.textContent = `${currentDate.getFullYear()}/${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
+	        dateDisplay.textContent = ${date};
 	    }
 
 	    function prevDate() {
-	        currentDate.setDate(currentDate.getDate() - 1);
-	        updateDateDisplay();
+	    	var nowDate = document.getElementById("date-display");
+	    	var year = document.getElementById("year");
+	    	var month = document.getElementById("month");
+	    	var day = document.getElementById("day");
+	    	var nextDay = day--;
+	    	var date = year + "-" + month + "-" + day;
+	    	console.log(date);
+	        nowDate.innerText = date;
 	    }
 
 	    function nextDate() {
 	        currentDate.setDate(currentDate.getDate() + 1);
 	        updateDateDisplay();
 	    }
+
+		// 予定情報がある場合のアイコンの処理
+		function selectIcon() {
+	    	let selButtons = document.getElementsByClassName("icon");
+	    	console.log(selButtons);
+	    	for (var selButton of selButtons) {
+	    		if (<%=request.getAttribute("stampId") %> == selButton.value) {
+	    			console.log(<%=request.getAttribute("stampId") %>);
+	    			selButton.classList.add("active");
+	    		}
+	    	}
+		}
+
+		document.getElementById("prev").onclick = prevDate();
+		document.getElementById("next").onclick = nextDate();
+
+		// ページ読み込み時
+		window.onload = selectIcon;
 
 	    // 初期表示の更新
 	    updateDateDisplay();
@@ -318,6 +356,12 @@
 
 	            // クリックしたアイコンにアクティブなクラスを付与
 	            element.classList.add('active');
+	            const setValue = document.getElementsByClassName("active")[0];
+	            let select = document.getElementById("select");
+	            console.log(setValue.value);
+	            console.log(select.value);
+	            select.value = setValue.value;
+	            console.log(select.value);
 	        }
 	    }
     </c:param>
