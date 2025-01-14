@@ -169,17 +169,26 @@
 
 	    .calendar td {
 	        padding: 0; /* セルの余白をなくす */
-	        height: 110px; /* 任意の高さに設定 */
+	        height: 115px; /* 任意の高さに設定 */
 	        width: 100px; /* 同じ幅に設定 */
 	    }
 
-	    .calendar td button {
+	    .calendar td form{
 	        width: 100%; /* 親要素に対して全幅 */
 	        height: 100%; /* 親要素に対して全高 */
 	        border: none;
 	        font-size: 1em;
 	        cursor: pointer;
-	        background-color: rgba(255, 255, 255, 0.7);
+	        background-color: rgba(255, 255, 255, 0.5);
+	    }
+
+	    .calendar td button {
+		    width: 100%; /* 親要素に対して全幅 */
+	        height: 100%; /* 親要素に対して全高 */
+	        border: none;
+	        font-size: 1em;
+	        cursor: pointer;
+	        background-color: rgba(255, 255, 255, 0.5);
 	    }
 
 	    .calendar td:empty {
@@ -194,6 +203,9 @@
 		カレンダー
 	</c:param>
 
+	<c:param name="header">
+		<a class="back" href="mypage.jsp">＜</a>
+	</c:param>
 
 	<c:param name="content">
 		<!-- メインコンテンツ -->
