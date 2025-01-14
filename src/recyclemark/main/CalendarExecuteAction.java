@@ -1,5 +1,6 @@
 package recyclemark.main;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,8 @@ public class CalendarExecuteAction extends Action {
 
 		CalendarDao calendarDao = new CalendarDao();
 		List<Calendar> schedules = null;
+		List<String> dates = new ArrayList<>();
+		List<Integer> stampIds = new ArrayList<>();
 
 		//リクエストパラメータ―の取得 2
 		//なし
@@ -33,16 +36,24 @@ public class CalendarExecuteAction extends Action {
 		// ビジネスロジック 4
 		if(schedules != null) {
 			System.out.println(schedules);
+			for (Calendar schedule : schedules) {
+				dates.add('"' + schedule.getCalendarDate() + '"');
+				stampIds.add(schedule.getStampId());
+			}
+
+			System.out.println(dates);
+			System.out.println(stampIds);
 			// DBにデータを保存 5
 
 			// レスポンス値をセット 6
-			req.setAttribute("schedules",schedules);
+			req.setAttribute("dates", dates);
+			req.setAttribute("stampIds",stampIds);
 
 			//JSPへフォワード 7
-			req.getRequestDispatcher("calender.jsp").forward(req, res);
+			req.getRequestDispatcher("calendar.jsp").forward(req, res);
 		} else {
 			// JSPへフォワード 7
-			req.getRequestDispatcher("calender.jsp").forward(req, res);
+			req.getRequestDispatcher("calendar.jsp").forward(req, res);
 		}
 	}
 

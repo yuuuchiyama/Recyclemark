@@ -8,8 +8,64 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Calendar;
+import bean.Stampdata;
 
 public class CalendarDao extends Dao {
+	/** stampIdに対応するスタンプを取得するメソッド */
+	public Stampdata getStamps(String stampId) throws Exception {
+		// スタンプインスタンスを初期化
+		Stampdata stampdata = new Stampdata();
+		// コネクションを確立
+		Connection connection = getConnection();
+		// プリペアードステートメント
+		PreparedStatement statement = null;
+
+		// SQL文の条件
+		String condition = " where stampId = ?;";
+
+		try {
+			// プリペアードステートメントにSQL文をセット
+			statement = connection.prepareStatement("SELECT * FROM stampdata" + condition);
+			// プリペアードステートメントに特徴をバインド
+			statement.setString(1, stampId);
+			// プリペアードステートメントを実行
+			ResultSet rSet = statement.executeQuery();
+
+			// リザルトセットが存在する場合
+			if (rSet.next()) {
+				// スタンプインスタンスに検索結果をセット
+				stampdata.setStampId(rSet.getInt("StampId"));
+				stampdata.setStampNameJapanese(rSet.getString("StampNameJapanese"));
+				stampdata.setStampNameEnglish(rSet.getString("StampNameEnglish"));
+				stampdata.setStampNameChinese(rSet.getString("StampNameChinese"));
+				stampdata.setStampNameKorean(rSet.getString("StampNameKorean"));
+				stampdata.setStampImg(rSet.getString("StampImg"));
+
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			// プリペアードステートメントを閉じる
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			// コネクションを閉じる
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+
+		return stampdata;
+	}
+
 	/** userIdに対応するカレンダーの予定情報を取得するメソッド */
 	public List<Calendar> getSchedule(String userId) throws Exception {
 		// リストを初期化
@@ -34,7 +90,7 @@ public class CalendarDao extends Dao {
 			while (rSet.next()) {
 				// カレンダーインスタンスを初期化
 				Calendar calendar = new Calendar();
-				// リサイクルマークインスタンスに検索結果をセット
+				// カレンダーインスタンスに検索結果をセット
 				calendar.setCalendarDate(rSet.getString("CalendarDate"));
 				calendar.setUserId(rSet.getInt("UserId"));
 				calendar.setStampId(rSet.getInt("StampId"));
@@ -67,8 +123,10 @@ public class CalendarDao extends Dao {
 		return list;
 	}
 
-	/** 日付に応じた予定があるかを探すメソッド */
-	public boolean searchSchedule(String userId, String date) throws Exception {
+	/** 日付に応じた予定を取得するメソッド */
+	public Calendar searchSchedule(String userId, String date) throws Exception {
+		// カレンダーインスタンスを初期化
+		Calendar calendar = new Calendar();
 		// コネクションを確立
 		Connection connection = getConnection();
 		// プリペアードステートメント
@@ -76,18 +134,21 @@ public class CalendarDao extends Dao {
 		// SQL文の条件
 		String condition = " where userId = ? AND CalendarDate = ?";
 
-		// 実行件数
-		int count = 0;
-
 		try {
 			// プリペアードステートメントにSQL文をセット
 			statement = connection.prepareStatement("SELECT * FROM calendar" + condition);
 			// プリペアードステートメントに特徴をバインド
 			statement.setString(1, userId);
+			statement.setString(2, date);
 			// プリペアードステートメントを実行
 			ResultSet rSet = statement.executeQuery();
 			if (rSet.next()) {
-				count = 1;
+				// カレンダーインスタンスに検索結果をセット
+				calendar.setCalendarDate(rSet.getString("CalendarDate"));
+				calendar.setUserId(rSet.getInt("UserId"));
+				calendar.setStampId(rSet.getInt("StampId"));
+				calendar.setStampImg(rSet.getString("StampImg"));
+				calendar.setMemo(rSet.getString("Memo"));
 			}
 		} catch (Exception e) {
 			throw e;
@@ -109,14 +170,7 @@ public class CalendarDao extends Dao {
 				}
 			}
 		}
-
-		if (count > 0) {
-			// 実行件数がある場合
-			return true;
-		} else {
-			// 実行件数がない場合
-			return false;
-		}
+		return calendar;
 	}
 
 	/** 新規予定登録 */
@@ -177,7 +231,7 @@ public class CalendarDao extends Dao {
 		// プリペアードステートメント
 		PreparedStatement statement = null;
 		// SQL文の条件
-		String condition = "where UserId = ? AND CalendarDate = ?";
+		String condition = " where UserId = ? AND CalendarDate = ?";
 		// 実行件数
 		int count = 0;
 		try {
@@ -186,7 +240,7 @@ public class CalendarDao extends Dao {
 			statement = connection.prepareStatement("delete from calendar" + condition);
 			// プリペアードステートメントに値をバインド
 			statement.setString(1, userId);
-			statement.setString(1, date);
+			statement.setString(2, date);
 			// プリペアードステートメントを実行
 			count = statement.executeUpdate();
 		} catch (Exception e) {

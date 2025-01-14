@@ -201,43 +201,42 @@
 	    	<!-- 日付ナビゲーション -->
 		    <div class="date-navigation">
 		    	<button class="date-button" id="prev">&#x3C;</button>
-		    	<input type="hidden" id="year" value="${year}">
-		    	<input type="hidden" id="month" value="${month}">
-		    	<input type="hidden" id="day" value="${day}">
-		    	<input type="hidden" id="day" name="date" value="${date}">
-		        <div class="date-display" id="date-display">${date}</div>
+		    	<input type="hidden" id="day" name="date" value='${date}'>
+		        <div class="date-display" id="date-display"><%=request.getAttribute("date") %></div>
 		        <button class="date-button" id="next">&#x3E;</button>
 		    </div>
 
 	    	<!-- アイコンリスト
 	    	マークのパスをどう渡すか -->
+	    	<div>${errors.get("icon_error")}</div>
 			<div class="icon-list">
-	    		<button type="button" class="icon" onclick="toggleIcon(this)">
+	    		<button type="button" class="icon" onclick="toggleIcon(this)" value="1">
 	        		<img src="../../images/燃えるゴミ.gif" alt="可燃ごみ">
 	    		</button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)" value="2">
 			        <img src="../../images/燃えないゴミ.gif" alt="不燃ごみ">
 			    </button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)" value="3">
 			        <img src="../../images/プラスチック.gif" alt="プラスチック">
 			    </button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)" value="4">
 			        <img src="../../images/粗大ごみ.jpg" alt="粗大ごみ">
 			    </button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)" value="5">
 			        <img src="../../images/ビン.jpg" alt="瓶">
 			    </button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)" value="6">
 			        <img src="../../images/can.png" alt="缶">
 			    </button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)">
+			    <button type="button" class="icon" onclick="toggleIcon(this)" value="7">
 			        <img src="../../images/取り消し.jpg" alt="取り消し">
 			    </button>
 			</div>
 
+			<input type="hidden" id="select" name="icon" value="${stampId}">
 
 		    <!-- メモ入力 -->
-		    <textarea class="memo" placeholder="memo"></textarea>
+		    <textarea class="memo" name="memo" placeholder="memo">${memo}</textarea>
 
 			<c:choose>
     			<c:when test="${have == '0'}">
@@ -292,8 +291,23 @@
 	        updateDateDisplay();
 	    }
 
+		// 予定情報がある場合のアイコンの処理
+		function selectIcon() {
+	    	let selButtons = document.getElementsByClassName("icon");
+	    	console.log(selButtons);
+	    	for (var selButton of selButtons) {
+	    		if (<%=request.getAttribute("stampId") %> == selButton.value) {
+	    			console.log(<%=request.getAttribute("stampId") %>);
+	    			selButton.classList.add("active");
+	    		}
+	    	}
+		}
+
 		document.getElementById("prev").onclick = prevDate();
 		document.getElementById("next").onclick = nextDate();
+
+		// ページ読み込み時
+		window.onload = selectIcon;
 
 	    // 初期表示の更新
 	    updateDateDisplay();
@@ -310,6 +324,12 @@
 
 	            // クリックしたアイコンにアクティブなクラスを付与
 	            element.classList.add('active');
+	            const setValue = document.getElementsByClassName("active")[0];
+	            let select = document.getElementById("select");
+	            console.log(setValue.value);
+	            console.log(select.value);
+	            select.value = setValue.value;
+	            console.log(select.value);
 	        }
 	    }
     </c:param>

@@ -158,6 +158,10 @@
 	        background-color: rgba(255, 255, 255, 0.8);
 	        border: none;
 	    }
+		img {
+			width: 50px;  /* 幅を50ピクセルに設定 */
+			height: 50px; /* 高さを50ピクセルに設定 */
+		}
 	    .week th {
 	        background-color: rgba(78, 118, 68,0.6);
 	        border: 1px solid #000;
@@ -248,10 +252,10 @@
 	        const calendarBody = document.getElementById('calendar-body');
 	        const monthYear = document.getElementById('month-year');
 	        calendarBody.innerHTML = ''; // 既存のカレンダーをクリア
-	        monthYear.textContent = year + "/" + (month + 1);
+	        monthYear.textContent = year + "/" + month;
 
 	        const firstDay = new Date(year, month, 1).getDay();
-	        const daysInMonth = new Date(year, month + 1, 0).getDate();
+	        const daysInMonth = new Date(year, month, 0).getDate();
 
 	        let date = 1;
 	        for (let i = 0; i < 6; i++) { // 最大6行
@@ -265,6 +269,7 @@
 	                const inputYear = document.createElement('input');
 	                const inputMonth = document.createElement('input');
 	                const inputDay = document.createElement('input');
+	                const inputSche = document.createElement('input');
 
 	                if (i === 0 && j < firstDay) {
 	                    // 空のセルにもボタンを追加
@@ -274,7 +279,9 @@
 	                    button.style.visibility = 'hidden'; // 表示されないようにする
 	                    cell.appendChild(button);
 	                } else {
-	                	const nowday = year + "-" + (month + 1) + "-" + date;
+	                	console.log(month.toString().padStart(2, '0'));
+	                	month = month.toString().padStart(2, '0');
+	                	const nowday = year + "-" + month + "-" + date;
 	                    button.textContent = date;
 	                    form.action = 'Schedule.action';
 	                    form.method = 'get';
@@ -289,11 +296,16 @@
 
 	                    inputMonth.setAttribute("type", "hidden");
 	                    inputMonth.setAttribute("name", "month");
-	                    inputMonth.setAttribute("value", month + 1);
+	                    inputMonth.setAttribute("value", month);
+	                    console.log(month);
 
 	                    inputDay.setAttribute("type", "hidden");
 	                    inputDay.setAttribute("name", "day");
 	                    inputDay.setAttribute("value", date);
+
+	                    inputSche.setAttribute("type", "hidden");
+	                    inputSche.setAttribute("name", "stamp_id");
+	                    inputSche.setAttribute("value", "0");
 
 	                    cell.appendChild(form);
 	                    form.appendChild(input);
@@ -301,14 +313,63 @@
 	                    form.appendChild(inputMonth);
 	                    form.appendChild(inputDay);
 	                    form.appendChild(button);
+	                    form.appendChild(inputSche);
 	                    date++;
-	                    for (var schedule of ${schedules}) {
-	                    	if(schedule.calendarDate == nowday) {
-	                    		const imgSchedule = document.createElement('img');
-	                    		imgSchedule.setAttribute("src", schedule.stampImg);
-	                    		form.appendChild(imgSchedule);
-	                    	}
-	                    }
+
+						var have = "0";;
+						// カレンダーページを最初に開いた時の処理
+						console.log(<%=request.getAttribute("dates") %>)
+						if (<%=request.getAttribute("dates") %>) {
+							// 予定がある場合
+							var dates = <%=request.getAttribute("dates") %>;
+							var stampIds = <%=request.getAttribute("stampIds") %>;
+							console.log(stampIds);
+							let count = 0;
+		                    for (var schedule of dates) {
+		                    	if(schedule == nowday) {
+		                    		have = "1";
+		                    		inputSche.setAttribute("type", "hidden");
+				                    inputSche.setAttribute("name", "stamp_id");
+				                    inputSche.setAttribute("value", stampIds[count]);
+
+		                    		const imgSchedule = document.createElement('img');
+		                    		imgSchedule.setAttribute("src", "../../images/リンゴ.png");
+
+		                    		form.appendChild(imgSchedule);
+		                    		form.appendChild(inputSche);
+		                    	}
+		                    	count++;
+		                    }
+						} else {
+							// 予定登録、編集をした後に通る処理
+							if (<%=request.getAttribute("date") %>) {
+								// 予定がある場合
+								var returnDate = <%=request.getAttribute("date") %>;	// date	にすると変数名が被ってエラーになる
+								var stampId = <%=request.getAttribute("icon") %>;
+								console.log(stampIds);
+								let count = 0;
+			                    if(date == nowday) {
+		                    		have = "1";
+		                    		inputSche.setAttribute("type", "hidden");
+				                    inputSche.setAttribute("name", "stamp_id");
+				                    inputSche.setAttribute("value", stampId);
+
+		                    		const imgSchedule = document.createElement('img');
+		                    		imgSchedule.setAttribute("src", "../../images/リンゴ.png");
+
+		                    		form.appendChild(imgSchedule);
+		                    		form.appendChild(inputSche);
+	                    		}
+	                    		count++;
+		                    }
+						}
+
+	                    // 予定の有無を判別する隠しなんたら
+	                    const inputHave = document.createElement('input');
+	                    inputHave.setAttribute("type", "hidden");
+	                    inputHave.setAttribute("name", "have");
+	                    inputHave.setAttribute("value", have);
+	                    form.appendChild(inputHave);
 	                }
 
 	                row.appendChild(cell);
@@ -326,7 +387,7 @@
 	     function updateCalendar() {
 	         const today = new Date();
 	         currentYear = today.getFullYear();
-	         currentMonth = today.getMonth();
+	         currentMonth = today.getMonth() + 1;
 	         generateCalendar(currentYear, currentMonth);
 	     }
 
