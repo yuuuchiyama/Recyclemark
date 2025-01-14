@@ -225,66 +225,62 @@
 	</c:param>
 <c:param name="content">
 	<form action="ScheduleExecute.action" method="get">
-<<<<<<< HEAD
-	<!-- メインコンテンツ -->
-		<div class="container">
-=======
 		<div class="main">
-		<!-- メインコンテンツ -->
+			<!-- メインコンテンツ -->
 			<div class="main-container">
->>>>>>> branch 'master' of https://github.com/yuuuchiyama/Recyclemark.git
-	    	<!-- 日付ナビゲーション -->
-		    <div class="date-navigation">
-		    	<button class="date-button" id="prev">&#x3C;</button>
-		    	<input type="hidden" id="day" name="date" value='${date}'>
-		        <div class="date-display" id="date-display"><%=request.getAttribute("date") %></div>
-		        <button class="date-button" id="next">&#x3E;</button>
-		    </div>
+		    	<!-- 日付ナビゲーション -->
+			    <div class="date-navigation">
+			    	<button class="date-button" id="prev">&#x3C;</button>
+			    	<input type="hidden" id="day" name="date" value='${date}'>
+			        <div class="date-display" id="date-display"><%=request.getAttribute("date") %></div>
+			        <button class="date-button" id="next">&#x3E;</button>
+			    </div>
 
-	    	<!-- アイコンリスト
-	    	マークのパスをどう渡すか -->
-	    	<div>${errors.get("icon_error")}</div>
-			<div class="icon-list">
-	    		<button type="button" class="icon" onclick="toggleIcon(this)" value="1">
-	        		<img src="../../images/燃えるゴミ.gif" alt="可燃ごみ">
-	    		</button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)" value="2">
-			        <img src="../../images/燃えないゴミ.gif" alt="不燃ごみ">
-			    </button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)" value="3">
-			        <img src="../../images/プラスチック.gif" alt="プラスチック">
-			    </button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)" value="4">
-			        <img src="../../images/粗大ごみ.jpg" alt="粗大ごみ">
-			    </button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)" value="5">
-			        <img src="../../images/ビン.jpg" alt="瓶">
-			    </button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)" value="6">
-			        <img src="../../images/can.png" alt="缶">
-			    </button>
-			    <button type="button" class="icon" onclick="toggleIcon(this)" value="7">
-			        <img src="../../images/取り消し.jpg" alt="取り消し">
-			    </button>
+		    	<!-- アイコンリスト
+		    	マークのパスをどう渡すか -->
+		    	<div>${errors.get("icon_error")}</div>
+				<div class="icon-list">
+		    		<button type="button" class="icon" onclick="toggleIcon(this)" value="1">
+		        		<img src="../../images/燃えるゴミ.gif" alt="可燃ごみ">
+		    		</button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="2">
+				        <img src="../../images/燃えないゴミ.gif" alt="不燃ごみ">
+				    </button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="3">
+				        <img src="../../images/プラスチック.gif" alt="プラスチック">
+				    </button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="4">
+				        <img src="../../images/粗大ごみ.jpg" alt="粗大ごみ">
+				    </button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="5">
+				        <img src="../../images/ビン.jpg" alt="瓶">
+				    </button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="6">
+				        <img src="../../images/can.png" alt="缶">
+				    </button>
+				    <button type="button" class="icon" onclick="toggleIcon(this)" value="7">
+				        <img src="../../images/取り消し.jpg" alt="取り消し">
+				    </button>
+				</div>
+
+				<input type="hidden" id="select" name="icon" value="${stampId}">
+
+			    <!-- メモ入力 -->
+			    <textarea class="memo" name="memo" placeholder="memo">${memo}</textarea>
+
+				<c:choose>
+	    			<c:when test="${have == '0'}">
+	    				<input type="hidden" name="schedule" value="0">
+				        <!-- 登録ボタン -->
+					    <button class="register-button">登録</button>
+				    </c:when>
+				    <c:when test="${have == '1'}">
+				    	<input type="hidden" name="schedule" value="1">
+				        <!-- 登録ボタン -->
+					    <button class="register-button">変更</button>
+				    </c:when>
+				</c:choose>
 			</div>
-
-			<input type="hidden" id="select" name="icon" value="${stampId}">
-
-		    <!-- メモ入力 -->
-		    <textarea class="memo" name="memo" placeholder="memo">${memo}</textarea>
-
-			<c:choose>
-    			<c:when test="${have == '0'}">
-    				<input type="hidden" name="schedule" value="0">
-			        <!-- 登録ボタン -->
-				    <button class="register-button">登録</button>
-			    </c:when>
-			    <c:when test="${have == '1'}">
-			    	<input type="hidden" name="schedule" value="1">
-			        <!-- 登録ボタン -->
-				    <button class="register-button">変更</button>
-			    </c:when>
-			</c:choose>
 		</div>
 	</form>
 </c:param>
