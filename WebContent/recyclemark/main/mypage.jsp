@@ -218,7 +218,7 @@
 
 	<c:param name="content">
 		<div class="main">
-			<form action="EditYouser.action" method="post">
+			<form action="EditUser.action" method="post">
 				<div class="user-info">
 					<div class="user-info-text">
 			            <p>Mail:</p>
