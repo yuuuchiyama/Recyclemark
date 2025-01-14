@@ -221,8 +221,9 @@
 	</c:param>
 
  	<c:param name="header">
-		<a class="back" href="calender.jsp">＜</a>
+		<a class="back" href="CalendarExecute.action">＜</a>
 	</c:param>
+
 <c:param name="content">
 	<form action="ScheduleExecute.action" method="get">
 		<div class="main">

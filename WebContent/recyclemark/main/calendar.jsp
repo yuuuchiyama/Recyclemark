@@ -292,8 +292,16 @@
 	                    cell.appendChild(button);
 	                } else {
 	                	console.log(month.toString().padStart(2, '0'));
+	                	// ゼロ埋め処理
 	                	month = month.toString().padStart(2, '0');
+	                	zeroDate = date.toString().padStart(2, '0');
+
+	                	//ゼロ埋め後の年月日
+	                	const zeroNowday = year + "-" + month + "-" + zeroDate;
+
+	                	// ゼロ埋めしていない年月日
 	                	const nowday = year + "-" + month + "-" + date;
+
 	                    button.textContent = date;
 	                    form.action = 'Schedule.action';
 	                    form.method = 'get';
@@ -340,7 +348,7 @@
 		                    for (var schedule of dates) {
 		                    	console.log(schedule);
 		                    	console.log(nowday);
-		                    	if(schedule == nowday) {
+		                    	if(schedule == zeroNowday) {
 		                    		have = "1";
 		                    		inputSche.setAttribute("type", "hidden");
 				                    inputSche.setAttribute("name", "stamp_id");
