@@ -328,7 +328,7 @@
 	                    form.appendChild(inputSche);
 	                    date++;
 
-						var have = "0";;
+						var have = "0";
 						// カレンダーページを最初に開いた時の処理
 						console.log(<%=request.getAttribute("dates") %>)
 						if (<%=request.getAttribute("dates") %>) {
@@ -338,6 +338,8 @@
 							console.log(stampIds);
 							let count = 0;
 		                    for (var schedule of dates) {
+		                    	console.log(schedule);
+		                    	console.log(nowday);
 		                    	if(schedule == nowday) {
 		                    		have = "1";
 		                    		inputSche.setAttribute("type", "hidden");
