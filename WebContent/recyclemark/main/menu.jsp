@@ -188,7 +188,7 @@
 			        <button type="submit" class="action-button">ランキング</button>
 			    </form>
 			    <form action="LanguageSelection.action" method="post">
-			        <button type="submit" class="action-button">言語選択に戻る</button>
+			        <button type="submit" class="action-button">言語再選択</button>
 			    </form>
 			</div>
 		</div>
