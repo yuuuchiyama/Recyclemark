@@ -169,13 +169,21 @@
 
 	    .calendar td {
 	        padding: 0; /* セルの余白をなくす */
-	        height: 115px; /* 任意の高さに設定 */
+	        height: 110px; /* 任意の高さに設定 */
 	        width: 100px; /* 同じ幅に設定 */
+	        vertical-align: top; /* 上に揃える */
+    		text-align: center; /* 横方向は中央揃えのまま */
+    		 background-color: rgba(255, 255, 255, 0.5);
 	    }
 
+		.calendar img{
+			hight:50px;
+			width:60px;
+			margin-top: 10px;
+		}
 	    .calendar td form{
 	        width: 100%; /* 親要素に対して全幅 */
-	        height: 100%; /* 親要素に対して全高 */
+	        height: 40%; /* 親要素に対して全高 */
 	        border: none;
 	        font-size: 1em;
 	        cursor: pointer;
@@ -292,16 +300,8 @@
 	                    cell.appendChild(button);
 	                } else {
 	                	console.log(month.toString().padStart(2, '0'));
-	                	// ゼロ埋め処理
 	                	month = month.toString().padStart(2, '0');
-	                	zeroDate = date.toString().padStart(2, '0');
-
-	                	//ゼロ埋め後の年月日
-	                	const zeroNowday = year + "-" + month + "-" + zeroDate;
-
-	                	// ゼロ埋めしていない年月日
 	                	const nowday = year + "-" + month + "-" + date;
-
 	                    button.textContent = date;
 	                    form.action = 'Schedule.action';
 	                    form.method = 'get';
@@ -348,7 +348,7 @@
 		                    for (var schedule of dates) {
 		                    	console.log(schedule);
 		                    	console.log(nowday);
-		                    	if(schedule == zeroNowday) {
+		                    	if(schedule == nowday) {
 		                    		have = "1";
 		                    		inputSche.setAttribute("type", "hidden");
 				                    inputSche.setAttribute("name", "stamp_id");
