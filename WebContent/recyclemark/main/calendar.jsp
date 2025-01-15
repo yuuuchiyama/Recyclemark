@@ -158,10 +158,7 @@
 	        background-color: rgba(255, 255, 255, 0.8);
 	        border: none;
 	    }
-		img {
-			width: 50px;  /* 幅を50ピクセルに設定 */
-			height: 50px; /* 高さを50ピクセルに設定 */
-		}
+
 	    .week th {
 	        background-color: rgba(78, 118, 68,0.6);
 	        border: 1px solid #000;
@@ -179,24 +176,25 @@
 		.calendar img{
 			hight:50px;
 			width:60px;
-			margin-top: 10px;
 		}
-	    .calendar td form{
+
+		.calendar td form{
 	        width: 100%; /* 親要素に対して全幅 */
-	        height: 40%; /* 親要素に対して全高 */
+	        height: 100%; /* 親要素に対して全高 */
 	        border: none;
-	        font-size: 1em;
+	        font-size: 1.5em;
 	        cursor: pointer;
 	        background-color: rgba(255, 255, 255, 0.5);
 	    }
 
 	    .calendar td button {
+	    	margin-top: -28.6px;
 		    width: 100%; /* 親要素に対して全幅 */
-	        height: 100%; /* 親要素に対して全高 */
+	        height: 101.5%; /* 親要素に対して全高 */
 	        border: none;
 	        font-size: 1em;
 	        cursor: pointer;
-	        background-color: rgba(255, 255, 255, 0.5);
+	        background-color: rgba(255, 255, 255, 0);
 	    }
 
 	    .calendar td:empty {
@@ -299,10 +297,16 @@
 	                    button.style.visibility = 'hidden'; // 表示されないようにする
 	                    cell.appendChild(button);
 	                } else {
+	                	button.setAttribute("type", "submit");
+	                	// ゼロ埋め
 	                	console.log(month.toString().padStart(2, '0'));
 	                	month = month.toString().padStart(2, '0');
+	                	const zeroDate = date.toString().padStart(2, '0');
+
 	                	const nowday = year + "-" + month + "-" + date;
-	                    button.textContent = date;
+	                	const zeroNowDay = year + "-" + month + "-" + zeroDate;
+
+	                    form.textContent = date;
 	                    form.action = 'Schedule.action';
 	                    form.method = 'get';
 
@@ -336,7 +340,7 @@
 	                    form.appendChild(inputSche);
 	                    date++;
 
-						var have = "0";
+	                    var have = "0";
 						// カレンダーページを最初に開いた時の処理
 						console.log(<%=request.getAttribute("dates") %>)
 						if (<%=request.getAttribute("dates") %>) {
@@ -348,7 +352,7 @@
 		                    for (var schedule of dates) {
 		                    	console.log(schedule);
 		                    	console.log(nowday);
-		                    	if(schedule == nowday) {
+		                    	if(schedule == zeroNowDay) {
 		                    		have = "1";
 		                    		inputSche.setAttribute("type", "hidden");
 				                    inputSche.setAttribute("name", "stamp_id");
@@ -357,7 +361,7 @@
 		                    		const imgSchedule = document.createElement('img');
 		                    		imgSchedule.setAttribute("src", "../../images/リンゴ.png");
 
-		                    		form.appendChild(imgSchedule);
+									button.appendChild(imgSchedule);
 		                    		form.appendChild(inputSche);
 		                    	}
 		                    	count++;
@@ -379,12 +383,13 @@
 		                    		const imgSchedule = document.createElement('img');
 		                    		imgSchedule.setAttribute("src", "../../images/リンゴ.png");
 
-		                    		form.appendChild(imgSchedule);
+		                    		button.appendChild(imgSchedule);
 		                    		form.appendChild(inputSche);
 	                    		}
 	                    		count++;
 		                    }
 						}
+
 
 	                    // 予定の有無を判別する隠しなんたら
 	                    const inputHave = document.createElement('input');
