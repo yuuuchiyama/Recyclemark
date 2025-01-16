@@ -4,16 +4,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:import url="/common/base.jsp">
 	<c:param name="style">
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			background-image: url("../../images/20210729_1.jpg");
-			background-size: cover;
-			background-position: center;
-			background-attachment: fixed;
-			color: #333;
-		}
+      body {
+	        font-family: Arial, sans-serif;
+	        margin: 0;
+	        padding: 0;
+	        background-image: url("../../images/20210729_1.jpg");
+	        background-size: cover;
+	        background-position: center top;
+	        background-attachment: fixed;
+	        color: #333;
+	    }
 		/* ヘッダーのスタイル */
 		.header {
 		    display: flex;

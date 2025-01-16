@@ -4,16 +4,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:import url="/common/base.jsp">
 	<c:param name="style">
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			background-image: url("../../images/20210729_1.jpg");
-			background-size: cover;
-			background-position: center;
-			background-attachment: fixed;
-			color: #333;
-		}
+      body {
+	        font-family: Arial, sans-serif;
+	        margin: 0;
+	        padding: 0;
+	        background-image: url("../../images/20210729_1.jpg");
+	        background-size: cover;
+	        background-position: center top;
+	        background-attachment: fixed;
+	        color: #333;
+	    }
 		/* ヘッダーのスタイル */
 		.header {
 		    display: flex;
@@ -116,41 +116,61 @@
 	        padding: 20px 0 20px 0;
 	    }
 
-	    .main-container {
-	        background-color: rgba(255, 255, 255, 0.7); /* 半透明の背景色 */
-	        padding: 30px 50px;
-	        border-radius: 15px;
-	        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-	        max-width: 800px; /* 任意の幅 */
-	        width: 100%;
+    	.main-container {
+	        width: 400px;
 	        text-align: center;
-	    }
-		.rank-img {
-		    width: 100px;
-		    height: 100px;
-		    margin-right: 20px;
-		}
+	        background-color: rgba(255, 255, 255, 0.7);
+	        padding: 60px 50px;
+	        border-radius: 20px;
+	        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+	        max-width: 500px;
+	        width: 100%;
+    	}
+        h1 {
+	      font-size: 24px;
+	      margin-bottom: 20px;
+	       }
+	    input[type="email"] {
+	        flex: 1;
+	        padding: 5px;
+	        width: 100%;
+	        font-size: 15px;
+	        border: 1.5px solid #4E7644;
+	        border-radius: 5px;
+	        box-sizing: border-box;
+	     }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* フォーム内要素の中央揃え */
+    }
+    .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        width: 100%;
+    }
 
-		.mark-img {
-		    width: 150px;
-		    height: 150px;
-		    margin-right: 40px;
-		}
-
-		td {
-		    padding: 10px; /* 画像と文字の上下左右の間隔 */
-		}
-		.ranking-link {
-		    margin-left: 10px; /* 文字と画像の間隔 */
-		    font-size: 30px; /* 文字サイズを調整 */
-		}
+	    button {
+	        margin-top: 20px;
+	        padding: 5px 20px;
+	        background-color: #4E7644;
+	        color: #fff;
+	        border: none;
+	        border-radius: 5px;
+	        font-size: 16px;
+	        cursor: pointer;
+    	}
+    button:hover {
+       	 background-color: #3a5c34;
+    	}
 	</c:param>
 	<c:param name="title">
-		メニュー
+		パスワードリセット
 	</c:param>
 
     <c:param name="header">
-		<a class="back" href="menu.jsp">＜</a>
+		<a class="back" href="edit.jsp">＜</a>
 	</c:param>
 
 
@@ -161,7 +181,9 @@
 				<div class="reset">
 					<h3>メールアドレス</h3>
 					<form action="PasswordReset.action" method="post">
-						<input type="email" id="mail" name="mail" required>
+						<div class="form-group">
+							<input type="email" id="mail" name="mail" required>
+						</div>
 				        <button type="submit" class="action-button">送信</button>
 				    </form>
 				</div>

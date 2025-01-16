@@ -4,16 +4,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:import url="/common/base.jsp">
 	<c:param name="style">
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			background-image: url("../../images/20210729_1.jpg");
-			background-size: cover;
-			background-position: center;
-			background-attachment: fixed;
-			color: #333;
-		}
+      body {
+	        font-family: Arial, sans-serif;
+	        margin: 0;
+	        padding: 0;
+	        background-image: url("../../images/20210729_1.jpg");
+	        background-size: cover;
+	        background-position: center top;
+	        background-attachment: fixed;
+	        color: #333;
+	    }
 		/* ヘッダーのスタイル */
 		.header {
 		    display: flex;
@@ -118,39 +118,75 @@
 
 	    .main-container {
 	        background-color: rgba(255, 255, 255, 0.7); /* 半透明の背景色 */
-	        padding: 30px 50px;
+	        padding: 50px 50px;
 	        border-radius: 15px;
 	        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-	        max-width: 800px; /* 任意の幅 */
+	        max-width: 500px; /* 任意の幅 */
 	        width: 100%;
 	        text-align: center;
 	    }
-		.rank-img {
-		    width: 100px;
-		    height: 100px;
-		    margin-right: 20px;
-		}
 
-		.mark-img {
-		    width: 150px;
-		    height: 150px;
-		    margin-right: 40px;
-		}
+    input[type="password"] {
+        flex: 1;
+        padding: 5px;
+        width: 100%;
+        font-size: 15px;
+        border: 1.5px solid #4E7644;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* フォーム内要素の中央揃え */
+    }
+    .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        width: 80%;
+    }
+    .form-group label {
+        font-weight: bold;
+        width: 140px;
+        text-align: left;
+        margin-top: 5px;
+        margin-right: 10px;
+    }
+    .form-group2 {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        width: 80%;
+    }
+    .form-group2 label {
+        font-weight: bold;
+        width: 140px;
+        text-align: left;
+        margin-top: 25px;
+        margin-right: 10px;
+    }
 
-		td {
-		    padding: 10px; /* 画像と文字の上下左右の間隔 */
-		}
-		.ranking-link {
-		    margin-left: 10px; /* 文字と画像の間隔 */
-		    font-size: 30px; /* 文字サイズを調整 */
-		}
+    button {
+        margin-top: 10px;
+        padding: 5px 20px;
+        background-color: #4E7644;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #3a5c34;
+    }
 	</c:param>
 	<c:param name="title">
-		メニュー
+		パスワードリセット
 	</c:param>
 
     <c:param name="header">
-		<a class="back" href="menu.jsp">＜</a>
+		<a class="back" href="reset_mail.jsp">＜</a>
 	</c:param>
 
 
@@ -160,8 +196,14 @@
             <div class="main-container">
 				<div class="reset">
 					<form action="PasswordResetExecute.action" method="post">
-						新しいパスワード<input type="password" id="mail" name="password1" required><br>
-						新しいパスワード<br>(再入力)<input type="password" id="mail" name="password2" required>
+					<div class="form-group">
+						<label>新しいパスワード:</label>
+						<input type="password" id="mail" name="password1" required><br>
+					</div>
+					<div class="form-group2">
+						<label>新しいパスワード:(再入力)</label>
+						<input type="password" id="mail" name="password2" required>
+					</div>
 				        <button type="submit" class="action-button">リセット</button>
 				    </form>
 				</div>

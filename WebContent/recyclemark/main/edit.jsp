@@ -4,16 +4,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:import url="/common/base.jsp">
 	<c:param name="style">
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			background-image: url("../../images/20210729_1.jpg");
-			background-size: cover;
-			background-position: center;
-			background-attachment: fixed;
-			color: #333;
-		}
+      body {
+	        font-family: Arial, sans-serif;
+	        margin: 0;
+	        padding: 0;
+	        background-image: url("../../images/20210729_1.jpg");
+	        background-size: cover;
+	        background-position: center top;
+	        background-attachment: fixed;
+	        color: #333;
+	    }
 		/* ヘッダーのスタイル */
 		.header {
 		    display: flex;
@@ -121,36 +121,27 @@
 	        padding: 30px 50px;
 	        border-radius: 15px;
 	        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-	        max-width: 800px; /* 任意の幅 */
+	        max-width: 400px; /* 任意の幅 */
 	        width: 100%;
 	        text-align: center;
 	    }
-		.rank-img {
-		    width: 100px;
-		    height: 100px;
-		    margin-right: 20px;
+
+	    .edit ul {
+		  padding-left: 0;
 		}
 
-		.mark-img {
-		    width: 150px;
-		    height: 150px;
-		    margin-right: 40px;
+		.edit li {
+		  margin-bottom: 20px; /* 行間を開ける */
 		}
 
-		td {
-		    padding: 10px; /* 画像と文字の上下左右の間隔 */
-		}
-		.ranking-link {
-		    margin-left: 10px; /* 文字と画像の間隔 */
-		    font-size: 30px; /* 文字サイズを調整 */
-		}
+
 	</c:param>
 	<c:param name="title">
-		メニュー
+		編集
 	</c:param>
 
     <c:param name="header">
-		<a class="back" href="menu.jsp">＜</a>
+		<a class="back" href="mypage.jsp">＜</a>
 	</c:param>
 
 
