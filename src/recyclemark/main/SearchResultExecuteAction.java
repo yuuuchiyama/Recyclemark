@@ -25,7 +25,10 @@ public class SearchResultExecuteAction extends Action {
 		String markId = "";
 		String userId = "";
 		int heartStamp = 0;
+		String trait = "";
 		String forRanking = "";
+		String forText = "";
+		String forImage = "";
 
 
 		// セッション情報の取得
@@ -34,6 +37,9 @@ public class SearchResultExecuteAction extends Action {
 		// セッション情報のユーザーIDを取得
 		userId = user.getId();
 //		System.out.println("userId:" + userId);
+		if (req.getParameter("markId") != null) {
+			session.removeAttribute("markId");
+		}
 		// セッション情報の有無によってmarkIdの取得方法が変化
 		if (session.getAttribute("markId") != null) {
 			markId = (String)session.getAttribute("markId");
@@ -41,12 +47,19 @@ public class SearchResultExecuteAction extends Action {
 		} else {
 			// リクエストパラメーターの取得 2
 			markId = req.getParameter("markId");
+			forImage = req.getParameter("forimage");
 			session.setAttribute("markId",markId);
 			System.out.println("リクエストパラメータのmarkId:" + markId);
 		}
 		if (session.getAttribute("forRanking") != null) {
 			forRanking = (String) session.getAttribute("forRanking");
 		} else {
+			forText = req.getParameter("fortext");
+			trait = req.getParameter("trait");
+			System.out.println("セッションに格納する前のtrait：" + trait);
+			session.setAttribute("trait", trait); // セッションにテキスト検索のワードを保存
+
+			System.out.println("text:" + forText);
 			System.out.println("nullです");
 			System.out.println("forRanking:" + forRanking);
 		}
@@ -74,6 +87,8 @@ public class SearchResultExecuteAction extends Action {
 				req.setAttribute("heartStamp", heartStamp);
 				req.setAttribute("detail", detail);
 				req.setAttribute("forRanking", forRanking);
+				req.setAttribute("forText", forText);
+				req.setAttribute("forImage", forImage);
 
 				// JSPへフォワード 7
 				req.getRequestDispatcher("detail.jsp").forward(req, res);
@@ -86,6 +101,8 @@ public class SearchResultExecuteAction extends Action {
 				req.setAttribute("heartStamp", heartStamp);
 				req.setAttribute("detail", detail);
 				req.setAttribute("forRanking", forRanking);
+				req.setAttribute("forText", forText);
+				req.setAttribute("forImage", forImage);
 
 				// JSPへフォワード 7
 				req.getRequestDispatcher("detail.jsp").forward(req, res);
@@ -94,7 +111,7 @@ public class SearchResultExecuteAction extends Action {
 		} else {
 			// レスポンス値をセット 6
 
-			System.out.println("エラーだよ");
+			System.out.println("詳細情報がNULLだよ");
 
 			// JSPへフォワード 7
 			res.sendRedirect("text_result.jsp");
