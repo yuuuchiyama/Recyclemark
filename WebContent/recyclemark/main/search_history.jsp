@@ -177,7 +177,7 @@
 			    	<!-- 繰り返し文で表示  ~end~ -->
 					</table>
 				</div>
-			</div>>
+			</div>
 		</div>
 	</c:param>
 	<c:param name="script">
