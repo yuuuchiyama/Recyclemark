@@ -134,17 +134,26 @@ public class UserDao extends Dao {
 		// プリペアードステートメント
 		PreparedStatement statement = null;
 		// SQL文の条件
-		String sql = "delete from user where UserId = ?";
+		String[] sqlList = {"delete from calendar where userId = ?",
+						"delete from favdata where userId = ?",
+						"delete from searchhistory where userId = ?",
+						"delete from user where userId = ?"};
 		// 実行件数
 		int count = 0;
+		int exe = 0;
 		try {
-
-			// プリペアードステートメントにUPDATE文をセット
-			statement = connection.prepareStatement(sql);
-			// プリペアードステートメントに値をバインド
-			statement.setString(1, id);
-			// プリペアードステートメントを実行
-			count = statement.executeUpdate();
+			for(String sql:sqlList){
+				// プリペアードステートメントにUPDATE文をセット
+				statement = connection.prepareStatement(sql);
+				// プリペアードステートメントに値をバインド
+				statement.setString(1, id);
+				// プリペアードステートメントを実行
+				exe = statement.executeUpdate();
+				if(exe != 0){
+					count += 1;
+					exe = 0;
+				}
+			}
 		} catch (Exception e) {
 			throw e;
 		} finally {
