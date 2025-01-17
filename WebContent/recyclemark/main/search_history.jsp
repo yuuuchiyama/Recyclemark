@@ -160,6 +160,11 @@
 		<!-- メインコンテンツ部分 -->
 		<div class="main">
     		<div class="main-container">
+    			<c:choose>
+    				<c:when test="${empty recyclemarks}">
+						<div>検索履歴はありません</div>
+					</c:when>
+    			</c:choose>
 				<div class="history">
 			    	<table>
 			    		<!-- 繰り返し文で表示  ~start~ -->
