@@ -120,7 +120,14 @@
 		<!-- メインコンテンツ部分 -->
 		<div class="history">
 
-			<p><img src="${recyclemarks[0].getMarkImg() }"  ></p>
+			<c:choose>
+				<c:when test="${recyclemarks[0].getMarkImg() != null}">
+					<p><img src="${recyclemarks[0].getMarkImg() }"  ></p>
+				</c:when>
+				<c:otherwise>
+					<div>検索履歴はありません</div>
+				</c:otherwise>
+	    	</c:choose>
 
 		</div>
 	</c:param>
