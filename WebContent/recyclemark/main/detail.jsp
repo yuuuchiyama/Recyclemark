@@ -257,6 +257,9 @@
 			<c:when test="${forImage == 1}">
 				<a class="back" href="ImageSearch.action">＜</a>
 			</c:when>
+			<c:when test="${forHistory == 1}">
+				<a class="back" href="History.action">＜</a>
+			</c:when>
 			<c:otherwise>
 				<a class="back" href="FavoriteExecute.action">＜</a>
 			</c:otherwise>

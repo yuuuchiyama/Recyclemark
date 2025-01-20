@@ -25,6 +25,7 @@ public class CalendarExecuteAction extends Action {
 		List<Calendar> schedules = null;
 		List<String> dates = new ArrayList<>();
 		List<Integer> stampIds = new ArrayList<>();
+		List<String> stampImgs = new ArrayList<>();
 
 		//リクエストパラメータ―の取得 2
 		//なし
@@ -39,15 +40,18 @@ public class CalendarExecuteAction extends Action {
 			for (Calendar schedule : schedules) {
 				dates.add('"' + schedule.getCalendarDate() + '"');
 				stampIds.add(schedule.getStampId());
+				stampImgs.add('"' + schedule.getStampImg() + '"');
 			}
 
-			System.out.println(dates);
-			System.out.println(stampIds);
+			System.out.println("予定情報のbean:" + dates);
+			System.out.println("予定情報のスタンプID" + stampIds);
+			System.out.println("予定情報のスタンプImg" + stampImgs);
 			// DBにデータを保存 5
 
 			// レスポンス値をセット 6
 			req.setAttribute("dates", dates);
 			req.setAttribute("stampIds",stampIds);
+			req.setAttribute("stampImgs", stampImgs);
 
 			//JSPへフォワード 7
 			req.getRequestDispatcher("calendar.jsp").forward(req, res);

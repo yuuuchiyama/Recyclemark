@@ -173,7 +173,7 @@
 				        	<td><span class="history_dot" >・</span> <!-- カスタムの「・」 --></td>
 				        	<td> <input type="image" src="${recyclemark.getMarkImg() }" class="mark-img"></td>
 							<td>
-								<a href="SearchResultExecute.action?markId=${recyclemark.getMarkId() }" class="mark-link">
+								<a href="SearchResultExecute.action?markId=${recyclemark.getMarkId() }&forhistory=1" class="mark-link">
 									${recyclemark.getMarkName() }
 								</a>
 							</td>

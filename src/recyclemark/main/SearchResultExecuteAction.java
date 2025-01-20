@@ -29,6 +29,7 @@ public class SearchResultExecuteAction extends Action {
 		String forRanking = "";
 		String forText = "";
 		String forImage = "";
+		String forHistory = "";
 
 
 		// セッション情報の取得
@@ -48,6 +49,7 @@ public class SearchResultExecuteAction extends Action {
 			// リクエストパラメーターの取得 2
 			markId = req.getParameter("markId");
 			forImage = req.getParameter("forimage");
+			forHistory = req.getParameter("forhistory");
 			session.setAttribute("markId",markId);
 			System.out.println("リクエストパラメータのmarkId:" + markId);
 		}
@@ -89,6 +91,7 @@ public class SearchResultExecuteAction extends Action {
 				req.setAttribute("forRanking", forRanking);
 				req.setAttribute("forText", forText);
 				req.setAttribute("forImage", forImage);
+				req.setAttribute("forHistory", forHistory);
 
 				// JSPへフォワード 7
 				req.getRequestDispatcher("detail.jsp").forward(req, res);
@@ -103,6 +106,7 @@ public class SearchResultExecuteAction extends Action {
 				req.setAttribute("forRanking", forRanking);
 				req.setAttribute("forText", forText);
 				req.setAttribute("forImage", forImage);
+				req.setAttribute("forHistory", forHistory);
 
 				// JSPへフォワード 7
 				req.getRequestDispatcher("detail.jsp").forward(req, res);

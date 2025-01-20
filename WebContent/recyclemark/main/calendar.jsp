@@ -267,6 +267,7 @@
 	    }
 
 	    function generateCalendar(year, month) {
+	    	month = month + 1;
 	        const calendarBody = document.getElementById('calendar-body');
 	        const monthYear = document.getElementById('month-year');
 	        calendarBody.innerHTML = ''; // 既存のカレンダーをクリア
@@ -342,16 +343,15 @@
 
 	                    var have = "0";
 						// カレンダーページを最初に開いた時の処理
-						console.log(<%=request.getAttribute("dates") %>)
 						if (<%=request.getAttribute("dates") %>) {
 							// 予定がある場合
 							var dates = <%=request.getAttribute("dates") %>;
 							var stampIds = <%=request.getAttribute("stampIds") %>;
+							var stampImgs = <%=request.getAttribute("stampImgs") %>;
 							console.log(stampIds);
+							console.log(stampImgs);
 							let count = 0;
 		                    for (var schedule of dates) {
-		                    	console.log(schedule);
-		                    	console.log(nowday);
 		                    	if(schedule == zeroNowDay) {
 		                    		have = "1";
 		                    		inputSche.setAttribute("type", "hidden");
@@ -359,7 +359,7 @@
 				                    inputSche.setAttribute("value", stampIds[count]);
 
 		                    		const imgSchedule = document.createElement('img');
-		                    		imgSchedule.setAttribute("src", "../../images/リンゴ.png");
+		                    		imgSchedule.setAttribute("src", stampImgs[count]);
 
 									button.appendChild(imgSchedule);
 		                    		form.appendChild(inputSche);
@@ -414,7 +414,7 @@
 	     function updateCalendar() {
 	         const today = new Date();
 	         currentYear = today.getFullYear();
-	         currentMonth = today.getMonth() + 1;
+	         currentMonth = today.getMonth();
 	         generateCalendar(currentYear, currentMonth);
 	     }
 
