@@ -14,6 +14,7 @@
 	        background-position: center top;
 	        background-attachment: fixed;
 	        color: #333;
+	        overflow: hidden; /* スクロールバーを非表示にする */
 	    }
 	   /* Header style */
 	   .header {

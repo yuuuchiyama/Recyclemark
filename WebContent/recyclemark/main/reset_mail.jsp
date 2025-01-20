@@ -13,6 +13,7 @@
 	        background-position: center top;
 	        background-attachment: fixed;
 	        color: #333;
+	        overflow: hidden; /* スクロールバーを非表示にする */
 	    }
 		/* ヘッダーのスタイル */
 		.header {
