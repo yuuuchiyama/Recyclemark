@@ -132,21 +132,21 @@
 			  text-align: center; /* 中央揃え */
 			}
 		.edit ul {
-		  list-style: none; /* デフォルトのリストマーカーを無効化 */
-		  padding: 0; /* インデントを削除 */
+		  list-style: none;
+		  padding: 0;
 		}
 
 		.edit li {
-		  display: flex; /* フレックスボックスで要素を横並びに配置 */
-		  align-items: center; /* 縦方向を中央揃え */
-		  margin-bottom: 20px; /* 行間を調整 */
+		  display: flex;
+		  align-items: center;
+		  margin-bottom: 20px;
 		}
 
 		.edit li::before {
-		  content: "•"; /* カスタムマーカー */
-		  margin-right: 8px; /* 文字との間隔を調整 */
-		  color: #333; /* マーカーの色 */
-		  font-size: 18px; /* マーカーのサイズ */
+		  content: "•";
+		  margin-right: 8px;
+		  color: #333;
+		  font-size: 18px;
 		}
 
 
