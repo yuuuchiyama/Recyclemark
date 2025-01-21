@@ -200,10 +200,16 @@
 	<div class="main-container">
     <h1 id="area1">ログイン</h1>
     <div class="language-buttons">
-        <input type="button" id="button_lan" value="日本語" onclick="sample();">
-        <input type="button" id="button_lan" value="English" onclick="sample1();">
-        <input type="button" id="button_lan" value="한국어" onclick="sample2();">
-        <input type="button" id="button_lan" value="中文" onclick="sample3();">
+<%
+	String[] languages = {"日本語", "English","한국어","中文"};
+	request.setAttribute("languages", languages);
+%>
+	<c:forEach var="language" items="${languages}">
+		<form action="LanguageSelect.action" method="post">
+			<input type="hidden" name="language" value="${language}" />
+			<input type="submit" id="button_lan" value="${language}">
+		</form>
+	</c:forEach>
     </div>
     <form action="LoginExecute.action" method="post">
         <div class="form-group">
