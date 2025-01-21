@@ -125,12 +125,17 @@
     <form action="LoginExecute.action" method="post">
         <div class="form-group">
             <label for="mail" id="mail_label">メールアドレス:</label>
-            <input type="email" id="mail" name="mail" required>
+            <input type="email" id="mail" name="mail" value="${mail}" required>
         </div>
         <div class="form-group">
             <label for="password" id="password_label">パスワード:</label>
             <input type="password" id="password" name="password" required>
         </div>
+		<c:if test="${error != null}">
+			<div class="form-group">
+				<h3>${error }</h3>
+	        </div>
+		</c:if>
         <button type="submit" class="button" id="button_login">ログイン</button>
     </form>
     <a href="main/create.jsp">アカウント作成</a>

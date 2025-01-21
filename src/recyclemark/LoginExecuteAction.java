@@ -1,8 +1,5 @@
 package recyclemark;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -49,9 +46,9 @@ public class LoginExecuteAction extends Action {
 		} else {
 			// 認証失敗の場合
 			// エラーメッセージをセット
-			List<String> errors = new ArrayList<>();
-			errors.add("IDまたはパスワードが確認できませんでした");
-			req.setAttribute("errors", errors);
+			String error;
+			error = "IDまたはパスワードが確認できませんでした";
+			req.setAttribute("error", error);
 			// 入力されたメールアドレスをセット
 			req.setAttribute("mail", mail);
 
