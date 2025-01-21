@@ -231,10 +231,8 @@
 			<div class="main-container">
 		    	<!-- 日付ナビゲーション -->
 			    <div class="date-navigation">
-			    	<button class="date-button" id="prev">&#x3C;</button>
 			    	<input type="hidden" id="day" name="date" value='${date}'>
 			        <div class="date-display" id="date-display"><%=request.getAttribute("date") %></div>
-			        <button class="date-button" id="next">&#x3E;</button>
 			    </div>
 
 		    	<!-- アイコンリスト
@@ -307,22 +305,6 @@
 	        dateDisplay.textContent = ${date};
 	    }
 
-	    function prevDate() {
-	    	var nowDate = document.getElementById("date-display");
-	    	var year = document.getElementById("year");
-	    	var month = document.getElementById("month");
-	    	var day = document.getElementById("day");
-	    	var nextDay = day--;
-	    	var date = year + "-" + month + "-" + day;
-	    	console.log(date);
-	        nowDate.innerText = date;
-	    }
-
-	    function nextDate() {
-	        currentDate.setDate(currentDate.getDate() + 1);
-	        updateDateDisplay();
-	    }
-
 		// 予定情報がある場合のアイコンの処理
 		function selectIcon() {
 	    	let selButtons = document.getElementsByClassName("icon");
@@ -335,8 +317,6 @@
 	    	}
 		}
 
-		document.getElementById("prev").onclick = prevDate();
-		document.getElementById("next").onclick = nextDate();
 
 		// ページ読み込み時
 		window.onload = selectIcon;

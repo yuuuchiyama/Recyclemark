@@ -169,9 +169,11 @@
 		        <!-- int count = 0; -->
 		        <c:forEach var="recycleMark" items="${recycleMarks}">
 		        	<form action="SearchResultExecute.action" method="get">
+		        		<input type="hidden" name="fortext" value="1">
 				        <div class="recycle-grid">
                 			<div class="recycle-item">
                 				<input type="hidden" name="markId" value="${recycleMark.markId}">
+                				<input type="hidden" name="trait" value="${trait}">
 				                <input type="image" src="${recycleMark.markImg}" alt="${recycleMark.markName}">
 				        	</div>
 				        </div>

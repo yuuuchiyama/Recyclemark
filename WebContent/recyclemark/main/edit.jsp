@@ -13,6 +13,7 @@
 	        background-position: center top;
 	        background-attachment: fixed;
 	        color: #333;
+  			overflow: hidden; /* スクロールバーを非表示にする */
 	    }
 		/* ヘッダーのスタイル */
 		.header {
@@ -108,7 +109,6 @@
 		    color: #3a5c34;
 	    }
 	    .main {
-	        display: flex;
 	        flex-direction: column;
 	        align-items: center;
 	        margin: 20px 0 0 0;
@@ -116,23 +116,39 @@
 	        padding: 20px 0 20px 0;
 	    }
 
-	    .main-container {
-	        background-color: rgba(255, 255, 255, 0.7); /* 半透明の背景色 */
-	        padding: 30px 50px;
-	        border-radius: 15px;
-	        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-	        max-width: 400px; /* 任意の幅 */
-	        width: 100%;
-	        text-align: center;
-	    }
 
-	    .edit ul {
-		  padding-left: 0;
+	    .main-container {
+			  display: flex; /* フレックスボックスを使用 */
+			  flex-direction: column; /* 縦方向の配置 */
+			  align-items: center; /* 水平方向に中央揃え */
+			  justify-content: center; /* 垂直方向に中央揃え */
+			  margin: 0 auto; /* 中央寄せ */
+			  padding: 30px 50px;
+			  background-color: rgba(255, 255, 255, 0.7); /* 半透明の背景色 */
+			  border-radius: 15px;
+			  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+			  max-width: 400px;
+			  width: 100%;
+			  text-align: center; /* 中央揃え */
+			}
+		.edit ul {
+		  list-style: none;
+		  padding: 0;
 		}
 
 		.edit li {
-		  margin-bottom: 20px; /* 行間を開ける */
+		  display: flex;
+		  align-items: center;
+		  margin-bottom: 20px;
 		}
+
+		.edit li::before {
+		  content: "•";
+		  margin-right: 8px;
+		  color: #333;
+		  font-size: 18px;
+		}
+
 
 
 	</c:param>

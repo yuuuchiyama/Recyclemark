@@ -213,8 +213,8 @@
 	      "プラスチックマーク": "プラスチック製容器梱包やペットボトルのラベル、キャップなどの製品、グミの袋、飲料用・しょうゆ用ペットボトルを除く容器に使わます。",
 	      "ペットボトルマーク": "飲料用・しょうゆ用のペットボトル容器に使われます。",
 	      "アルミマーク": "ジュースや酒類、炭酸飲料や果汁飲料の缶に使われる、磁石を近づけてもくっつかなければアルミ缶です。'",
-	      "紙マーク":"一般的な紙製品全般、紙製包装容器(アルミが使用されている製品含む)に使用されます。",
 	      "スチールマーク":"ジュースやコーヒー、おでん缶など素材に鋼が使われ、高温・高圧殺菌が必要な飲料に使われる、ほかにも果物や魚の缶詰、お菓子などが入っている缶も分類される、磁石を近づけてくっつくとスチール缶です。",
+	      "紙マーク":"一般的な紙製品全般、紙製包装容器(アルミが使用されている製品含む)に使用されます。",
 	      "紙パックマーク":"飲料用の紙製包装容器に表示される、パックのものなどアルミが使用されていないものが対象",
 	      "段ボールマーク":"段ボール製の包装容器全般に使用される、段ボールについているテープはプラスチックなので注意"
 	    };
@@ -244,16 +244,63 @@
 	        document.getElementById("webcam-container").appendChild(webcam.canvas);
 	        labelContainer = document.getElementById("label-container");
 	        for (let i = 0; i < 3; i++) { // 3つのラベルボタンを作成
+	        	const form = document.createElement("form");
+	        	form.action = 'SearchResultExecute.action';
+               	form.method = 'get';
 	            const labelDiv = document.createElement("div");
 	            labelDiv.classList.add("label-button");
 	            const button = document.createElement("button");
+	            button.setAttribute("type", "submit");
 	            button.textContent = "Action";  // ボタンに表示する内容
+	            const inputMark = document.createElement("input");
+                inputMark.setAttribute("type", "hidden");
+                inputMark.setAttribute("name", "markId");
+                inputMark.setAttribute("value", "0");
 	            button.onclick = function() {
-	                const className = labelDiv.textContent.trim().split(":")[0];  // クラス名を取得
-	                const message = alertMessages[className] || "未定義のクラスです";  // クラスごとのメッセージを取得
-	                alert(message);
-	            };
-	            labelDiv.appendChild(button);
+	            	const className = labelDiv.textContent.trim().split(":")[0];  // クラス名を取得
+
+
+	                switch (className) {
+					    case "プラスチックマーク":
+					      inputMark.value = "1";
+	                      //inputMark.setAttribute("value", "1");
+					      break;
+					    case "ペットボトルマーク":
+					      inputMark.value = "2";
+					      //inputMark.setAttribute("value", "2");
+					      break;
+					    case "アルミマーク":
+					      inputMark.value = "3";
+					      //inputMark.setAttribute("value", "3");
+					      break;
+					    case "スチールマーク":
+					      inputMark.value = "4";
+					      //inputMark.setAttribute("value", "4");
+					      break;
+					    case "紙マーク":
+					      inputMark.value = "5";
+					      //inputMark.setAttribute("value", "5");
+					      break;
+					    case "紙パックマーク":
+					      inputMark.value = "5";
+					      //inputMark.setAttribute("value", "5");
+					      break;
+					    case "段ボールマーク":
+					      inputMark.value = "1";
+					      //inputMark.setAttribute("value", "1");
+					      break;
+				 	}
+	            }
+
+	            const inputHidden = document.createElement("input");
+                inputHidden.setAttribute("type", "hidden");
+                inputHidden.setAttribute("name", "forimage");
+                inputHidden.setAttribute("value", "1");
+
+	            labelDiv.appendChild(form);
+	            form.appendChild(button);
+	            form.appendChild(inputMark);
+	            form.appendChild(inputHidden);
 	            labelContainer.appendChild(labelDiv);
 	        }
 	    }
@@ -281,7 +328,7 @@
 	            const classPrediction = topPredictions[i].className + ": " + probabilityPercent;
 
 	            // 上位3項目のみを表示
-	            labelContainer.childNodes[i].childNodes[0].textContent = classPrediction;  // 更新された予測結果をボタンに表示
+	            labelContainer.childNodes[i].childNodes[0].childNodes[0].textContent = classPrediction;  // 更新された予測結果をボタンに表示
 	        }
 
 	        // 上位3項目が少ない場合、残りのボタンを非表示にする

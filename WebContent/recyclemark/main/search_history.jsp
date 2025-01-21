@@ -160,6 +160,11 @@
 		<!-- メインコンテンツ部分 -->
 		<div class="main">
     		<div class="main-container">
+    			<c:choose>
+    				<c:when test="${empty recyclemarks}">
+						<div>検索履歴はありません</div>
+					</c:when>
+    			</c:choose>
 				<div class="history">
 			    	<table>
 			    		<!-- 繰り返し文で表示  ~start~ -->
@@ -168,7 +173,7 @@
 				        	<td><span class="history_dot" >・</span> <!-- カスタムの「・」 --></td>
 				        	<td> <input type="image" src="${recyclemark.getMarkImg() }" class="mark-img"></td>
 							<td>
-								<a href="SearchResultExecute.action?markId=${recyclemark.getMarkId() }" class="mark-link">
+								<a href="SearchResultExecute.action?markId=${recyclemark.getMarkId() }&forhistory=1" class="mark-link">
 									${recyclemark.getMarkName() }
 								</a>
 							</td>
@@ -177,7 +182,7 @@
 			    	<!-- 繰り返し文で表示  ~end~ -->
 					</table>
 				</div>
-			</div>>
+			</div>
 		</div>
 	</c:param>
 	<c:param name="script">
