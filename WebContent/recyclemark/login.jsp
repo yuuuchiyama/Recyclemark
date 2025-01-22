@@ -138,7 +138,7 @@
 		</c:if>
         <button type="submit" class="button" id="button_login">ログイン</button>
     </form>
-    <a href="main/reset_mail.jsp">パスワードを忘れた場合</a><br>
+    <a href="main/reset_mail.jsp?forlogin=1">パスワードを忘れた場合</a><br>
     <a href="main/create.jsp">アカウント作成</a>
     </div>
     <script>
