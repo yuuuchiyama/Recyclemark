@@ -35,18 +35,23 @@
         justify-content: space-between;
         margin-bottom: 20px;
     }
-    .language-buttons input{
-        flex: 1;
-        margin: 0 5px;
-        padding: 5px;
-        font-size: 18px;
-        font-weight: bold;
-        color: #f0f0f0;
-        border: 4px solid rgba(78, 118, 68, 0.8);
-        border-radius: 8px;
-        background-color: rgba(78, 118, 68, 0.8);
-        cursor: pointer;
-    }
+	.language-buttons input[type="submit"] {
+	    flex: none; /* フレックスの動作を無効化 */
+	    width: 100px;
+	    height: 40px;
+	    padding: 0;
+	    font-size: 18px;
+	    font-weight: bold;
+	    color: #f0f0f0;
+	    border: 4px solid rgba(78, 118, 68, 0.8);
+	    border-radius: 8px;
+	    background-color: rgba(78, 118, 68, 0.8);
+	    cursor: pointer;
+	    text-align: center;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
     .language-buttons input:hover {
         background-color: rgba(58, 92, 52, 0.8);
     }
@@ -101,6 +106,10 @@
 	    margin-top: 15px;
 	    display: block;
 	    color: #333;
+	}
+
+	h3{
+		margin: 5px 10px 5px 60px;
 	}
 </style>
 <title>ログイン</title>

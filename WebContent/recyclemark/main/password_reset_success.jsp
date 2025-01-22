@@ -159,7 +159,7 @@
 		<div class="main">
             <div class="main-container">
             	<h3>パスワードの変更が完了しました</h3>
-				<a href="menu.jsp">メニューへ</a>
+				<a href="../login.jsp">ログイン画面に戻る</a>
 			</div>
 		</div>
 	</c:param>
