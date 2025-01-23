@@ -174,7 +174,8 @@
 	    }
 
 		.calendar img{
-			hight:50px;
+			margin-top: 20px;
+			height:60px;
 			width:60px;
 		}
 
