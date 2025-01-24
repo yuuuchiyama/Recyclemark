@@ -36,9 +36,10 @@
         justify-content: space-between;
         margin-bottom: 20px;
     }
-    .language-buttons input{
-        flex: 1;
-        margin: 0 5px;
+	.language-buttons input {
+	    width: 115px;
+	    height: 45.33px;
+		margin: 0 5px;
         padding: 5px;
         font-size: 18px;
         font-weight: bold;
@@ -47,7 +48,7 @@
         border-radius: 8px;
         background-color: rgba(78, 118, 68, 0.8);
         cursor: pointer;
-    }
+	}
     .language-buttons input:hover {
         background-color: rgba(58, 92, 52, 0.8);
     }
@@ -103,6 +104,10 @@
 	    display: block;
 	    color: #333;
 	}
+
+	h3{
+		margin: 5px 10px 5px 60px;
+	}
 </style>
 <title>ログイン</title>
 
@@ -139,7 +144,7 @@
 		</c:if>
         <button type="submit" class="button" id="button_login">ログイン</button>
     </form>
-    <a href="main/reset_mail.jsp">パスワードを忘れた場合</a><br>
+    <a href="main/reset_mail.jsp?forlogin=1">パスワードを忘れた場合</a><br>
     <a href="main/create.jsp">アカウント作成</a>
     </div>
     <script>

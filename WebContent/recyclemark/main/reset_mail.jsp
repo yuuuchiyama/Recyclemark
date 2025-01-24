@@ -2,6 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String forlogin = request.getParameter("forlogin");
+	System.out.println(forlogin);
+	boolean result = false;
+	if(forlogin.equals("1")){
+		result = true;
+	}
+%>
 <c:import url="/common/base.jsp">
 	<c:param name="style">
       body {
@@ -171,9 +179,15 @@
 	</c:param>
 
     <c:param name="header">
-		<a class="back" href="edit.jsp">＜</a>
+    	<c:choose>
+    		<c:when test="<%= result %>">
+    			<a class="back" href="../login.jsp">＜</a>
+    		</c:when>
+    		<c:otherwise>
+    			<a class="back" href="edit.jsp">＜</a>
+    		</c:otherwise>
+    	</c:choose>
 	</c:param>
-
 
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->

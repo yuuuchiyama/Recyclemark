@@ -188,8 +188,8 @@
 					<h1>テキスト検索</h1>
 					<p>リサイクルマークについて入力してください。</p>
 					<div>${errors.get("mark_error")}</div>
-					<input type="text" id="search-input" class="search-input" name="trait" value="${errors.get('mark_error')}" placeholder="検索キーワードを入力" required>
-					<button class="search-button">検索</button>
+					<input type="text" id="search-input" class="search-input" name="trait" value="${errors.get('mark_error')}" placeholder="検索キーワードを入力" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
+					<button type="submit" class="search-button">検索</button>
 				</div>
 			</div>
 		</form>
@@ -214,5 +214,12 @@
            submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
        }
 
+		const searchInput = document.getElementById('search-input');
+
+		searchInput.addEventListener('input', function() {
+			if (!searchInput.validity.valueMissing) {
+				searchInput.setCustomValidity('');
+			}
+		});
 	</c:param>
 </c:import>
