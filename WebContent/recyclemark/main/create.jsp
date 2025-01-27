@@ -118,6 +118,11 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
+            <c:if test="${error != null}">
+				<div class="form-group">
+					<h3>${error }</h3>
+		        </div>
+			</c:if>
             <button type="submit" class="button">create</button>
         </form>
     </div>
