@@ -34,10 +34,11 @@ public class TextSearchExecuteAction extends Action {
 
 		// DBからデータの取得 3
 		recycleMarks = recycleMarkDao.getRecyclemark(trait);
+		System.out.println(recycleMarks.size());
 
 		//条件で手順4~7の内容が分岐
 		// ビジネスロジック 4
-		if(recycleMarks != null) {
+		if(recycleMarks.size() > 0) {
 			System.out.println(recycleMarks);
 			// DBにデータを保存 5
 
