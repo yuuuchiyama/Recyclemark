@@ -1,4 +1,4 @@
-<<%-- ログインJSP --%>
+<%-- ログインJSP --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -53,13 +53,13 @@
         background-color: rgba(58, 92, 52, 0.8);
     }
     input[type="email"] {
-        width: 300px;
+        width: 100px;
         padding: 10px;
         font-size: 16px;
         margin-bottom: 20px;
     }
     input[type="password"] {
-        width: 300px;
+        width: 200px;
         padding: 10px;
         font-size: 16px;
         margin-bottom: 20px;
@@ -67,7 +67,7 @@
     .form-group {
         display: flex;
         align-items: center;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
         width: 100%;
     }
     .form-group label {
@@ -87,7 +87,7 @@
         box-sizing: border-box;
     }
     .button {
-        margin-top: 5px;
+        margin-bottom: 15px;
         padding: 6px 23px;
         background-color: #4E7644;
         color: #fff;
@@ -100,7 +100,7 @@
         background-color: #3a5c34;
     }
    	.link {
-	    margin-top: 15px;
+	    margin-top: 10px;
 	    display: block;
 	    color: #333;
 	}
