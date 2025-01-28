@@ -2,8 +2,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:import url="/common/base.jsp">
-	<c:param name="style">
+<%
+	String mail = request.getParameter("mail");
+%>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
       body {
 	        font-family: Arial, sans-serif;
 	        margin: 0;
@@ -180,56 +187,37 @@
     button:hover {
         background-color: #3a5c34;
     }
-	</c:param>
-	<c:param name="title">
-		パスワードリセット
-	</c:param>
+	</style>
+	<title>パスワードリセット</title>
+</head>
 
-    <c:param name="header">
-		<a class="back" href="reset_mail.jsp">＜</a>
-	</c:param>
+<body>
+	<header>
+		<div class="header">
+			<div class="title">RecycleMark Navigator</div>
+		</div>
+	</header>
 
-
-	<c:param name="content">
-		<!-- メインコンテンツ部分 -->
-		<div class="main">
-            <div class="main-container">
-				<div class="reset">
-					<form action="PasswordResetExecute.action" method="post">
-					<div class="form-group">
-						<label>新しいパスワード:</label>
-						<input type="password" id="mail" name="password1" required><br>
-					</div>
-					<div class="form-group2">
-						<label>新しいパスワード:(再入力)</label>
-						<input type="password" id="mail" name="password2" required>
-					</div>
-				        <button type="submit" class="action-button">リセット</button>
-				    </form>
+	<!-- メインコンテンツ部分 -->
+	<div class="main">
+	          <div class="main-container">
+			<div class="reset">
+				<form action="PasswordResetExecute.action" method="post">
+				<input type="hidden" name="mail" value="<%= mail %>">
+				<div>${errors.get("password_error")}</div>
+				<div class="form-group">
+					<label>新しいパスワード:</label>
+					<input type="password" id="mail" name="password1" required><br>
 				</div>
+				<div class="form-group2">
+					<label>新しいパスワード:(再入力)</label>
+					<input type="password" id="mail" name="password2" required>
+				</div>
+			        <button type="submit" class="action-button">リセット</button>
+			    </form>
 			</div>
 		</div>
-	</c:param>
+	</div>
+</body>
 
-	<c:param name="script">
-	const menuIcon = document.getElementById('menu-icon');
-       const menu = document.getElementById('menu');
-       const searchContainer = document.getElementById('search-container');
-       // Toggle menu display
-       menuIcon.addEventListener('click', function() {
-           if (menu.style.display === 'flex') {
-               menu.style.display = 'none';
-               searchContainer.style.display = 'flex'; // Show search container
-           } else {
-               menu.style.display = 'flex';
-               searchContainer.style.display = 'none'; // Hide search container
-           }
-       });
-       // Toggle submenu display
-       function toggleSubMenu(submenuId) {
-           const submenu = document.getElementById(submenuId);
-           submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-       }
-	</c:param>
-
-</c:import>
+</html>

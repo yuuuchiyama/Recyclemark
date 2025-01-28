@@ -9,6 +9,7 @@
 	if(forlogin.equals("1")){
 		result = true;
 	}
+	request.setAttribute("forlogin", forlogin);
 %>
 <c:import url="/common/base.jsp">
 	<c:param name="style">
@@ -197,6 +198,14 @@
 					<h3>メールアドレス</h3>
 					<form action="PasswordReset.action" method="post">
 						<div class="form-group">
+							<c:choose>
+								<c:when test="<%= result %>">
+									<input type="hidden" name="forlogin" value="<%= forlogin %>">
+								</c:when>
+								<c:otherwise>
+									<input type="hidden" name="forlogin" value="0">
+								</c:otherwise>
+							</c:choose>
 							<input type="email" id="mail" name="mail" required>
 						</div>
 				        <button type="submit" class="action-button">送信</button>

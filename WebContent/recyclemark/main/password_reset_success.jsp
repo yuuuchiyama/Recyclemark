@@ -2,8 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:import url="/common/base.jsp">
-	<c:param name="style">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
       body {
 	        font-family: Arial, sans-serif;
 	        margin: 0;
@@ -144,45 +148,24 @@
 		    margin-left: 10px; /* 文字と画像の間隔 */
 		    font-size: 30px; /* 文字サイズを調整 */
 		}
-	</c:param>
-	<c:param name="title">
-		メニュー
-	</c:param>
+	</style>
 
-    <c:param name="header">
-		<a class="back" href="menu.jsp">＜</a>
-	</c:param>
+	<title>ログイン</title>
 
-
-	<c:param name="content">
-		<!-- メインコンテンツ部分 -->
-		<div class="main">
-            <div class="main-container">
-            	<h3>パスワードの変更が完了しました</h3>
-				<a href="../login.jsp">ログイン画面に戻る</a>
-			</div>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="title">RecycleMark Navigator</div>
 		</div>
-	</c:param>
+	</header>
 
-	<c:param name="script">
-	const menuIcon = document.getElementById('menu-icon');
-       const menu = document.getElementById('menu');
-       const searchContainer = document.getElementById('search-container');
-       // Toggle menu display
-       menuIcon.addEventListener('click', function() {
-           if (menu.style.display === 'flex') {
-               menu.style.display = 'none';
-               searchContainer.style.display = 'flex'; // Show search container
-           } else {
-               menu.style.display = 'flex';
-               searchContainer.style.display = 'none'; // Hide search container
-           }
-       });
-       // Toggle submenu display
-       function toggleSubMenu(submenuId) {
-           const submenu = document.getElementById(submenuId);
-           submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-       }
-	</c:param>
-
-</c:import>
+	<!-- メインコンテンツ部分 -->
+	<div class="main">
+           <div class="main-container">
+           	<h3>パスワードの変更が完了しました</h3>
+			<a href="../login.jsp">ログイン画面に戻る</a>
+		</div>
+	</div>
+</body>
+</html>
