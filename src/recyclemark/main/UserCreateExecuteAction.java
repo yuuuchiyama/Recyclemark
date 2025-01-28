@@ -15,13 +15,32 @@ public class UserCreateExecuteAction extends Action {
 		// student_create.jspからデータを受け取る
 		String mail=req.getParameter("mail");
 		String password=req.getParameter("password");
-
+		String url = "";
+		String error;
 		UserDao userDao = new UserDao();
+//		User user = userDao.get(mail);
+		if(password.length() <= 16){
+			if(userDao.get(mail) == null){
+				userDao.create(mail, password);
+				res.sendRedirect("../login.jsp");
+			}else{
+				error = "既にアカウントが存在しています。";
+				req.setAttribute("error", error);
 
-		userDao.create(mail, password);
+				//フォワード
+				url = "create.jsp";
+				req.getRequestDispatcher(url).forward(req, res);
 
-		//JSPへリダイレクト 7
-		res.sendRedirect("../login.jsp");
+			}
+		}else{
+			error = "パスワードは16文字以内で入力してください";
+			req.setAttribute("error", error);
+
+			//フォワード
+			url = "create.jsp";
+			req.getRequestDispatcher(url).forward(req, res);
+		}
+
 	}
 
 }
