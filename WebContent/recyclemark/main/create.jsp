@@ -98,6 +98,15 @@
             background-color: #3a5c34;
         }
 </style>
+<script type="text/javascript">
+const searchInput = document.getElementById('password');
+
+searchInput.addEventListener('input', function() {
+	if (!searchInput.validity.valueMissing) {
+		searchInput.setCustomValidity('');
+	}
+});
+</script>
 <title>アカウント新規作成</title>
 </head>
 <body>
@@ -116,7 +125,7 @@
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" size="16" required>
+                <input type="password" id="password" name="password" size="16" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
             </div>
             <c:if test="${error != null}">
 				<div class="form-group">
