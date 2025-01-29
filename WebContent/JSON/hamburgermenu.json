@@ -1,0 +1,6 @@
+[
+{"Language":"日本語","menu":"メニュー","text_header":"テキスト検索","picsearch_header":"画像検索","ranking":"ランキング","mypage":"マイページ","logout":"ログアウト"},
+{"Language":"英語","menu":"menu","text_header":"text search","picsearch_header":"Image search","ranking":"ranking","mypage":"マイページ","logout":"ログアウト"},
+{"Language":"韓国語","menu":"메뉴","text_header":"텍스트 검색","picsearch_header":"이미지 검색","ranking":"랭킹","mypage":"마이페이지","logout":"로그아웃"},
+{"Language":"中国語","menu":"菜单","text_header":"文本搜索","picsearch_header":"图片搜索","ranking":"排名","mypage":"我的页面","logout":"登出"}
+]

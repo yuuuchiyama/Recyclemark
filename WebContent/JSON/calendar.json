@@ -1,0 +1,10 @@
+[
+{"Language":"日本語","week_sun":"日","week_mon":"月","week_tue":"火",
+"week_wen":"水","week_thu":"木","week_fri":"金","week_sat":"土"},
+{"Language":"英語","week_sun":"Sun","week_mon":"Mon","week_tue":"Tue",
+"week_wen":"Wen","week_thu":"Ttu","week_fri":"Fri","week_sat":"Sat"},
+{"Language":"韓国語","week_sun":"일","week_mon":"월","week_tue":"화",
+"week_wen":"수","week_thu":"목","week_fri":"금","week_sat":"토"},
+{"Language":"中国語","week_sun":"日","week_mon":"一","week_tue":"二",
+"week_wen":"三","week_thu":"四","week_fri":"五","week_sat":"六"}
+]
