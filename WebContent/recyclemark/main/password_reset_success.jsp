@@ -115,20 +115,21 @@
 	        display: flex;
 	        flex-direction: column;
 	        align-items: center;
-	        margin: 20px 0 0 0;
+	        margin: 75px 0 0 0;
 	        min-height: 100vh;
 	        padding: 20px 0 20px 0;
 	    }
 
 	    .main-container {
 	        background-color: rgba(255, 255, 255, 0.7); /* 半透明の背景色 */
-	        padding: 30px 50px;
+	        padding: 50px 50px;
 	        border-radius: 15px;
 	        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-	        max-width: 800px; /* 任意の幅 */
+	        max-width: 500px; /* 任意の幅 */
 	        width: 100%;
 	        text-align: center;
 	    }
+
 		.rank-img {
 		    width: 100px;
 		    height: 100px;
