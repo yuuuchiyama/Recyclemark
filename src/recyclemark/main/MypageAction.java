@@ -12,20 +12,20 @@ public class MypageAction extends Action {
 		//ローカル変数の宣言 1
 		HttpSession session = req.getSession();//セッション
 		session.removeAttribute("forRanking");
-//		User user = (User)session.getAttribute("user");
-//		String mail = user.getMailAddress();
-//		String password = user.getPassword();
+
 		//リクエストパラメータ―の取得 2
 		//なし
+
 		//DBからデータ取得 3
 		//なし
+
 		//ビジネスロジック 4
 		//なし
+
 		//DBへデータ保存 5
 		//なし
+
 		//レスポンス値をセット 6
-//		req.setAttribute("mail", id);
-//		req.setAttribute("id", id);
 		//JSPへフォワード 7
 		req.getRequestDispatcher("mypage.jsp").forward(req, res);
 	}

@@ -16,7 +16,6 @@ public class FavoriteAddExecuteAction extends Action {
 		// ローカル変数の宣言 1
 		Detail detail = new Detail();
 		FavoriteDao favoriteDao = new FavoriteDao();		// Daoのインスタンス化
-		// Map<String, String> errors = new HashMap<>();	// エラーメッセージ
 
 		// リダイレクト先で使用するデータ
 		String markName = "";
@@ -71,27 +70,6 @@ public class FavoriteAddExecuteAction extends Action {
 		req.setAttribute("forRanking", forRanking);
 
 		// JSPへフォワード 7
-//		res.sendRedirect("detail.jsp");
 		req.getRequestDispatcher("detail.jsp").forward(req, res);
-
-
-
-//		if(detail != null) {
-//			// DBにデータを保存 5
-//
-//			// レスポンス値をセット 6
-//			req.setAttribute("detail", detail);
-//
-//			// JSPへフォワード 7
-//			req.getRequestDispatcher("detail.jsp").forward(req, res);
-//		} else {
-//			// レスポンス値をセット 6
-//
-//			System.out.println("エラーだよ");
-//
-//			// JSPへフォワード 7
-//			res.sendRedirect("text_result.jsp");
-//		}
 	}
-
 }

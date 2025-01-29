@@ -67,25 +67,8 @@ public class RankingAction extends Action {
 				ranking.setMarkId(markId);
 				rankingList.add(ranking);
 
-//				System.out.println(ranking.getRankUrl());
-//				System.out.println(ranking.getImgUrl());
-//				System.out.println(ranking.getName());
-//				System.out.println(rankingList);
-//				System.out.println("---------------");
 				count++;
 			}
-//			System.out.println(rankingList);
-//			String inWord = rankingList[0];
-//			System.out.println(rankingList.get(1));
-
-//			for(Ranking ranking2 : rankingList){
-//
-//				System.out.println(ranking2.getRankUrl());
-//				System.out.println(ranking2.getImgUrl());
-//				System.out.println(ranking2.getName());
-//				System.out.println("---------------");
-//
-//			}
 
 			// 内山追加
 			// セッション情報の取得
@@ -96,11 +79,10 @@ public class RankingAction extends Action {
 
 			req.setAttribute("rankinglist", rankingList);
 
-//			//フォワード
+			//フォワード
 			url = "ranking.jsp";
 			req.getRequestDispatcher(url).forward(req, res);
 		} else {
-//			System.out.println("0");
 			// 認証失敗の場合
 			// エラーメッセージをセット
 			List<String> errors = new ArrayList<>();
@@ -111,9 +93,6 @@ public class RankingAction extends Action {
 			url = "menu.jsp";
 			req.getRequestDispatcher(url).forward(req, res);
 		}
-
-//		req.getRequestDispatcher(url).forward(req, res);
 	}
-
 }
 

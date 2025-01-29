@@ -25,7 +25,7 @@ public class SendMailAction extends Action {
 	private boolean auth = true;
 	private String username = "tky2302053@stu.o-hara.ac.jp";
 	private String password = "You131115";
-//			private Protocol protocol = Protocol.SMTPS;
+//	private Protocol protocol = Protocol.SMTPS;
 	private Protocol protocol = Protocol.TLS;
 	private boolean debug = true;
 

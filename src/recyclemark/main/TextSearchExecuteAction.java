@@ -24,6 +24,7 @@ public class TextSearchExecuteAction extends Action {
 		Map<String, String> errors = new HashMap<>();	// エラーメッセージ
 
 		String trait = null;
+
 		// リクエストパラメーターの取得 2
 		trait = (String)session.getAttribute("trait");
 		System.out.println("セッションの方：" + trait);
@@ -39,7 +40,6 @@ public class TextSearchExecuteAction extends Action {
 		//条件で手順4~7の内容が分岐
 		// ビジネスロジック 4
 		if(recycleMarks.size() > 0) {
-			System.out.println(recycleMarks);
 			// DBにデータを保存 5
 
 			// レスポンス値をセット 6
