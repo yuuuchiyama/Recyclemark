@@ -208,8 +208,13 @@
 					<p>MailAddress : ${user.getMailAddress() }</p>
 					<div class="password-row">
 						<label for="password">password:</label>
-        				<input type="text" id="password" name="password" required>
+        				<input type="password" id="password" name="password" required>
         			</div>
+        			<c:if test="${error != null}">
+						<div class="form-group">
+							<h3>${error }</h3>
+				        </div>
+					</c:if>
 					<button class="delete-button">削除</button>
 				</div>
 			</form>

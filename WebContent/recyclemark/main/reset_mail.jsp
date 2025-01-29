@@ -208,6 +208,11 @@
 							</c:choose>
 							<input type="email" id="mail" name="mail" required>
 						</div>
+						<c:if test="${error != null}">
+							<div class="form-group">
+								<h3>${error }</h3>
+					        </div>
+						</c:if>
 				        <button type="submit" class="action-button">送信</button>
 				    </form>
 				</div>

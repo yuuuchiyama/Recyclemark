@@ -1,0 +1,6 @@
+[
+{"Language":"日本語","create_title":"新規アカウント作成","mail_create":"メールアドレス:","password_label":"パスワード","creare_button":"作成"},
+{"Language":"英語","create_title":"Create account","mail_create":"email addres:","password_label":"password:","creare_button":"CREATE"},
+{"Language":"韓国語","create_title":"신규 계정 만들기","mail_create":"메일 주소：","password_label":"비밀번호：","creare_button":"만들기"},
+{"Language":"中国語","create_title":"创建新账户","mail_create":"电子邮件地址：","password_label":"密码：","creare_button":"创建"}
+]

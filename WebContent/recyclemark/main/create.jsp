@@ -125,7 +125,7 @@ searchInput.addEventListener('input', function() {
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" size="16" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
+                <input type="password" id="password" name="password" required>
             </div>
             <c:if test="${error != null}">
 				<div class="form-group">

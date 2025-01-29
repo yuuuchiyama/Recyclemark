@@ -1,0 +1,6 @@
+[
+    {"Language":"日本語","pass_reset":"パスワードリセット","dele_acc":"アカウント削除"},
+    {"Language":"英語","pass_reset":"Password Reset","dele_acc":"Delete Account"},
+    {"Language":"韓国語","pass_reset":"비밀번호 재설정","dele_acc":"계정 삭제"},
+    {"Language":"中国語","pass_reset":"密码重置","dele_acc":"账户删除"}
+]

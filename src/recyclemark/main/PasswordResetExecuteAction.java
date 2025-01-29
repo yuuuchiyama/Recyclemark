@@ -34,22 +34,40 @@ public class PasswordResetExecuteAction extends Action {
 		//条件で手順4~7の内容が分岐
 		//ビジネスロジック 4
 		if(password1.equals(password2)){	// 入力された2つのパスワードが同じか判別
-			if (user.getPassword().equals(password1)) {		// 新しいパスワードが登録されているパスワードと違うものか判別
-				errors.put("password_error", "入力されたパスワードは使えません");
+			if(password1.length() <= 16){
+				if (user.getPassword().equals(password1)) {		// 新しいパスワードが登録されているパスワードと違うものか判別
+					errors.put("password_error", "入力されたパスワードは使えません");
+
+					//レスポンス値をセット 6
+					req.setAttribute("errors", errors);
+
+					// JSPへフォワード 7
+					req.getRequestDispatcher("password_reset.jsp").forward(req, res);
+				}else {
+					//DBへデータ保存 5
+					if(userDao.save(password1, Integer.parseInt(user.getId()))){
+
+						// JSPへフォワード 7
+						req.getRequestDispatcher("password_reset_success.jsp").forward(req, res);
+					}
+				}
+			}else{
+				errors.put("password_error", "パスワードは16文字以内で入力してください");
 
 				//レスポンス値をセット 6
 				req.setAttribute("errors", errors);
 
 				// JSPへフォワード 7
 				req.getRequestDispatcher("password_reset.jsp").forward(req, res);
-			}else {
-				//DBへデータ保存 5
-				if(userDao.save(password1, Integer.parseInt(user.getId()))){
-
-					// JSPへフォワード 7
-					req.getRequestDispatcher("password_reset_success.jsp").forward(req, res);
-				}
 			}
+		}else{
+			errors.put("password_error", "パスワードが一致しません");
+
+			//レスポンス値をセット 6
+			req.setAttribute("errors", errors);
+
+			// JSPへフォワード 7
+			req.getRequestDispatcher("password_reset.jsp").forward(req, res);
 		}
 	}
 }
