@@ -12,7 +12,7 @@
 		result = true;
 	}
 	if(delete.equals("1")){
-		result = true;
+		toDele = true;
 	}
 	request.setAttribute("forlogin", forlogin);
 %>
