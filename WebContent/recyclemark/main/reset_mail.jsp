@@ -4,9 +4,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String forlogin = request.getParameter("forlogin");
+	String delete = request.getParameter("delete");
 	System.out.println(forlogin);
 	boolean result = false;
+	boolean toDele = false;
 	if(forlogin.equals("1")){
+		result = true;
+	}
+	if(delete.equals("1")){
 		result = true;
 	}
 	request.setAttribute("forlogin", forlogin);
@@ -212,6 +217,9 @@
 								</c:when>
 								<c:otherwise>
 									<input type="hidden" name="forlogin" value="0">
+									<c:if test="<%= toDele %>">
+										<input type="hidden" name="todelete" value="<%= delete %>">
+									</c:if>
 								</c:otherwise>
 							</c:choose>
 							<input type="email" id="mail" name="mail" required oninvalid="this.setCustomValidity('メールアドレスを入力してください')">
