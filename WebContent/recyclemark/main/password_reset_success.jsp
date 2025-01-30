@@ -17,6 +17,7 @@
 	        background-position: center top;
 	        background-attachment: fixed;
 	        color: #333;
+	        overflow: hidden; /* スクロールバーを非表示にする */
 	    }
 		/* ヘッダーのスタイル */
 		.header {
@@ -115,7 +116,7 @@
 	        display: flex;
 	        flex-direction: column;
 	        align-items: center;
-	        margin: 75px 0 0 0;
+	        margin: 120px 0 0 0;
 	        min-height: 100vh;
 	        padding: 20px 0 20px 0;
 	    }
@@ -129,26 +130,6 @@
 	        width: 100%;
 	        text-align: center;
 	    }
-
-		.rank-img {
-		    width: 100px;
-		    height: 100px;
-		    margin-right: 20px;
-		}
-
-		.mark-img {
-		    width: 150px;
-		    height: 150px;
-		    margin-right: 40px;
-		}
-
-		td {
-		    padding: 10px; /* 画像と文字の上下左右の間隔 */
-		}
-		.ranking-link {
-		    margin-left: 10px; /* 文字と画像の間隔 */
-		    font-size: 30px; /* 文字サイズを調整 */
-		}
 	</style>
 
 	<title>ログイン</title>

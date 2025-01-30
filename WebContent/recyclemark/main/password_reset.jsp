@@ -98,7 +98,7 @@
 	        display: flex;
 	        flex-direction: column;
 	        align-items: center;
-	        margin: 75px 0 0 0;
+	        margin: 100px 0 0 0;
 	        min-height: 100vh;
 	        padding: 20px 0 20px 0;
 	    }

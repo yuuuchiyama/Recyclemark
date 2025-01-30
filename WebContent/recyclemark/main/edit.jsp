@@ -111,7 +111,7 @@
 	    .main {
 	        flex-direction: column;
 	        align-items: center;
-	        margin: 20px 0 0 0;
+	        margin: 50px 0 0 0;
 	        min-height: 100vh;
 	        padding: 20px 0 20px 0;
 	    }
