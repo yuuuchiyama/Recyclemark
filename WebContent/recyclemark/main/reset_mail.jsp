@@ -206,11 +206,11 @@
 									<input type="hidden" name="forlogin" value="0">
 								</c:otherwise>
 							</c:choose>
-							<input type="email" id="mail" name="mail" required>
+							<input type="email" id="mail" name="mail" required oninvalid="this.setCustomValidity('メールアドレスを入力してください')">
 						</div>
 						<c:if test="${error != null}">
 							<div class="form-group">
-								<h3>${error }</h3>
+								<h4>${error }</h4>
 					        </div>
 						</c:if>
 				        <button type="submit" class="action-button">送信</button>
@@ -239,6 +239,14 @@
            const submenu = document.getElementById(submenuId);
            submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
        }
+
+		const mailInput = document.getElementById('mail');
+
+		searchInput.addEventListener('input', function() {
+			if (!mailInput.validity.valueMissing) {
+				mailInput.setCustomValidity('');
+			}
+		});
 	</c:param>
 
 </c:import>
