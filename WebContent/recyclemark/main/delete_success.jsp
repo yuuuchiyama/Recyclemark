@@ -1,4 +1,4 @@
-<%-- パスワードリセット完了JSP --%>
+<%-- アカウント削除完了JSP --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -132,7 +132,7 @@
 	    }
 	</style>
 
-	<title>ログイン</title>
+	<title>アカウント削除完了</title>
 
 </head>
 <body>
@@ -145,7 +145,7 @@
 	<!-- メインコンテンツ部分 -->
 	<div class="main">
            <div class="main-container">
-           	<h3>パスワードの変更が完了しました</h3>
+           	<h3>アカウント削除が完了しました</h3>
 			<a href="../login.jsp">ログイン画面に戻る</a>
 		</div>
 	</div>
