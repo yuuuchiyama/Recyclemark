@@ -20,6 +20,7 @@
 	        background-position: center top;
 	        background-attachment: fixed;
 	        color: #333;
+	        overflow: hidden; /* スクロールバーを非表示にする */
 	    }
 		/* ヘッダーのスタイル */
 		.header {
@@ -92,33 +93,12 @@
 	    .menu-item:hover, .submenu a:hover {
 	    	background-color: #f0f0f0;
 	    }
-	    .back {
-		    border-radius: 50%; /* ボタンを丸く */
-		    display: flex;
-		    justify-content: center; /* 水平方向に中央揃え */
-		    align-items: center; /* 垂直方向に中央揃え */
-		    padding: 18px 18px 15px 10px;
-		    width: 25px;
-		    height: 20px;
-		    background: #f0f0f0;
-		    color: #4E7644;
-		    text-decoration: none;
-		    font-size: 30px;
-		    margin: 10px 20px;
-		    border: 1px solid #ccc; /* 境界線の色 */
-		    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-		    transition: background-color 0.3s, border-color 0.3s;
-	    }
-	    .back:hover {
-		    background-color: #e0e0e0;
-		    border-color: #999;
-		    color: #3a5c34;
-	    }
+
 	    .main {
 	        display: flex;
 	        flex-direction: column;
 	        align-items: center;
-	        margin: 20px 0 0 0;
+	        margin: 100px 0 0 0;
 	        min-height: 100vh;
 	        padding: 20px 0 20px 0;
 	    }
@@ -192,6 +172,15 @@
 </head>
 
 <body>
+	<script>
+		const mailInput = document.getElementById('mail');
+
+		searchInput.addEventListener('input', function() {
+			if (!mailInput.validity.valueMissing) {
+				mailInput.setCustomValidity('');
+			}
+		});
+	</script>
 	<header>
 		<div class="header">
 			<div class="title">RecycleMark Navigator</div>
@@ -207,11 +196,11 @@
 				<div>${errors.get("password_error")}</div>
 				<div class="form-group">
 					<label>新しいパスワード:</label>
-					<input type="password" id="mail" name="password1" required><br>
+					<input type="password" id="mail" name="password1" required oninvalid="this.setCustomValidity('パスワードを入力してください')"><br>
 				</div>
 				<div class="form-group2">
 					<label>新しいパスワード:(再入力)</label>
-					<input type="password" id="mail" name="password2" required>
+					<input type="password" id="mail" name="password2" required oninvalid="this.setCustomValidity('パスワードを入力してください')">
 				</div>
 			        <button type="submit" class="action-button">リセット</button>
 			    </form>

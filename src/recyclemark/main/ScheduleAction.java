@@ -26,6 +26,7 @@ public class ScheduleAction extends Action {
 		String stampId = "";
 		String memo = "";
 		String have = "";
+
 		//リクエストパラメータ―の取得 2
 		originDate = req.getParameter("date");
 		stampId = req.getParameter("stamp_id");
@@ -37,8 +38,6 @@ public class ScheduleAction extends Action {
 
 		//ビジネスロジック 4
 		createDate = '"' + originDate + '"';	// ダブルクォーテーションを付加する処理
-		System.out.println(originDate);
-		System.out.println(createDate);
 
 		//DBへデータ保存 5
 		//なし

@@ -13,6 +13,7 @@
 	        background-position: center top;
         	background-attachment: fixed;
 	        color: #333;
+	        overflow: hidden; /* スクロールバーを非表示にする */
 	    }
 	    /* ヘッダーのスタイル */
 	    .header {
@@ -87,28 +88,7 @@
 	    .menu-item:hover, .submenu a:hover {
 	        background-color: #f0f0f0;
 	    }
-	    .back {
-	     border-radius: 50%; /* ボタンを丸く */
-	     display: flex;
-	     justify-content: center; /* 水平方向に中央揃え */
-	     align-items: center; /* 垂直方向に中央揃え */
-	     padding: 18px 18px 15px 10px;
-	     width: 25px;
-	     height: 20px;
-	     background: #f0f0f0;
-	     color: #4E7644;
-	     text-decoration: none;
-	     font-size: 30px;
-	     margin: 10px 20px;
-	     border: 1px solid #ccc; /* 境界線の色 */
-	     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-	     transition: background-color 0.3s, border-color 0.3s;
-	    }
-	    .back:hover {
-	        background-color: #e0e0e0;
-	        border-color: #999;
-	        color: #3a5c34;
-	    }
+
 	    /* メインコンテンツ部分のスタイル */
 		.main {
 		    display: flex;
@@ -116,12 +96,13 @@
 		    align-items: center;
 		    min-height: 100vh;
 		    padding: 20px;
-				}
+		    margin-top: 50px;
+			}
 		.button-container {
 		    display: grid;
 		    grid-template-columns: repeat(2, 1fr); /* 2列のグリッド */
-		    gap: 30px 50px;
-		    max-width: 780px; /* 最大幅を指定 */
+		    gap: 40px 60px;
+		    max-width: 800px; /* 最大幅を指定 */
 		    margin: 70px auto;
 		    justify-items: center; /* ボタンを中央揃え */
 		}

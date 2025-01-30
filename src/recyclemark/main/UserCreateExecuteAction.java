@@ -18,7 +18,7 @@ public class UserCreateExecuteAction extends Action {
 		String url = "";
 		String error;
 		UserDao userDao = new UserDao();
-//		User user = userDao.get(mail);
+
 		if(password.length() <= 16){
 			if(userDao.get(mail) == null){
 				userDao.create(mail, password);

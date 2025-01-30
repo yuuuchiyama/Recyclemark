@@ -25,25 +25,35 @@ public class SendMailAction extends Action {
 	private boolean auth = true;
 	private String username = "tky2302053@stu.o-hara.ac.jp";
 	private String password = "You131115";
-//			private Protocol protocol = Protocol.SMTPS;
+//	private Protocol protocol = Protocol.SMTPS;
 	private Protocol protocol = Protocol.TLS;
 	private boolean debug = true;
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		String error = "";
 		String forlogin = req.getParameter("forlogin");
+		String toDelete = req.getParameter("todelete");
 		System.out.println(forlogin);
+		System.out.println(toDelete);
 		String to = req.getParameter("mail");
 		System.out.println(to);
-		String subject = "件名（ここは分岐：パスワードリセットメールかパスワード変更）";
+		String subject = "件名（ここは分岐：パスワードリセットメールかパスワード変更かアカウント削除）";
+
+		String body = "http://localhost:8080/recyclemark/recyclemark/main/password_reset.jsp?mail=" + to;
 		if (forlogin.equals("1")) {
 			subject = "パスワードリセットメール";
 			System.out.println(subject);
 		} else {
-			subject = "パスワード変更";
-			System.out.println(subject);
+			if (toDelete.equals("1")) {
+				subject = "アカウント削除";
+				body = "http://localhost:8080/recyclemark/recyclemark/main/delete.jsp?mail=" + to;
+				System.out.println(subject);
+			} else {
+				subject = "パスワード変更";
+				System.out.println(subject);
+			}
 		}
-		String body = "http://localhost:8080/recyclemark/recyclemark/main/password_reset.jsp?mail=" + to;
 
 		// Propertiesオブジェクトを作成し、SMTPプロトコル・プロバイダの設定を追加します。
 		Properties props = new Properties();
@@ -86,12 +96,17 @@ public class SendMailAction extends Action {
 		    message.setSentDate(new Date());
 		    message.setText(body);
 		    Transport.send(message);
+
+		    // ページ遷移
+			req.getRequestDispatcher("mail_success.jsp").forward(req, res);
 		} catch (MessagingException ex) {
 		    ex.printStackTrace();
-		}
+		    error = "入力されたメールアドレスは存在しません";
+			req.setAttribute("error", error);
 
-		// ページ遷移
-		req.getRequestDispatcher("mail_success.jsp").forward(req, res);
+			// ページ遷移
+			req.getRequestDispatcher("reset_mail.jsp").forward(req, res);
+		}
 	}
 
 }

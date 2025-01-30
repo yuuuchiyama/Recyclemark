@@ -4,10 +4,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String forlogin = request.getParameter("forlogin");
+	String delete = request.getParameter("delete");
 	System.out.println(forlogin);
 	boolean result = false;
+	boolean toDele = false;
 	if(forlogin.equals("1")){
 		result = true;
+	}
+	if(delete.equals("1")){
+		toDele = true;
 	}
 	request.setAttribute("forlogin", forlogin);
 %>
@@ -148,19 +153,27 @@
 	        border: 1.5px solid #4E7644;
 	        border-radius: 5px;
 	        box-sizing: border-box;
-	     }
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* フォーム内要素の中央揃え */
-    }
-    .form-group {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        width: 100%;
-    }
+	        margin-bottom: 10px;
 
+	     }
+	    form {
+	        display: flex;
+	        flex-direction: column;
+	        align-items: center; /* フォーム内要素の中央揃え */
+	    }
+	    .form-group {
+	        display: flex;
+	        align-items: center;
+	        width: 100%;
+	    }
+		h4{
+		   align-items: center;
+		   text-align: center;
+		   margin-left: 20px;
+		   height:5px;
+		   width:500px
+
+		}
 	    button {
 	        margin-top: 20px;
 	        padding: 5px 20px;
@@ -204,13 +217,16 @@
 								</c:when>
 								<c:otherwise>
 									<input type="hidden" name="forlogin" value="0">
+									<c:if test="<%= toDele %>">
+										<input type="hidden" name="todelete" value="<%= delete %>">
+									</c:if>
 								</c:otherwise>
 							</c:choose>
-							<input type="email" id="mail" name="mail" required>
+							<input type="email" id="mail" name="mail" required oninvalid="this.setCustomValidity('メールアドレスを入力してください')">
 						</div>
 						<c:if test="${error != null}">
 							<div class="form-group">
-								<h3>${error }</h3>
+								<h4>${error }</h4>
 					        </div>
 						</c:if>
 				        <button type="submit" class="action-button">送信</button>
@@ -239,6 +255,14 @@
            const submenu = document.getElementById(submenuId);
            submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
        }
+
+		const mailInput = document.getElementById('mail');
+
+		searchInput.addEventListener('input', function() {
+			if (!mailInput.validity.valueMissing) {
+				mailInput.setCustomValidity('');
+			}
+		});
 	</c:param>
 
 </c:import>

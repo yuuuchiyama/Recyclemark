@@ -111,7 +111,7 @@
 	    .main {
 	        flex-direction: column;
 	        align-items: center;
-	        margin: 20px 0 0 0;
+	        margin: 50px 0 0 0;
 	        min-height: 100vh;
 	        padding: 20px 0 20px 0;
 	    }
@@ -167,8 +167,8 @@
             <div class="main-container">
 				<div class="edit">
 					<ul>
-						<li><a href="reset_mail.jsp?forlogin=0">パスワードリセット</a></li>
-						<li><a href="delete.jsp">アカウント削除</a></li>
+						<li><a href="reset_mail.jsp?forlogin=0&delete=0">パスワードリセット</a></li>
+						<li><a href="reset_mail.jsp?forlogin=0&delete=1">アカウント削除</a></li>
 					</ul>
 				</div>
 			</div>

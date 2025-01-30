@@ -15,8 +15,10 @@ public class PasswordResetAction extends Action {
 		String mail = "";
 		UserDao userDao = new UserDao();
 		String error = "";
+
 		//リクエストパラメータ―の取得 2
 		mail = req.getParameter("mail");
+
 		//DBからデータ取得 3
 
 		//ビジネスロジック 4

@@ -17,6 +17,7 @@
 	        background-position: center top;
 	        background-attachment: fixed;
 	        color: #333;
+	        overflow: hidden; /* スクロールバーを非表示にする */
 	    }
 		/* ヘッダーのスタイル */
 		.header {
@@ -115,39 +116,20 @@
 	        display: flex;
 	        flex-direction: column;
 	        align-items: center;
-	        margin: 20px 0 0 0;
+	        margin: 120px 0 0 0;
 	        min-height: 100vh;
 	        padding: 20px 0 20px 0;
 	    }
 
 	    .main-container {
 	        background-color: rgba(255, 255, 255, 0.7); /* 半透明の背景色 */
-	        padding: 30px 50px;
+	        padding: 50px 50px;
 	        border-radius: 15px;
 	        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-	        max-width: 800px; /* 任意の幅 */
+	        max-width: 500px; /* 任意の幅 */
 	        width: 100%;
 	        text-align: center;
 	    }
-		.rank-img {
-		    width: 100px;
-		    height: 100px;
-		    margin-right: 20px;
-		}
-
-		.mark-img {
-		    width: 150px;
-		    height: 150px;
-		    margin-right: 40px;
-		}
-
-		td {
-		    padding: 10px; /* 画像と文字の上下左右の間隔 */
-		}
-		.ranking-link {
-		    margin-left: 10px; /* 文字と画像の間隔 */
-		    font-size: 30px; /* 文字サイズを調整 */
-		}
 	</style>
 
 	<title>ログイン</title>
