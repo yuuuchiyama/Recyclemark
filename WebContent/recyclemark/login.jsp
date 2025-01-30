@@ -118,24 +118,27 @@
     <h1 id="area1">ログイン</h1>
     <div class="language-buttons">
 <%
-	String[] languages = {"日本語", "English","한국어","中文"};
-	request.setAttribute("languages", languages);
+	String[] select_languages = {"日本語", "English","한국어","中文"};
+	request.setAttribute("select_languages", select_languages);
 %>
-	<c:forEach var="language" items="${languages}">
+	<c:forEach var="select_language" items="${select_languages}">
 		<form action="LanguageSelect.action" method="post">
-			<input type="hidden" name="language" value="${language}" />
-			<input type="submit" id="button_lan" value="${language}">
+			<input type="hidden" name="language" value="${select_language}" />
+			<input type="submit" id="button_lan" value="${select_language}">
 		</form>
 	</c:forEach>
     </div>
-    <form action="LoginExecute.action" method="post">
+    <form id="form" action="LoginExecute.action" method="post">
         <div class="form-group">
             <label for="mail" id="mail_label">メールアドレス:</label>
+            <label for="mail" id="mail_label">${language }</label>
             <input type="email" id="mail" name="mail" value="${mail}" required>
+            <span class="errorMessage"></span>
         </div>
         <div class="form-group">
             <label for="password" id="password_label">パスワード:</label>
             <input type="password" id="password" name="password" required>
+           <span class="errorMessage"></span>
         </div>
 		<c:if test="${error != null}">
 			<div class="form-group">
@@ -148,6 +151,12 @@
     <a href="main/create.jsp">アカウント作成</a>
     </div>
     <script>
+	    const fs = require('fs');    // モジュールの読み込み
+
+	    const json = fs.readFileSync("../JSON/login_l.json", 'utf-8')
+	    const data = JSON.parse(json)
+	    console.log(data);
+
 	    function sample(){
 	            document.getElementById("area1").innerText = "ログイン";
 	            document.getElementById("mail_label").innerText = "メールアドレス:";
