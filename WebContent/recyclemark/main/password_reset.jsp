@@ -172,6 +172,15 @@
 </head>
 
 <body>
+	<script>
+		const mailInput = document.getElementById('mail');
+
+		searchInput.addEventListener('input', function() {
+			if (!mailInput.validity.valueMissing) {
+				mailInput.setCustomValidity('');
+			}
+		});
+	</script>
 	<header>
 		<div class="header">
 			<div class="title">RecycleMark Navigator</div>
@@ -187,11 +196,11 @@
 				<div>${errors.get("password_error")}</div>
 				<div class="form-group">
 					<label>新しいパスワード:</label>
-					<input type="password" id="mail" name="password1" required><br>
+					<input type="password" id="mail" name="password1" required oninvalid="this.setCustomValidity('パスワードを入力してください')"><br>
 				</div>
 				<div class="form-group2">
 					<label>新しいパスワード:(再入力)</label>
-					<input type="password" id="mail" name="password2" required>
+					<input type="password" id="mail" name="password2" required oninvalid="this.setCustomValidity('パスワードを入力してください')">
 				</div>
 			        <button type="submit" class="action-button">リセット</button>
 			    </form>
