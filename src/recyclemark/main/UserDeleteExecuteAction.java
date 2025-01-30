@@ -27,11 +27,6 @@ public class UserDeleteExecuteAction extends Action {
 
 		//DBからデータ取得 3
 
-
-		//ビジネスロジック 4
-		//DBへデータ保存 5
-		//レスポンス値をセット 6
-		//フォワード 7
 		//条件で手順4~7の内容が分岐
 		if(password.length() <= 16){
 			if(password.equals(user.getPassword())){//パスワードが合っている場合

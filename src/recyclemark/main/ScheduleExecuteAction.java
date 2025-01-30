@@ -40,10 +40,6 @@ public class ScheduleExecuteAction extends Action {
 		icon = req.getParameter("icon");
 		memo = req.getParameter("memo");
 		schedule = req.getParameter("schedule");
-		System.out.println("日付：" + originDate);
-		System.out.println("アイコン：" + icon);
-		System.out.println("メモ：" + memo);
-		System.out.println("判別：" + schedule);
 
 		//DBからデータ取得 3
 		stampdata = calendarDao.getStamps(icon);
