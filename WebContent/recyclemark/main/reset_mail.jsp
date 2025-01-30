@@ -148,19 +148,27 @@
 	        border: 1.5px solid #4E7644;
 	        border-radius: 5px;
 	        box-sizing: border-box;
-	     }
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* フォーム内要素の中央揃え */
-    }
-    .form-group {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        width: 100%;
-    }
+	        margin-bottom: 10px;
 
+	     }
+	    form {
+	        display: flex;
+	        flex-direction: column;
+	        align-items: center; /* フォーム内要素の中央揃え */
+	    }
+	    .form-group {
+	        display: flex;
+	        align-items: center;
+	        width: 100%;
+	    }
+		h4{
+		   align-items: center;
+		   text-align: center;
+		   margin-left: 20px;
+		   height:5px;
+		   width:500px
+
+		}
 	    button {
 	        margin-top: 20px;
 	        padding: 5px 20px;
