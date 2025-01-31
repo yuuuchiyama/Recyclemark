@@ -63,6 +63,7 @@
         padding: 10px;
         font-size: 16px;
         margin-bottom: 20px;
+        margin-left: 42px;
     }
     .form-group {
         display: flex;
@@ -71,7 +72,6 @@
         width: 100%;
     }
     .form-group label {
-        width: 120px;
         text-align: left;
         margin-top: -15px;
         margin-right: 10px;
@@ -86,6 +86,7 @@
         border-radius: 5px;
         box-sizing: border-box;
     }
+
     .button {
         margin-bottom: 15px;
         padding: 6px 23px;
@@ -131,7 +132,7 @@
     <form id="form" action="LoginExecute.action" method="post">
         <div class="form-group">
             <label for="mail" id="mail_label">メールアドレス:</label>
-            <label for="mail" id="mail_label">${language }</label>
+            <label for="mail" id="mail_label" class="not">${language }</label>
             <input type="email" id="mail" name="mail" value="${mail}" required>
             <span class="errorMessage"></span>
         </div>
