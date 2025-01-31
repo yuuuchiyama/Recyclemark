@@ -132,7 +132,7 @@
     <form id="form" action="LoginExecute.action" method="post">
         <div class="form-group">
             <label for="mail" id="mail_label">メールアドレス:</label>
-            <label for="mail" id="mail_label" class="not">${language }</label>
+            <label for="mail" id="mail_label">${language }</label>
             <input type="email" id="mail" name="mail" value="${mail}" required>
             <span class="errorMessage"></span>
         </div>
