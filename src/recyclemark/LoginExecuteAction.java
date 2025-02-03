@@ -47,7 +47,7 @@ public class LoginExecuteAction extends Action {
 			// 認証失敗の場合
 			// エラーメッセージをセット
 			String error;
-			error = "IDまたはパスワードが確認できませんでした";
+			error = "メールアドレスまたはパスワードが確認できませんでした";
 			req.setAttribute("error", error);
 			// 入力されたメールアドレスをセット
 			req.setAttribute("mail", mail);

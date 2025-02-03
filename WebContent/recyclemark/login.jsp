@@ -63,6 +63,7 @@
         padding: 10px;
         font-size: 16px;
         margin-bottom: 20px;
+        margin-left: 42px;
     }
     .form-group {
         display: flex;
@@ -71,7 +72,6 @@
         width: 100%;
     }
     .form-group label {
-        width: 120px;
         text-align: left;
         margin-top: -15px;
         margin-right: 10px;
@@ -86,6 +86,7 @@
         border-radius: 5px;
         box-sizing: border-box;
     }
+
     .button {
         margin-bottom: 15px;
         padding: 6px 23px;
