@@ -151,12 +151,6 @@
     <a href="main/create.jsp">アカウント作成</a>
     </div>
     <script>
-	    const fs = require('fs');    // モジュールの読み込み
-
-	    const json = fs.readFileSync("../JSON/login_l.json", 'utf-8')
-	    const data = JSON.parse(json)
-	    console.log(data);
-
 	    function sample(){
 	            document.getElementById("area1").innerText = "ログイン";
 	            document.getElementById("mail_label").innerText = "メールアドレス:";
