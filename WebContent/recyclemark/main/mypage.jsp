@@ -262,5 +262,17 @@
         const submenu = document.getElementById(submenuId);
         submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
     }
+
+	// jsonファイルの読み込み
+	fetch("../../JSON/mypage.json")
+	  .then(response => response.json())
+	  .then(data => {
+	  	// レスポンスを処理するコード
+	  	// dataにはjsonファイルの中身が格納されている
+	    console.log(data[0].Language);
+	  })
+	  .catch(error => {
+	    // エラー処理
+	  });
 	</c:param>
 </c:import>
