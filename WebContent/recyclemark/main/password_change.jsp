@@ -20,7 +20,7 @@
 	        overflow: hidden; /* スクロールバーを非表示にする */
 	    }
 		/* ヘッダーのスタイル */
-			    .back {
+	.back {
 		    border-radius: 50%; /* ボタンを丸く */
 		    display: flex;
 		    justify-content: center; /* 水平方向に中央揃え */

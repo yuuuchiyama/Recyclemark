@@ -1,8 +1,8 @@
 {
-    "日本語":{"login title":"ログイン","mail_login":"メールアドレス：","password_label":"パスワード：","login_button":"ログイン","link_create":"新規アカウント作成はこちら"},
-    "English":{"login title":"LOGIN","mail_login":"email address:","password_label":"password:","login_button":"LOGIN","link_create":"Sign up for a new account here"},
-    "한국어":{"login title":"로그인","mail_login":"메일 주소:","password_label":"비밀번호:","login_button":"로그인","link_create":"여기에서 신규 계정을 생성하세요"},
-    "中文":{"login title":"登录","mail_login":"电子邮件地址:","password_label":"密码:","login_button":"登录","link_create":"点击这里创建新账户"}
+    "日本語":{"login_title":"ログイン","mail_login":"メールアドレス：","password_label":"パスワード：","login_button":"ログイン","link_create":"新規アカウント作成はこちら"},
+    "English":{"login_title":"LOGIN","mail_login":"email address:","password_label":"password:","login_button":"LOGIN","link_create":"Sign up for a new account here"},
+    "한국어":{"login_title":"로그인","mail_login":"메일 주소:","password_label":"비밀번호:","login_button":"로그인","link_create":"여기에서 신규 계정을 생성하세요"},
+    "中文":{"login_title":"登录","mail_login":"电子邮件地址:","password_label":"密码:","login_button":"登录","link_create":"点击这里创建新账户"}
 }
 
 

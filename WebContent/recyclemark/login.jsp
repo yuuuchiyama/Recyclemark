@@ -129,10 +129,11 @@
 		</form>
 	</c:forEach>
     </div>
+    <input type="hidden" value="${language }" id="language" />
     <form id="form" action="LoginExecute.action" method="post">
         <div class="form-group">
             <label for="mail" id="mail_label">メールアドレス:</label>
-            <label for="mail" id="mail_label">${language }</label>
+            <label for="mail">${language }</label>
             <input type="email" id="mail" name="mail" value="${mail}" required>
             <span class="errorMessage"></span>
         </div>
@@ -152,40 +153,29 @@
     <a href="main/create.jsp">アカウント作成</a>
     </div>
     <script>
-	    function sample(){
-	            document.getElementById("area1").innerText = "ログイン";
-	            document.getElementById("mail_label").innerText = "メールアドレス:";
-	            document.getElementById("password_label").innerText = "パスワード:";
-	            document.getElementById("button_login").innerText = "ログイン";
-	            document.getElementById("link_create").innerText = "新規登録はこちら";
-	    }
-	    function sample1(){
-	        document.getElementById("area1").innerText = "LOGIN";
-	        document.getElementById("mail_label").innerText = "email address:";
-	        document.getElementById("password_label").innerText = "password:";
-	        document.getElementById("button_login").innerText = "LOGIN";
-	        document.getElementById("link_create").innerText = "Sign up here";
-	    }
-	    function sample2(){
-	        document.getElementById("area1").innerText = "로그인";
-	        document.getElementById("mail_label").innerText = "메일 주소:";
-	        document.getElementById("password_label").innerText = "비밀번호:";
-	        document.getElementById("button_login").innerText = "로그인";
-	        document.getElementById("link_create").innerText = "여기에서 회원 가입하세요";
-	    }
-	    function sample3(){
-	        document.getElementById("area1").innerText = "登录";
-	        document.getElementById("mail_label").innerText = "电子邮件地址:";
-	        document.getElementById("password_label").innerText = "密码:";
-	        document.getElementById("button_login").innerText = "登录";
-	        document.getElementById("link_create").innerText = "新用户注册在这里";
-	    }
+	    const language = document.getElementById("language").value;
+	    const mail = document.getElementById("mail_label");
+	    const password = document.getElementById("password_label");
+	    const login = document.getElementById("button_login");
+ 		// jsonファイルの読み込み
+		fetch("../../JSON/mypage.json")
+		.then(response => response.json())
+		.then(data => {
+			// レスポンスを処理するコード
+			// dataにはjsonファイルの中身が格納されている
+			mail.innerHTML = data[language]["mail_login"]
+			password.innerHTML = data[language]["password_label"]
+			login.innerHTML = data[language]["login_button"]
+		})
+		.catch(error => {
+			// エラー処理
+		});
 
 	    window.onload = function() {
-	    	if (<%=request.getAttribute("logout") %> != null) {
-	    		alert("ログアウト完了");
-	    	}
-	   	};
+			if (<%=request.getAttribute("logout") %> != null) {
+			alert("ログアウト完了");
+		}
+		};
 	</script>
 </body>
 </html>

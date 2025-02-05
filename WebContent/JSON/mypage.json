@@ -1,6 +1,6 @@
-[
-{"Language":"日本語","edit":"編集","fav":"お気に入り","search his":"検索履歴","calendar":"カレンダー"},
-{"Language":"英語","edit":"editing","fav":"favourite","search his":"search history","calendar":"Calendar"},
-{"Language":"韓国語","editing":"편집","fav":"즐겨 찾기","search his":"검색 기록","calendar":"캘린더"},
-{"Language":"中国語","editing":"编辑","fav":"收藏","search his":"搜索历史","calendar":"日程表"}
-]
+{
+    "日本語":{"edit":"編集","fav":"お気に入り","search_his":"検索履歴","calendar":"カレンダー"},
+    "English":{"edit":"editing","fav":"favourite","search_his":"search history","calendar":"Calendar"},
+    "한국어":{"edit":"편집","fav":"즐겨 찾기","search_his":"검색 기록","calendar":"캘린더"},
+    "中文":{"edit":"编辑","fav":"收藏","search_his":"搜索历史","calendar":"日程表"}
+}

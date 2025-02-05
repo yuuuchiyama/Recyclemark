@@ -215,7 +215,6 @@
 	</c:param>
 
 	<c:param name="scripts"></c:param>
-
 	<c:param name="content">
 		<div class="main">
 			<form action="EditUser.action" method="post">
@@ -224,18 +223,20 @@
 			            <p>Mail:</p>
 			            <h2>${user.getMailAddress() }</h2>
 			        </div>
-			        <button class="edit-button">編集</button>
+			        <p>${language }</p>
+			        <input type="hidden" value="${language }" id="language" />
+			        <button class="edit-button" id="edit">編集</button>
 				</div>
 			</form>
 			<div class="button-container">
 			    <form action="FavoriteExecute.action" method="post">
-			        <button type="submit">お気に入り</button>
+			        <button type="submit" id="fav">お気に入り</button>
 			    </form>
 			    <form action="History.action" method="post">
-			        <button type="submit">検索履歴</button>
+			        <button type="submit" id="search_his">検索履歴</button>
 			    </form>
 			    <form action="CalendarExecute.action" method="post">
-			        <button type="submit">カレンダー</button>
+			        <button type="submit" id="calendar">カレンダー</button>
 			    </form>
 			    <form action="../Logout.action" method="post">
 			        <button type="submit">ログアウト</button>
@@ -247,6 +248,7 @@
 	const menuIcon = document.getElementById('menu-icon');
     const menu = document.getElementById('menu');
     const searchContainer = document.getElementById('search-container');
+
     // Toggle menu display
     menuIcon.addEventListener('click', function() {
         if (menu.style.display === 'flex') {
@@ -263,13 +265,23 @@
         submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
     }
 
+	const language = document.getElementById("language").value;
+    const edit = document.getElementById("edit");
+    const fav = document.getElementById("fav");
+    const search_his = document.getElementById("search_his");
+    const calendar = document.getElementById("calendar");
+
 	// jsonファイルの読み込み
 	fetch("../../JSON/mypage.json")
 	  .then(response => response.json())
 	  .then(data => {
 	  	// レスポンスを処理するコード
 	  	// dataにはjsonファイルの中身が格納されている
-	    console.log(data[0].Language);
+		edit.innerHTML = data[language]["edit"]
+		fav.innerHTML = data[language]["fav"]
+		search_his.innerHTML = data[language]["search_his"]
+		calendar.innerHTML = data[language]["calendar"]
+
 	  })
 	  .catch(error => {
 	    // エラー処理
