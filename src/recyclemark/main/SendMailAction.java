@@ -38,7 +38,7 @@ public class SendMailAction extends Action {
 		System.out.println(toDelete);
 		String to = req.getParameter("mail");
 		System.out.println(to);
-		String subject = "件名（ここは分岐：パスワードリセットメールかパスワード変更かアカウント削除）";
+		String subject = "件名（ここは分岐：パスワードリセットメールかアカウント削除）";
 
 		String body = "http://localhost:8080/recyclemark/recyclemark/main/password_reset.jsp?mail=" + to;
 		if (forlogin.equals("1")) {
@@ -49,9 +49,8 @@ public class SendMailAction extends Action {
 				subject = "アカウント削除";
 				body = "http://localhost:8080/recyclemark/recyclemark/main/delete.jsp?mail=" + to;
 				System.out.println(subject);
-			} else {
-				subject = "パスワード変更";
-				System.out.println(subject);
+			}else {
+				System.out.println("アカウント削除エラー");
 			}
 		}
 

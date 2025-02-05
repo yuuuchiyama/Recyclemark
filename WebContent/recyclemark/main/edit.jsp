@@ -167,7 +167,7 @@
             <div class="main-container">
 				<div class="edit">
 					<ul>
-						<li><a href="reset_mail.jsp?forlogin=0&delete=0">パスワードリセット</a></li>
+						<li><a href="password_change.jsp">パスワードリセット</a></li>
 						<li><a href="reset_mail.jsp?forlogin=0&delete=1">アカウント削除</a></li>
 					</ul>
 				</div>
