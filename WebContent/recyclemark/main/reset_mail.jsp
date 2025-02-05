@@ -116,7 +116,7 @@
 		    color: #4E7644;
 		    text-decoration: none;
 		    font-size: 30px;
-		    margin: 10px 20px;
+		    margin: 30px 20px 10px 20px;
 		    border: 1px solid #ccc; /* 境界線の色 */
 		    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 		    transition: background-color 0.3s, border-color 0.3s;
@@ -130,7 +130,7 @@
 	        display: flex;
 	        flex-direction: column;
 	        align-items: center;
-	        margin: 20px 0 0 0;
+	        margin: 70px 0 0 0;
 	        min-height: 100vh;
 	        padding: 20px 0 20px 0;
 	    }
