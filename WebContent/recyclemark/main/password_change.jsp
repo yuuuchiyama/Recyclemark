@@ -1,4 +1,4 @@
-<%-- メニューJSP --%>
+<%-- パスワード変更JSP --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -159,22 +159,21 @@
 	<div class="main">
 	          <div class="main-container">
 			<div class="reset">
-				<form action="PasswordResetExecute.action" method="post">
-				<input type="hidden" name="mail" value="<%= mail %>">
-				<div>${errors.get("password_error")}</div>
-				<div class="form-group">
-					<label>現在のパスワード:</label>
-					<input type="password" id="mail" name="password1" required oninvalid="this.setCustomValidity('パスワードを入力してください')"><br>
-				</div>
-				<div class="form-group1">
-					<label>新しいパスワード:</label>
-					<input type="password" id="mail" name="password1" required oninvalid="this.setCustomValidity('パスワードを入力してください')"><br>
-				</div>
-				<div class="form-group2">
-					<label>新しいパスワード:(再入力)</label>
-					<input type="password" id="mail" name="password2" required oninvalid="this.setCustomValidity('パスワードを入力してください')">
-				</div>
-			        <button type="submit" class="action-button">変更</button>
+				<form action="PasswordChangeExecute.action" method="post">
+					<div>${errors.get("password_error")}</div>
+					<div class="form-group">
+						<label>現在のパスワード:</label>
+						<input type="password" name="originpas" required oninvalid="this.setCustomValidity('パスワードを入力してください')"><br>
+					</div>
+					<div class="form-group1">
+						<label>新しいパスワード:</label>
+						<input type="password" name="password1" required oninvalid="this.setCustomValidity('パスワードを入力してください')"><br>
+					</div>
+					<div class="form-group2">
+						<label>新しいパスワード:(再入力)</label>
+						<input type="password" name="password2" required oninvalid="this.setCustomValidity('パスワードを入力してください')">
+					</div>
+				    <button type="submit" class="action-button">変更</button>
 			    </form>
 			</div>
 		</div>
