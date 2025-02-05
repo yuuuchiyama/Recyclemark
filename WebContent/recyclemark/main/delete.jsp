@@ -93,34 +93,12 @@
 	   .menu-item:hover, .submenu a:hover {
 	       background-color: #f0f0f0;
 	   }
-	   .back {
-			border-radius: 50%; /* ボタンを丸く */
-			display: flex;
-			justify-content: center; /* 水平方向に中央揃え */
-			align-items: center; /* 垂直方向に中央揃え */
-			padding: 18px 18px 15px 10px;
-			width: 25px;
-			height: 20px;
-			background: #f0f0f0;
-			color: #4E7644;
-			text-decoration: none;
-			font-size: 30px;
-			margin: 10px 20px;
-			border: 1px solid #ccc; /* 境界線の色 */
-			box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-			transition: background-color 0.3s, border-color 0.3s;
-		}
-
-		.back:hover {
-		    background-color: #e0e0e0;
-		    border-color: #999;
-		    color: #3a5c34;
-		}
 
 	    .main {
 	        display: flex;
 	        flex-direction: column;
 	        align-items: center;
+	        margin: 75px 0 0 0;
 	        min-height: 100vh;
 	        padding: 20px 0 20px 0;
 	    }
@@ -201,7 +179,6 @@
 	</c:param>
 
     <c:param name="header">
-		<a class="back" href="edit.jsp">＜</a>
 	</c:param>
 	<c:param name="content">
 		<div class="main">
