@@ -16,8 +16,12 @@
 	}
 	request.setAttribute("forlogin", forlogin);
 %>
-<c:import url="/common/base.jsp">
-	<c:param name="style">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
       body {
 	        font-family: Arial, sans-serif;
 	        margin: 0;
@@ -187,56 +191,51 @@
     button:hover {
        	 background-color: #3a5c34;
     	}
-	</c:param>
-	<c:param name="title">
-		パスワードリセット
-	</c:param>
+</style>
+	<title>パスワードリセット</title>
+</head>
+<body>
+   	<c:choose>
+   		<c:when test="<%= result %>">
+   			<a class="back" href="../login.jsp">＜</a>
+   		</c:when>
+   		<c:otherwise>
+   			<a class="back" href="edit.jsp">＜</a>
+   		</c:otherwise>
+   	</c:choose>
 
-    <c:param name="header">
-    	<c:choose>
-    		<c:when test="<%= result %>">
-    			<a class="back" href="../login.jsp">＜</a>
-    		</c:when>
-    		<c:otherwise>
-    			<a class="back" href="edit.jsp">＜</a>
-    		</c:otherwise>
-    	</c:choose>
-	</c:param>
-
-	<c:param name="content">
-		<!-- メインコンテンツ部分 -->
-		<div class="main">
-            <div class="main-container">
-				<div class="reset">
-					<h3>メールアドレス</h3>
-					<form action="PasswordReset.action" method="post">
+	<!-- メインコンテンツ部分 -->
+	<div class="main">
+           <div class="main-container">
+			<div class="reset">
+				<h3>メールアドレス</h3>
+				<form action="PasswordReset.action" method="post">
+					<div class="form-group">
+						<c:choose>
+							<c:when test="<%= result %>">
+								<input type="hidden" name="forlogin" value="<%= forlogin %>">
+							</c:when>
+							<c:otherwise>
+								<input type="hidden" name="forlogin" value="0">
+								<c:if test="<%= toDele %>">
+									<input type="hidden" name="todelete" value="<%= delete %>">
+								</c:if>
+							</c:otherwise>
+						</c:choose>
+						<input type="email" id="mail" name="mail" required oninvalid="this.setCustomValidity('メールアドレスを入力してください')">
+					</div>
+					<c:if test="${error != null}">
 						<div class="form-group">
-							<c:choose>
-								<c:when test="<%= result %>">
-									<input type="hidden" name="forlogin" value="<%= forlogin %>">
-								</c:when>
-								<c:otherwise>
-									<input type="hidden" name="forlogin" value="0">
-									<c:if test="<%= toDele %>">
-										<input type="hidden" name="todelete" value="<%= delete %>">
-									</c:if>
-								</c:otherwise>
-							</c:choose>
-							<input type="email" id="mail" name="mail" required oninvalid="this.setCustomValidity('メールアドレスを入力してください')">
-						</div>
-						<c:if test="${error != null}">
-							<div class="form-group">
-								<h4>${error }</h4>
-					        </div>
-						</c:if>
-				        <button type="submit" class="action-button">送信</button>
-				    </form>
-				</div>
+							<h4>${error }</h4>
+				        </div>
+					</c:if>
+			        <button type="submit" class="action-button">送信</button>
+			    </form>
 			</div>
 		</div>
-	</c:param>
+	</div>
 
-	<c:param name="script">
+	<script>
 	const menuIcon = document.getElementById('menu-icon');
        const menu = document.getElementById('menu');
        const searchContainer = document.getElementById('search-container');
@@ -263,6 +262,6 @@
 				mailInput.setCustomValidity('');
 			}
 		});
-	</c:param>
-
-</c:import>
+	</script>
+</body>
+</html>
