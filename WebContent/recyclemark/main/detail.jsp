@@ -287,7 +287,8 @@
 			<form action="FavoriteAddExecute.action" method="post">
 				<div class="hart">
 					<input type="hidden" id="heartStamp" name="heartStamp" value="${heartStamp}">
-					<input type="hidden" id="heartStamp" name="forRanking" value="${forRanking}">
+					<input type="hidden" id="forRanking" name="forRanking" value="${forRanking}">
+					<input type="hidden" id="forHistory" name="forHistory" value="${forHistory}">
 					<input type="hidden" name="markId" value="${detail.getMarkId()}">
 					<input type="hidden" name="markName" value="${detail.getMarkName()}">
 					<input type="hidden" name="markImg" value="${detail.getMarkImg()}">
