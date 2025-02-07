@@ -150,22 +150,23 @@
 	<c:param name="title">
 		メニュー
 	</c:param>
-
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
 		<div class="main">
+			<p>${language }</p>
+			<input type="hidden" value="${language }" id="language" />
 		   <div class="button-container">
 			    <form action="TextSearch.action" method="post">
-			        <button type="submit" class="action-button">テキスト検索</button>
+			        <button type="submit" class="action-button" id="text_search">テキスト検索</button>
 			    </form>
 			    <form action="ImageSearch.action" method="post">
-			        <button type="submit" class="action-button">画像検索</button>
+			        <button type="submit" class="action-button" id="pic_search">画像検索</button>
 			    </form>
 			    <form action="Ranking.action" method="post">
-			        <button type="submit" class="action-button">ランキング</button>
+			        <button type="submit" class="action-button" id="ranking">ランキング</button>
 			    </form>
 			    <form action="LanguageSelection.action" method="post">
-			        <button type="submit" class="action-button">言語再選択</button>
+			        <button type="submit" class="action-button" id="back_select">言語再選択</button>
 			    </form>
 			</div>
 		</div>
@@ -190,6 +191,28 @@
            const submenu = document.getElementById(submenuId);
            submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
        }
+
+		const language = document.getElementById("language").value;
+		const text_search = document.getElementById("text_search");
+		const pic_search = document.getElementById("pic_search");
+		const ranking = document.getElementById("ranking");
+		const back_select = document.getElementById("back_select");
+
+		// jsonファイルの読み込み
+		fetch("../../JSON/nemu.json")
+		.then(response => response.json())
+		.then(data => {
+			// レスポンスを処理するコード
+			// dataにはjsonファイルの中身が格納されている
+			text_search.innerHTML = data[language]["text_search"]
+			pic_search.innerHTML = data[language]["pic_search"]
+			ranking.innerHTML = data[language]["ranking"]
+			back_select.innerHTML = data[language]["back_select"]
+		})
+		.catch(error => {
+			// エラー処理
+		});
+
 	</c:param>
 
 </c:import>

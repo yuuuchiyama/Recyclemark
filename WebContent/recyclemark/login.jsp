@@ -158,7 +158,7 @@
 	    const password = document.getElementById("password_label");
 	    const login = document.getElementById("button_login");
  		// jsonファイルの読み込み
-		fetch("../../JSON/mypage.json")
+		fetch("../../JSON/login_l.json")
 		.then(response => response.json())
 		.then(data => {
 			// レスポンスを処理するコード
