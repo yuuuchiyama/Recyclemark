@@ -187,7 +187,7 @@
 					<p>MailAddress : <%= mail %></p>
 					<div class="password-row">
 						<label for="password">password:</label>
-        				<input type="password" id="password" name="password" required>
+        				<input type="password" id="password" name="password" required oninvalid="this.setCustomValidity('パスワードを入力してください')">
         			</div>
         			<c:if test="${error != null}">
 						<div class="form-group">
@@ -219,5 +219,13 @@
            	const submenu = document.getElementById(submenuId);
            	submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
        	}
+
+       	const passInput = document.getElementById('password');
+
+		searchInput.addEventListener('input', function() {
+			if (!passInput.validity.valueMissing) {
+				passInput.setCustomValidity('');
+			}
+		});
 	</c:param>
 </c:import>

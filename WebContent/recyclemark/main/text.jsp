@@ -176,7 +176,7 @@
 	</c:param>
 
 	<c:param name="header">
-		<a class="back" href="menu.jsp">＜</a>
+		<a class="back" href="javascript:history.back();">＜</a>
 	</c:param>
 
 	<c:param name="content">
