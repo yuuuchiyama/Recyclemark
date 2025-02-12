@@ -267,16 +267,18 @@
 			    <!-- メモ入力 -->
 			    <textarea class="memo" name="memo" placeholder="memo">${memo}</textarea>
 
+				<input type="hidden" value="${language }" id="language" />
+
 				<c:choose>
 	    			<c:when test="${have == '0'}">
-	    				<input type="hidden" name="schedule" value="0">
+	    				<input id="schedule" type="hidden" name="schedule" value="0">
 				        <!-- 登録ボタン -->
-					    <button class="register-button">登録</button>
+					    <button id="button" class="register-button">登録</button>
 				    </c:when>
 				    <c:when test="${have == '1'}">
-				    	<input type="hidden" name="schedule" value="1">
+				    	<input id="schedule" type="hidden" name="schedule" value="1">
 				        <!-- 登録ボタン -->
-					    <button class="register-button">変更</button>
+					    <button id="button" class="register-button">変更</button>
 				    </c:when>
 				</c:choose>
 			</div>
@@ -344,6 +346,25 @@
 	            console.log(select.value);
 	        }
 	    }
-    </c:param>
 
+	    const language = document.getElementById("language").value;
+	    const schedule = document.getElementById("schedule").value;
+	    const button = document.getElementById("button");
+
+	    // jsonファイルの読み込み
+		fetch("../../JSON/calendarRegister.json")
+		  .then(response => response.json())
+		  .then(data => {
+		  	// レスポンスを処理するコード
+		  	// dataにはjsonファイルの中身が格納されている
+		  	if (schedule == "0") {
+		  		button.innerHTML = data[language]["Register"];
+		  	}else {
+		  		button.innerHTML = data[language]["Change"];
+		  	}
+		  })
+		  .catch(error => {
+		    // エラー処理
+		  });
+    </c:param>
 </c:import>

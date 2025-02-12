@@ -1,6 +1,6 @@
-[
-{"Language":"日本語","Register":"登録"},
-{"Language":"英語","Register":"Register"},
-{"Language":"韓国語","Register":"등록"},
-{"Language":"中国語","Register":"注册"}
-]
+{
+"日本語":{"Register":"登録", "Change":"変更"},
+"English":{"Register":"Register", "Change":"Change"},
+"한국어":{"Register":"등록", "Change":"잔돈"},
+"中文":{"Register":"注册", "Change":"改变"}
+}

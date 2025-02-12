@@ -8,7 +8,7 @@
            font-family: Arial, sans-serif;
            margin: 0;
            padding: 0;
-           background-image: url("../../images/20210729_1.jpg");
+           background-image: url("../images/20210729_1.jpg");
            background-size: cover;
            background-position: center;
            background-attachment: fixed;
@@ -157,16 +157,16 @@
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
 		<!-- Search container -->
-		<form action="menu.action" method="post">
  		<div class="main">
-        <div class="button-container">
-            <button>日本語</button>
-            <button>English</button>
-            <button>한국어</button>
-            <button>中文</button>
-        </div>
-    </div>
-    </form>
+        	<form action="../main/Menu.action" method="post">
+        		<div class="button-container">
+	            	<button>日本語</button>
+	            	<button>English</button>
+	            	<button>한국어</button>
+	            	<button>中文</button>
+	        	</div>
+	        </form>
+	    </div>
 	</c:param>
 	<c:param name="script">
 	const menuIcon = document.getElementById('menu-icon');
