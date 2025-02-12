@@ -1,5 +1,5 @@
 {
-    "日本語":{"text_search":"テキスト検索","massage":"リサイクルマークについて入力してください。","password_label":"検索キーワードを入力","TextSearch_button":"検索"},
+    "日本語":{"text_search":"テキスト検索","massage":"リサイクルマークについて入力してください。","keywords":"検索キーワードを入力","TextSearch_button":"検索"},
     "English":{"text_search":"text search","message":"Enter about the recycling mark.","keywords":"Enter search keywords","TextSearch_button":"search"},
     "한국어":{"text_search":"텍스트 검색","message":"재활용 마크에 대해 입력해 주세요.","keywords":"검색 키워드를 입력하세요","TextSearch_button":"검색하기"},
     "中文":{"text_search":"文本搜索","message":"输入回收标记","keywords":"输入搜索关键词","TextSearch_button":"搜索"}
