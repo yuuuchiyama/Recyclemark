@@ -153,7 +153,6 @@
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
 		<div class="main">
-			<p>${language }</p>
 			<input type="hidden" value="${language }" id="language" />
 		   <div class="button-container">
 			    <form action="TextSearch.action" method="post">
