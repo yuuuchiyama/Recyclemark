@@ -155,17 +155,22 @@
 	  </c:param>
 
 	<c:param name="content">
+
 		<!-- メインコンテンツ部分 -->
 		<!-- Search container -->
  		<div class="main">
-        	<form action="main/Menu.action" method="post">
+	 		<%
+				String[] select_languages = {"日本語", "English","한국어","中文"};
+				request.setAttribute("select_languages", select_languages);
+			%>
         		<div class="button-container">
-	            	<button>日本語</button>
-	            	<button>English</button>
-	            	<button>한국어</button>
-	            	<button>中文</button>
+        		<c:forEach var="select_language" items="${select_languages}">
+					<form action="LanguageReselectionExecute.action" method="post">
+						<input type="hidden" name="language" value="${select_language}">
+						<button>${select_language}</button>
+					</form>
+				</c:forEach>
 	        	</div>
-	        </form>
 	    </div>
 	</c:param>
 	<c:param name="script">
