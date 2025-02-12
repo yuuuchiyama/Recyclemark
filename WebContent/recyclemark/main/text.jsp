@@ -184,12 +184,13 @@
 			<!-- メインコンテンツ部分 -->
 			<!-- Search container -->
 	 		<div class="main">
+	 		<input type="hidden" value="${language }" id="language" />
 				<div class="search-container" id="search-container">
-					<h1>テキスト検索</h1>
-					<p>リサイクルマークについて入力してください。</p>
+					<h1 id="text_search">テキスト検索</h1>
+					<p id="massage">リサイクルマークについて入力してください。</p>
 					<div>${errors.get("mark_error")}</div>
 					<input type="text" id="search-input" class="search-input" name="trait" placeholder="検索キーワードを入力" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
-					<button type="submit" class="search-button">検索</button>
+					<button type="submit" class="search-button" id="TextSearch_button">検索</button>
 				</div>
 			</div>
 		</form>
@@ -220,6 +221,27 @@
 			if (!searchInput.validity.valueMissing) {
 				searchInput.setCustomValidity('');
 			}
+		});
+
+		const language = document.getElementById("language").value;
+		const text_search = document.getElementById("text_search");
+		const massage = document.getElementById("massage");
+		const search-input = document.getElementById("search-input");
+		const textSearch_button = document.getElementById("TextSearch_button");
+
+		// jsonファイルの読み込み
+		fetch("../../JSON/nemu.json")
+		.then(response => response.json())
+		.then(data => {
+			// レスポンスを処理するコード
+			// dataにはjsonファイルの中身が格納されている
+			text_search.innerHTML = data[language]["text_search"]
+			pic_search.innerHTML = data[language]["pic_search"]
+			ranking.innerHTML = data[language]["ranking"]
+			back_select.innerHTML = data[language]["back_select"]
+		})
+		.catch(error => {
+			// エラー処理
 		});
 	</c:param>
 </c:import>
