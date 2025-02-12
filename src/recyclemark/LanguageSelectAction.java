@@ -10,7 +10,7 @@ public class LanguageSelectAction extends Action {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
-		String url = "main/language_select.jsp";
+		String url = "language_select.jsp";
 		//リクエストパラメータ―の取得 2
 		String language = req.getParameter("language");//言語
 		//DBからデータ取得 3

@@ -158,7 +158,7 @@
 		<!-- メインコンテンツ部分 -->
 		<!-- Search container -->
  		<div class="main">
-        	<form action="../main/Menu.action" method="post">
+        	<form action="main/Menu.action" method="post">
         		<div class="button-container">
 	            	<button>日本語</button>
 	            	<button>English</button>
