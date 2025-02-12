@@ -1,16 +1,16 @@
-package recyclemark;
+package recyclemark.main;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import tool.Action;
-public class LanguageSelectAction extends Action {
+public class ReLanguageSelectAction extends Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//ローカル変数の宣言 1
-		String url = "login.jsp";
+		String url = "menu.jsp";
 		//リクエストパラメータ―の取得 2
 		String language = req.getParameter("language");//言語
 		//DBからデータ取得 3
@@ -21,7 +21,7 @@ public class LanguageSelectAction extends Action {
 		//なし
 		//レスポンス値をセット 6
 		// セッション情報を取得
-		HttpSession session = req.getSession(true);
+		HttpSession session = req.getSession();
 		// セッションにログイン情報を保存
 		session.setAttribute("language", language);
 

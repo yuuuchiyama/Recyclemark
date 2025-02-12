@@ -187,9 +187,22 @@
 	 		<input type="hidden" value="${language }" id="language" />
 				<div class="search-container" id="search-container">
 					<h1 id="text_search">テキスト検索</h1>
-					<p id="massage">リサイクルマークについて入力してください。</p>
+					<p id="message">リサイクルマークについて入力してください。</p>
 					<div>${errors.get("mark_error")}</div>
-					<input type="text" id="search-input" class="search-input" name="trait" placeholder="検索キーワードを入力" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
+					<c:choose>
+					  <c:when test="${language == '日本語'}">
+					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="検索キーワードを入力" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
+					  </c:when>
+					  <c:when test="${language == 'English'}">
+					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="Enter search keywords" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
+					  </c:when>
+					  <c:when test="${language == '한국어'}">
+					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="검색 키워드를 입력하세요" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
+					  </c:when>
+					  <c:when test="${language == '中文'}">
+					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="输入搜索关键词" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
+					  </c:when>
+					</c:choose>
 					<button type="submit" class="search-button" id="TextSearch_button">検索</button>
 				</div>
 			</div>
@@ -225,20 +238,21 @@
 
 		const language = document.getElementById("language").value;
 		const text_search = document.getElementById("text_search");
-		const massage = document.getElementById("massage");
-		const search-input = document.getElementById("search-input");
+		const massage = document.getElementById("message");
+		const search_input = document.getElementById("input");
 		const textSearch_button = document.getElementById("TextSearch_button");
 
 		// jsonファイルの読み込み
-		fetch("../../JSON/nemu.json")
+		fetch("../../JSON/Text_S.json")
 		.then(response => response.json())
 		.then(data => {
 			// レスポンスを処理するコード
 			// dataにはjsonファイルの中身が格納されている
-			text_search.innerHTML = data[language]["text_search"]
-			pic_search.innerHTML = data[language]["pic_search"]
-			ranking.innerHTML = data[language]["ranking"]
-			back_select.innerHTML = data[language]["back_select"]
+			text_search.innerHTML = data[language]["text_search"];
+			massage.innerHTML = data[language]["message"];
+			textSearch_button.innerHTML = data[language]["TextSearch_button"];
+			console.log(language);
+
 		})
 		.catch(error => {
 			// エラー処理

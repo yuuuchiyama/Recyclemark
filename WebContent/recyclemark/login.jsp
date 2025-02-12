@@ -124,7 +124,7 @@
 %>
 	<c:forEach var="select_language" items="${select_languages}">
 		<form action="LanguageSelect.action" method="post">
-			<input type="hidden" name="language" value="${select_language}" />
+			<input type="hidden" name="language" value="${select_language}">
 			<input type="submit" id="button_lan" value="${select_language}">
 		</form>
 	</c:forEach>
