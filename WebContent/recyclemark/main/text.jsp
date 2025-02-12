@@ -202,6 +202,9 @@
 					  <c:when test="${language == '中文'}">
 					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="输入搜索关键词" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
 					  </c:when>
+					  <c:otherwise>
+					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="検索キーワードを入力" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
+					  </c:otherwise>
 					</c:choose>
 					<button type="submit" class="search-button" id="TextSearch_button">検索</button>
 				</div>
