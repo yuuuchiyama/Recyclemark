@@ -281,7 +281,7 @@
 		fav.innerHTML = data[language]["fav"]
 		search_his.innerHTML = data[language]["search_his"]
 		calendar.innerHTML = data[language]["calendar"]
-
+		console.log('aaa')
 	  })
 	  .catch(error => {
 	    // エラー処理
