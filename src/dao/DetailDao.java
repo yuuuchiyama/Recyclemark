@@ -9,7 +9,7 @@ import bean.Detail;;
 
 public class DetailDao extends Dao {
 	/** リサイクルマークの詳細情報を取得するメソッド */
-	public Detail getData(String markId) throws Exception {
+	public Detail getData(String markId, String language) throws Exception {
 		// リサイクルマークインスタンスを初期化
 		Detail detail = new Detail();
 		// コネクションを確立
@@ -17,8 +17,22 @@ public class DetailDao extends Dao {
 		// プリペアードステートメント
 		PreparedStatement statement = null;
 
+		String select;
+		System.out.println(language);
+		if(language.equals("日本語")){
+			select = "japanese";
+		}else if(language.equals("English")){
+			select = "english";
+		}else if(language.equals("한국어")){
+			select = "korean";
+		}else if(language.equals("中文")){
+			select = "chinese";
+		}else{
+			select = "japanese";
+		}
+
 		// SQL文の条件
-		String join = " inner join recyclemarkdata_japanese detail on mark.RecycleId = detail.RecycleId"; // detail（意味：詳細）
+		String join = " inner join recyclemarkdata_"+ select +" detail on mark.RecycleId = detail.RecycleId"; // detail（意味：詳細）
 		String condition = " where detail.RecycleId = ?;";
 
 		try {

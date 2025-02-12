@@ -32,6 +32,7 @@ public class HistoryAction extends Action {
 		//リクエストパラメータ―の取得 2
 
 		//DBからデータ取得 3
+
 		List<History> historys = historyDao.getHistory(user.getId());//履歴リスト
 		for(History history : historys){
 			recycleMarks.add(recycleMarkDao.getHistory(history.getRecycleId(),language));

@@ -34,6 +34,7 @@ public class SearchResultExecuteAction extends Action {
 		// セッション情報の取得
 		HttpSession session = req.getSession();
 		user = (User) session.getAttribute("user");
+		String language = (String)session.getAttribute("language");
 		// セッション情報のユーザーIDを取得
 		userId = user.getId();
 
@@ -70,7 +71,7 @@ public class SearchResultExecuteAction extends Action {
 
 		// DBからデータの取得 3
 		System.out.println("markId:" + markId);
-		detail = detailDao.getData(markId);
+		detail = detailDao.getData(markId,language);
 
 		//条件で手順4~7の内容が分岐
 		// ビジネスロジック 4
