@@ -25,8 +25,10 @@ public class TextSearchExecuteAction extends Action {
 
 		String trait = null;
 
+
 		// リクエストパラメーターの取得 2
 		trait = (String)session.getAttribute("trait");
+		String language = (String)session.getAttribute("language");
 		System.out.println("セッションの方：" + trait);
 		if (trait == null) {
 			trait = req.getParameter("trait");
@@ -34,7 +36,7 @@ public class TextSearchExecuteAction extends Action {
 		}
 
 		// DBからデータの取得 3
-		recycleMarks = recycleMarkDao.getRecyclemark(trait);
+		recycleMarks = recycleMarkDao.getRecyclemark(trait,language);
 		System.out.println(recycleMarks.size());
 
 		//条件で手順4~7の内容が分岐
@@ -53,7 +55,17 @@ public class TextSearchExecuteAction extends Action {
 			req.getRequestDispatcher("text_result.jsp").forward(req, res);
 		} else {
 			// レスポンス値をセット 6
-			errors.put("mark_error", "そのリサイクルマークは存在しません");
+			if(language.equals("日本語")){
+				errors.put("mark_error", "そのリサイクルマークは存在しません");
+			}else if(language.equals("English")){
+				errors.put("mark_error", "Its recycling mark does not exist.");
+			}else if(language.equals("한국어")){
+				errors.put("mark_error", "그 재활용 마크는 존재하지 않습니다");
+			}else if(language.equals("中文")){
+				errors.put("mark_error", "其回收标志并不存在。");
+			}else{
+				errors.put("mark_error", "そのリサイクルマークは存在しません");
+			}
 			req.setAttribute("errors", errors);
 			req.setAttribute("trait", trait);
 

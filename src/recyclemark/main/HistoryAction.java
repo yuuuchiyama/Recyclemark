@@ -25,6 +25,7 @@ public class HistoryAction extends Action {
 		RecycleMarkDao recycleMarkDao = new RecycleMarkDao();
 		HttpSession session = req.getSession();//セッション
 		User user = (User)session.getAttribute("user");
+		String language = (String)session.getAttribute("language");
 		List<RecycleMark> recycleMarks = new ArrayList<RecycleMark>();
 
 
@@ -33,7 +34,7 @@ public class HistoryAction extends Action {
 		//DBからデータ取得 3
 		List<History> historys = historyDao.getHistory(user.getId());//履歴リスト
 		for(History history : historys){
-			recycleMarks.add(recycleMarkDao.getHistory(history.getRecycleId()));
+			recycleMarks.add(recycleMarkDao.getHistory(history.getRecycleId(),language));
 		}
 		System.out.println(recycleMarks);
 

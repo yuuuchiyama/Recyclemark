@@ -162,7 +162,8 @@
     		<div class="main-container">
     			<c:choose>
     				<c:when test="${empty recyclemarks}">
-						<div>検索履歴はありません</div>
+	    				<input type="hidden" value="${language }" id="language">
+						<div id="null_history">検索履歴はありません</div>
 					</c:when>
     			</c:choose>
 				<div class="history">
@@ -186,23 +187,40 @@
 		</div>
 	</c:param>
 	<c:param name="script">
-	const menuIcon = document.getElementById('menu-icon');
-    const menu = document.getElementById('menu');
-    const searchContainer = document.getElementById('search-container');
-    // Toggle menu display
-    menuIcon.addEventListener('click', function() {
-        if (menu.style.display === 'flex') {
-            menu.style.display = 'none';
-            searchContainer.style.display = 'flex'; // Show search container
-        } else {            menu.style.display = 'flex';
-                searchContainer.style.display = 'none'; // Hide search container
-        }
-    });
-    // Toggle submenu display
-    function toggleSubMenu(submenuId) {
-        const submenu = document.getElementById(submenuId);
-        submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-    }
+		const menuIcon = document.getElementById('menu-icon');
+	    const menu = document.getElementById('menu');
+	    const searchContainer = document.getElementById('search-container');
+	    // Toggle menu display
+	    menuIcon.addEventListener('click', function() {
+	        if (menu.style.display === 'flex') {
+	            menu.style.display = 'none';
+	            searchContainer.style.display = 'flex'; // Show search container
+	        } else {            menu.style.display = 'flex';
+	                searchContainer.style.display = 'none'; // Hide search container
+	        }
+	    });
+	    // Toggle submenu display
+	    function toggleSubMenu(submenuId) {
+	        const submenu = document.getElementById(submenuId);
+	        submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+	    }
+
+	    const language = document.getElementById("language").value;
+		const null_history = document.getElementById("null_history");
+
+		// jsonファイルの読み込み
+		fetch("../../JSON/history.json")
+		.then(response => response.json())
+		.then(data => {
+			// レスポンスを処理するコード
+			// dataにはjsonファイルの中身が格納されている
+			null_history.innerHTML = data[language]["null_history"];
+			console.log(language);
+
+		})
+		.catch(error => {
+			// エラー処理
+		});
 
 	</c:param>
 </c:import>

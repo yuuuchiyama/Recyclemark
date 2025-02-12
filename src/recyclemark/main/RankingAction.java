@@ -21,6 +21,8 @@ public class RankingAction extends Action {
 		String url = "";
 		String rankUrl = "";
 		RecycleMarkDao recycleMarkDao = new RecycleMarkDao();
+		HttpSession session = req.getSession();
+		String language = (String)session.getAttribute("language");
 
 		//DBからデータ取得 3
 		List<RecycleMark> recycleMarks = recycleMarkDao.getRanking();//リサイクルマークリスト
@@ -59,7 +61,7 @@ public class RankingAction extends Action {
 
 				int markId = recycleMarks.get(count).getMarkId();
 				String imgUrl = recycleMarks.get(count).getMarkImg();
-				String name = recycleMarkDao.getName(markId);
+				String name = recycleMarkDao.getName(markId,language);
 
 				ranking.setRankUrl(rankUrl2);
 				ranking.setImgUrl(imgUrl);
@@ -73,7 +75,6 @@ public class RankingAction extends Action {
 			// 内山追加
 			// セッション情報の取得
 			String forRanking = "1";
-			HttpSession session = req.getSession();
 			// セッション情報の追加
 			session.setAttribute("forRanking", forRanking);
 

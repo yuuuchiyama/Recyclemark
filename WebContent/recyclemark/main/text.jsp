@@ -184,7 +184,7 @@
 			<!-- メインコンテンツ部分 -->
 			<!-- Search container -->
 	 		<div class="main">
-	 		<input type="hidden" value="${language }" id="language" />
+	 		<input type="hidden" value="${language }" id="language">
 				<div class="search-container" id="search-container">
 					<h1 id="text_search">テキスト検索</h1>
 					<p id="message">リサイクルマークについて入力してください。</p>
@@ -194,13 +194,13 @@
 					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="検索キーワードを入力" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
 					  </c:when>
 					  <c:when test="${language == 'English'}">
-					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="Enter search keywords" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
+					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="Enter search keywords" required oninvalid="this.setCustomValidity('Enter about the recycling mark')">
 					  </c:when>
 					  <c:when test="${language == '한국어'}">
-					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="검색 키워드를 입력하세요" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
+					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="검색 키워드를 입력하세요" required oninvalid="this.setCustomValidity('재활용 마크에 대해 입력해 주세요')">
 					  </c:when>
 					  <c:when test="${language == '中文'}">
-					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="输入搜索关键词" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
+					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="输入搜索关键词" required oninvalid="this.setCustomValidity('进入有关回收标志的页面')">
 					  </c:when>
 					  <c:otherwise>
 					    <input type="text" id="search-input" class="search-input" name="trait" placeholder="検索キーワードを入力" required oninvalid="this.setCustomValidity('リサイクルマークについて入力してください')">
