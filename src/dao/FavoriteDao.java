@@ -25,7 +25,7 @@ public class FavoriteDao extends Dao {
 
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("select favorite.FavId, favorite.UserId, favorite.RecycleId, mark.RecycleName, mark.RecycleImg from recyclemarkdata mark" + join + condition);
+			statement = connection.prepareStatement("select favorite.FavId, favorite.UserId, favorite.RecycleId, RecycleName, mark.RecycleImg from recyclemarkdata mark" + join + condition);
 			// プリペアードステートメントに教員IDをバインド
 			statement.setString(1, userId);
 			// プリペアードステートメントを実行
@@ -36,11 +36,11 @@ public class FavoriteDao extends Dao {
 				// リサイクルマークインスタンスを初期化
 				Favorite favorite = new Favorite();
 				// リサイクルマークインスタンスに検索結果をセット
-				favorite.setFavId(rSet.getInt("favorite.FavId"));
-				favorite.setUserId(rSet.getString("favorite.UserId"));
-				favorite.setRecycleId(rSet.getInt("favorite.RecycleId"));
-				favorite.setRecycleName(rSet.getString("mark.RecycleName"));
-				favorite.setRecycleImg(rSet.getString("mark.RecycleImg"));
+				favorite.setFavId(rSet.getInt("FavId"));
+				favorite.setUserId(rSet.getString("UserId"));
+				favorite.setRecycleId(rSet.getInt("RecycleId"));
+				favorite.setRecycleName(rSet.getString("RecycleName"));
+				favorite.setRecycleImg(rSet.getString("RecycleImg"));
 				System.out.println(favorite.getFavId());
 				System.out.println(favorite.getUserId());
 				System.out.println(favorite.getRecycleId());

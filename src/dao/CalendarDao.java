@@ -180,7 +180,7 @@ public class CalendarDao extends Dao {
 		// プリペアードステートメント
 		PreparedStatement statement = null;
 		// SQL文の条件
-		String sql = "insert into calendar value(?, ?, ?, ?, ?)";
+		String sql = "insert into calendar values(?, ?, ?, ?, ?)";
 		// 実行件数
 		int count = 0;
 		try {

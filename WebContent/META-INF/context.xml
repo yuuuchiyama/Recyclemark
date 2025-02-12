@@ -7,9 +7,9 @@
 		name="jdbc/exam"
 		auth="Container"
 		type="javax.sql.DataSource"
-		driverClassName="com.mysql.cj.jdbc.Driver"
-		url="jdbc:mysql://localhost:3306/recyclemarknavigator"
-		username="root"
-		password="n!2yMa3bt+#U+8cEQ|Ch"
+		driverClassName="org.h2.Driver"
+		url="jdbc:h2:tcp://localhost/~/recyclemarknavigator"
+		username="sa"
+		password=""
 	/>
 </Context>
