@@ -31,7 +31,7 @@ public class RecycleMarkDao extends Dao {
 				// リサイクルマークインスタンスを初期化
 				RecycleMark recycleMark = new RecycleMark();
 				// リサイクルマークインスタンスに検索結果をセット
-				recycleMark.setMarkId(rSet.getInt("RecycleId"));
+				recycleMark.setMarkId(rSet.getInt("recycleid"));
 				recycleMark.setMarkImg(rSet.getString("RecycleImg"));
 				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
 				recycleMark.setMarkName(rSet.getString("RecycleName"));
@@ -91,7 +91,7 @@ public class RecycleMarkDao extends Dao {
 		System.out.println(join);
 		try {
 			// プリペアードステートメントにSQL文をセット
-			statement = connection.prepareStatement("SELECT mark.RecycleId, mark.RecycleImg, mark.SearchCnt, detail.RecycleName FROM recyclemarkdata mark" + join + condition);
+			statement = connection.prepareStatement("SELECT mark.recycleid, mark.RecycleImg, mark.SearchCnt, detail.RecycleName FROM recyclemarkdata mark" + join + condition);
 			// プリペアードステートメントに特徴をバインド
 			statement.setString(1, "%%" + trait + "%%");
 			// プリペアードステートメントを実行
@@ -102,9 +102,9 @@ public class RecycleMarkDao extends Dao {
 				// リサイクルマークインスタンスを初期化
 				RecycleMark recycleMark = new RecycleMark();
 				// リサイクルマークインスタンスに検索結果をセット
-				recycleMark.setMarkId(rSet.getInt("mark.RecycleId"));
-				recycleMark.setMarkImg(rSet.getString("mark.RecycleImg"));
-				recycleMark.setSearchCount(rSet.getInt("mark.SearchCnt"));
+				recycleMark.setMarkId(rSet.getInt("recycleid"));
+				recycleMark.setMarkImg(rSet.getString("RecycleImg"));
+				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
 				// リストに追加
 				list.add(recycleMark);
 			}
@@ -150,7 +150,7 @@ public class RecycleMarkDao extends Dao {
 				// リサイクルマークインスタンスを初期化
 				RecycleMark recycleMark = new RecycleMark();
 				// リサイクルマークインスタンスに検索結果をセット
-				recycleMark.setMarkId(rSet.getInt("RecycleId"));
+				recycleMark.setMarkId(rSet.getInt("recycleid"));
 				recycleMark.setMarkImg(rSet.getString("RecycleImg"));
 				recycleMark.setSearchCount(rSet.getInt("SearchCnt"));
 				// リストに追加
@@ -212,9 +212,12 @@ public class RecycleMarkDao extends Dao {
 		// SQL文の条件
 		String join = " inner join recyclemarkdata_"+ select +" data on mark.RecycleId = data.RecycleId";
 		String condition = " where data.RecycleId = ?;";
+
 		try {
 			// プリペアードステートメントにSQL文をセット
+
 			statement = connection.prepareStatement("select mark.RecycleId, mark.RecycleImg, data.RecycleName from recyclemarkdata mark" + join + condition);
+
 			// プリペアードステートメントにユーザIDをバインド
 			statement.setInt(1, recycleId);
 			// プリペアードステートメントを実行
@@ -222,9 +225,11 @@ public class RecycleMarkDao extends Dao {
 			// リザルトセットを全権走査
 			if (rSet.next()) {
 				// リサイクルマークインスタンスに検索結果をセット
+
 				recycleMark.setMarkId(rSet.getInt("mark.RecycleId"));
 				recycleMark.setMarkImg(rSet.getString("mark.RecycleImg"));
 				recycleMark.setMarkName(rSet.getString("data.RecycleName"));
+
 			}else{
 				return null;
 			}
@@ -252,7 +257,9 @@ public class RecycleMarkDao extends Dao {
 		return recycleMark;
 	}
 
+
 	public String getName(int recycleId, String language) throws Exception {
+
 		String name = "";
 		// コネクションを確立
 		Connection connection = getConnection();
@@ -274,7 +281,9 @@ public class RecycleMarkDao extends Dao {
 		}
 		try {
 			// プリペアードステートメントにSQL文をセット
+
 			statement = connection.prepareStatement("select RecycleName from recyclemarkdata_"+ select +" where RecycleId = ?");
+
 			// プリペアードステートメントにユーザIDをバインド
 			statement.setInt(1, recycleId);
 			// プリペアードステートメントを実行

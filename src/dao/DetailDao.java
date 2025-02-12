@@ -33,10 +33,10 @@ public class DetailDao extends Dao {
 			if (rSet.next()) {
 				// リザルトセットが存在する場合
 				// リサイクルマークインスタンスに検索結果をセット
-				detail.setMarkId(rSet.getInt("mark.RecycleId"));
-				detail.setMarkImg(rSet.getString("mark.RecycleImg"));
-				detail.setMarkName(rSet.getString("detail.RecycleName"));
-				detail.setMarkDescribe(rSet.getString("detail.RecycleDescribe"));
+				detail.setMarkId(rSet.getInt("RecycleId"));
+				detail.setMarkImg(rSet.getString("RecycleImg"));
+				detail.setMarkName(rSet.getString("RecycleName"));
+				detail.setMarkDescribe(rSet.getString("RecycleDescribe"));
 			} else {
 				// リザルトセットが存在しない場合
 				// 詳細インスタンスにnullをセット
