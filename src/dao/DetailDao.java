@@ -17,18 +17,18 @@ public class DetailDao extends Dao {
 		// プリペアードステートメント
 		PreparedStatement statement = null;
 
-		String select;
-		System.out.println(language);
-		if(language.equals("日本語")){
-			select = "japanese";
-		}else if(language.equals("English")){
-			select = "english";
-		}else if(language.equals("한국어")){
-			select = "korean";
-		}else if(language.equals("中文")){
-			select = "chinese";
-		}else{
-			select = "japanese";
+		String select = "japanese";
+
+		if(language != null){
+			if(language.equals("日本語")){
+				select = "japanese";
+			}else if(language.equals("English")){
+				select = "english";
+			}else if(language.equals("한국어")){
+				select = "korean";
+			}else if(language.equals("中文")){
+				select = "chinese";
+			}
 		}
 
 		// SQL文の条件
