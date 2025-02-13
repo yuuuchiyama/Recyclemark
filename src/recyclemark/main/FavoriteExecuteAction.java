@@ -30,6 +30,7 @@ public class FavoriteExecuteAction extends Action {
 		// セッション情報の取得
 		HttpSession session = req.getSession();
 		user = (User) session.getAttribute("user");
+		String language = (String)session.getAttribute("language");
 		// セッション情報のユーザーIDを取得
 		userId = user.getId();
 		System.out.println("userId:" + userId);
@@ -52,7 +53,17 @@ public class FavoriteExecuteAction extends Action {
 			req.getRequestDispatcher("favorite_list.jsp").forward(req, res);
 		} else {
 			// レスポンス値をセット 6
-			errors.put("favorite_error", "お気に入り情報はありません");
+			if(language.equals("日本語")){
+				errors.put("favorite_error", "お気に入り情報はありません");
+			}else if(language.equals("English")){
+				errors.put("favorite_error", "No favourite information available");
+			}else if(language.equals("한국어")){
+				errors.put("favorite_error", "즐겨찾기 정보가 없습니다.");
+			}else if(language.equals("中文")){
+				errors.put("favorite_error", "没有喜爱的信息");
+			}else{
+				errors.put("favorite_error", "お気に入り情報はありません");
+			}
 			req.setAttribute("errors", errors);
 
 			// JSPへフォワード 7

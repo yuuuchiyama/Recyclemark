@@ -223,7 +223,6 @@
 			            <p>Mail:</p>
 			            <h2>${user.getMailAddress() }</h2>
 			        </div>
-			        <p>${language }</p>
 			        <input type="hidden" value="${language }" id="language" />
 			        <button class="edit-button" id="edit">編集</button>
 				</div>

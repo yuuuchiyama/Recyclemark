@@ -269,6 +269,7 @@
 	<c:param name="content">
 		<!-- メインコンテンツ -->
 		<div class="main">
+		<input type="hidden" value="${language }" id="language">
 		<div class="main-container">
 			<!-- 画像と説明文ボックスを横に並べる部分 -->
 			<div class="icon-and-text">
@@ -281,7 +282,7 @@
 				<div class="explanation-section">
 					<div class="explanation-box">${detail.markDescribe}</div>
 					<!-- 詳細リンク -->
-					<a href="Districts.action" class="details-link">地区別詳細はこちら</a>
+					<a href="Districts.action" class="details-link" id="click_details">地区別詳細はこちら</a>
 				</div>
 			</div>
 			<form action="FavoriteAddExecute.action" method="post">
@@ -312,7 +313,7 @@
 				</div>
 			</form>
 	    	<!-- 一番下に配置されるメニュー画面へのリンク -->
-			<a href="Menu.action" class="menu-link">メニュー画面に戻る</a>
+			<a href="Menu.action" class="menu-link" id="back_menu">メニュー画面に戻る</a>
 		</div>
 		</div>
 	</c:param>
@@ -336,6 +337,26 @@
             const submenu = document.getElementById(submenuId);
             submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
         }
+
+
+	    const language = document.getElementById("language").value;
+		const click_details = document.getElementById("click_details");
+		const back_menu = document.getElementById("back_menu");
+
+		// jsonファイルの読み込み
+		fetch("../../JSON/Detailresults.json")
+		.then(response => response.json())
+		.then(data => {
+			// レスポンスを処理するコード
+			// dataにはjsonファイルの中身が格納されている
+			click_details.innerHTML = data[language]["Click_details"];
+			back_menu.innerHTML = data[language]["Back_menu"];
+			console.log(language);
+
+		})
+		.catch(error => {
+			// エラー処理
+		});
 
     </c:param>
 </c:import>
