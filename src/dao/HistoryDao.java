@@ -97,6 +97,10 @@ public class HistoryDao extends Dao {
 				history.setUserId(rSet.getString("UserId"));
 				history.setRecycleId(rSet.getInt("RecycleID"));
 				history.setTime(rSet.getString("SearchTime"));
+//				System.out.println(history.getSearchId());
+//				System.out.println(history.getUserId());
+//				System.out.println(history.getRecycleId());
+//				System.out.println(history.getTime());
 				// リストに追加
 				list.add(history);
 			}

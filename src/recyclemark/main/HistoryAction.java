@@ -35,6 +35,8 @@ public class HistoryAction extends Action {
 
 		List<History> historys = historyDao.getHistory(user.getId());//履歴リスト
 		for(History history : historys){
+//			System.out.println(history.getRecycleId());
+
 			recycleMarks.add(recycleMarkDao.getHistory(history.getRecycleId(),language));
 		}
 		System.out.println(recycleMarks);
