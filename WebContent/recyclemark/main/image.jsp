@@ -251,6 +251,7 @@
 	        // load the model and metadata
 	        model = await tmImage.load(modelURL, metadataURL);
 	        maxPredictions = model.getTotalClasses();
+	        console.log(maxPredictions);
 
 	        // Convenience function to setup a webcam
 	        const flip = false; //ウェブカメラを反転させる設定
@@ -277,6 +278,7 @@
                 inputMark.setAttribute("value", "0");
 	            button.onclick = function() {
 	            	const className = labelDiv.textContent.trim().split(":")[0];  // クラス名を取得
+	            	console.log(className);
 
 
 	                switch (className) {
@@ -333,6 +335,7 @@
 	    // run the webcam image through the image model
 	    async function predict() {
 	        const prediction = await model.predict(webcam.canvas);
+	        //console.log(prediction[0]);
 
 	        // 予測結果を確率が高い順にソート
 	        const sortedPredictions = prediction.sort((a, b) => b.probability - a.probability);
@@ -357,4 +360,3 @@
 	    }
 	</c:param>
 </c:import>
-
