@@ -104,6 +104,12 @@
 	</style>
 	<script>
 		const language = document.getElementById("language").value;
+
+		for (var i = 1;  i < 24;  i++) {
+			var districtPDF = document.getElementById("districtsPDF" + i);
+			var district = document.getElementById("districts" + i);
+		}
+
 	    const chiyoda = document.getElementById("chiyoda");
 	    const chuo = document.getElementById("chuo");
 
@@ -151,96 +157,96 @@
     </thead>
     <tbody>
          <tr>
-            <td><a id="districts1" href="https://www.city.chiyoda.lg.jp/documents/1952/wakekataposter-jp_1.pdf">千代田区</a></td>
-            <td><a href="https://www.city.chiyoda.lg.jp/koho/kurashi/gomi/index.html">千代田区HP</a></td>
+            <td><a id="districtsPDF1" href="https://www.city.chiyoda.lg.jp/documents/1952/wakekataposter-jp_1.pdf">千代田区</a></td>
+            <td><a id="districts1" href="https://www.city.chiyoda.lg.jp/koho/kurashi/gomi/index.html">千代田区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts" href="https://www.city.minato.tokyo.jp/gomigenryou/kurashi/gomi/kate/k-wakekata/documents/guidebookjapanese.pdf">中央区</a></td>
-            <td><a href="https://www.city.chuo.lg.jp/kurashi/gomi/index.html">中央区HP</a></td>
+            <td><a id="districtsPDF2" href="https://www.city.minato.tokyo.jp/gomigenryou/kurashi/gomi/kate/k-wakekata/documents/guidebookjapanese.pdf">中央区</a></td>
+            <td><a id="districts2" href="https://www.city.chuo.lg.jp/kurashi/gomi/index.html">中央区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts3" href="https://www.city.minato.tokyo.jp/gomigenryou/kurashi/gomi/kate/k-wakekata/documents/guidebookjapanese.pdf">港区</a></td>
-            <td><a href="https://www.city.minato.tokyo.jp/kurashi/gomi/index.html">港区HP</a></td>
+            <td><a id="districtsPDF3" href="https://www.city.minato.tokyo.jp/gomigenryou/kurashi/gomi/kate/k-wakekata/documents/guidebookjapanese.pdf">港区</a></td>
+            <td><a id="districts3" href="https://www.city.minato.tokyo.jp/kurashi/gomi/index.html">港区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts4" href="https://www.city.shinjuku.lg.jp/content/000259254.pdf">新宿区</a></td>
-            <td><a href="https://www.city.shinjuku.lg.jp/seikatsu/index09.html">新宿区HP</a></td>
+            <td><a id="districtsPDF4" href="https://www.city.shinjuku.lg.jp/content/000259254.pdf">新宿区</a></td>
+            <td><a id="districts4" href="https://www.city.shinjuku.lg.jp/seikatsu/index09.html">新宿区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts5" href="URL">文京区</a></td>
-            <td><a href="https://www.city.bunkyo.lg.jp/tetsuzuki/gomi/index.html">文京区HP</a></td>
+            <td><a id="districtsPDF5" href="URL">文京区</a></td>
+            <td><a id="districts5" href="https://www.city.bunkyo.lg.jp/tetsuzuki/gomi/index.html">文京区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts6" href="URL">台東区</a></td>
-            <td><a href="https://www.city.taito.lg.jp/kurashi/gomi/index.html">台東区HP</a></td>
+            <td><a id="districtsPDF6" href="URL">台東区</a></td>
+            <td><a id="districts6" href="https://www.city.taito.lg.jp/kurashi/gomi/index.html">台東区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts7" href="URL">墨田区</a></td>
-            <td><a href="https://www.city.sumida.lg.jp/kurashi/gomi_recycle/index.html">墨田区HP</a></td>
+            <td><a id="districtsPDF7" href="URL">墨田区</a></td>
+            <td><a id="districts7" href="https://www.city.sumida.lg.jp/kurashi/gomi_recycle/index.html">墨田区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts8" href="URL">江東区</a></td>
-            <td><a href="https://www.city.koto.lg.jp/kurashi/gomi/index.html">江東区HP</a></td>
+            <td><a id="districtsPDF8" href="URL">江東区</a></td>
+            <td><a id="districts8" href="https://www.city.koto.lg.jp/kurashi/gomi/index.html">江東区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts9" href="URL">品川区</a></td>
-            <td><a href="https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-gomi/index.html">品川区HP</a></td>
+            <td><a id="districtsPDF9" href="URL">品川区</a></td>
+            <td><a id="districts9" href="https://www.city.shinagawa.tokyo.jp/PC/kankyo/kankyo-gomi/index.html">品川区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts10" href="URL">目黒区</a></td>
-            <td><a href="https://www.city.meguro.tokyo.jp/kurashi/gomi/index.html">目黒区HP</a></td>
+            <td><a id="districtsPDF10" href="URL">目黒区</a></td>
+            <td><a id="districts10" href="https://www.city.meguro.tokyo.jp/kurashi/gomi/index.html">目黒区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts11" href="URL">大田区</a></td>
-            <td><a href="https://www.city.ota.tokyo.jp/seikatsu/gomi/index.html">大田区HP</a></td>
+            <td><a id="districtsPDF11" href="URL">大田区</a></td>
+            <td><a id="districts11" href="https://www.city.ota.tokyo.jp/seikatsu/gomi/index.html">大田区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts12" href="URL">世田谷区</a></td>
-            <td><a href="https://www.city.setagaya.lg.jp/kurashi/gomi/11535.html">世田谷区HP</a></td>
+            <td><a id="districtsPDF12" href="URL">世田谷区</a></td>
+            <td><a id="districts12" href="https://www.city.setagaya.lg.jp/kurashi/gomi/11535.html">世田谷区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts13" href="URL">渋谷区</a></td>
-            <td><a href="https://www.city.shibuya.tokyo.jp/kurashi/gomi/kateigomi/">渋谷区HP</a></td>
+            <td><a id="districtsPDF13" href="URL">渋谷区</a></td>
+            <td><a id="districts13" href="https://www.city.shibuya.tokyo.jp/kurashi/gomi/kateigomi/">渋谷区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts14" href="URL">中野区</a></td>
-            <td><a href="https://www.city.tokyo-nakano.lg.jp/kurashi/gomi/index.html">中野区HP</a></td>
+            <td><a id="districtsPDF14" href="URL">中野区</a></td>
+            <td><a id="districts14" href="https://www.city.tokyo-nakano.lg.jp/kurashi/gomi/index.html">中野区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts15" href="URL">杉並区</a></td>
-            <td><a href="https://www.city.suginami.tokyo.jp/guide/gomi/index.html">杉並区HP</a></td>
+            <td><a id="districtsPDF15" href="URL">杉並区</a></td>
+            <td><a id="districts15" href="https://www.city.suginami.tokyo.jp/guide/gomi/index.html">杉並区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts16" href="URL">豊島区</a></td>
-            <td><a href="https://www.city.toshima.lg.jp/kurashi/gomi/index.html">豊島区HP</a></td>
+            <td><a id="districtsPDF16" href="URL">豊島区</a></td>
+            <td><a id="districts16" href="https://www.city.toshima.lg.jp/kurashi/gomi/index.html">豊島区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts17" href="URL">北区</a></td>
-            <td><a href="https://www.city.kita.tokyo.jp/kurashi/gomi/index.html">北区HP</a></td>
+            <td><a id="districtsPDF17" href="URL">北区</a></td>
+            <td><a id="districts17" href="https://www.city.kita.tokyo.jp/kurashi/gomi/index.html">北区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts18" href="URL">荒川区</a></td>
-            <td><a href="https://www.city.arakawa.tokyo.jp/recycle/index.html">荒川区HP</a></td>
+            <td><a id="districtsPDF18" href="URL">荒川区</a></td>
+            <td><a id="districts18" href="https://www.city.arakawa.tokyo.jp/recycle/index.html">荒川区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts19" href="URL">板橋区</a></td>
-            <td><a href="https://www.city.itabashi.tokyo.jp/tetsuduki/gomi/index.html">板橋区HP</a></td>
+            <td><a id="districtsPDF19" href="URL">板橋区</a></td>
+            <td><a id="districts19" href="https://www.city.itabashi.tokyo.jp/tetsuduki/gomi/index.html">板橋区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts20" href="URL">練馬区</a></td>
-            <td><a href="https://www.city.nerima.tokyo.jp/kurashi/gomi/index.html">練馬区HP</a></td>
+            <td><a id="districtsPDF20" href="URL">練馬区</a></td>
+            <td><a id="districts20" href="https://www.city.nerima.tokyo.jp/kurashi/gomi/index.html">練馬区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts21" href="URL">足立区</a></td>
-            <td><a href="https://www.city.adachi.tokyo.jp/kurashi/kankyo/gomi/index.html">足立区HP</a></td>
+            <td><a id="districtsPDF21" href="URL">足立区</a></td>
+            <td><a id="districts21" href="https://www.city.adachi.tokyo.jp/kurashi/kankyo/gomi/index.html">足立区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts22" href="URL">葛飾区</a></td>
-            <td><a href="https://www.city.katsushika.lg.jp/kurashi/1000048/index.html">葛飾区HP</a></td>
+            <td><a id="districtsPDF22" href="URL">葛飾区</a></td>
+            <td><a id="districts22" href="https://www.city.katsushika.lg.jp/kurashi/1000048/index.html">葛飾区HP</a></td>
         </tr>
         <tr>
-            <td><a id="districts23" href="URL">江戸川区</a></td>
-            <td><a href="https://www.city.edogawa.tokyo.jp/kurashi/gomi_recycle/index.html">江戸川区HP</a></td>
+            <td><a id="districtsPDF23" href="URL">江戸川区</a></td>
+            <td><a id="districts23" href="https://www.city.edogawa.tokyo.jp/kurashi/gomi_recycle/index.html">江戸川区HP</a></td>
         </tr>
     </tbody>
 </table>

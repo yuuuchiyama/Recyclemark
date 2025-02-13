@@ -133,7 +133,6 @@
     <form id="form" action="LoginExecute.action" method="post">
         <div class="form-group">
             <label for="mail" id="mail_label">メールアドレス:</label>
-            <label for="mail">${language }</label>
             <input type="email" id="mail" name="mail" value="${mail}" required>
             <span class="errorMessage"></span>
         </div>
@@ -149,23 +148,29 @@
 		</c:if>
         <button type="submit" class="button" id="button_login">ログイン</button>
     </form>
-    <a href="main/reset_mail.jsp?forlogin=1&delete=0">パスワードを忘れた場合</a><br>
-    <a href="main/create.jsp">アカウント作成</a>
+    <a id="passreset" href="main/reset_mail.jsp?forlogin=1&delete=0">パスワードを忘れた場合</a><br>
+    <a id="create" href="main/create.jsp">アカウント作成</a>
     </div>
     <script>
 	    const language = document.getElementById("language").value;
 	    const mail = document.getElementById("mail_label");
 	    const password = document.getElementById("password_label");
 	    const login = document.getElementById("button_login");
+	    const passreset = document.getElementById("passreset");
+	    const create = document.getElementById("create");
+
  		// jsonファイルの読み込み
-		fetch("../../JSON/login_l.json")
+		fetch("../JSON/login_l.json")
 		.then(response => response.json())
 		.then(data => {
+			console.log(data);
 			// レスポンスを処理するコード
 			// dataにはjsonファイルの中身が格納されている
 			mail.innerHTML = data[language]["mail_login"]
 			password.innerHTML = data[language]["password_label"]
 			login.innerHTML = data[language]["login_button"]
+			passreset.textContent = data[language]["pass_reset"]
+			create.textContent = data[language]["link_create"];
 		})
 		.catch(error => {
 			// エラー処理
