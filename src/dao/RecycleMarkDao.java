@@ -216,7 +216,7 @@ public class RecycleMarkDao extends Dao {
 		try {
 			// プリペアードステートメントにSQL文をセット
 
-			statement = connection.prepareStatement("select mark.RecycleId, mark.RecycleImg, data.RecycleName from recyclemarkdata mark" + join + condition);
+			statement = connection.prepareStatement("select mark.RecycleId, RecycleImg, RecycleName from recyclemarkdata mark" + join + condition);
 
 			// プリペアードステートメントにユーザIDをバインド
 			statement.setInt(1, recycleId);
