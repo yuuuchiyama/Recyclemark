@@ -70,6 +70,7 @@
 	       cursor: pointer;
 	   }
 	   .menu-item a {
+	   	display: block;
 	    font-size: 16px;
 	    padding: 10px 0;
 	    text-decoration: none;

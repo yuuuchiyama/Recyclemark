@@ -31,6 +31,8 @@ public class FavoriteAddExecuteAction extends Action {
 		int intUserId = 0;
 
 		String forRanking = "";
+		String forText = "";
+		String forImage = "";
 		String forHistory = "";
 
 		// リクエストパラメーターの取得 2
@@ -38,6 +40,8 @@ public class FavoriteAddExecuteAction extends Action {
 		markImg = req.getParameter("markImg");
 		markDescribe = req.getParameter("markDescribe");
 		forRanking = req.getParameter("forRanking");
+		forText = req.getParameter("forText");
+		forImage = req.getParameter("forImage");
 		forHistory = req.getParameter("forHistory");
 
 
@@ -72,6 +76,8 @@ public class FavoriteAddExecuteAction extends Action {
 		req.setAttribute("detail", detail);
 		req.setAttribute("heartStamp",intHeartStamp);
 		req.setAttribute("forRanking", forRanking);
+		req.setAttribute("forText", forText);
+		req.setAttribute("forImage", forImage);
 		req.setAttribute("forHistory", forHistory);
 
 		// JSPへフォワード 7

@@ -3,18 +3,31 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	String forlogin = request.getParameter("forlogin");
-	String delete = request.getParameter("delete");
-	System.out.println(forlogin);
 	boolean result = false;
 	boolean toDele = false;
-	if(forlogin.equals("1")){
-		result = true;
+	String forlogin = "1";
+	String delete = "1";
+	System.out.print("3");
+	if (request.getAttribute("error") != null) {
+		System.out.println("0");
+		forlogin = (String)request.getAttribute("forlogin");
+		if(forlogin.equals("1")){
+			result = true;
+		}
+	} else {
+		forlogin = request.getParameter("forlogin");
+		delete = request.getParameter("delete");
+		System.out.println(forlogin);
+		result = false;
+		toDele = false;
+		if(forlogin.equals("1")){
+			result = true;
+		}
+		if(delete.equals("1")){
+			toDele = true;
+		}
+		request.setAttribute("forlogin", forlogin);
 	}
-	if(delete.equals("1")){
-		toDele = true;
-	}
-	request.setAttribute("forlogin", forlogin);
 %>
 <!DOCTYPE html>
 <html lang="ja">

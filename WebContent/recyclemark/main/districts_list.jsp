@@ -109,10 +109,25 @@
 	<script>
 		const language = document.getElementById("language").value;
 
-		for (var i = 1;  i < 24;  i++) {
-			var districtPDF = document.getElementById("districtsPDF" + i);
-			var district = document.getElementById("districts" + i);
-		}
+		// jsonファイルの読み込み
+		fetch("../../JSON/mypage.json")
+		  .then(response => response.json())
+		  .then(data => {
+			for (var i = 1;  i < 24;  i++) {
+				var districtPDF = document.getElementById("districtsPDF" + i);
+				var district = document.getElementById("districts" + i);
+
+				// レスポンスを処理するコード
+			  	// dataにはjsonファイルの中身が格納されている
+				edit.innerHTML = data[language]["edit"]
+				fav.innerHTML = data[language]["fav"]
+				search_his.innerHTML = data[language]["search_his"]
+				calendar.innerHTML = data[language]["calendar"]
+			}
+		  })
+		  .catch(error => {
+		    // エラー処理
+		  });
 
 	    const chiyoda = document.getElementById("chiyoda");
 	    const chuo = document.getElementById("chuo");
@@ -122,22 +137,6 @@
 	    let url = 'https://into-the-program.com';
 	    //href属性の値を書き換える
 	    link.setAttribute('href', url);
-
-		// jsonファイルの読み込み
-		fetch("../../JSON/mypage.json")
-		  .then(response => response.json())
-		  .then(data => {
-		  	// レスポンスを処理するコード
-		  	// dataにはjsonファイルの中身が格納されている
-			edit.innerHTML = data[language]["edit"]
-			fav.innerHTML = data[language]["fav"]
-			search_his.innerHTML = data[language]["search_his"]
-			calendar.innerHTML = data[language]["calendar"]
-
-		  })
-		  .catch(error => {
-		    // エラー処理
-		  });
 	</script>
 </head>
 <body>

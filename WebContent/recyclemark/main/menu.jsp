@@ -68,10 +68,11 @@
 	        cursor: pointer;
 	    }
 	    .menu-item a {
-	     font-size: 16px;
-	     padding: 10px 0;
-	     text-decoration: none;
-	     color: #333;
+	    	display: block;
+		    font-size: 16px;
+		    padding: 10px 0;
+		    text-decoration: none;
+		    color: #333;
 	    }
 	    /* Submenu style */
 	    .submenu {
@@ -165,7 +166,7 @@
 			        <button type="submit" class="action-button" id="ranking">ランキング</button>
 			    </form>
 			    <form action="LanguageReselection.action" method="post">
-			        <button type="submit" class="action-button" id="back_select">言語再選択</button>
+			        <button type="submit" class="action-button" id="back_select">Select language</button>
 			    </form>
 			</div>
 		</div>
@@ -198,7 +199,7 @@
 		const back_select = document.getElementById("back_select");
 
 		// jsonファイルの読み込み
-		fetch("../../JSON/nemu.json")
+		fetch("../../JSON/menu.json")
 		.then(response => response.json())
 		.then(data => {
 			// レスポンスを処理するコード
