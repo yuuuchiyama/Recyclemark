@@ -30,6 +30,23 @@ public class SearchResultExecuteAction extends Action {
 		String forImage = "";
 		String forHistory = "";
 
+		// 遷移元によって処理を分岐
+		if (forRanking.equals("1")) {
+			//
+		} else {
+			if (forText.equals("1")) {
+				//
+			} else {
+				if (forImage.equals("1")) {
+					//
+				} else {
+					if (forHistory.equals("1")) {
+						//
+					}
+				}
+			}
+		}
+
 
 		// セッション情報の取得
 		HttpSession session = req.getSession();

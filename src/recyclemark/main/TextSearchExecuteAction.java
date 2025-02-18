@@ -41,6 +41,8 @@ public class TextSearchExecuteAction extends Action {
 
 		//条件で手順4~7の内容が分岐
 		// ビジネスロジック 4
+
+		// 検索結果のデータの有無を判別
 		if(recycleMarks.size() > 0) {
 			// DBにデータを保存 5
 

@@ -17,6 +17,7 @@ public class PasswordResetAction extends Action {
 		String error = "";
 
 		//リクエストパラメータ―の取得 2
+		String forlogin = req.getParameter("forlogin");
 		mail = req.getParameter("mail");
 
 		//DBからデータ取得 3
@@ -33,7 +34,8 @@ public class PasswordResetAction extends Action {
 		}else{
 			error = "入力されたメールアドレスは存在しません";
 			req.setAttribute("error", error);
-
+			req.setAttribute("forlogin", forlogin);
+			// JSPへフォワード 7
 			req.getRequestDispatcher("reset_mail.jsp").forward(req, res);
 		}
 

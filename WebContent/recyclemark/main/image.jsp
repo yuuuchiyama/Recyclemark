@@ -179,13 +179,14 @@
 	  </c:param>
 
 	  <c:param name="header">
-		<a class="back" href="javascript:history.back();">＜</a>
+		<a class="back" href="menu.jsp">＜</a>
 	</c:param>
 
 
 
 	<c:param name="content">
 		<div id="container">
+			<input type="hidden" value="${language }" id="language" />
   			<h1>画像検索</h1>
 			<div id="webcam-container"></div>
 			<div id="label-container"></div>
@@ -278,7 +279,7 @@
                 inputMark.setAttribute("value", "0");
 	            button.onclick = function() {
 	            	const className = labelDiv.textContent.trim().split(":")[0];  // クラス名を取得
-	            	console.log(className);
+	            	console.log(labelDiv);
 
 
 	                switch (className) {
