@@ -182,11 +182,12 @@
 	</c:param>
 	<c:param name="content">
 		<div class="main">
+		<input type="hidden" value="${language }" id="language">
 			<form action="UserDeleteExecute.action" method="post">
 				<div class="user-info">
-					<p>MailAddress : <%= mail %></p>
+					<p id="email">MailAddress : <%= mail %></p>
 					<div class="password-row">
-						<label for="password">password:</label>
+						<label for="password" id="password_label">password:</label>
         				<input type="password" id="password" name="password" required oninvalid="this.setCustomValidity('パスワードを入力してください')">
         			</div>
         			<c:if test="${error != null}">
@@ -194,7 +195,7 @@
 							<h3>${error }</h3>
 				        </div>
 					</c:if>
-					<button class="delete-button">削除</button>
+					<button class="delete-button" id="delete_button">削除</button>
 				</div>
 			</form>
 		</div>
@@ -222,10 +223,31 @@
 
        	const passInput = document.getElementById('password');
 
+<%--
 		searchInput.addEventListener('input', function() {
 			if (!passInput.validity.valueMissing) {
 				passInput.setCustomValidity('');
 			}
 		});
+ --%>
+
+		const language = document.getElementById("language").value;
+	    const email = document.getElementById("email");
+	    const password_label = document.getElementById("password_label");
+	    const delete_button = document.getElementById("delete_button");
+
+		// jsonファイルの読み込み
+		fetch("../../JSON/acc_Dele.json")
+		  .then(response => response.json())
+		  .then(data => {
+		  	// レスポンスを処理するコード
+		  	// dataにはjsonファイルの中身が格納されている
+			email.innerHTML = data[language]["email"] + "<%= mail %>";
+			password_label.innerHTML = data[language]["password_label"];
+			delete_button.innerHTML = data[language]["delete_button"];
+		  })
+		  .catch(error => {
+		    // エラー処理
+		  });
 	</c:param>
 </c:import>

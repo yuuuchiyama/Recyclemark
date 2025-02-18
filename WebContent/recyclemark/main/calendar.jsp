@@ -217,6 +217,7 @@
 	<c:param name="content">
 		<!-- メインコンテンツ -->
 		<div class="main">
+		<input type="hidden" value="${language }" id="language">
 		<!-- カレンダー部分 -->
 		    <div class="main-container">
 		        <div class="calender-container">
@@ -230,13 +231,13 @@
 		                        </th>
 		                    </tr>
 		                    <tr class="week">
-		                        <th>日</th>
-		                        <th>月</th>
-		                        <th>火</th>
-		                        <th>水</th>
-		                        <th>木</th>
-		                        <th>金</th>
-		                        <th>土</th>
+		                        <th id="week_sun">日</th>
+		                        <th id="week_mon">月</th>
+		                        <th id="week_tue">火</th>
+		                        <th id="week_wen">水</th>
+		                        <th id="week_thu">木</th>
+		                        <th id="week_fri">金</th>
+		                        <th id="week_sat">土</th>
 		                    </tr>
 		                </thead>
 		                <tbody id="calendar-body" class="calendar-body">
@@ -248,6 +249,34 @@
 		</div>
 	</c:param>
    	<c:param name="script">
+   		const language = document.getElementById("language").value;
+	    const week_sun = document.getElementById("week_sun");
+	    const week_mon = document.getElementById("week_mon");
+	    const week_tue = document.getElementById("week_tue");
+	    const week_wen = document.getElementById("week_wen");
+	    const week_thu = document.getElementById("week_thu");
+	    const week_fri = document.getElementById("week_fri");
+	    const week_sat = document.getElementById("week_sat");
+
+		// jsonファイルの読み込み
+		fetch("../../JSON/calendar.json")
+		  .then(response => response.json())
+		  .then(data => {
+		  	// レスポンスを処理するコード
+		  	// dataにはjsonファイルの中身が格納されている
+			week_sun.innerHTML = data[language]["week_sun"];
+			week_mon.innerHTML = data[language]["week_mon"];
+			week_tue.innerHTML = data[language]["week_tue"];
+			week_wen.innerHTML = data[language]["week_wen"];
+			week_thu.innerHTML = data[language]["week_thu"];
+			week_fri.innerHTML = data[language]["week_fri"];
+			week_sat.innerHTML = data[language]["week_sat"];
+
+		  })
+		  .catch(error => {
+		    // エラー処理
+		  });
+
 	    const menuIcon = document.getElementById('menu-icon');
 	    const menu = document.getElementById('menu');
 	    const searchContainer = document.getElementById('search-container');
@@ -438,5 +467,6 @@
 	         }
 	         generateCalendar(currentYear, currentMonth);
 	     }
+
     </c:param>
 </c:import>

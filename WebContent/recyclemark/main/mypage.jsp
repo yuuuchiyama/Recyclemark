@@ -277,11 +277,11 @@
 	  .then(data => {
 	  	// レスポンスを処理するコード
 	  	// dataにはjsonファイルの中身が格納されている
-		edit.innerHTML = data[language]["edit"]
-		fav.innerHTML = data[language]["fav"]
-		search_his.innerHTML = data[language]["search_his"]
-		calendar.innerHTML = data[language]["calendar"]
-		console.log('aaa')
+		edit.innerHTML = data[language]["edit"];
+		fav.innerHTML = data[language]["fav"];
+		search_his.innerHTML = data[language]["search_his"];
+		calendar.innerHTML = data[language]["calendar"];
+		console.log('aaa');
 	  })
 	  .catch(error => {
 	    // エラー処理

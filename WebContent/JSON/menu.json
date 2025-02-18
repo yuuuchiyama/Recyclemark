@@ -1,6 +1,6 @@
 {
-    "日本語":{"text_search":"テキスト検索","pic_search":"画像検索","ranking":"ランキング","back_select":"Select language"},
+    "日本語":{"text_search":"テキスト検索","pic_search":"画像検索","ranking":"ランキング","back_select":"言語再選択"},
     "English":{"text_search":"Text search","pic_search":"Image search","ranking":"ranking","back_select":"Select language"},
-    "한국어":{"text_search":"텍스트 검색","pic_search":"이미지 검색","ranking":"랭킹","back_select":"Select language"},
-    "中文":{"text_search":"文本搜索","pic_search":"图片搜索","ranking":"排行榜","back_select":"Select language"}
+    "한국어":{"text_search":"텍스트 검색","pic_search":"이미지 검색","ranking":"랭킹","back_select":"언어 재선택"},
+    "中文":{"text_search":"文本搜索","pic_search":"图片搜索","ranking":"排行榜","back_select":"语言选择"}
 }

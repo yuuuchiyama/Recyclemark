@@ -1,7 +1,6 @@
-[
-    {"Language":"日本語","Delete":"削除"},
-    {"Language":"英語","Delete":"Delete"},
-    {"Language":"韓国語","Delete":"삭제"},
-    {"Language":"中国語","Delete":"删除"}
-]
-
+{
+    "日本語":{"email":"メールアドレス：","password_label":"パスワード：","delete_button":"削除"},
+    "English":{"email":"email address:","password_label":"password:","delete_button":"deletion"},
+    "한국어":{"email":"메일 주소:","password_label":"비밀번호:","delete_button":"삭제"},
+    "中文":{"email":"电子邮件地址:","password_label":"密码:","delete_button":"删减"}
+}

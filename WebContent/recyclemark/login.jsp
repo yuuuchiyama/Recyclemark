@@ -153,6 +153,7 @@
     </div>
     <script>
 	    const language = document.getElementById("language").value;
+	    const area1 = document.getElementById("area1");
 	    const mail = document.getElementById("mail_label");
 	    const password = document.getElementById("password_label");
 	    const login = document.getElementById("button_login");
@@ -166,6 +167,7 @@
 			console.log(data);
 			// レスポンスを処理するコード
 			// dataにはjsonファイルの中身が格納されている
+			area1.innerHTML = data[language]["login_title"];
 			mail.innerHTML = data[language]["mail_login"];
 			password.innerHTML = data[language]["password_label"];
 			login.innerHTML = data[language]["login_button"];
