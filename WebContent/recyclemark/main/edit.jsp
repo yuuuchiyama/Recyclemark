@@ -98,16 +98,39 @@
 
 		<!-- メインコンテンツ部分 -->
 		<div class="main">
+		<input type="hidden" value="${language }" id="language" />
             <div class="main-container">
 				<div class="edit">
 					<ul>
 
-						<li><a href="password_change.jsp">パスワード変更</a></li>
+						<li><a href="password_change.jsp" id="pass_reset">パスワード変更</a></li>
 
-						<li><a href="reset_mail.jsp?forlogin=0&delete=1">アカウント削除</a></li>
+						<li><a href="reset_mail.jsp?forlogin=0&delete=1" id="dele_acc">アカウント削除</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
+
+		<script>
+			const language = document.getElementById("language").value;
+		    const pass_reset = document.getElementById("pass_reset");
+		    const dele_acc = document.getElementById("dele_acc");
+
+		 // jsonファイルの読み込み
+			fetch("../JSON/Edit_list.json")
+			.then(response => response.json())
+			.then(data => {
+				console.log(data);
+				// レスポンスを処理するコード
+				// dataにはjsonファイルの中身が格納されている
+				pass_reset.innerHTML = data[language]["pass_reset"]
+				dele_acc.innerHTML = data[language]["dele_acc"]
+
+			})
+			.catch(error => {
+				// エラー処理
+			});
+	</script>
+
 </html>
 

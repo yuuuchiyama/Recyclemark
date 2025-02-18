@@ -1,6 +1,6 @@
-[
-    {"Language":"日本語","reset_mail":"メールアドレス","send":"送信"},
-    {"Language":"英語","reset_mail":"Email Address","send":"send"},
-    {"Language":"韓国語","reset_mail":"메일 주소","send":"보내기"},
-    {"Language":"中国語","reset_mail":"电子邮件地址","send":"发送"}
-]
+{
+    "日本語":{"reset_mail":"メールアドレス","send":"送信"},
+    "英語":{"reset_mail":"Email Address","send":"send"},
+    "韓国語":{"reset_mail":"메일 주소","send":"보내기"},
+    "中国語":{"reset_mail":"电子邮件地址","send":"发送"}
+}

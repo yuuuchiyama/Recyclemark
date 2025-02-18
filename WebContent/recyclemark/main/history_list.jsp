@@ -114,21 +114,38 @@
 		メニュー
 	</c:param>
 
-	<c:param name="scripts"></c:param>
-
 	<c:param name="content">
 		<!-- メインコンテンツ部分 -->
 		<div class="history">
+		<input type="hidden" value="${language }" id="language" />
 
 			<c:choose>
 				<c:when test="${recyclemarks[0].getMarkImg() != null}">
 					<p><img src="${recyclemarks[0].getMarkImg() }"  ></p>
 				</c:when>
 				<c:otherwise>
-					<div>検索履歴はありません</div>
+					<div id="null_history">検索履歴はありません</div>
 				</c:otherwise>
 	    	</c:choose>
 
 		</div>
+	</c:param>
+
+	<c:param name="script">
+	const language = document.getElementById("language").value;
+    const null_history = document.getElementById("null_history");
+
+	// jsonファイルの読み込み
+	fetch("../../JSON/history.json")
+	  .then(response => response.json())
+	  .then(data => {
+	  	// レスポンスを処理するコード
+	  	// dataにはjsonファイルの中身が格納されている
+		null_history.innerHTML = data[language]["null_history"]
+
+	  })
+	  .catch(error => {
+	    // エラー処理
+	  });
 	</c:param>
 </c:import>

@@ -144,10 +144,31 @@
 
 	<!-- メインコンテンツ部分 -->
 	<div class="main">
+	<input type="hidden" value="${language }" id="language" />
            <div class="main-container">
-           	<h3>パスワードの変更が完了しました</h3>
-			<a href="../login.jsp">ログイン画面に戻る</a>
+           	<h3 id="password_change">パスワードの変更が完了しました</h3>
+			<a href="../login.jsp" id="login">ログイン画面に戻る</a>
 		</div>
 	</div>
+	<script>
+		const language = document.getElementById("language").value;
+	    const password_change = document.getElementById("password_change");
+	    const login = document.getElementById("login");
+
+	 // jsonファイルの読み込み
+		fetch("../JSON/password_change_success.json")
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+			// レスポンスを処理するコード
+			// dataにはjsonファイルの中身が格納されている
+			password_reset.innerHTML = data[language]["password_change"]
+			login.innerHTML = data[language]["login"]
+
+		})
+		.catch(error => {
+			// エラー処理
+		});
+	</script>
 </body>
 </html>

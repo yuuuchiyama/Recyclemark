@@ -37,9 +37,27 @@
 
 </head>
 	<body>
+	<input type="hidden" value="${language }" id="language" />
 		<div class="main-container">
-	    	<h2>メール送信が完了しました。</h2>
+	    	<h2 id="mail_success">メール送信が完了しました。</h2>
 	    </div>
-	    <script></script>
+	    <script>
+		const language = document.getElementById("language").value;
+	    const mail_success = document.getElementById("mail_success");
+
+	 // jsonファイルの読み込み
+		fetch("../JSON/mail_success.json")
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+			// レスポンスを処理するコード
+			// dataにはjsonファイルの中身が格納されている
+			mail_success.innerHTML = data[language]["mail_success"];
+
+		})
+		.catch(error => {
+			// エラー処理
+		});
+	</script>
 	</body>
 </html>

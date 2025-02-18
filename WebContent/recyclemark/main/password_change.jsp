@@ -154,26 +154,51 @@
 
 	<!-- メインコンテンツ部分 -->
 	<div class="main">
+	<input type="hidden" value="${language }" id="language" />
 	          <div class="main-container">
 			<div class="reset">
 				<form action="PasswordChangeExecute.action" method="post">
 					<div>${errors.get("password_error")}</div>
 					<div class="form-group">
-						<label>現在のパスワード:</label>
+						<label id="current_password">現在のパスワード:</label>
 						<input type="password" name="originpas" required oninvalid="this.setCustomValidity('パスワードを入力してください')"><br>
 					</div>
 					<div class="form-group1">
-						<label>新しいパスワード:</label>
+						<label id="new_pass">新しいパスワード:</label>
 						<input type="password" name="password1" required oninvalid="this.setCustomValidity('パスワードを入力してください')"><br>
 					</div>
 					<div class="form-group2">
-						<label>新しいパスワード:(再入力)</label>
+						<label id="new_pass_send">新しいパスワード:(再入力)</label>
 						<input type="password" name="password2" required oninvalid="this.setCustomValidity('パスワードを入力してください')">
 					</div>
-				    <button type="submit" class="action-button">変更</button>
+				    <button type="submit" class="action-button" id="change">変更</button>
 			    </form>
 			</div>
 		</div>
 	</div>
+	<script>
+		const language = document.getElementById("language").value;
+	    const current_password = document.getElementById("current_password");
+	    const new_pass = document.getElementById("new_pass");
+	    const new_pass_send = document.getElementById("new_pass_send");
+	    const change = document.getElementById("change");
+
+	 // jsonファイルの読み込み
+		fetch("../JSON/change_password.json")
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+			// レスポンスを処理するコード
+			// dataにはjsonファイルの中身が格納されている
+			current_password.innerHTML = data[language]["current_password"]
+			new_pass.innerHTML = data[language]["new_pass"]
+			new_pass_send.innerHTML = data[language]["new_pass_send"]
+			change.innerHTML = data[language]["change"]
+
+		})
+		.catch(error => {
+			// エラー処理
+		});
+	</script>
 </body>
 </html>

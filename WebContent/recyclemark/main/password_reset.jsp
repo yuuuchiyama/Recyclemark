@@ -1,6 +1,7 @@
 <%-- パスワードリセットJSP --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String mail = request.getParameter("mail");
@@ -189,24 +190,49 @@
 
 	<!-- メインコンテンツ部分 -->
 	<div class="main">
+	<input type="hidden" value="${language }" id="language" />
 	          <div class="main-container">
 			<div class="reset">
 				<form action="PasswordResetExecute.action" method="post">
 				<input type="hidden" name="mail" value="<%= mail %>">
 				<div>${errors.get("password_error")}</div>
 				<div class="form-group">
-					<label>新しいパスワード:</label>
+					<label id="new_pass">新しいパスワード:</label>
 					<input type="password" id="mail" name="password1" required oninvalid="this.setCustomValidity('パスワードを入力してください')"><br>
 				</div>
 				<div class="form-group2">
-					<label>新しいパスワード:(再入力)</label>
+					<label id="new_pass_send">新しいパスワード:(再入力)</label>
 					<input type="password" id="mail" name="password2" required oninvalid="this.setCustomValidity('パスワードを入力してください')">
 				</div>
-			        <button type="submit" class="action-button">リセット</button>
+			        <button type="submit" class="action-button" id="reset">リセット</button>
 			    </form>
 			</div>
 		</div>
 	</div>
+
+	<script>
+		const language = document.getElementById("language").value;
+	    const new_pass = document.getElementById("new_pass");
+	    const new_pass_send = document.getElementById("new_pass_send");
+	    const reset = document.getElementById("reset");
+
+	 // jsonファイルの読み込み
+		fetch("../JSON/new_password.json")
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+			// レスポンスを処理するコード
+			// dataにはjsonファイルの中身が格納されている
+			new_pass.innerHTML = data[language]["new_pass"];
+			new_pass_send.innerHTML = data[language]["new_pass_send"];
+			reset.innerHTML = data[language]["reset"];
+
+		})
+		.catch(error => {
+			// エラー処理
+		});
+	</script>
+
 </body>
 
 </html>

@@ -166,10 +166,10 @@
 			console.log(data);
 			// レスポンスを処理するコード
 			// dataにはjsonファイルの中身が格納されている
-			mail.innerHTML = data[language]["mail_login"]
-			password.innerHTML = data[language]["password_label"]
-			login.innerHTML = data[language]["login_button"]
-			passreset.textContent = data[language]["pass_reset"]
+			mail.innerHTML = data[language]["mail_login"];
+			password.innerHTML = data[language]["password_label"];
+			login.innerHTML = data[language]["login_button"];
+			passreset.textContent = data[language]["pass_reset"];
 			create.textContent = data[language]["link_create"];
 		})
 		.catch(error => {

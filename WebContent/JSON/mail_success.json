@@ -1,0 +1,6 @@
+{
+    "日本語":{"mail_success":"メール送信が完了しました。"},
+    "英語":{"mail_success":"Email transmission completed."},
+    "韓国語":{"mail_success":"이메일 전송이 완료되었습니다."},
+    "中国語":{"mail_success":"电子邮件传输已完成。"}
+}

@@ -208,7 +208,8 @@
 	<div class="main">
            <div class="main-container">
 			<div class="reset">
-				<h3>メールアドレス</h3>
+			<input type="hidden" value="${language }" id="language" />
+				<h3 id="address">メールアドレス</h3>
 				<form action="PasswordReset.action" method="post">
 					<div class="form-group">
 						<c:choose>
@@ -229,7 +230,7 @@
 							<h4>${error }</h4>
 				        </div>
 					</c:if>
-			        <button type="submit" class="action-button">送信</button>
+			        <button type="submit" class="action-button" id="send">送信</button>
 			    </form>
 			</div>
 		</div>
@@ -261,6 +262,27 @@
 				mailInput.setCustomValidity('');
 			}
 		});
+
+		const language = document.getElementById("language").value;
+	    const address = document.getElementById("address");
+	    const send = document.getElementById("send");
+
+	 // jsonファイルの読み込み
+		fetch("../JSON/reset_mail.json")
+		.then(response => response.json())
+		.then(data => {
+			console.log(data);
+			// レスポンスを処理するコード
+			// dataにはjsonファイルの中身が格納されている
+			address.innerHTML = data[language]["reset_mail"]
+			send.innerHTML = data[language]["send"]
+
+		})
+		.catch(error => {
+			// エラー処理
+		});
+
+
 	</script>
 </body>
 </html>
