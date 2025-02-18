@@ -57,14 +57,16 @@ public class TextSearchExecuteAction extends Action {
 			req.getRequestDispatcher("text_result.jsp").forward(req, res);
 		} else {
 			// レスポンス値をセット 6
-			if(language.equals("日本語")){
-				errors.put("mark_error", "そのリサイクルマークは存在しません");
-			}else if(language.equals("English")){
-				errors.put("mark_error", "Its recycling mark does not exist.");
-			}else if(language.equals("한국어")){
-				errors.put("mark_error", "그 재활용 마크는 존재하지 않습니다");
-			}else if(language.equals("中文")){
-				errors.put("mark_error", "其回收标志并不存在。");
+			if(language != null){
+				if(language.equals("日本語")){
+					errors.put("mark_error", "そのリサイクルマークは存在しません");
+				}else if(language.equals("English")){
+					errors.put("mark_error", "Its recycling mark does not exist.");
+				}else if(language.equals("한국어")){
+					errors.put("mark_error", "그 재활용 마크는 존재하지 않습니다");
+				}else if(language.equals("中文")){
+					errors.put("mark_error", "其回收标志并不存在。");
+				}
 			}else{
 				errors.put("mark_error", "そのリサイクルマークは存在しません");
 			}

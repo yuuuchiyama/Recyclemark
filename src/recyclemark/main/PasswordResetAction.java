@@ -2,6 +2,7 @@ package recyclemark.main;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
 import tool.Action;
@@ -32,7 +33,21 @@ public class PasswordResetAction extends Action {
 		if(userDao.get(mail) != null){
 			req.getRequestDispatcher("SendMail.action").forward(req, res);
 		}else{
-			error = "入力されたメールアドレスは存在しません";
+			HttpSession session = req.getSession();
+			String language = (String)session.getAttribute("language");
+			if(language != null){
+				if(language.equals("日本語")){
+					error = "入力されたメールアドレスは存在しません";
+				}else if(language.equals("English")){
+					error = "The email address entered does not exist.";
+				}else if(language.equals("한국어")){
+					error = "입력하신 이메일 주소가 존재하지 않습니다.";
+				}else if(language.equals("中文")){
+					error = "输入的电子邮件地址不存在。";
+				}
+			}else{
+				error = "入力されたメールアドレスは存在しません";
+			}
 			req.setAttribute("error", error);
 			req.setAttribute("forlogin", forlogin);
 			// JSPへフォワード 7

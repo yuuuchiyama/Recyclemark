@@ -236,7 +236,23 @@
 								</c:if>
 							</c:otherwise>
 						</c:choose>
-						<input type="email" id="mail" name="mail" required oninvalid="this.setCustomValidity('メールアドレスを入力してください')">
+						<c:choose>
+						  <c:when test="${language == '日本語'}">
+						    <input type="email" id="mail" name="mail" required oninvalid="this.setCustomValidity('メールアドレスを入力してください')">
+						  </c:when>
+						  <c:when test="${language == 'English'}">
+						    <input type="email" id="mail" name="mail" required oninvalid="this.setCustomValidity('Enter your email address')">
+						  </c:when>
+						  <c:when test="${language == '한국어'}">
+						    <input type="email" id="mail" name="mail" required oninvalid="this.setCustomValidity('이메일 주소를 입력하세요')">
+						  </c:when>
+						  <c:when test="${language == '中文'}">
+						    <input type="email" id="mail" name="mail" required oninvalid="this.setCustomValidity('输入您的电子邮件地址')">
+						  </c:when>
+						  <c:otherwise>
+						    <input type="email" id="mail" name="mail" required oninvalid="this.setCustomValidity('メールアドレスを入力してください')">
+						  </c:otherwise>
+						</c:choose>
 					</div>
 					<c:if test="${error != null}">
 						<div class="form-group">

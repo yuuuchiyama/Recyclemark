@@ -37,7 +37,7 @@ public class HistoryAction extends Action {
 		for(History history : historys){
 //			System.out.println(history.getRecycleId());
 
-			recycleMarks.add(recycleMarkDao.getHistory(history.getRecycleId(),language));
+			recycleMarks.add(0,recycleMarkDao.getHistory(history.getRecycleId(),language));
 		}
 		System.out.println(recycleMarks);
 
